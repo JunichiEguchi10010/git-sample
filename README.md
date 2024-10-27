@@ -1,2 +1,2 @@
 # git-sample
-github　コードストック用
+GitHub　コードストック用
