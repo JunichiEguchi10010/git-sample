@@ -36,6 +36,7 @@
   height: 100%;
   transition: 0.5s;
   opacity: 0.5;
+  /* 最初は透過度50％→ホバー時に100％ */
 }
 .modal-img.active {
   position: fixed;
