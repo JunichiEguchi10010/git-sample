@@ -36,7 +36,10 @@
     <div class="modal">
       <!-- エンティティ文字 &times;は｢×｣に相当 -->
       <span>&times;</span>
-      <video src="./videos/Aurora Borealis - 90877.mp4" controls></video>
+      <!-- src はJavaScriptの video.getAttribute("src") により動的に設定されるため、HTMLに記述すると毎回同じ動画が初期値として読み込まれ、無駄なリソース消費や意図しない動作が生じる可能性があります。
+クリックされた動画の src が動的に設定されるため、HTMLで src を指定しない方がコードが簡潔になり、保守性も向上します。 -->
+      <!-- <video src="./videos/Aurora Borealis - 90877.mp4" controls></video> -->
+      <video controls></video>
     </div>
   </div>
 </body>
