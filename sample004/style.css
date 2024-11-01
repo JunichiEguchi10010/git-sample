@@ -20,7 +20,7 @@
   border-radius: 50%;
   animation: bg-animation 5s linear forwards;
 }
-/* 光が上に移動して消えていく動き */
+/* 光が上に移動して消えていく動き(アニメーションの定義) */
 @keyframes bg-animation {
   0% {
     transform: translateY(0);
@@ -49,3 +49,8 @@
   /* 白から透明へのグラデーション */
   background: linear-gradient(#fff, transparent);
 }
+/* 全体の流れ */
+/* JavaScriptのcreateLines関数が定期的に呼ばれ、新しいline要素が生成されます。 */
+/* line要素はbg-animationアニメーションに従い、上昇しながら徐々に消えていきます。 */
+/* .line::before疑似要素が、光が通った跡を表現します。 */
+/* setTimeoutで6秒後にline要素が削除され、次の光がまた新たに生成されます。 */
