@@ -1,0 +1,61 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  padding: 32px;
+}
+.form {
+  width: 640px;
+  text-align: center;
+}
+.inputArea {
+  display: flex;
+  justify-content: space-between;
+}
+.row input,
+.row textarea {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid #333;
+}
+.row textarea {
+  margin-top: 8px;
+  resize: none;
+}
+
+.btn {
+  padding: 16px 32px;
+  background: #333;
+  color: #fff;
+  outline: none;
+  border: none;
+  box-shadow: 0 0 8px #000;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.btn:hover {
+  box-shadow: none;
+}
+.errorTxt,
+.errorTxtEmail {
+  font-size: 13px;
+  font-weight: bold;
+  color: #d93025;
+  text-align: left;
+  margin: 0 4px;
+  display: none;
+}
+.input.error {
+  border: 2px solid #d93025;
+}
+.row.error .errorTxt {
+  display: block;
+}
+.input.mailErr {
+  border: 2px solid #d93025;
+}
+.input.mailErr ~ .errorTxtEmail {
+  display: block;
+}
