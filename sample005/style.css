@@ -50,12 +50,14 @@ body {
 .input.error {
   border: 2px solid #d93025;
 }
+/* .rowクラスにjavascriptで.errorクラスが適用された場合、その中の.errorTxtクラスを持つ要素は、display: blockのスタイルにより表示される。 */
 .row.error .errorTxt {
   display: block;
 }
 .input.mailErr {
   border: 2px solid #d93025;
 }
+/* .inputクラスにmailErrクラスが適用されている場合、その要素の後にある兄弟要素である.errorTxtEmailクラスを持つ要素を表示する */
 .input.mailErr ~ .errorTxtEmail {
   display: block;
 }

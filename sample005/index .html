@@ -3,6 +3,8 @@
 
 <head>
   <meta charset="UTF-8" />
+  <!-- http-equiv="X-UA-Compatible"：互換性に関する設定が含まれていることをブラウザに認識させる機能です。 -->
+  <!-- content="IE=edge"：IEは可能な限り最新のレンダリングエンジン（Edgeモード）を使用してページを表示するようになります。古い互換モードに戻るのを防ぐための設定です。 -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>お問い合わせフォーム(HTML,CSS,JS) </title>
@@ -21,7 +23,9 @@
         </div>
         <div class="row">
           <input type="text" class="email input" name="email" placeholder="メールアドレス" autocomplete="off" />
+          <!-- エラーメッセージ -->
           <div class="errorTxt">入力してください。</div>
+          <!-- バリテーション（入力チェック）エラーメッセージ -->
           <div class="errorTxtEmail">メールアドレスではないです</div>
         </div>
         <div class="row">
@@ -42,6 +46,7 @@
       <button class="btn" type="submit">送信</button>
     </form>
   </section>
+  <!-- 外部ライブラリSMTP.js -->
   <script src="https://smtpjs.com/v3/smtp.js"></script>
 </body>
 

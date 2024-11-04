@@ -1,26 +1,90 @@
-function createLines() {
-  let line = document.createElement("div");
-  line.setAttribute("class", "line");
-  document.body.appendChild(line);
+// ォームデータの取得：フォームの入力フィールドからユーザーの情報を取得します。
+const form = document.querySelector('.form');
+const fname = document.querySelector('.fname');
+const email = document.querySelector('.email');
+const tel = document.querySelector('.tel');
+const subject = document.querySelector('.subject');
+const text = document.querySelector('.text');
 
-  // Math.random()で0〜1未満の乱数
-  // 光の横幅
-  line.style.width = Math.random() * 12 + "px";
-  // 光の水平方向の位置。上限は画面の幅
-  line.style.left = Math.random() * innerWidth + "px";
-  // 光の遅延
-  line.style.animationDuration = 3 + Math.random() * 12 + "s";
-
-  console.log("width:", line.style.width);
-  console.log("left:", line.style.left);
-  console.log("duration:", line.style.animationDuration);
-
-  // 光が昇りながら消えるまでの時間
-  setTimeout(function () {
-    document.body.removeChild(line);
-  }, 6000);
+function sendEmail() {
+  // console.log('送信');
+  const bodyMsg = `
+    お名前：${fname.value}<br>
+    メールアドレス：${email.value}<br>
+    電話番号：${tel.value}<br>
+    件名：${subject.value}<br>
+    内容：${text.value}
+  `;
+  // SMTP.jsが提供するメール送信メソッド
+  Email.send({
+    // メール送信時に認証情報として SecureToken を利用することで、セキュリティが確保されます。この SecureToken はSMTP.jsの設定手順に従って取得する
+    SecureToken: 'xxxxxxxxxxxxxxxxx',
+    To: 'xxxxxxxxx@gmail.com',
+    From: 'xxxxxxxxxxxxxx@gmail.com',
+    // Subject: 'テスト送信',
+    Subject: subject.value,
+    // Body: 'こちらはテストメールです',
+    Body: bodyMsg,
+  }).then((message) => alert(message));
 }
-// 一定の時間を置いて繰り返す（光の量に比例する）
-setInterval(function () {
-  createLines();
-}, 700);
+// setup an smtp server hereをクリックして右上のログインボタンからログイン
+// アンケートは一番上を回答して終了する
+// settings→create SMTPでGmailアドレスを入力してcreateボタンをクリック
+// hostとusernameとpasswordをポップアップの内容に差し替えてポップアップを閉じる
+// settings→manage domains→Email verification→Start verification
+// I don’t own a domain→verify email→アドレスを入力→メール検証をクリアしてリロード
+// Email verificationでメールアドレスがverifiedになる
+
+// Encrypt your smtp credentialsをクリックして、UserNameとPasswordをコピペして、GenerateToken
+// 表示されたトークンをSecureTokenの値にコピペ
+// ↑からHostとUsernameとPasswordを削除する
+
+// 必須入力チェック
+// 各入力フィールドが空欄でないかを確認し、空欄の場合にエラーメッセージを表示します。
+function checkInput() {
+  const inputList = document.querySelectorAll('.input');
+  for (const input of inputList) {
+    // 初期設定: 空欄の場合にエラーを表示
+    if (input.value == '') {
+      input.classList.add('error');
+      input.parentElement.classList.add('error');
+    }
+
+    // 入力時のリアルタイムチェック
+    // inputList（すべての入力フィールド）をループして、各フィールドが空でないかチェックしています。
+    // 空欄のときには .error クラスを追加して赤い枠線とエラーメッセージを表示し、入力があればエラーを取り除きます。
+    input.addEventListener('keyup', () => {
+      if (input.value == '') {
+        input.classList.add('error');
+        input.parentElement.classList.add('error');
+      } else {
+        input.classList.remove('error');
+        input.parentElement.classList.remove('error');
+      }
+    });
+    // メールアドレスのフォーマットチェック(正規表現emailRgx)
+    // メールアドレスの入力時に正規表現を用いて形式を確認し、不正な場合にmailErrクラスを追加します。
+    email.addEventListener('keyup', () => {
+      // https://www.javadrive.jp/regex-basic/sample/index13.html
+      const emailRgx =
+        '^[a-zA-Z0-9_.+-]+@([a-zA-Z0-9][a-zA-Z0-9-]*[a-zA-Z0-9]*.)+[a-zA-Z]{2,}$';
+      if (!email.value.match(emailRgx)) {
+        email.classList.add('mailErr');// 不正なメールアドレスの場合に mailErr クラスを追加
+        email.parentElement.classList.add('mailErr'); // 親要素にも mailErr クラスを追加
+      } else {
+        email.classList.remove('mailErr'); // 正しいメールアドレスの場合に mailErr クラスを削除
+        email.parentElement.classList.remove('mailErr'); // 親要素からも mailErr クラスを削除
+      }
+    });
+  }
+}
+
+form.addEventListener('submit', (e) => {
+  checkInput();
+  // e.preventDefault();
+  // sendEmail();
+  if (form.querySelectorAll('.error').length === 0) {
+    e.preventDefault();
+    sendEmail();
+  }
+});
