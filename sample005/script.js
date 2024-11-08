@@ -15,17 +15,23 @@ function sendEmail() {
     件名：${subject.value}<br>
     内容：${text.value}
   `;
-  // SMTP.jsが提供するメール送信メソッド
+  // SMTP.js(https://smtpjs.com/)が提供するメール送信メソッド
   Email.send({
     // メール送信時に認証情報として SecureToken を利用することで、セキュリティが確保されます。この SecureToken はSMTP.jsの設定手順に従って取得する
-    SecureToken: 'xxxxxxxxxxxxxxxxx',
-    To: 'xxxxxxxxx@gmail.com',
-    From: 'xxxxxxxxxxxxxx@gmail.com',
+    // SecureToken: 'xxxxxxxxxxxxxxxxx',
+    // To: 'xxxxxxxxx@gmail.com',
+    // From: 'xxxxxxxxxxxxxx@gmail.com',
+    // SecureToken: '92595d77-110f-4676-b8e9-3d3dc375ab75',// '取得したSecureTokenをここに貼り付ける',
+    // SecureToken: '6D8077A7B9E3B6DDF3D5A2444011FBF0D4AE',
+    SecureToken: 'acc86bd5-b1a6-40dd-9c9e-009db826f01d',
+    To: 'm100010eguchi@gmail.com',
+    From: 'm100010eguchi@gmail.com',
     // Subject: 'テスト送信',
     Subject: subject.value,
     // Body: 'こちらはテストメールです',
     Body: bodyMsg,
-  }).then((message) => alert(message));
+  }).then((message) => alert("メール送信成功: " + message))
+  .catch((error) => console.error("メール送信に失敗しました:", error));
 }
 // setup an smtp server hereをクリックして右上のログインボタンからログイン
 // アンケートは一番上を回答して終了する
@@ -80,11 +86,11 @@ function checkInput() {
 }
 
 form.addEventListener('submit', (e) => {
-  checkInput();
-  // e.preventDefault();
+  e.preventDefault();// フォーム送信を防止
+  checkInput();  // 入力チェックを実行
   // sendEmail();
   if (form.querySelectorAll('.error').length === 0) {
-    e.preventDefault();
-    sendEmail();
+    // e.preventDefault();
+    sendEmail();// エラーがなければメール送信
   }
 });
