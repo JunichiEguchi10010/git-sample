@@ -18,16 +18,15 @@ function sendEmail() {
   // SMTP.js(https://smtpjs.com/)が提供するメール送信メソッド
   Email.send({
     // メール送信時に認証情報として SecureToken を利用することで、セキュリティが確保されます。この SecureToken はSMTP.jsの設定手順に従って取得する
+    // Gmailはメールの2段階承認、アプリパスワードが必要
     // SecureToken: 'xxxxxxxxxxxxxxxxx',
     // To: 'xxxxxxxxx@gmail.com',
     // From: 'xxxxxxxxxxxxxx@gmail.com',
-    // SecureToken: '92595d77-110f-4676-b8e9-3d3dc375ab75',// '取得したSecureTokenをここに貼り付ける',
-    // SecureToken: '6D8077A7B9E3B6DDF3D5A2444011FBF0D4AE',
-    SecureToken: 'acc86bd5-b1a6-40dd-9c9e-009db826f01d',
+    // 以下のSecureToken: 'ecoz rryt gcab etzu',はグーグルのアプリパスワードで、SMTP.jsで発行されるSecureTokenではないので注意
+    SecureToken: 'ecoz rryt gcab etzu',
     To: 'm100010eguchi@gmail.com',
     From: 'm100010eguchi@gmail.com',
     // Subject: 'テスト送信',
-    Subject: subject.value,
     // Body: 'こちらはテストメールです',
     Body: bodyMsg,
   }).then((message) => alert("メール送信成功: " + message))
