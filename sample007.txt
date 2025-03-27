@@ -1,0 +1,20 @@
+Cursorのスニペット登録方法
+
+Ctrl + Shift + P」（またはMacなら Cmd + Shift + P）を押してコマンドパレットを開く
+「Configure User Snippets」 または **「ユーザースニペットの構成」**と入力し、選択する
+スニペットを追加したい言語（例：javascript.json や html.json）を選択
+スニペットをJSON形式で記述
+
+スニペットの例
+例えば、javascript.json に以下のように記述すると、log と入力して Tab を押すだけで console.log() が補完されるようになります。
+{
+  "Print to console": {
+    "prefix": "log",
+    "body": ["console.log('$1');", "$2"],
+    "description": "Console log shortcut"
+  }
+}
+
+https://www.youtube.com/watch?v=GDXsuwsyaBU
+
+20250327作成
