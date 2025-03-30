@@ -1,0 +1,31 @@
+<!-- WordPressでAPIを叩く方法であるhttpAPIについて【wp_remote_get】 -->
+<!-- 外部のウェブサイトやAPIにHTTP GETリクエストを送信するための関数 -->
+<!-- WordPress内で外部APIからデータを取得し、処理するための基本構造となっています。 -->
+
+<!-- サンプルコード -->
+<?php
+// wp_remote_get(外部のウェブサイトやAPIにHTTP GETリクエストを送信するための関数)
+$res = wp_remote_get("https://jsonplaceholder.typicode.com/todos/1");
+// レスポンスのステータスコードを取得
+$status = wp_remote_retrieve_response_code($res);
+// レスポンスがWordPressのエラーオブジェクトでないかを確認します。エラーがない場合のみ処理を継続します。
+if (!is_wp_error($res) && $status === 200) {
+    // レスポンスのボディを取得（JSON形式のデータを取得）
+    $body = wp_remote_retrieve_body($res);
+    // レスポンスのボディを表示
+    var_dump($body);
+} else {
+    // エラー処理
+}
+?>
+
+<!-- サンプルコード2 -->
+<?php
+$res = wp_remote_get("https://jsonplaceholder.typicode.com/todos/1");
+$status = wp_remote_retrieve_response_code($res);
+if (!is_wp_error($res) && $status === 200) {
+    $body = wp_remote_retrieve_body($res);
+    var_dump($body);
+} else {
+}
+?>
