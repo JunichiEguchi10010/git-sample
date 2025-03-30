@@ -1,3 +1,26 @@
-; 独自テーマで、アイキャッチ・サムネイル画像を表示する方法
+WordPressで用意されている条件分岐タグ
 
+<?php
+echo '今表示しているページは ';
+if ( is_front_page() ) {
+  echo 'トップページ';
+} elseif ( is_home() ) {
+  echo '投稿トップ';
+} elseif ( is_page() ) {
+  echo '固定ページ';
+} elseif ( is_single() ) {
+  echo '投稿詳細ページ';
+} elseif ( is_category() ) {
+  echo 'カテゴリーアーカイブページ';
+} elseif ( is_year() ) {
+  echo '年別アーカイブページ';
+} elseif ( is_search() ) {
+  echo '検索結果ページ';
+} elseif ( is_404() ) {
+  echo 'Not Foundページ';
+} else {
+  echo 'その他のページ';
+}
+echo ' です。';
+?>
 
