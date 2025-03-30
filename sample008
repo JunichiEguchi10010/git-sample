@@ -1,4 +1,4 @@
-<!-- WordPressでAPIを叩く方法であるhttpAPIについて【wp_remote_get】 -->
+WordPressでAPIを叩く方法であるhttpAPIについて【wp_remote_get】
 <!-- 外部のウェブサイトやAPIにHTTP GETリクエストを送信するための関数 -->
 <!-- WordPress内で外部APIからデータを取得し、処理するための基本構造となっています。 -->
 
