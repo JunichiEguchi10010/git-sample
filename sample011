@@ -45,8 +45,15 @@ DOMへのレンダリング:
 ReactDOMを使って、作成したコンポーネントをHTMLの特定の要素に描画します。(20250401時点での最新の記述方法)
 
 JavaScriptファイル
+; React 17以前で推奨されている記述方法
 const root = document.getElementById('root');
 ReactDOM.render(<App />, root);
+
+; React 18以降で推奨されている記述方法
+const container = document.getElementById('root');
+const root = ReactDOM.createRoot(container);
+root.render(<App />);
+
 
 
 4. JSXの使用
