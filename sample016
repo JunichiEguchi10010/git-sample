@@ -286,3 +286,15 @@ if ($pageinfo->post_type === 'event') {
 
 ワードプレスで固定ページのbodyタグにページのスラッグをクラス名として追加する方法！
 https://www.youtube.com/watch?v=0P7-fFu9QtM
+
+
+最適バージョン
+function add_page_slug_to_body_class($classes) {
+    if (is_page() && isset($GLOBALS['post'])) { // 念のためpostがあるか確認
+        $classes[] = 'page-' . sanitize_html_class($GLOBALS['post']->post_name);
+    }
+    return $classes;
+}
+add_filter('body_class', 'add_page_slug_to_body_class');
+; isset($GLOBALS['post']) を追加することで、万が一 $post が未定義の場合のエラーを防げる。
+; セキュリティが向上sanitize_html_class()
