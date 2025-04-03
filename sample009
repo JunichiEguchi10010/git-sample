@@ -1,5 +1,109 @@
 WordPressで用意されている条件分岐タグ
 
+よくある条件分岐の例
+
+1. トップページのみ、または投稿ページのみ
+if (is_front_page() && is_home()) {
+    // トップページ（最新の投稿）の場合のみ実行
+} elseif (is_front_page()) {
+    // トップページ（固定ページとして設定されている場合）のみ実行
+} elseif (is_single()) {
+    // 投稿ページのみ実行
+}
+
+2. カテゴリーと投稿ページの組み合わせ
+if (is_single() && in_category('WordPress')) {
+    // 投稿ページかつ「WordPress」カテゴリーに属している場合のみ実行
+}
+
+3. 特定の固定ページで処理
+if (is_page(array('contact', 'about'))) {
+    // 固定ページ「contact」または「about」の場合のみ実行
+}
+
+4. カテゴリー一覧ページ + スラッグ指定
+if (is_category('programming') || is_category('design')) {
+    // カテゴリー「programming」または「design」の一覧ページのみ実行
+}
+
+5. 検索結果ページまたは404ページ
+if (is_search()) {
+    // 検索結果ページの場合に実行
+} elseif (is_404()) {
+    // 404ページの場合に実行
+}
+
+6. カスタム投稿タイプのアーカイブ
+if (is_post_type_archive('portfolio') || is_tax('project-category')) {
+    // カスタム投稿タイプ「portfolio」またはカスタムタクソノミー「project-category」の場合
+}
+
+7. 特定の条件を除外する
+if (!is_front_page() && !is_page('contact')) {
+    // トップページや固定ページ「contact」以外で実行
+}
+
+8. ページネーション（2ページ目以降）
+if (is_paged()) {
+    // 2ページ目以降で実行
+}
+
+応用例: 複数条件を組み合わせる
+if ((is_front_page() || is_single()) && !is_category('uncategorized')) {
+    // トップページまたは投稿ページで、「uncategorized」カテゴリではない場合に実行
+}
+
+条件分岐作成手順
+
+1. 日本語で条件を整理
+まず、実現したいロジックや条件を日本語で箇条書きにします。
+
+例:
+トップページの場合に特定の処理を行いたい。
+または、投稿ページで特定のカテゴリに属している場合に処理を行いたい。
+
+2. 疑似コード（擬似的なコード）に変換
+日本語の条件を基に、ロジックを簡単なコード形式で書き起こします。
+
+例:
+if トップページ then
+   処理Aを実行
+else if 投稿ページかつ特定カテゴリ then
+   処理Bを実行
+
+3. 実際のコードに変換
+疑似コードを基に、PHPのコードに置き換えます。
+
+例:
+if (is_front_page()) {
+    // 処理A: トップページ用の処理
+} elseif (is_single() && in_category('WordPress')) {
+    // 処理B: 投稿ページでカテゴリが「WordPress」の場合
+}
+
+応用例: 複数条件を組み合わせる場合
+
+要件:
+トップページでは「処理A」を実行。
+投稿ページで特定のカテゴリの場合は「処理B」を実行。
+それ以外の場合は「処理C」を実行。
+
+日本語で条件を記述:
+トップページの場合 → 処理A
+投稿ページでカテゴリが「WordPress」の場合 → 処理B
+上記以外 → 処理C
+
+疑似コード:
+if トップページ then
+    処理A
+else ifF 投稿ページ Aand カテゴリが「WordPress」 then
+    処理B
+else
+    処理C
+
+
+WordPressで用意されている条件分岐タグ
+
 <?php
 echo '今表示しているページは ';
 if ( is_front_page() ) {
@@ -23,3 +127,42 @@ if ( is_front_page() ) {
 }
 echo ' です。';
 ?>
+
+
+<?php
+// トップページのみ: is_front_page() && is_home() もしくは is_front_page()
+
+// 固定ページのみ: is_page()
+// 引数に ID、スラッグ（配列も可能）、IDとスラッグ（配列）、を入れると特定の固定ページのみになる
+
+// 投稿詳細（single.php）: is_single()
+// 引数に ID、スラッグ（配列も可能）、IDとスラッグ（配列）、を入れると特定の投稿ページのみになる
+// 特定のカテゴリーに属している場合のみ → in_category(カテゴリー名)
+
+コード例
+if (is_single() && in_category('Wordpress')):
+投稿ページで「WordPress」カテゴリに属している場合にのみ、特定の処理を実行する仕組み
+
+; 引数には、カテゴリー名（文字列）やカテゴリーID、または配列で複数のカテゴリーを指定可能です。
+if (is_single() && in_category(array('Wordpress', 'プログラミング'))):
+    echo '<div>この記事は特定のカテゴリに属しています。</div>';
+endif;
+
+// カテゴリー一覧ページ（category.php）: is_category()
+
+// スラッグ、配列での複数指定可能
+
+// 検索結果のページ: is_search()
+
+// 404: is_404()
+
+// カスタム投稿のアーカイブ: is_post_type_archive('スラッグ')
+
+// タクソノミー: is_tax()
+
+// 2ページ目以降のページ: is_paged()
+
+if (is_category()) {
+    // カテゴリーページで実行する処理
+}
+
