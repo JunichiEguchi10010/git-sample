@@ -1,0 +1,288 @@
+WordPressの固定ページに特定のスタイルを適用する方法 20250404
+(bodyタグにページのスラッグをクラス名として追加する方法)
+
+概要
+固定ページに特有のスタイルを適用する際、ページIDを使う方法は便利ですが、ローカル環境とサーバー環境でIDが変わる可能性があるため、
+スラッグをクラス名として追加する方法が推奨されています。
+
+
+手順
+フィルターを追加:
+functions.phpにフィルターを記述し、body_class関数を拡張します。
+固定ページの場合にスラッグを取得してクラス名に追加します。
+
+
+functions.php
+add_filter('body_class', 'add_slug_name');
+
+function add_slug_name($class) {
+    if (is_page()) {
+        $pageinfo = get_post(get_the_ID());
+        $class[] = $pageinfo->post_name;
+    }
+    return $class;
+}
+
+解説
+add_filter('body_class', 'add_slug_name');
+この行では、WordPressのbody_classフィルターを拡張するためにadd_slug_name関数を登録しています。これによってbody_class関数の出力に独自の処理を追加できるようになります。
+
+function add_slug_name($class) {
+add_slug_nameという名前の関数を定義しています。この関数では、body_classの出力内容をカスタマイズします。$classはクラス名の配列です。
+
+if (is_page()) {
+
+現在表示しているページが固定ページ（is_page()）である場合に次の処理を実行します。これにより固定ページだけにクラス名が追加されます。
+
+$pageinfo = get_post(get_the_ID());
+
+現在の固定ページに関する情報（投稿名やタイトルなど）を取得します。get_the_ID()でページIDを取得し、それをget_post()に渡して投稿情報を取得します。
+
+$class[] = $pageinfo->post_name;
+
+post_name（固定ページのスラッグ）をクラス配列$classに追加します。これにより、ページのスラッグが<body>タグのクラスとして追加されます。
+
+return $class;
+
+最終的にカスタマイズされたクラス配列を返します。これがbody_classフィルターの出力に反映されます。
+
+
+出力の例
+このコードを適用すると、たとえば固定ページ「contact」が表示される場合、HTMLの<body>タグに以下のようなクラスが追加されます：
+<body class="page-contact">
+
+
+
+body_classについて(テンプレートタグ)
+
+WordPressのテーマ開発で使用される便利な関数で、HTMLの <body> タグにクラス名を動的に追加するために使われます。
+この機能により、特定のページや状況に応じてスタイルやスクリプトを適用しやすくなります。
+
+1. 基本的な使い方
+
+phpファイル
+コード例:
+<body <?php body_class(); ?>>
+
+上記のコードをテーマのテンプレートファイル（例: header.php）に記述すると、
+<body> タグにWordPressが自動的に生成するクラス名が追加されます。
+
+出力例:
+<body class="home page-template-default logged-in admin-bar">
+この例では、トップページ（home）、ログイン状態（logged-in）、管理バー（admin-bar）などのクラスが自動的に付与されています。
+
+2. 追加されるクラス名の種類
+body_class 関数は、ページの種類や状態に応じて、以下のようなクラスを自動で追加します：
+
+ページタイプ:
+home（トップページ）
+
+single（投稿ページ）
+
+page（固定ページ）
+
+archive（アーカイブページ）
+
+search（検索結果ページ）
+
+404（404エラーページ）
+
+テンプレートファイル:
+
+page-template-default（デフォルトテンプレート）
+
+カスタムテンプレートの場合はそのスラッグ（例: page-template-custom）
+
+
+投稿状態:
+logged-in（ログイン状態）
+
+admin-bar（管理バー表示中）
+
+
+カテゴリやタグ:
+category-slug（例: category-news）
+
+tag-slug（例: tag-featured）
+
+
+3. フィルターでクラスをカスタマイズ
+body_class 関数の出力に独自のクラスを追加するには、body_class フィルターを使用できます。
+
+カスタマイズ例:
+add_filter('body_class', function($classes) {
+    if (is_page('contact')) {
+        $classes[] = 'contact-page';
+    }
+    return $classes;
+});
+このコードは、固定ページ「contact」にアクセスしたときにクラスcontact-pageを追加します。
+
+4. 利用例
+(1) ページごとのスタイル適用
+特定のページで異なるスタイルを適用する際に役立ちます。
+
+CSSファイル
+.contact-page h1 {
+    color: blue;
+}
+
+(2) JavaScriptでクラスを利用
+JavaScriptを使って条件付きで機能を実装する場合。
+if (document.body.classList.contains('contact-page')) {
+    console.log('This is the contact page');
+}
+
+5. 注意点
+必ず <body> タグ内で使用すること。
+クラス名が多すぎる場合は整理することを検討（カスタマイズ可能）。
+
+
+
+コード比較
+
+●サイト全体の固定ページに適用したい場合
+
+add_filter('body_class', 'add_slug_name');
+
+function add_slug_name($class) {
+    if (is_page()) {
+        $pageinfo = get_post(get_the_ID());
+        ; 現在表示されているページの情報を取得する→コードの説明は下部にあります。
+        $class[] = $pageinfo->post_name;
+    }
+    return $class;
+}
+
+汎用性が高い:
+すべての固定ページに対応しており、ページごとに異なるスラッグ（post_name）をクラスとして自動的に追加します。
+例: 固定ページ「contact」ならば、contact クラスが自動的に <body> に追加されます。
+
+動的なスラッグ追加:
+現在表示している固定ページのスラッグを取得してクラスに追加するので、コードをそのまま適用するだけで複数ページで機能します。
+
+適用範囲:
+固定ページ（is_page()）全体に処理が適用されます。
+
+
+●特定の固定ページだけに適用したい場合
+add_filter('body_class', function($classes) {
+    if (is_page('contact')) {
+        $classes[] = 'contact-page';
+    }
+    return $classes;
+});
+
+特定のページに限定:
+固定ページの中でも、特定のページ（この例ではスラッグがcontact）にのみクラスを追加します。
+
+直接的で簡潔:
+他のページには影響を及ぼさず、特定の条件に絞ってクラスを追加する場合に便利です。
+
+適用範囲:
+固定ページ「contact」のみに限定されており、他のページには影響しません。
+
+
+コード解説
+$pageinfo = get_post(get_the_ID());
+現在表示されているページの情報を動的に取得するためのものです。
+
+コードの要素と動作
+get_the_ID():
+現在表示されている投稿や固定ページの 投稿ID を取得します。
+投稿IDは、WordPressデータベースに保存されている一意の識別子で、特定の投稿やページを識別するために使用されます。
+例えば、表示中のページが「About Us」の固定ページの場合、そのページIDが返されます。
+
+get_post():
+get_post() 関数を使用して、投稿IDを基にその投稿や固定ページの 詳細情報 を取得します。
+この関数は投稿オブジェクトを返し、そのオブジェクトには以下のようなプロパティが含まれます：
+post_name: ページのスラッグ（例: about-us）。
+post_title: ページのタイトル（例: "About Us"）。
+post_content: ページのコンテンツ。
+post_type: 投稿タイプ（例: page または post）。
+
+$pageinfo:
+このコードでは、$pageinfo 変数に get_post() 関数で取得した投稿オブジェクトを代入しています。
+$pageinfo を使用することで、現在のページのスラッグやタイトルなどの情報を参照できます。
+
+コード例
+ページスラッグを取得する場合
+php
+$pageinfo = get_post(get_the_ID());
+echo $pageinfo->post_name; // ページのスラッグ（例: "about-us"）
+
+ページタイトルを取得する場合
+php
+$pageinfo = get_post(get_the_ID());
+echo $pageinfo->post_title; // ページタイトル（例: "About Us"）
+
+他の情報を参照する場合
+php
+$pageinfo = get_post(get_the_ID());
+echo $pageinfo->post_content; // ページのコンテンツ
+echo $pageinfo->post_type;    // 投稿タイプ（例: "page" または "post"）
+
+主な用途例：
+
+1. 固定ページごとの独自スタイルの適用
+特定の固定ページにだけ独自のデザインを適用する際、スラッグを使うことで簡単に特定できます。
+php
+$pageinfo = get_post(get_the_ID());
+if ($pageinfo->post_name === 'about-us') {
+    echo '<link rel="stylesheet" href="about-us.css">';
+}
+
+2. ページタイトルを動的に表示
+現在の固定ページや投稿のタイトルを取得して、カスタムヘッダーやメタデータとして表示します。
+php
+$pageinfo = get_post(get_the_ID());
+echo '<title>' . $pageinfo->post_title . '</title>';
+
+3. ページの種類による内容出し分け
+投稿タイプ（post_type）を使って、固定ページや投稿ページで異なる内容を出力します。
+php
+$pageinfo = get_post(get_the_ID());
+if ($pageinfo->post_type === 'page') {
+    echo '<div>これは固定ページの内容です。</div>';
+} elseif ($pageinfo->post_type === 'post') {
+    echo '<div>これは投稿ページの内容です。</div>';
+}
+
+4. 動的なパンくずリストの生成
+パンくずリストに現在のページ情報を追加する際に便利です。
+php
+$pageinfo = get_post(get_the_ID());
+echo '<a href="' . get_permalink($pageinfo->ID) . '">' . $pageinfo->post_title . '</a>';
+
+5. ページコンテンツの一部を取得して表示
+現在のページの内容を部分的に取得して表示したい場合に役立ちます。
+php
+$pageinfo = get_post(get_the_ID());
+$content_snippet = wp_trim_words($pageinfo->post_content, 50);
+echo '<p>' . $content_snippet . '</p>';
+
+6. 特定の親ページを条件にした分岐
+親ページ（post_parent）を利用して、階層型のページで条件分岐を行います。
+php
+$pageinfo = get_post(get_the_ID());
+if ($pageinfo->post_parent) {
+    echo '<p>このページは親ページ「' . get_the_title($pageinfo->post_parent) . '」に属しています。</p>';
+}
+
+7. カスタムフィールドの取得
+ページのカスタムフィールドを取得して表示する用途に活用できます。
+php
+$pageinfo = get_post(get_the_ID());
+$custom_value = get_post_meta($pageinfo->ID, 'custom_field_name', true);
+echo '<p>カスタムフィールドの値: ' . $custom_value . '</p>';
+
+8. アーカイブページでのフィルタリング
+アーカイブページで特定の条件を動的にフィルタリングする際に使用。
+php
+$pageinfo = get_post(get_the_ID());
+if ($pageinfo->post_type === 'event') {
+    echo '<p>イベントの投稿です！</p>';
+}
+
+ワードプレスで固定ページのbodyタグにページのスラッグをクラス名として追加する方法！
+https://www.youtube.com/watch?v=0P7-fFu9QtM
