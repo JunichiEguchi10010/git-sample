@@ -1,8 +1,6 @@
-Javascrip
-Location API（ロケーション） を使ってページごとにJavaScriptの処理を分ける方法
+Javascrip:Location API（ロケーション） を使ってページごとにJavaScriptの処理を分ける方法 20250404
 
-WordPress
-Location APIで取得したURLを元に条件分岐し、各ページごとに処理を分ける方法 20250404
+WordPress:Location APIで取得したURLを元に条件分岐し、各ページごとに処理を分ける方法 20250404
 
 
 Location API とは：
