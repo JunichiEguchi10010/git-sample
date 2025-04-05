@@ -117,3 +117,157 @@ import文	        使えない（グローバルの React, ReactDOM を使う）
 
 Reactを使って、メニューを表示・非表示する方法
 https://www.youtube.com/watch?v=B8SYcpgqro8&t=8s
+
+
+想定される追加機能
+外クリックで閉じる	実用性が高い
+アニメーション	見た目が自然に
+ハンバーガーメニュー化	モバイル対応
+動的レンダリング	実務でよく使う
+グローバル状態管理	複数メニュー対応など
+
+
+
+外側クリックでメニューを閉じる
+ESCキーで閉じる機能
+setTimeout を使ってアニメーション付きで閉じる
+フェードイン/アウト（CSS Transition）
+
+必要な技術と目的
+技術	                                役割
+useRef	                            メニュー要素への参照を取得
+useEffect	                        コンポーネントマウント時にイベントを登録／クリーンアップ
+document.addEventListener("click")	外側のクリック検知
+
+ポイント
+ref.current.contains(e.target) は、「クリックされた要素がメニューの中かどうか」を判定。
+useEffect の中でイベント登録→クリーンアップするのがポイント。
+button や a のクリックでトグル表示も可能。
+
+import React, { useState, useRef, useEffect } from "react";
+import "./App.css"; // CSSは別ファイルで定義（下に書きます）
+
+const App = () => {
+  const [isActive, setIsActive] = useState(false); // 表示フラグ
+  const [isClosing, setIsClosing] = useState(false); // 閉じる途中フラグ
+  const menuRef = useRef(null);
+
+  const openMenu = () => {
+    setIsActive(true);
+    setIsClosing(false);
+  };
+
+  const closeMenu = () => {
+    setIsClosing(true); // アニメーション開始
+    setTimeout(() => {
+      setIsActive(false); // 実際に閉じる
+      setIsClosing(false);
+    }, 300); // CSSのtransition時間と合わせる
+  };
+
+  const toggleMenu = () => {
+    if (isActive) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  };
+
+  // 外側クリック検知
+  useEffect(() => {
+    const handleOutsideClick = (e) => {
+      if (isActive && menuRef.current && !menuRef.current.contains(e.target)) {
+        closeMenu();
+      }
+    };
+    document.addEventListener("click", handleOutsideClick);
+    return () => document.removeEventListener("click", handleOutsideClick);
+  }, [isActive]);
+
+  // ESCキー検知
+  useEffect(() => {
+    const handleEsc = (e) => {
+      if (e.key === "Escape" && isActive) {
+        closeMenu();
+      }
+    };
+    document.addEventListener("keydown", handleEsc);
+    return () => document.removeEventListener("keydown", handleEsc);
+  }, [isActive]);
+
+  return (
+    <>
+      <header>
+        <h1>React Menu Demo</h1>
+        <button onClick={toggleMenu}>メニューを{isActive ? "閉じる" : "開く"}</button>
+      </header>
+
+      <div className={`mask ${isActive ? "is-active" : ""}`}></div>
+
+      <nav
+        ref={menuRef}
+        className={`menu ${isActive ? "open" : ""} ${isClosing ? "closing" : ""}`}
+      >
+        <a href="#" onClick={(e) => { e.preventDefault(); closeMenu(); }}>
+          × 閉じる
+        </a>
+        <ul>
+          <li>メニュー1</li>
+          <li>メニュー2</li>
+          <li>メニュー3</li>
+        </ul>
+      </nav>
+    </>
+  );
+};
+
+export default App;
+
+
+
+CSS（App.cssに保存）
+.mask {
+  display: none;
+}
+
+.mask.is-active {
+  display: block;
+  position: fixed;
+  background: rgba(0, 0, 0, 0.4);
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 5;
+}
+
+/* メニューの基本スタイル */
+.menu {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: all 0.3s ease;
+  pointer-events: none;
+  position: absolute;
+  top: 60px;
+  left: 20px;
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  z-index: 10;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.menu.open {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.menu.closing {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+メニュー外クリック → 自動で閉じる
+ESCキー → メニュー閉じる
+メニューが開閉時に「ふわっ」とアニメーション
