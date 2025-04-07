@@ -1,0 +1,105 @@
+WordPress メインクエリとサブクエリについて 20250406
+
+
+<?php get_header(); ?>
+
+<div class="news blContainer">
+  <div class="news_heading">News</div>
+  <?php if(have_posts()) ?>
+  <ul class="news_list">
+  <
+  ?php endif; ?>
+
+</div>
+
+<div class="news blContainer">
+  <div class="news_heading">News</div>
+  <ul class="news_list">
+    <li class="news_item">
+      <a class="news_link" href="news4">
+        <div class="news_date">2023.11.19</div>
+        <div class="news_title">表参道に新しいショップをオープンしました</div>
+      </a>
+    </li>
+    <li class="news_item">
+      <a class="news_link" href="news2">
+        <div class="news_date">2023.11.19</div>
+        <div class="news_title">ホームページをリニューアルオープンしました</div>
+      </a>
+    </li>
+    <li class="news_item">
+      <a class="news_link" href="news3">
+        <div class="news_date">2023.10.28</div>
+        <div class="news_title">みなとみらい店の移転のお知らせ</div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+メインクエリ URLに基づいてBDより取得してくる投稿データ
+have_posts()
+メインクエリに投稿があればturを返す
+
+最新の投稿？
+固定ページ？
+
+メインクエリで取得できない投稿データをサブクエリで取得する
+new WP_Query();
+
+
+
+
+
+
+
+表示と取得の違い
+echo get_the_date    the_date
+echo get_the_title    the_title
+
+
+元データ
+
+
+
+
+<?php get_header(); ?>
+
+<div class="news blContainer">
+  <div class="news_heading">News</div>
+  <?php if() ?>
+</div>
+
+<div class="news blContainer">
+  <div class="news_heading">News</div>
+  <ul class="news_list">
+    <li class="news_item">
+      <a class="news_link" href="news4">
+        <div class="news_date">2023.11.19</div>
+        <div class="news_title">表参道に新しいショップをオープンしました</div>
+      </a>
+    </li>
+    <li class="news_item">
+      <a class="news_link" href="news2">
+        <div class="news_date">2023.11.19</div>
+        <div class="news_title">ホームページをリニューアルオープンしました</div>
+      </a>
+    </li>
+    <li class="news_item">
+      <a class="news_link" href="news3">
+        <div class="news_date">2023.10.28</div>
+        <div class="news_title">みなとみらい店の移転のお知らせ</div>
+      </a>
+    </li>
+  </ul>
+</div>
+
+
+
+
+
+
+WordPress、テーマ開発に必要なメインクエリとサブクエリを徹底解説
+https://www.youtube.com/watch?v=_7Chp0Bze6k
