@@ -1,0 +1,13 @@
+/* アニメーションの初期状態（非表示） */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  
+  /* 表示状態（ふわっとズームイン） */
+  .fade-in-up.is-show {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
