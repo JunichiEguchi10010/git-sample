@@ -1,16 +1,12 @@
-/* アニメーションの初期状態（非表示） */
+/* 初期状態：非表示＋ズームアウト＋下から */
 .fade-in-up {
     opacity: 0;
     transform: translateY(30px) scale(0.95);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
   }
   
-  /* 表示状態（ふわっとズームイン） */
+  /* 表示されたら：ふわっとズームイン＋元の位置 */
   .fade-in-up.is-show {
     opacity: 1;
     transform: translateY(0) scale(1);
-  }
-  
- .inline-style {
-    color: blue;
   }

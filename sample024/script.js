@@ -1,14 +1,19 @@
-// JS（スクロールで表示されるようにする例）
-const targets = document.querySelectorAll('.fade-in-up');
+// 初期表示チェック用の関数
+function checkVisibility() {
+    const targets = document.querySelectorAll('.fade-in-up');
 
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('is-show');
-    }
-  });
-});
+    targets.forEach(target => {
+        const rect = target.getBoundingClientRect(); // 要素の位置を取得
+        const isVisible = rect.top < window.innerHeight && rect.bottom >= 0;
 
-targets.forEach(target => {
-  observer.observe(target);
-});
+        if (isVisible) {
+            target.classList.add('is-show'); // クラスを追加して表示
+        }
+    });
+}
+
+// 初期チェック
+checkVisibility();
+
+// スクロール時にもチェックを行う
+window.addEventListener("scroll", checkVisibility);
