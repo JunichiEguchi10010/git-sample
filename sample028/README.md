@@ -218,29 +218,6 @@ dist.css は直接編集せず、元のCSSファイル（srcディレクトリ�
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Tailwind CSS講座
 【Tailwind CSS #1～#5】最近流行りのTailwind CSSを学ぼう
 https://www.youtube.com/watch?v=5TymbaeyV-0&list=PLwM1-TnN_NN4qjBRuMKDg1-g4rzK-UrP_
