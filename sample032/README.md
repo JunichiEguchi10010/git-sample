@@ -1,4 +1,4 @@
-WordPress 特定のカテゴリーの一覧までのリンクを取得する方法
+WordPress 特定のカテゴリー･タグの一覧までのリンクを取得する方法
 【get_category_by_slug, get_category_link】20250417
 
 💡 どんなときに使う？
@@ -158,3 +158,10 @@ terms テーブルには「階層構造」を示す parent というカラムが
 category	あり	あり	get_category_by_slug() などが使える
 post_tag	なし	あり	get_term_by() で取得
 カスタム分類	設定可能	あり	hierarchical で切替可能
+
+
+WordPressで特定のカテゴリー一覧までのリンクを取得する【get_category_by_slug, get_category_link】
+https://www.youtube.com/watch?v=IyjZlfyuC5I
+
+WordPressで特定のタグ一覧までのリンクを取得する方法【get_term_by, get_tag_link】
+https://www.youtube.com/watch?v=BanH6pkXyJw
