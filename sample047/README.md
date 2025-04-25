@@ -65,3 +65,5 @@ add_action( 'init', 'my_custom_post_type' );
 タクソノミー（カテゴリやタグ）も独自で作れる
 検索や一覧で混在せず、整理しやすい
 
+register_post_type 公式ドキュメント
+https://developer.wordpress.org/reference/functions/register_post_type/
