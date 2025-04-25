@@ -49,5 +49,8 @@ ACFで入力項目（フィールド）を追加
 便利なプラグイン　    Advanced Custom Fields（ACF）など
 
 
-WordPressのカスタムフィールドの使い方〜概念からデモ解説まで
+WordPressのカスタムフィールドの使い方〜概念からデモ解説まで（連結講座#3）
 https://www.youtube.com/watch?v=roNR8Df_68w
+
+WordPressのカスタム投稿タイプをデモ解説、カスタムフィールドの適用まで（連結講座#4）
+https://www.youtube.com/watch?v=FViJ85REFoU
