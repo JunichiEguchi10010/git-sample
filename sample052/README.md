@@ -129,3 +129,8 @@ export default function BlogPost({ post }: Props) {
 }
 このコードでは、getStaticProps内でAPIからデータを取得し、revalidateを60秒に設定しています。​
 これにより、初回アクセス時に静的ページが生成され、その後60秒ごとにバックグラウンドで再生成されます。​
+
+
+SSR（Server Side Rendering）の事例
+TypescriptとNext.jsをアプリ開発しながら学んでみよう【Typescript入門】
+https://www.youtube.com/watch?v=MZclBqhCB6A
