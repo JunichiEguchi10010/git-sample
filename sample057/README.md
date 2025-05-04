@@ -18,11 +18,12 @@ jsx
 import { useRef } from "react";
 
 function MyComponent() {
-     <!-- useRef(null) → input要素を保持する準備 -->
+     <!-- useRef というReactのフックを使って、「参照（ref）」をs作成、初期値として null を渡しています、初期値として null を渡しています。useRef(null) → input要素を保持する準備 -->
   const inputRef = useRef(null);
 
   const focusInput = () => {
-       <!-- コンポーネントが表示されたときにフォーカスを当てる  inputRef.current.focus() → 実際のDOM操作 -->
+       <!-- コンポーネントが表示されたときにフォーカスを当てる  inputRef.current.focus() → 実際のDOM操作 
+       inputRef.current は、実際の <input> のDOM要素　その .focus() を呼ぶことで、ブラウザ上でそのinputに自動的にカーソルが入るようになる -->
     inputRef.current.focus(); // DOM要素にアクセス
   };
 
@@ -186,3 +187,49 @@ const handleMouseMove = (e) => {
 UIに関係ない内部的な値の保持	                  ユーザーに見せたい状態の管理
 頻繁に変わるが再描画不要な値（パフォーマンス）	    表示内容に関わるステートの管理
 DOM参照、前回値、イベント中の変化の追跡など	        フォーム入力、表示制御などの状態管理
+
+
+
+
+：useRef は React 専用の「参照用フック」で、バニラJSのDOM参照とは役割や使い方が異なります
+🔸 バニラJavaScriptでのDOM参照（命令的）
+通常のJavaScriptでは、document.getElementById() や querySelector() を使ってDOMにアクセスします。
+
+html
+<input id="myInput" type="text" />
+<script>
+  const input = document.getElementById('myInput');
+  input.focus(); // ← フォーカスを当てる
+</script>
+これは**命令的（imperative）**なコードで、「このIDの要素を探して操作しろ」と命令しています。
+
+🔹 ReactでのuseRef（宣言的UIと併用）
+Reactでは基本的に document.getElementById() は使わず、useRef() を使って「この要素を参照したい」と宣言的に紐づけます。
+jsx
+import { useRef, useEffect } from 'react';
+
+function MyComponent() {
+  const inputRef = useRef(null);
+
+  useEffect(() => {
+    inputRef.current.focus(); // ← ここでDOMを操作
+  }, []);
+
+  return <input ref={inputRef} type="text" />;
+}
+ここでは、Reactの仮想DOMと同期する形でDOMを扱っているため、より安全で再利用性の高い書き方になります。
+
+✅ 違いのまとめ
+比較項目	                        バニラJS	                        React (useRef)
+参照の方法	                        getElementById など	                useRef()
+DOM取得のタイミング	                いつでも可能                       	 コンポーネントのマウント後
+仮想DOM対応	                        ❌ 仮想DOMなし                     	✅ 仮想DOMと同期
+Reactの流儀との整合性	            ❌ ズレやすい	                    ✅ 宣言的な設計と調和
+再レンダリング時の影響	            必要に応じて再取得	                   再レンダリングしても .current は保持される
+
+💡 つまり
+バニラJSの getElementById：その場限りの「命令」
+
+Reactの useRef：仮想DOMと連携した「参照の約束」
+
+Reactでは「UIは状態の結果」とする思想なので、useRef はあくまで“どうしても必要なときにだけ使う”例外的な道具です。
