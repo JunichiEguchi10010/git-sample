@@ -1,14 +1,25 @@
 React useRef(Hooks) 20250504
 
 DOM要素やミューテーションされる値への参照を保持するためのフックです.
+useRef はただ「要素へのポインタを保持する」だけ。
+実際に何かを「操作する」には、その ref.current を使って 明示的に JavaScript で命令を出す 必要があります。
+「要素へのポインタを保持する」性質上、値が変わっても再レンダリングされないという特徴を利用し再レンダリングなしで値を保持する（状態のように）事からも副次的に利用される。
+
+
+✅ useRefは「準備」、操作は「別」
+用語	                  内容
+useRef	              DOMノードを「保持」する箱（参照を作る）
+ref={xxx}	            そのDOMと「関連付ける」
+ref.current.xxx()	    参照を使って実際に「操作する
+
 
 典型的な useRef の使われ方
-やりたいこと	                    使うDOMプロパティ	                    例
+やりたいこと	                    使うDOMプロパティ	                        例
 カーソルを当てる（フォーカス）	    focus()	                                inputRef.current.focus()
-入力値を取得する	               value                                   inputRef.current.value
-スクロールさせる	               scrollIntoView()	                       divRef.current.scrollIntoView()
+入力値を取得する	                 value                                   inputRef.current.value
+スクロールさせる	                 scrollIntoView()	                       divRef.current.scrollIntoView()
 高さや位置を調べる	               getBoundingClientRect()	               ref.current.getBoundingClientRect().top
-動画を再生する	                   play()	                               videoRef.current.play()
+動画を再生する	                   play()	                                 videoRef.current.play()
 キャンバス描画	                   getContext()	                           canvasRef.current.getContext("2d")
 
 
@@ -29,7 +40,7 @@ function MyComponent() {
 
   return (
     <>
-         <!-- ref={inputRef} → JSXに関連付けて、そのDOMノードを inputRef.current に入れる -->
+         <!-- 実際のDOMノードを inputRef.current に結びつける -->
       <input ref={inputRef} type="text" />
       <button onClick={focusInput}>フォーカスする</button>
     </>
@@ -191,7 +202,8 @@ DOM参照、前回値、イベント中の変化の追跡など	        フォ�
 
 
 
-：useRef は React 専用の「参照用フック」で、バニラJSのDOM参照とは役割や使い方が異なります
+参考：
+useRef は React 専用の「参照用フック」で、バニラJSのDOM参照とは役割や使い方が異なります
 🔸 バニラJavaScriptでのDOM参照（命令的）
 通常のJavaScriptでは、document.getElementById() や querySelector() を使ってDOMにアクセスします。
 
@@ -220,16 +232,14 @@ function MyComponent() {
 ここでは、Reactの仮想DOMと同期する形でDOMを扱っているため、より安全で再利用性の高い書き方になります。
 
 ✅ 違いのまとめ
-比較項目	                        バニラJS	                        React (useRef)
+比較項目	                           バニラJS	                            React (useRef)
 参照の方法	                        getElementById など	                useRef()
 DOM取得のタイミング	                いつでも可能                       	 コンポーネントのマウント後
-仮想DOM対応	                        ❌ 仮想DOMなし                     	✅ 仮想DOMと同期
-Reactの流儀との整合性	            ❌ ズレやすい	                    ✅ 宣言的な設計と調和
-再レンダリング時の影響	            必要に応じて再取得	                   再レンダリングしても .current は保持される
+仮想DOM対応	                       ❌ 仮想DOMなし　　                 	 ✅ 仮想DOMと同期
+Reactの流儀との整合性	              ❌ ズレやすい　	                    ✅ 宣言的な設計と調和
+再レンダリング時の影響	             必要に応じて再取得	                   再レンダリングしても .current は保持される
 
 💡 つまり
 バニラJSの getElementById：その場限りの「命令」
-
 Reactの useRef：仮想DOMと連携した「参照の約束」
-
 Reactでは「UIは状態の結果」とする思想なので、useRef はあくまで“どうしても必要なときにだけ使う”例外的な道具です。
