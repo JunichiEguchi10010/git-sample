@@ -8,6 +8,7 @@ const memoizedValue = useMemo(() => {
   return heavyComputation(a, b);
 }, [a, b]);
 
+useMemo(関数、依存配列)
 第1引数：関数（計算処理）
 第2引数：依存配列 → 値が変わらない限り、前回の計算結果を再利用
 
