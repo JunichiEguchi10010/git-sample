@@ -18,12 +18,13 @@ useMemo(...) の返り値が memoizedValue に代入されます。memoizedValue
 
 useMemo に渡された関数（第1引数）の中で、heavyComputation(a, b) を実行しています。
 この部分は「実際に計算を行う場所」で、**コストの高い処理（例：ループやAPI、フィルター処理など）**が入ることを想定しています。
-a と b を引数として処理し、その戻り値がキャッシュされる形になります。
+a と b を引数として処理し、その戻り値がキャッシュされる形になります。第1引数：関数（計算処理）にあたる。
 **return heavyComputation(a, b);**
 
 useMemo の第2引数は「依存配列」と呼ばれます。
 この [a, b] の中にある値が変わったときだけ、heavyComputation(a, b) を再実行します。
 a や b が同じままであれば、**以前に計算した結果（キャッシュ）**がそのまま返されます。
+第2引数：依存配列 → 値が変わらない限り、前回の計算結果を再利用にあたる。
 **}, [a, b]);**
 
 全体のロジック
@@ -199,4 +200,9 @@ export default function Parent() {
 状況	                                                            使うべきHook
 重い処理の結果をキャッシュしたい	                                   useMemo
 関数の参照を固定したい（再レンダリング抑制や useEffect の依存に使う） 　 useCallback
+
+
+
+そもそもReactのuseMemoフックを使わないように作るに越したことない
+https://www.youtube.com/watch?v=Ypgtox7fbWk
 
