@@ -203,6 +203,172 @@ export default function Parent() {
 関数の参照を固定したい（再レンダリング抑制や useEffect の依存に使う） 　 useCallback
 
 
+useMemo と React.memoの違い
+はどちらも パフォーマンス最適化のためのメモ化（= 値や処理をキャッシュして無駄な再実行・再レンダリングを防ぐ）に使いますが、用途が異なります。
+
+🔍 違いのまとめ
+比較項目	                      useMemo	                                              React.memo
+目的	                        値（計算結果）をメモ化する            	              コンポーネントの再レンダリングを抑制する
+使い方の対象	                 関数の中の「重い処理」                               「値」など	Reactの「関数コンポーネント」
+よく使う場面	                 高コストな配列計算・フィルター・並び替えなど	          親のstate更新で子が無駄に再レンダリングされるとき
+構文の例	                     const result = useMemo(() => ..., [依存]);        	export default React.memo(MyComponent)
+
+🔧 それぞれの具体例
+✅ useMemo の例：重い計算のキャッシュ
+jsx
+const filteredList = useMemo(() => {
+  return items.filter(item => item.active);
+}, [items]); // items が変わったときだけ再計算
+🔹 items が変わらなければ filter 処理を再実行しない。
+
+✅ React.memo の例：子コンポーネントの無駄な再レンダリング防止
+jsx
+const Child = React.memo(({ value }) => {
+  console.log('Child rendered');
+  return <div>{value}</div>;
+});
+🔹 props.value が変わらない限り、Child は再描画されない。
+
+🎯 使い分けのポイント
+状況	使うもの
+重い処理の結果をキャッシュしたい	        useMemo
+コンポーネント自体の再描画を防ぎたい	    React.memo
+親の更新が子に波及してしまうとき	        React.memo
+子に渡す関数が毎回新しくなるとき	        useCallback（+ React.memo）
+
+
+React.memo と useMemo を組み合わせて使う実践的な例
+特に、親コンポーネントの再レンダリングで子コンポーネントが無駄に再描画されないようにするパターンです。
+
+🎯 目的
+React.memo を使って「子コンポーネントの再レンダリングを防止」
+
+useMemo を使って「子に渡す props（計算済みの値）をメモ化」
+
+✅ 実践例：商品リストをフィルターして表示
+jsx
+import React, { useState, useMemo } from 'react';
+
+// 🔸 子コンポーネント（React.memo でラップ）
+const ProductList = React.memo(({ filteredItems }) => {
+  console.log('ProductList rendered');
+  return (
+    <ul>
+      {filteredItems.map(item => (
+        <li key={item.id}>{item.name}</li>
+      ))}
+    </ul>
+  );
+});
+
+const App = () => {
+  const [keyword, setKeyword] = useState('');
+  const [count, setCount] = useState(0); // unrelated state
+
+  const items = [
+    { id: 1, name: 'Apple' },
+    { id: 2, name: 'Banana' },
+    { id: 3, name: 'Grapes' },
+  ];
+
+  // 🔸 useMemo でフィルタリング結果をメモ化
+  const filteredItems = useMemo(() => {
+    console.log('Filtering items...');
+    return items.filter(item =>
+      item.name.toLowerCase().includes(keyword.toLowerCase())
+    );
+  }, [keyword, items]);
+
+  return (
+    <div>
+      <h1>Product Filter</h1>
+      <input
+        type="text"
+        value={keyword}
+        onChange={e => setKeyword(e.target.value)}
+        placeholder="Search..."
+      />
+      <button onClick={() => setCount(count + 1)}>+1 Count ({count})</button>
+
+      {/* 🔸 filteredItems が変わらない限り ProductList は再レンダリングされない */}
+      <ProductList filteredItems={filteredItems} />
+    </div>
+  );
+};
+
+export default App;
+
+🔍 解説
+部分                                                	働き
+React.memo(ProductList)	                            filteredItems が変わらない限り再レンダリングされない
+useMemo(..., [keyword])	                            keyword が変わらない限りフィルター処理は再実行されない
+count 更新ボタン	                                   ProductList に関係ない state だが、通常なら子も再描画される→ 今回はされない ✅
+
+✅ 結果
+無駄な ProductList の再描画が起こらず、高速・効率的。
+特に大量データや頻繁な親更新がある場面で効果大。
+
+
+関数 props の無駄な再生成による子コンポーネントの再レンダリングを防ぐ実践例
+
+🎯 背景・目的
+React では、親コンポーネント内で定義された関数は再レンダリングのたびに新しく作られるため、
+それを props として子に渡すと、React.memo でも「新しい関数なので再レンダリングが起こる」ことがあります。
+➡️ それを防ぐのが useCallback！
+
+✅ 実践コード：カートに商品を追加する関数を子に渡すパターン
+jsx
+import React, { useState, useCallback } from 'react';
+
+// 🔸 子コンポーネント（React.memo）
+const AddToCartButton = React.memo(({ onAdd, product }) => {
+  console.log('AddToCartButton rendered:', product.name);
+  return (
+    <button onClick={() => onAdd(product)}>Add {product.name} to cart</button>
+  );
+});
+
+const App = () => {
+  const [cart, setCart] = useState([]);
+  const [count, setCount] = useState(0); // 関係ないステート
+
+  const product = { id: 1, name: 'Laptop' };
+
+  // 🔸 useCallback で onAdd 関数をメモ化
+  const handleAddToCart = useCallback((product) => {
+    setCart(prev => [...prev, product]);
+  }, []);
+
+  return (
+    <div>
+      <h1>Cart Items: {cart.length}</h1>
+      <button onClick={() => setCount(count + 1)}>+1 Count ({count})</button>
+
+      {/* 🔸 onAdd 関数が再生成されないので、子が再レンダリングされない */}
+      <AddToCartButton onAdd={handleAddToCart} product={product} />
+    </div>
+  );
+};
+
+export default App;
+
+🔍 解説
+テクニック	                                              効果
+React.memo(AddToCartButton)	                            onAdd や product が変わらない限り、子コンポーネントは再描画されない
+useCallback(...)	handleAddToCart                       関数が再生成されるのを防ぐ（依存がないため永続）
+count の更新	                                          親は再描画されるが、子はされない ✅
+
+💡補足
+関数の中で cart を使うとき、useCallback の依存に cart を入れると意味が薄れます。
+その場合は setCart(prev => [...prev, product]) のように関数形式で書くと良いです。
+
+🔚 結論
+React.memo：props（値や関数）が変わらなければ再描画されない。
+useCallback：関数を「変わらない props」にするために使う。
+
+
+
+
 
 そもそもReactのuseMemoフックを使わないように作るに越したことない
 https://www.youtube.com/watch?v=Ypgtox7fbWk
