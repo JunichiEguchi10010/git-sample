@@ -207,3 +207,8 @@ export default function Parent() {
 そもそもReactのuseMemoフックを使わないように作るに越したことない
 https://www.youtube.com/watch?v=Ypgtox7fbWk
 
+ReactのuseMemoを使うときの注意点
+https://www.youtube.com/watch?v=2dPR5lsDGQE
+
+レンダリングを最適化してWebパフォーマンスを向上させてみよう【React.memo/useMemo/useCallback入門】
+https://www.youtube.com/watch?v=GvPBr43lJk0
