@@ -18,7 +18,10 @@ body {
 
 .cards {
   display: grid;
+  /* 縦方向の間隔が「1rem」、横方向の間隔が「0.5rem」 */
   gap: 1rem 0.5rem;
+  /* auto-fit :画面が広い場合は多くのカードを横並びにし、狭い場合は自動で折り返す。
+  minmax(280px, 1fr) :小さい画面ではカードが最小幅（280px）を保ちつつ折り返し、大きい画面ではスペースを最大限に使ってレイアウトされます。 */
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   justify-content: center; /* カードを中央配置 */
   padding: 1rem; /* 余白を追加 */
