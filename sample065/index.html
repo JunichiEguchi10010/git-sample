@@ -1,0 +1,27 @@
+<!-- HTML CSS テキストをレスポンシブさせる方法(メディアクエリを使わないで段落ち対策)　20250511 -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> HTML CSS テキストをレスポンシブ対策</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+        <p class="step_down">
+            これはレスポンシブデザインのテストです。画面の幅が狭くなると、文章が自動で折り返される（段落ちする）動作を検証できます。
+        </p>
+    </div>
+
+    <p>word-break: keep-all 単語の途中で改行しない､調整時はbrタグを使う</p>
+    <h1 class="keep_all">テキストをレスポンシブさせる方法 テキストをレスポンシブさせる方法 段落ちする部分はここ</h1> 
+
+    <p>white-space: nowrap 強制的に改行を禁止</p>
+    <h1 class="nowrap">テキストをレスポンシブさせる方法 テキストをレスポンシブさせる方法</h1>
+    
+    <p>overflow-wrap: break-word 長い単語の途中での改行を許可にする（長いURLや特殊なID用）</p>
+    <h1 class="break-word">テキストをレスポンシブさせる方法 テキストをレスポンシブさせる方法</h1>
+
+</body>
+</html>

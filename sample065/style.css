@@ -1,0 +1,47 @@
+h1,p {
+  /* font-size: 48px; */
+  font-size: clamp(32px, 8vw, 48px);
+  /* other-styles */
+  font-family: Futura, mobo-bold, sans-serif;
+  text-align: center;
+  margin-top: 5rem;
+}
+
+.container {
+  width: 80%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.step_down {
+  font-size: 16px;
+  line-height: 1.8;
+  word-break: normal;
+  overflow-wrap: break-word;
+}
+
+@media (max-width: 500px) {
+  .container {
+    width: 90%;
+  }
+
+  .text {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+/* 段落ち(日本語の文章が変に分割される)を防ぎ、可読性を向上させる */
+h1.keep_all {
+  word-break: keep-all;
+}
+/* 要素の幅に収まらない場合でも改行を禁止します。 */
+h1.nowrap {
+  white-space: nowrap;
+}
+/* 長い単語やURLなどが要素の幅を超えた場合、途中で改行されるようになります。 */
+h1.break-word {
+  overflow-wrap: break-word;
+}
