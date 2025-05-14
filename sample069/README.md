@@ -32,9 +32,15 @@ html
 <div class="splide">
   <div class="splide__track">
     <ul class="splide__list">
-      <li class="splide__slide">Slide 1</li>
-      <li class="splide__slide">Slide 2</li>
-      <li class="splide__slide">Slide 3</li>
+    　<li class="splide__slide">
+        <img class="middle" src="https://picsum.photos/200/300?random=1" alt="サンプル画像">
+    　</li>
+      <li class="splide__slide">
+        <img class="middle" src="https://picsum.photos/200/300?random=2" alt="サンプル画像">
+    　</li>
+      <li class="splide__slide">
+        <img class="middle" src="https://picsum.photos/200/300?random=3" alt="サンプル画像">
+    　</li>
     </ul>
   </div>
 </div>
