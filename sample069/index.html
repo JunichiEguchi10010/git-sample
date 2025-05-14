@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript スライダーライブラリ Splide</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="splide">
+        <div class="splide__track">
+          <ul class="splide__list">
+           <li class="splide__slide">
+              <img class="middle" src="https://picsum.photos/200/300?random=1" alt="サンプル画像">
+           </li>
+            <li class="splide__slide">
+              <img class="middle" src="https://picsum.photos/200/300?random=2" alt="サンプル画像">
+           </li>
+            <li class="splide__slide">
+              <img class="middle" src="https://picsum.photos/200/300?random=3" alt="サンプル画像">
+           </li>
+          </ul>
+        </div>
+      </div>
+      <script>
+        new Splide('.splide').mount();
+      </script>
+</body>
+</html>
