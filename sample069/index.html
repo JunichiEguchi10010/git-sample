@@ -1,29 +1,76 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JavaScript スライダーライブラリ Splide</title>
+    <!-- Splide css -->
+    <link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
     <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  </head>
+  <body>
     <div class="splide">
-        <div class="splide__track">
-          <ul class="splide__list">
-           <li class="splide__slide">
-              <img class="middle" src="https://picsum.photos/200/300?random=1" alt="サンプル画像">
-           </li>
-            <li class="splide__slide">
-              <img class="middle" src="https://picsum.photos/200/300?random=2" alt="サンプル画像">
-           </li>
-            <li class="splide__slide">
-              <img class="middle" src="https://picsum.photos/200/300?random=3" alt="サンプル画像">
-           </li>
-          </ul>
+      <div class="splide__track">
+        <ul class="splide__list">
+          <li class="splide__slide">
+            <img
+              class="middle"
+              src="https://picsum.photos/200/300?random=1"
+              alt="サンプル画像"
+            />
+          </li>
+          <li class="splide__slide">
+            <img class="middle"
+              src="https://picsum.photos/200/300?random=2"
+              alt="サンプル画像"
+            />
+          </li>
+          <li class="splide__slide">
+            <img
+              class="middle"
+              src="https://picsum.photos/200/300?random=3"
+              alt="サンプル画像"
+            />
+          </li>
+          <li class="splide__slide">
+            <img
+              class="middle"
+              src="https://picsum.photos/200/300?random=4"
+              alt="サンプル画像"
+            />
+          </li>
+          <li class="splide__slide">
+            <img
+              class="middle"
+              src="https://picsum.photos/200/300?random=55"
+              alt="サンプル画像"
+            />
+          </li>
+        </ul>
+        <div class="splide__arrows">
+          <button class="splide__arrow splide__arrow--prev">◀</button>
+          <button class="splide__arrow splide__arrow--next">▶</button>
         </div>
       </div>
-      <script>
-        new Splide('.splide').mount();
-      </script>
-</body>
+    </div>
+    <!-- Splide JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        new Splide(".splide", {
+          arrows: true,
+          perPage: 1, // 1ページに表示するスライド数
+          gap: "10px", // スライド間の余白
+          type: "loop", // 無限ループ
+        }).mount();
+      });
+    </script>
+    <!-- <script>
+      new Splide(
+        ".splide",
+        // オプション 矢印ボタンを表示 true 非表示 false
+        { arrows: true }
+      ).mount(); -->
+    </script>
+  </body>
 </html>

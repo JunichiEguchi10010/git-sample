@@ -120,6 +120,60 @@ breakpoints: {
 }).mount();
 
 
+主なボタンオプション
+矢印ボタンの表示・非表示
+
+javascript
+new Splide('.splide', {
+  arrows: false // 矢印ボタンを非表示
+}).mount();
+
+ページネーションの表示・非表示
+
+javascript
+new Splide('.splide', {
+  pagination: false // ページネーションを非表示
+}).mount();
+
+矢印ボタンのカスタマイズ
+arrowPath オプションを使うと、矢印のSVGパスを変更できます。
+
+javascript
+new Splide('.splide', {
+  arrowPath: 'M10 0 L20 10 L10 20' // カスタム矢印
+}).mount();
+
+ページネーションのキーボード操作
+paginationKeyboard を true にすると、キーボードでページネーションを操作できます。
+
+javascript
+new Splide('.splide', {
+  paginationKeyboard: true
+}).mount();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 Splide と Swiper の違い。
 
 Splide の特徴
