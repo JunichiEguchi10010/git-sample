@@ -321,6 +321,9 @@ test('ユーザーがログインできる', async () => {
 
 フォームの入力後にデータが保存されるか
 
+React Testing Libraryの使い方
+https://qiita.com/ossan-engineer/items/4757d7457fafd44d2d2f
+
 
 
 
