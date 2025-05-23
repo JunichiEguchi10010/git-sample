@@ -123,3 +123,89 @@ Cypress	            シンプルなセットアップ、リアルタイムテス
 Selenium	        多くのブラウザ対応、柔軟なカスタマイズ
 Playwright	        クロスブラウザ対応、モダンなAPI
 Cypressは特にシンプルで直感的なテストが可能です。
+
+
+
+テスト実行結果について
+PS C:\Users\eguchijunichi\git-sample> npm test
+
+> test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js
+
+(node:31148) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+ PASS  sample076/script.test.js
+  √ APIからユーザーデータを取得できる (10 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.21 s
+Ran all test suites.
+PS C:\Users\eguchijunichi\git-sample> 
+
+
+上記のログは、npm test を実行してJestでテストを実行した結果を示しています。各部分を詳しく解説します。
+
+1. npm test の実行
+PS C:\Users\eguchijunichi\git-sample> npm test
+PS は PowerShell を使用していることを示します。
+
+C:\Users\eguchijunichi\git-sample> は 現在のディレクトリ（プロジェクトのルートフォルダ）。
+npm test は パッケージマネージャ（npm）を使ってテストを実行する コマンド。
+
+2. スクリプトの実行
+> test
+> node --experimental-vm-modules node_modules/jest/bin/jest.js
+test は package.json の scripts.test に定義されているスクリプトを指します。
+
+node --experimental-vm-modules node_modules/jest/bin/jest.js → JestをNode.js上で実行してテストを開始しています。
+→ --experimental-vm-modules は ESM（ECMAScript Modules）対応のためのオプション
+→ Jestは通常CommonJS（CJS）で動作するため、ESMを使うにはこのフラグが必要。
+
+3. 実験的な機能に関する警告
+(node:31148) ExperimentalWarning: VM Modules is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:31148) → プロセスID（31148）
+
+ExperimentalWarning → 「VM Modulesはまだ試験的な機能です」 という警告。
+
+might change at any time → 今後のNode.jsのバージョンアップで動作が変わる可能性あり。
+
+Use node --trace-warnings ... → 警告の詳細を確認するにはこのオプションを使う。
+
+4. テスト成功の結果
+PASS  sample076/script.test.js
+  √ APIからユーザーデータを取得できる (10 ms)
+PASS → テスト成功を意味します。
+
+sample076/script.test.js → テストファイル名（script.test.js）。
+√ APIからユーザーデータを取得できる (10 ms)
+→ 「APIからユーザーデータを取得できる」というテストが成功（実行時間10ms）。
+
+5. テストの統計情報
+Test Suites: 1 passed, 1 total
+Tests:       1 passed, 1 total
+Snapshots:   0 total
+Time:        1.21 s
+Ran all test suites.
+Test Suites: 1 passed, 1 total → 1つのテストスイート（グループ）が実行され、すべて成功。
+
+Tests: 1 passed, 1 total → 1つのテストケースがあり、すべて成功。
+
+Snapshots: 0 total → スナップショットテストは実行されなかった（UIの変化確認用テスト）。
+
+Time: 1.21 s → テストの合計実行時間は1.21秒。
+
+Ran all test suites. → すべてのテストスイートが実行された。
+
+6. テスト終了後のプロンプト
+PS C:\Users\eguchijunichi\git-sample>
+テスト実行後、コマンド入力待ち状態（通常のPowerShell画面に戻っている）。
+
+まとめ
+このログからわかること：
+✅ Jestを使ったAPIテストが正常に実行された
+✅ ESM（ECMAScript Modules）を有効化するために --experimental-vm-modules を使用している
+✅ 警告が出ているが、テスト結果には影響なし
+✅ 全てのテストが成功し、エラーは発生していない
