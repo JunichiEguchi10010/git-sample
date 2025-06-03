@@ -219,3 +219,7 @@ setCount((prev) => {
   // React が prev = 3 を入れてくれる！
   return prev + 1; // => 4 が新しい状態になる
 });
+
+01:57:12～ 35.関数型更新
+【2025年最新】世界一簡単なReact講座！JavaScript初心者・中級者は必見
+https://www.youtube.com/watch?v=TgU-FT2WdS4
