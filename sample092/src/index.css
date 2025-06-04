@@ -1,0 +1,21 @@
+/* 全体の初期スタイルリセット */
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: #f8f8f8;
+}
+
+/* ボタンに少しだけ装飾を追加（任意） */
+button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #3a99c9;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #2e7cb9;
+}
