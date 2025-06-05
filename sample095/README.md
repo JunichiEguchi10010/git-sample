@@ -127,3 +127,81 @@ CSSで result クラスのデザインを適用
 export default App
 👉 このコンポーネント App を他のファイルでも使えるように「エクスポート」しています。
 main.jsx などがこの App を読み込んで表示します。
+
+
+✅ Reactファイル構成の基本（4つの要素）
+① 依存するツールやファイルをインポート
+js
+import { useState } from 'react'
+import './App.css'
+
+🔹 目的：
+React本体やフック（例：useState）を使用可能にする
+CSSなどの外部リソースを読み込む
+
+🔹 ポイント：
+必要な機能だけをモジュール単位で読み込む（モジュール思考）
+importはファイルの冒頭に記述
+
+② ロジックの関数を定義（ビジネスロジックの分離）
+js
+function doubleNumber(num) {
+  return num * 2
+}
+
+🔹 目的：
+UIとは切り離したロジック（関数）を別で定義して管理しやすくする
+テストや再利用がしやすくなる
+
+🔹 ポイント：
+関数名は具体的でわかりやすく
+複雑なアプリでは「hooks」や「utils」フォルダに分離することも多い
+
+③ Reactコンポーネントで状態管理とイベント処理を行う
+js
+const [inputValue, setInputValue] = useState('')
+const [result, setResult] = useState(null)
+
+const handleClick = () => {
+  const num = parseFloat(inputValue)
+  if (!isNaN(num)) {
+    const doubled = doubleNumber(num)
+    setResult(doubled)
+  } else {
+    setResult('数値を入力してください')
+  }
+}
+
+🔹 目的：
+状態（state）を管理してユーザーの操作に応じてUIを動的に変化させる
+ユーザーの操作を処理するイベントハンドラ（例：handleClick）を定義
+
+🔹 ポイント：
+useStateで状態を定義
+イベントが発生したときにだけロジックを呼び出す（副作用を最小化）
+
+④ JSXでUIを構成（View）
+jsx
+return (
+  <div className="container">
+    <h1>数値を2倍にするアプリ</h1>
+    <input ... />
+    <button onClick={handleClick}>2倍にする</button>
+    <p>結果: {result !== null ? result : '未入力'}</p>
+  </div>
+)
+
+🔹 目的：
+実際にユーザーが目にするUI（見た目）を定義
+状態に応じて表示内容を切り替える（動的なレンダリング）
+
+🔹 ポイント：
+JSXはHTMLライクだが、JavaScriptで制御できるのが最大の強み
+onClickやvalueなどReact独自のイベント・バインディングに注意
+
+🧱 まとめ：これはReactの基本構成パターン
+項目	                            内容	                                        よく使う目的
+① インポート	                外部依存の読み込み	                            React、CSS、画像、関数など
+② ロジック関数	                UIとは分離したビジネスロジック	                　テストしやすい、再利用しやすい
+③ 状態管理・イベント処理	    　状態の更新とイベント対応	                             動的UIの制御
+④ JSXによるUI構成	            実際のUI表示部分	                             状態に応じて見た目を切り替える
