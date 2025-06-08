@@ -135,3 +135,46 @@ const { username = "Guest", country = "Unknown" } = { username: "Alice" };
 console.log(username); // "Alice"
 console.log(country);  // "Unknown"
 ✅ メリット → プロパティが存在しない場合に、デフォルト値を設定できる
+
+
+
+
+
+20250609追加
+✅ 分割代入と従来の代入方法の違い
+1. シンプルさと効率性
+従来の方法では、オブジェクトや配列の各プロパティ・要素を手動で取り出す必要があります。
+
+javascript
+const name = person.name;
+const age = person.age;
+const city = person.city;
+分割代入では、まとめて一度に取り出すことができます。
+
+javascript
+const { name, age, city } = person;
+
+2. 読みやすさ
+🟥分割代入はコードをよりコンパクトでわかりやすくします。
+🟥特に複数の変数を取り出す際に便利です。
+
+3. 関数の引数での利用
+従来の方法では関数の中でデータを明示的に指定しなければなりません。
+
+javascript
+function displayUser(person) {
+    console.log(person.name);
+    console.log(person.age);
+}
+分割代入を使うと、直接引数として取り出せます。
+
+javascript
+function displayUser({ name, age }) {
+    console.log(name);
+    console.log(age);
+}
+4. 配列の扱い
+配列でも同様に、従来は要素を1つずつ指定していましたが、分割代入を使えばスマートに書けます。
+
+javascript
+const [first, second] = array
