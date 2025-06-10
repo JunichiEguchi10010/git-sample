@@ -40,13 +40,28 @@ PC1200×900　スマホ375
 
 
 
+はめこみ合成画像の作り方（第166回）
+https://www.youtube.com/watch?v=PGaNw9zyvSA
 
 
+【1分でわかる】画像のはめ込み合成で、モックアップを作成する | Photoshop － アドビ公式
+https://www.youtube.com/watch?v=4_yyBSSHG5A
 
 
+Figmaの「Mockupプラグイン」「Vectary 3Dプラグイン」の使い方
+https://www.youtube.com/watch?v=vzfKe4p6WXw
 
 
+Figmaの「Mockupプラグイン」Device Models
+https://www.figma.com/community/plugin/906973799344127422/device-models
 
+
+Pacdora デバイスモックアップ
+https://www.pacdora.com/jp/mockups/device-mockup
+
+
+Figmaでモックアップを使ったグラフィックのつくり方！
+https://www.youtube.com/watch?v=SdBo5T3CLOc&t=263s
 
 
 Figmaで簡単にスマホやPCのモックアップに画像をはめ込む方法
