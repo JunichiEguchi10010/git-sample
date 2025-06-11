@@ -1,0 +1,68 @@
+/* スピナーのスタイル */
+.loading-container {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: opacity 0.5s ease-out;
+    z-index: 9999; /* 最前面に表示 */
+    opacity: 1; /* 初期状態で表示 */
+}
+
+.loading-spinner {
+    height: 50px;
+    width: 50px;
+    border: 5px solid #ccc;
+    border-top: 5px solid #333;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* スピナーはCSSの @keyframes spin で回転 */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* 
+コード解説：
+setTimeout(() => {:
+
+setTimeout() を使い、一定時間後に処理を実行するよう設定。
+この場合、3秒 (3000ミリ秒) 後にフェードアウト処理を開始する。
+
+    loader.style.opacity = "0";
+
+loader.style.opacity = "0"; でローディング画面の透明度を0に設定し、徐々に消えていくようにする。
+opacity: 0; にすると要素は見えなくなるが、まだページ上に存在している。
+
+    setTimeout(() => {
+
+フェードアウト (opacity: 0) の効果が完了するのを待ってから要素を削除する。
+この setTimeout() は、0.5秒 (500ミリ秒) 後に display を "none" にする処理を開始する。
+
+        loader.style.display = "none";
+
+display: none; を設定することで、要素を完全に削除し、ページ上に存在しない状態になる。
+opacity: 0; だけでは要素は見えなくなるが、クリック判定などが残るため、display: none; を追加することで完全に削除できる。
+
+透明度が0になった後、display: none で完全に消去
+意図: フェードアウト (opacity: 0) を適用してから、完全に消去 (display: none) を実行する。
+
+    }, 500);
+
+0.5秒後に display: none; を実行することで、フェードアウトが完了してから削除する。
+500ミリ秒 の間は透明になるが、完全に消えていない状態。
+
+}, 3000);
+
+ここで、最初の setTimeout() の 3秒 (3000ミリ秒) の待機時間を設定。
+3秒後にフェードアウトを開始し、さらに0.5秒後に要素を完全に削除する。
+
+まとめ
+このコードの流れ
+3秒後にフェードアウト開始 (opacity: 0;)
+0.5秒後に要素を完全に削除 (display: none;) */
