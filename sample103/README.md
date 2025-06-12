@@ -1,5 +1,23 @@
 WebDesign HTML、CSS、JavaScript スクロールでカーテンが開くようなアニメーション 20250612
 
+実装の流れ：
+HTML：
+アニメーション対象を wrapper などで囲う
+
+CSS：
+::before または .curtain で「覆い（カーテン）」を用意
+transform, clip-path, opacity などで開くような動きを作る
+
+JavaScript：
+IntersectionObserver で表示領域に入ったタイミングを検知
+.active クラスを追加し、アニメーションをトリガーする
+
+💡 よくあるバリエーション
+左→右／右→左／上下に開く
+複数要素がタイミングをずらして順番に開く
+clip-path を使った「斜めのカーテン」演出
+GSAP などのライブラリで動きをより滑らかに演出
+
 document.addEventListener("DOMContentLoaded", () => {
   const wrappers = document.querySelectorAll(".curtain-wrapper");
 
@@ -161,3 +179,114 @@ https://www.youtube.com/watch?v=N-HyeCuwCs4
 
 https://www.youtube.com/watch?v=T0u6j6GNaHk
 スクロールアニメーション！CSSとJSでカーテンが開くように要素を表示！
+
+
+
+【参考：GSAP（GreenSock Animation Platform）】
+
+✅ 仕上がりイメージ（動きの概要）
+.curtain 要素がスクロールで画面に入ったときに
+上から下へスライドして開くアニメーションをします。
+
+✅ 必要なライブラリ（CDN）
+HTMLの<head>内、または<body>の下部に以下を追加：
+html
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+✅ HTML
+html
+<div class="curtain-wrapper">
+  <div class="curtain"></div>
+  <div class="content">
+    <h2>カーテンの中身</h2>
+    <p>ここに魅力的な内容が表示されます。</p>
+  </div>
+</div>
+✅ CSS（初期スタイル）
+css
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+.curtain-wrapper {
+  position: relative;
+  overflow: hidden;
+  margin: 100px auto;
+  width: 80%;
+  height: 300px;
+  background: #f3f3f3;
+  border-radius: 10px;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  padding: 40px;
+  opacity: 0; /* 最初は非表示 */
+  transform: translateY(30px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.curtain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #3a99c9;
+  z-index: 2;
+}
+
+✅ JavaScript（GSAP + ScrollTrigger）
+javascript
+// GSAPのScrollTriggerを登録
+gsap.registerPlugin(ScrollTrigger);
+
+// アニメーション対象を選択
+document.querySelectorAll('.curtain-wrapper').forEach(wrapper => {
+  const curtain = wrapper.querySelector('.curtain');
+  const content = wrapper.querySelector('.content');
+
+  // カーテンを上から下にスライドさせて消す
+  gsap.to(curtain, {
+    height: 0,
+    duration: 1.2,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: wrapper,
+      start: "top 80%", // wrapperの上端が画面の80%にきたら開始
+      toggleActions: "play none none none"
+    }
+  });
+
+  // 中身をふわっと表示
+  gsap.to(content, {
+    opacity: 1,
+    y: 0,
+    duration: 1,
+    delay: 0.3,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: wrapper,
+      start: "top 80%",
+      toggleActions: "play none none none"
+    }
+  });
+});
+🎉 補足ポイント
+項目	                    説明
+.curtain	            カーテン部分。上からスライドして縮む演出
+.content	            カーテンの中の本体コンテンツ。ふわっと表示される
+scrollTrigger.start	    アニメーション開始タイミングの調整が可能（例: "top 90%"）
+toggleActions	        スクロール時の動作設定。play, pause, reset, restart, none など
+
+📦 カスタマイズ例
+横に開くなら width: 0 に変更
+遅延をつけて順番にアニメーションしたいなら .stagger を追加
+スクロールで逆再生したいなら toggleActions: "play reverse play reverse"
+
+💬 必要があればさらに拡張
+複数の .curtain-wrapper に順番で動きをつける
+テキストや画像の出現をもっと「印象的」にする
