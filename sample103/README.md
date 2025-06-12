@@ -181,7 +181,6 @@ https://www.youtube.com/watch?v=T0u6j6GNaHk
 スクロールアニメーション！CSSとJSでカーテンが開くように要素を表示！
 
 
-
 【参考：GSAP（GreenSock Animation Platform）】
 
 ✅ 仕上がりイメージ（動きの概要）

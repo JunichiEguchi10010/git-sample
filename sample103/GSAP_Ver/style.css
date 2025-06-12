@@ -1,0 +1,37 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+  }
+  
+  .curtain-wrapper {
+    position: relative;
+    overflow: hidden;
+    margin: 100px auto;
+    width: 80%;
+    height: 700px;
+    background: #f3f3f3;
+    border-radius: 10px;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    padding: 40px;
+    opacity: 0; /* 最初は非表示 */
+    transform: translateY(30px);
+    transition: opacity 0.3s, transform 0.3s;
+    height: 100%;
+    overflow-y: auto;
+  }
+  
+  .curtain {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #3a99c9;
+    z-index: 2;
+  }
+  

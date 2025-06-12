@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>カーテンアニメーション</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="curtain-wrapper">
+      <div class="curtain"></div>
+      <div class="content">
+        <h2>アニメーション仕様 GSAPVer</h2>
+        <section>
+          <h3>カーテンのアニメーション（.curtain）:</h3>
+          <ul>
+            <li>継続時間（duration）: 2.0秒</li>
+            <li>イージング: "power2.out"</li>
+            <li>アニメーション内容: 高さ（height）を0に縮小</li>
+            <li>トリガー: 要素が画面の80%の位置に来たとき（"top 80%"）</li>
+          </ul>
+        </section>
+        
+        <section>
+          <h3>コンテンツのアニメーション（.content）:</h3>
+          <ul>
+            <li>継続時間（duration）: 2.0秒</li>
+            <li>ディレイ: 1.0秒</li>
+            <li>イージング: "power2.out"</li>
+            <li>アニメーション内容:
+              <ul>
+                <li>透明度（opacity）を1に変更（完全に表示）</li>
+                <li>Y軸方向の移動（y）を0に変更</li>
+              </ul>
+            </li>
+            <li>トリガー: 要素が画面の80%の位置に来たとき（"top 80%"）</li>
+          </ul>
+        </section>
+
+        <section>
+          <h3>アニメーションの流れ:</h3>
+          <ol>
+            <li>スクロールで要素が画面の80%の位置に来ると</li>
+            <li>カーテンが2.0秒かけて上から下に開いていき</li>
+            <li>カーテンのアニメーション開始から1.0秒後に</li>
+            <li>コンテンツが2.0秒かけてふわっと表示される</li>
+          </ol>
+        </section>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
