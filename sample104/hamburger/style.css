@@ -3,8 +3,23 @@
   background: #fff;
   padding: 1rem;
   border-bottom: 1px solid #ddd;
+  position: relative;
 }
 
+.container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.site-logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  text-decoration: none;
+  color: #333;
+}
+
+/* ハンバーガーメニューボタン */
 .menu-toggle {
   background: none;
   border: none;
@@ -13,30 +28,35 @@
   height: 32px;
   position: relative;
   display: inline-block;
-}
-
-.menu-toggle .hamburger,
-.menu-toggle .hamburger::before,
-.menu-toggle .hamburger::after {
-  content: "";
-  background: #333;
-  height: 2px;
-  width: 100%;
-  position: absolute;
-  transition: all 0.3s ease;
+  padding: 0;
 }
 
 .menu-toggle .hamburger {
-  top: 50%;
-  transform: translateY(-50%);
+  position: relative;
+  width: 24px;
+  height: 2px;
+  background: #333;
+  display: block;
+  margin: 0 auto;
+}
+
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after {
+  content: "";
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: #333;
+  left: 0;
+  transition: all 0.3s ease;
 }
 
 .menu-toggle .hamburger::before {
-  top: -10px;
+  top: -8px;
 }
 
 .menu-toggle .hamburger::after {
-  top: 10px;
+  bottom: -8px;
 }
 
 .menu-toggle.active .hamburger {
@@ -50,9 +70,10 @@
 
 .menu-toggle.active .hamburger::after {
   transform: rotate(-45deg);
-  top: 0;
+  bottom: 0;
 }
 
+/* グローバルナビゲーション */
 .global-nav {
   position: absolute;
   top: 100%;
@@ -62,10 +83,11 @@
   max-height: 0;
   overflow: hidden;
   transition: max-height 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
 }
 
 .global-nav.open {
-  max-height: 300px; /* メニュー項目に合わせて調整 */
+  max-height: 300px;
 }
 
 .global-nav ul {
@@ -82,6 +104,10 @@
   text-decoration: none;
 }
 
+.global-nav a:hover {
+  color: #666;
+}
+
 /* デスクトップ表示 */
 @media (min-width: 768px) {
   .menu-toggle {
@@ -92,11 +118,13 @@
     position: static;
     max-height: none;
     display: block;
+    box-shadow: none;
   }
 
   .global-nav ul {
     display: flex;
     gap: 2rem;
+    padding: 0;
   }
 
   .global-nav a {
