@@ -1,0 +1,106 @@
+/* 基本レイアウト */
+.site-header {
+  background: #fff;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+}
+
+.menu-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  position: relative;
+  display: inline-block;
+}
+
+.menu-toggle .hamburger,
+.menu-toggle .hamburger::before,
+.menu-toggle .hamburger::after {
+  content: "";
+  background: #333;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+.menu-toggle .hamburger {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.menu-toggle .hamburger::before {
+  top: -10px;
+}
+
+.menu-toggle .hamburger::after {
+  top: 10px;
+}
+
+.menu-toggle.active .hamburger {
+  background: transparent;
+}
+
+.menu-toggle.active .hamburger::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.menu-toggle.active .hamburger::after {
+  transform: rotate(-45deg);
+  top: 0;
+}
+
+.global-nav {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: #fff;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+.global-nav.open {
+  max-height: 300px; /* メニュー項目に合わせて調整 */
+}
+
+.global-nav ul {
+  list-style: none;
+  padding: 1rem;
+  margin: 0;
+}
+
+.global-nav a {
+  display: block;
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+  color: #333;
+  text-decoration: none;
+}
+
+/* デスクトップ表示 */
+@media (min-width: 768px) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .global-nav {
+    position: static;
+    max-height: none;
+    display: block;
+  }
+
+  .global-nav ul {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .global-nav a {
+    border-bottom: none;
+    padding: 0;
+  }
+}
