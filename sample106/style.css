@@ -1,0 +1,61 @@
+body {
+    margin: 0;
+    font-family: sans-serif;
+    line-height: 1.6;
+  }
+  
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    background-color: #3A99C9;
+    color: white;
+    display: flex;
+    align-items: center;
+    padding: 0 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    transform: translateY(0);
+    transition: transform 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55); /* アニメ強調 */
+    z-index: 1000;
+  }
+  
+  /* 非表示状態（上に隠れる） */
+  .header.hide {
+    transform: translateY(-120%);
+  }
+  
+  main {
+    padding-top: 80px;
+    max-width: 800px;
+    margin: auto;
+  }
+  
+  p {
+    margin-bottom: 20px;
+  }
+  
+
+/* 
+cubic-bezier(0.68, -0.55, 0.265, 1.55)	アニメーションの加速・減速のカーブ（イージング）を、手動でベジェ曲線で指定しています。これが「アニメ強調」の正体です。
+
+📈 cubic-bezier の意味（視覚的なイメージ）
+この cubic-bezier の値は、次のような動きになります：
+
+最初は速く出る
+ちょっと勢いがつきすぎてオーバーシュート（少し跳ねるように見える）
+最後にやわらかく止まる
+つまり、弾むような動きになります。
+一般的な ease よりもダイナミックで、視覚的に「出てきた・隠れた」がわかりやすくなります。
+
+🆚 比較（イージングの違い）
+イージング名	                見た目の特徴
+ease	                    標準的な「徐々に速く → 徐々に遅く」
+ease-in-out	                最初と最後がゆっくり、中間が速い
+linear	                    一定の速さ
+cubic-bezier(0.68, -0.55, 0.265, 1.55)	最初速くてオーバーシュート、少し跳ねるような感じ
+
+💡補足：視覚的にカーブを試すツール
+🔗 https://cubic-bezier.com/ */
+
