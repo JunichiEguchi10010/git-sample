@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Flexbox 3段階レスポンシブ Frexbox フレックスボックス</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  .flex-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+    border: 2px solid #333;
+    padding: 10px;
+    height: 150px;
+  }
+  .flex-item {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    flex: 1;
+    text-align: center;
+    border-radius: 8px;
+  }
+
+  /* PC（901px以上） 横並び3つ */
+  @media (min-width: 901px) {
+    .flex-container {
+      flex-direction: row;
+      height: 150px;
+    }
+  }
+
+  /* タブレット（601〜900px） 横並び2つ＋1つ（折り返し） */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .flex-container {
+      flex-wrap: wrap;
+      height: auto;
+    }
+    .flex-item {
+      flex: 0 0 48%; /* 2つ並びに */
+      margin-bottom: 10px;
+    }
+  }
+
+  /* スマホ（600px以下） 縦並び */
+  @media (max-width: 600px) {
+    .flex-container {
+      flex-direction: column;
+      height: auto;
+    }
+    .flex-item {
+      flex: none;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h2>Flexbox 3段階レスポンシブ対応例</h2>
+<div class="flex-container">
+  <div class="flex-item">アイテム1</div>
+  <div class="flex-item">アイテム2</div>
+  <div class="flex-item">アイテム3</div>
+</div>
+
+</body>
+</html>

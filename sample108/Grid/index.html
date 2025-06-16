@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Grid 3段階レスポンシブ Grid グリッド</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+  }
+  .grid-container {
+    display: grid;
+    gap: 15px;
+    border: 2px solid #333;
+    padding: 10px;
+  }
+  .grid-item {
+    background-color: #2196F3;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    font-weight: bold;
+    height: 100px;
+  }
+
+  /* PC（901px以上）3列×2行 */
+  @media (min-width: 901px) {
+    .grid-container {
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 100px);
+    }
+  }
+
+  /* タブレット（601〜900px）2列×3行 */
+  @media (min-width: 601px) and (max-width: 900px) {
+    .grid-container {
+      grid-template-columns: repeat(2, 1fr);
+      grid-template-rows: repeat(3, 100px);
+    }
+  }
+
+  /* スマホ（600px以下）1列×6行 */
+  @media (max-width: 600px) {
+    .grid-container {
+      grid-template-columns: 1fr;
+      grid-template-rows: repeat(6, 80px);
+    }
+    .grid-item {
+      height: 80px;
+    }
+  }
+</style>
+</head>
+<body>
+
+<h2>Grid 3段階レスポンシブ対応例</h2>
+<div class="grid-container">
+  <div class="grid-item">1</div>
+  <div class="grid-item">2</div>
+  <div class="grid-item">3</div>
+  <div class="grid-item">4</div>
+  <div class="grid-item">5</div>
+  <div class="grid-item">6</div>
+</div>
+
+</body>
+</html>
