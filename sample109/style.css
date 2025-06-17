@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>企業ホームページ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <main>
+
+    <!-- About Section -->
+    <section class="section section--about bg-light fade-in">
+      <div class="section__inner">
+        <h2 class="section__title">会社概要</h2>
+        <p class="section__text">私たちは中小企業をサポートするWeb制作会社です。</p>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section section--services bg-white fade-in">
+      <div class="section__inner">
+        <h2 class="section__title">サービス</h2>
+        <ul class="service-list">
+          <li class="service-list__item">ホームページ制作</li>
+          <li class="service-list__item">WordPress開発</li>
+          <li class="service-list__item">SEO対策</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- Works Section -->
+    <section class="section section--works bg-gray fade-in">
+      <div class="section__inner">
+        <h2 class="section__title">実績</h2>
+        <div class="works">
+          <article class="works__item">A社コーポレートサイト</article>
+          <article class="works__item">BショップECサイト</article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recruit Section -->
+    <section class="section section--recruit bg-light fade-in">
+      <div class="section__inner">
+        <h2 class="section__title">採用情報</h2>
+        <p class="section__text">現在、新しい仲間を募集しています。</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
