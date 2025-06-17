@@ -1,122 +1,10 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>企業ホームページ</title>
-  <style>
-    /* ======= CSS開始 ======= */
-    :root {
-      --color-bg-light: #f9f9f9;
-      --color-bg-white: #ffffff;
-      --color-bg-gray: #eeeeee;
-
-      --color-text: #333;
-      --color-accent: #3A99C9;
-
-      --section-padding-pc: 6rem;
-      --section-padding-tab: 4rem;
-      --section-padding-sp: 2rem;
-
-      --max-width: 1080px;
-    }
-
-    body {
-      margin: 0;
-      font-family: system-ui, sans-serif;
-      background-color: #fff;
-      color: var(--color-text);
-      line-height: 1.6;
-    }
-
-    /* 背景色 */
-    .bg-light { background-color: var(--color-bg-light); }
-    .bg-white { background-color: var(--color-bg-white); }
-    .bg-gray  { background-color: var(--color-bg-gray); }
-
-    /* セクション共通 */
-    .section {
-      padding: var(--section-padding-pc) 1rem;
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
-    }
-    .section.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-    .section__inner {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
-    .section__title {
-      font-size: 2.5rem;
-      color: var(--color-accent);
-      margin-bottom: 1.5rem;
-    }
-    .section__text {
-      font-size: 1.25rem;
-    }
-
-    /* サービスリスト */
-    .service-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .service-list__item {
-      position: relative;
-      padding-left: 1.5em;
-      margin-bottom: 1rem;
-    }
-    .service-list__item::before {
-      content: "✔";
-      position: absolute;
-      left: 0;
-      color: var(--color-accent);
-    }
-
-    /* 実績 */
-    .works {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-    }
-    .works__item {
-      padding: 1rem;
-      background: #fff;
-      border-left: 4px solid var(--color-accent);
-    }
-
-    /* レスポンシブ対応 */
-    @media (max-width: 1024px) {
-      .section {
-        padding: var(--section-padding-tab) 1rem;
-      }
-      .section__title {
-        font-size: 2rem;
-      }
-      .section__text {
-        font-size: 1.1rem;
-      }
-      .works {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 600px) {
-      .section {
-        padding: var(--section-padding-sp) 1rem;
-      }
-      .section__title {
-        font-size: 1.5rem;
-      }
-      .section__text {
-        font-size: 1rem;
-      }
-    }
-    /* ======= CSS終了 ======= */
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
@@ -163,23 +51,6 @@
 
   </main>
 
-  <script>
-    // スクロールアニメーション処理
-    document.addEventListener('DOMContentLoaded', () => {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      }, {
-        threshold: 0.1
-      });
-
-      document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
-    });
-  </script>
-
+  <script src="script.js"></script>
 </body>
 </html>

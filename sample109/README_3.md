@@ -70,7 +70,7 @@ forEach で1つ1つに observer.observe(el) を適用。
 
 ✅ isIntersecting とは？
 
-🔹 説明： IntersectionObserver API における重要なプロパティです。
+🔹 説明： IntersectionObserver API におけるIntersectionObserverEntry オブジェクトのプロパティです。
 isIntersecting は、対象の要素が 画面（または設定したビューポート）内に入っているかどうか を示す 真偽値（true または false） です。
 
 🔸 つまり：
@@ -126,7 +126,7 @@ threshold: 0.5
 
 
 ✅ 1. IntersectionObserver オブジェクトのプロパティ・メソッド
-名前	種類	説明
+名前	               種類	        説明
 .observe(target)	メソッド	指定した要素の交差状態を監視開始する
 .unobserve(target)	メソッド	指定した要素の監視を解除する
 .disconnect()	    メソッド	すべての監視対象を解除する
@@ -138,7 +138,7 @@ threshold: 0.5
 ✅ 2. IntersectionObserverEntry オブジェクトのプロパティ
 これは、交差イベントが発生したときにコールバック関数に渡される entries 配列内の1つのオブジェクトです。
 
-プロパティ名	説明
+プロパティ名	            説明
 .boundingClientRect	  対象要素の境界ボックス情報（getBoundingClientRect()と同じ）
 .intersectionRatio	  対象要素が交差領域内に入っている割合（0〜1）
 .intersectionRect	　実際に交差している領域の矩形情報
