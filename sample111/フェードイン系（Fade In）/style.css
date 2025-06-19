@@ -25,7 +25,8 @@ body {
   
   /* 初期位置：方向別 */
   [data-direction="fade-up"] > div {
-    transform: translateY(50px);
+    transform: translateY(ｰ50px);
+    /* フェードインはここの数値を変える　上から下へ */
   }
   
   [data-direction="fade-left"] > div {
