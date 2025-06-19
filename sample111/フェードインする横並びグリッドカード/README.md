@@ -136,3 +136,78 @@ threshold: 0.2：要素の20%が画面内に入ったら「表示された」と
 🚀 表示時	    transition-delay で遅らせて is-visible クラス追加
 🔧 最適化	    一度表示したら監視解除でパフォーマンスUP
 
+
+ ✅ transitionDelayについて
+ JavaScriptの HTMLElement.style オブジェクトのプロパティの1つです。
+ 型としては文字列（string）です。
+
+CSSのtransition-delayプロパティをJavaScriptから動的に指定するもの。
+目的：アニメーションの「開始タイミングを遅らせる」ために使います。
+ これは CSS の transition-delay に対応しています。
+
+構文:
+element.style.transitionDelay = "0.3s";
+
+() を使っていないので関数ではありません。
+値（"0.3s" など）を代入する形です。
+
+✅ 関連プロパティ一覧（style）
+JavaScriptから操作できる style プロパティの例：
+
+element.style.color = "red";
+element.style.backgroundColor = "blue";
+element.style.opacity = "0.8";
+element.style.transitionDelay = "0.2s"; // ← 今回のもの
+
+
+
+element.style.transitionDelay = "0.3s"; // 0.3秒遅れて開始
+🔄 使い方の流れ（あなたのコードの場合）
+🎯 目的：カードが画面内に入ってくるときに、順番に少しずつ遅らせてフェードインさせたい。
+
+🔁 実際の処理：
+
+cards.forEach((card, index) => {
+  card.style.transitionDelay = `${index * 0.15}s`;
+});
+1番目のカード：0s
+
+2番目のカード：0.15s
+
+3番目のカード：0.30s
+…
+
+というように、index に応じて遅延時間をずらして設定。
+
+🧪 視覚効果の例
+以下のようなアニメーションを考えてみてください：
+
+.card {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+.card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+ここに transition-delay をつけると、表示される順番に時間差ができて自然な演出になります。
+
+✅ style.transitionDelay のポイント
+ポイント	        説明
+単位付き	    "0.3s" のように文字列で「秒数＋単位」が必要です（例：msやs）
+個別設定	    各要素ごとに異なる遅延をつけられる（JavaScriptでループすれば可能）
+CSSより柔軟	    CSSでは全カードに同じ値しか指定できないが、JSなら1つずつ個別に制御できる
+上書き可能	    あとから別の値に変更すれば即時上書きされる
+リセットしない限り維持	一度設定したら、画面をリロードしない限り残り続く
+
+✏️ 補足：CSSだけで同じことはできる？
+CSSだけで順番に表示させるには、下のように :nth-child() を使う手もあります：
+css
+.card:nth-child(1) { transition-delay: 0s; }
+.card:nth-child(2) { transition-delay: 0.15s; }
+.card:nth-child(3) { transition-delay: 0.3s; }
+ただし：
+HTML構造が固定でないと難しい
+要素数が多くなるとメンテが大変
+👉 よって、JavaScriptで style.transitionDelay を使う方法の方が圧倒的に実務向きです。
