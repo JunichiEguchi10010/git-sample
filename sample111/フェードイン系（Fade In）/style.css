@@ -1,0 +1,55 @@
+body {
+    font-family: sans-serif;
+    background: #f9f9f9;
+    padding: 40px;
+  }
+  
+  .section {
+    margin-bottom: 80px;
+    padding: 30px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+  }
+  
+  .section > div {
+    margin: 20px 0;
+    padding: 40px;
+    background: #e1f5fe;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 1s ease-out;
+  }
+  
+  /* 初期位置：方向別 */
+  [data-direction="fade-up"] > div {
+    transform: translateY(50px);
+  }
+  
+  [data-direction="fade-left"] > div {
+    transform: translateX(-50px);
+  }
+  
+  [data-direction="zoom-in"] > div {
+    transform: scale(0.6);
+  }
+  
+  /* アニメーション後の状態 */
+  .section > div.is-visible {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+  }
+  
+  /* prefers-reduced-motion対応 */
+  @media (prefers-reduced-motion: reduce) {
+    .section > div {
+      transition: none !important;
+      transform: none !important;
+      opacity: 1 !important;
+      visibility: visible !important;
+    }
+  }
+  
