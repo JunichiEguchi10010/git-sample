@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scroll to Top Example</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="content">
+      <h1>Scroll To Top ボタンのデモ</h1>
+      <p>下にスクロールして「↑」ボタンが表示されることを確認してください。</p>
+      <p>このエリアはダミーコンテンツです。</p>
+      <p>
+        さらに下にスクロールすると、トップに戻るボタンがふわっと表示されます。
+      </p>
+      <!-- 任意の長いコンテンツ -->
+    </div>
+
+    <!-- トップへ戻るボタン -->
+    <button
+      id="scrollToTopBtn"
+      class="scroll-to-top"
+      aria-label="ページ上部へ戻る"
+    >
+      <svg
+        width="24"
+        height="24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        viewBox="0 0 24 24"
+        aria-hidden="true"
+      >
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    </button>
+
+    <script src="script.js"></script>
+  </body>
+</html>
