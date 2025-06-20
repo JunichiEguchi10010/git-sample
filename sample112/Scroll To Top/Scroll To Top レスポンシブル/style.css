@@ -1,0 +1,69 @@
+/* ===== 共通のスタイル ===== */
+.scroll-to-top {
+    position: fixed;
+    bottom: 40px;
+    right: 30px;
+    background-color: #3A99C9;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+  
+  .scroll-to-top svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  /* ボタン表示時 */
+  .scroll-to-top.show {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+  
+  /* ダミーコンテンツ */
+  .content {
+    height: 2000px;
+    background: linear-gradient(white, #e0f3ff);
+    padding: 40px;
+    font-size: 18px;
+  }
+  
+  /* ===== レスポンシブ対応 ===== */
+  
+  /* スマホサイズ */
+  @media (max-width: 767px) {
+    .scroll-to-top {
+      width: 40px;
+      height: 40px;
+      bottom: 20px;
+      right: 20px;
+    }
+  
+    .scroll-to-top svg {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  
+  /* タブレットサイズ */
+  @media (min-width: 768px) and (max-width: 1023px) {
+    .scroll-to-top {
+      width: 44px;
+      height: 44px;
+      bottom: 30px;
+      right: 25px;
+    }
+  }
+  
