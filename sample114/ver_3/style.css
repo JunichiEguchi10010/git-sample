@@ -1,0 +1,30 @@
+/* base.css など
+ CSSだけでもしっかり「コンポーネント化」 */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5em;
+    border-radius: 999px;
+    font-weight: bold;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  
+  .btn--primary {
+    background: #3A99C9;
+    color: #fff;
+    padding: 0.75em 1.5em;
+  }
+  .btn--primary:hover {
+    background: #327fad;
+  }
+  
+  .btn--outline {
+    border: 2px solid #3A99C9;
+    color: #3A99C9;
+    background: #fff;
+  }
+  .btn--outline:hover {
+    background: #eaf4fa;
+  }
+  
