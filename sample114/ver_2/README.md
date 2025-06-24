@@ -19,3 +19,17 @@ html
 html
 <i class="fas fa-camera"></i> カメラアイコン
 このように <i> タグにクラスを指定するだけで、アイコンが表示されます。
+
+🛠 よく使うFont Awesomeアイコン一覧
+用途	        クラス名例
+詳しく見る	    fa-arrow-right
+ダウンロード	fa-download
+お問い合わせ	fa-envelope
+電話	        fa-phone
+SNSリンク	    fa-x-twitter, fa-facebook
+
+使いたいアイコンのクラス名だけ <i> に差し替えればOKです。
+
+
+
+
