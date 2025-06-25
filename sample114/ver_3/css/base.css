@@ -1,0 +1,10 @@
+/* 共通スタイル：全体に適用するリセット・ベース設定など */
+body {
+    font-family: sans-serif;
+    margin: 2rem;
+    background: #f9f9f9;
+    color: #333;
+  }
+  h1 {
+    margin-bottom: 1.5rem;
+  }  

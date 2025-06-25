@@ -1,5 +1,5 @@
-/* base.css など
- CSSだけでもしっかり「コンポーネント化」 */
+/* 再利用可能なボタンのコンポーネントスタイル */
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -8,23 +8,27 @@
     font-weight: bold;
     text-decoration: none;
     transition: all 0.3s ease;
+    font-size: 1rem;
+    padding: 0.75em 1.5em;
+    margin-right: 1em;
   }
   
+  /* プライマリーボタン */
   .btn--primary {
-    background: #3A99C9;
+    background-color: #3A99C9;
     color: #fff;
-    padding: 0.75em 1.5em;
   }
   .btn--primary:hover {
-    background: #327fad;
+    background-color: #327fad;
   }
   
+  /* アウトラインボタン */
   .btn--outline {
     border: 2px solid #3A99C9;
     color: #3A99C9;
-    background: #fff;
+    background-color: #fff;
   }
   .btn--outline:hover {
-    background: #eaf4fa;
+    background-color: #eaf4fa;
   }
   
