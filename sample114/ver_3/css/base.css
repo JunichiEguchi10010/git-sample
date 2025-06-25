@@ -8,3 +8,11 @@ body {
   h1 {
     margin-bottom: 1.5rem;
   }  
+  
+/* 
+  project-folder/
+├── index.html
+├── css/
+│   ├── base.css        ← 全体共通CSS（リセット・フォント等）
+│   └── components/
+│       └── button.css  ← ボタン専用スタイル（再利用コンポーネント） */
