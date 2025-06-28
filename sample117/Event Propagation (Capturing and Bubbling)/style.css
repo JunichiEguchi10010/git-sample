@@ -1,0 +1,16 @@
+/* style.css */
+body {
+    font-family: sans-serif;
+    padding: 2rem;
+  }
+  
+  #outer, #middle, #inner {
+    padding: 2rem;
+    border: 2px solid #333;
+    margin: 1rem;
+    cursor: pointer;
+  }
+  
+  #outer { background-color: #f9f9f9; }
+  #middle { background-color: #e0f7fa; }
+  #inner { background-color: #ffe0b2; }  

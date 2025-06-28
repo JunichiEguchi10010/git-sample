@@ -1,0 +1,31 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>イベント伝播デモ（伝播の違いを体験）</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="outer">
+    Outer
+    <div id="middle">
+      Middle
+      <div id="inner">Inner（ここをクリック）</div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
+
+<!-- 
+// コンソールに出るログ出力例（クリック順）
+// outer (キャプチャ)
+// middle (キャプチャ)
+// inner (キャプチャ)
+// inner (バブリング)
+// middle (バブリング)
+// outer (バブリング) -->
