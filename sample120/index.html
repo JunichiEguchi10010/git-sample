@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="ja">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>スクロールでヘッダー表示切り替え</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>スクロールでヘッダー表示切り替え</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="header fixed">ヘッダー</header>
 
-  <header class="header fixed">ヘッダー</header>
+    <main>
+      <div style="height: 2000px; padding-top: 100px">
+        <p>スクロールしてヘッダーが非表示になるか確認してください。</p>
+      </div>
+    </main>
 
-  <main>
-    <div style="height: 2000px; padding-top: 100px;">
-      <p>スクロールしてヘッダーが非表示になるか確認してください。</p>
-    </div>
-  </main>
-
-  <script src="script.js"></script>
-</body>
+    <script src="script.js"></script>
+  </body>
 </html>
