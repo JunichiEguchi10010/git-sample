@@ -5,11 +5,11 @@ WordPress引っ越し All in One WP Migrationを使わない方法 20250629
 🟥重要🟥
 作業前に必ずバックアップを取る（ファイル・DB両方）
 
-
+背景：
 All-in-One WP Migration プラグインが利用規約の変更などで本番環境で使いにくくなってきた。(ビジネス利用は有料)
 このプラグインを使わずに、手動でWordPressのサイトをローカル環境から本番サーバー（Xserver）へ移行する方法を解説。
 
- All-in-One WP Migrationとは？（Migration：移行）
+✅ All-in-One WP Migrationとは？（Migration：移行）
 WordPressサイトのバックアップ・移行・復元を簡単にできるプラグインです。
 
 📝 WordPressサイトの構成要素
