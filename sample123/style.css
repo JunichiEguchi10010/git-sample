@@ -1,0 +1,51 @@
+/* style.css */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif;
+    line-height: 1.5;
+    background: #fff;
+    color: #333;
+  }
+  
+  .spacer {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    background: #fafafa;
+  }
+  
+  .counter-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    padding: 80px 20px;
+    background: #f0f8ff;
+    flex-wrap: wrap;
+  }
+  
+  .counter-box {
+    text-align: center;
+    flex: 1 1 200px;
+    max-width: 250px;
+  }
+  
+  .counter {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #3A99C9;
+  }
+  
+  /* スマホ対応 */
+  @media (max-width: 768px) {
+    .counter-section {
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .counter {
+      font-size: 2rem;
+    }
+  }  
