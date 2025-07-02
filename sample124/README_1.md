@@ -50,3 +50,40 @@ WebP対応	            <source type="image/webp">で優先読み込みされ、�
 各画像サイズ（例: 480px, 768px, 1200px）は適切に圧縮・リサイズした画像をあらかじめ用意してください。
 sizesの値は使用するレイアウトに応じて変更してください（例：1カラムなら100vw）。
 WordPressの場合は<picture>を自動生成するプラグイン（例：WebP Express, EWWW Image Optimizer）なども併用できます。
+
+
+🧩 <picture>タグとは？
+<picture>タグは、レスポンシブ画像（画面サイズや端末に応じた画像の切り替え）を実現するためのHTMLタグです。
+表示条件に応じて最適な画像を選んで表示することができます。
+
+🛠 主な使い方・基本構造
+html
+<picture>
+  <source srcset="image-large.jpg" media="(min-width: 768px)">
+  <source srcset="image-small.jpg" media="(max-width: 767px)">
+  <img src="fallback.jpg" alt="説明文">
+</picture>
+
+🔍 各要素の意味：
+<source>：条件（メディアクエリ）に応じて使う画像を定義します。
+media属性：画面のサイズなどに応じた条件を記述。
+srcset属性：その条件下で表示する画像ファイルを指定。
+<img>：条件に合致しなかった場合のフォールバック（代替）画像です。
+
+💡 どんなときに便利？
+デバイスごとに画像サイズを最適化したいとき（スマホ・PCなど）
+Retina（高解像度）ディスプレイ向けに画像を切り替えたいとき
+WEBページの表示速度とユーザビリティの向上を図りたいとき
+
+📱 実際の例：レスポンシブ画像
+html
+<picture>
+  <source srcset="hero-desktop.webp" media="(min-width: 1024px)">
+  <source srcset="hero-tablet.webp" media="(min-width: 600px)">
+  <img src="hero-mobile.webp" alt="美しい風景">
+</picture>
+このように書くことで、表示幅によって最適な画像が選ばれ、通信量も無駄に使わず、見た目もきれいに！
+
+📝 ポイント
+<source>は複数指定できますが、最初にマッチしたものが使われます。
+<img>タグは最後に必ず入れておくこと（アクセシビリティのためにもalt属性は必須）。
