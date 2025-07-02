@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WebP対応 Pictureタグデモ</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      font-family: sans-serif;
+    }
+    .responsive-image {
+      max-width: 100%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>WebP対応 & レスポンシブ Pictureタグデモ</h1>
+
+  <picture>
+    <!-- WebP形式（高解像度デバイス対応も含め） -->
+    <source 
+      srcset="
+        https://picsum.photos/480/300.webp 480w,
+        https://picsum.photos/768/480.webp 768w,
+        https://picsum.photos/1200/600.webp 1200w
+      "
+      sizes="(max-width: 768px) 100vw, 768px"
+      type="image/webp"
+    >
+
+    <!-- JPEG形式（フォールバック） -->
+    <source 
+      srcset="
+        https://picsum.photos/480/300.jpg 480w,
+        https://picsum.photos/768/480.jpg 768w,
+        https://picsum.photos/1200/600.jpg 1200w
+      "
+      sizes="(max-width: 768px) 100vw, 768px"
+      type="image/jpeg"
+    >
+
+    <!-- フォールバック用のimg -->
+    <img 
+      src="https://picsum.photos/768/480.jpg" 
+      alt="ランダムな風景画像（フォールバック）" 
+      loading="lazy" 
+      decoding="async" 
+      class="responsive-image"
+    >
+  </picture>
+
+</body>
+</html>
+
+<!-- 
+コード解説
+https://picsum.photos/width/height.format を使って .webp や .jpg を指定。
+
+srcset で複数サイズを指定し、sizes でレイアウトに合わせた幅をブラウザに伝えます。
+
+.responsive-image クラスで画像の横幅が親に収まるように調整。
+
+loading="lazy" はスクロールしてから読み込みを行うのでパフォーマンスが向上。 
+-->
+
