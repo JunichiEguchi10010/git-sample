@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>ライトボックスギャラリー</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="gallery">
+    <img src="https://picsum.photos/id/1015/300/200" alt="画像1" class="thumbnail" data-full="https://picsum.photos/id/1015/800/600">
+    <img src="https://picsum.photos/id/1016/300/200" alt="画像2" class="thumbnail" data-full="https://picsum.photos/id/1016/800/600">
+  </div>
+
+  <div id="lightbox" class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-image" src="" alt="">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
