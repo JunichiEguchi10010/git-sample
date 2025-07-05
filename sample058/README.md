@@ -378,3 +378,6 @@ https://www.youtube.com/watch?v=2dPR5lsDGQE
 
 レンダリングを最適化してWebパフォーマンスを向上させてみよう【React.memo/useMemo/useCallback入門】
 https://www.youtube.com/watch?v=GvPBr43lJk0
+
+関数をメモ化（キャッシュ）できる「useCallback」解説！
+https://www.youtube.com/watch?v=19HPA4sEWJY
