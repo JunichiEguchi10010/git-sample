@@ -1,0 +1,36 @@
+/* 動画をレスポンシブ対応にするためのスタイル */
+.video-container {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;  /* モダンブラウザ用（縦横比を保つ） */
+  background-color: #000;
+  overflow: hidden;
+}
+
+/* iframeを親要素いっぱいに広げる */
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+/* 古いブラウザ（IEなど）に対応させるなら、下記を利用してください */
+/*
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; 
+  height: 0;
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+*/
