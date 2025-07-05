@@ -1,0 +1,36 @@
+/* 動画の親コンテナにアスペクト比を保持させる */
+.video-container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9; /* 新しい方法。古いブラウザ用はコメント参照 */
+    background-color: #000;
+    overflow: hidden;
+  }
+  
+  /* iframeを100%でフィットさせる */
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* 古いブラウザ向け（aspect-ratio未対応時） */
+  /*
+  .video-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; 
+    height: 0;
+  }
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  */
+  
