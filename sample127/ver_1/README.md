@@ -92,3 +92,52 @@ Twitter/Instagramなど	投稿の埋め込み（専用スクリプトが必要�
 基本属性	     src, width, height, allowfullscreenなど
 注意点	        埋め込み許可が必要・レスポンシブはCSS必須
 実務での扱い	 静的ページならHTML直書き、動的ならJS生成もあり
+
+<iframe> タグと <video> タグは全く用途が異なるタグです。
+
+✅違い:
+タグ	    主な目的
+<video>	    自分の用意した動画ファイルを再生する
+<iframe>	他サイトのコンテンツ（YouTubeなど）を埋め込む
+
+✅ それぞれの使い方と違い
+✅ <video> タグの使い方（ローカル動画）
+html
+<video controls width="640" height="360">
+  <source src="movie.mp4" type="video/mp4">
+  ブラウザが video タグに対応していません。
+</video>
+✅ ファイル形式は .mp4, .webm, .ogg など
+✅ 動画ファイルは 自分のサーバー上にある必要あり
+❌ YouTubeなどの外部サービスのURLは使えない
+
+✅ <iframe> タグの使い方（YouTubeなど外部コンテンツ）
+html
+<iframe 
+  src="https://www.youtube.com/embed/動画ID" 
+  width="640" height="360"
+  allowfullscreen>
+</iframe>
+✅ YouTubeやGoogle Mapsなどの外部ページを埋め込む
+✅ HTML内に「別のページの窓」を開くようなもの
+❌ 自分の動画ファイルを再生する用途には不向き
+
+✅ 機能比較一覧
+項目	                       <video> タグ	<iframe> タグ
+再生対象	                  自分の動画ファイル	            外部サイトの動画・Webページ
+使用例	                      movie.mp4, movie.webmなど	    YouTube、Google Maps、他のWebページ
+サーバーに置く必要	           ✅ 必要（動画ファイルを持つ）  ❌ 不要（YouTubeなどがホスト）
+スタイルやコントロール制御	    ✅ 細かく制御可能（JS・CSS）  ❌ iframeの中身は基本制御できない
+再生の自由度（速度・音量など）	✅ フルコントロール可能	      ❌ 外部サービスの仕様に依存
+埋め込みの簡単さ	           ◯ 自分のサーバーにあれば簡単	  ◎ YouTubeなどからタグをコピーするだけ
+
+✅ 実務での使い分け
+シーン	                        推奨タグ	        理由
+自社製品の紹介動画を載せたい	<video>	        自分のサーバー上のファイルだから
+YouTubeの動画を埋め込みたい	   <iframe>	       YouTubeが提供する正式な埋め込み方法だから
+Googleマップを載せたい	       <iframe>	       マップはiframeでしか埋め込めない
+オリジナル動画を自動再生させたい <video>	    属性やJavaScriptで細かく制御できる
+
+✅ まとめ（覚え方）
+🔹 <video> = 自分の動画を見せる
+🔹 <iframe> = 他人のサービスを借りて埋め込む
