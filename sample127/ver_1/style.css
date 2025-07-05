@@ -7,7 +7,7 @@
     overflow: hidden;
   }
   
-  /* iframeを100%でフィットさせる */
+  /* iframeをコンテナに100%でフィットさせる */
   .video-container iframe {
     position: absolute;
     top: 0;
