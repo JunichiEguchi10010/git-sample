@@ -66,3 +66,83 @@ JavaScriptは「オブジェクト指向」の要素も「関数型」の要素�
 オブジェクト = データの入れ物	                   キーと値のペアを保持
 JavaScriptでは「ほとんどすべてがオブジェクト」	    配列、関数、日付なども含む
 クラスやインスタンスもオブジェクトの一部	        クラスは構造を、インスタンスは中身を持つ
+
+
+✅ クラスのインスタンス化とリテラルオブジェクトの違い
+構文や使い方に加えて、何を基準にオブジェクトが生成されるかという点で差があります。
+
+🧱 リテラルオブジェクトとは
+{} を使って直接作るオブジェクト（例：const obj = { name: "Copilot", age: 2 }）
+
+クラスやコンストラクタを使わず、値をその場で定義
+
+変数（constやletなど）で代入することが一般的だけど、プレフィックス（接頭辞）が「変数」かどうかは本質的な違いではない
+
+🏗 インスタンス化とは
+クラスやコンストラクタ関数から new を使って作るオブジェクト（例：const obj = new Person("Copilot")）
+
+インスタンス化されたオブジェクトはそのクラスに紐づいた振る舞いやプロパティを持つ
+
+「new + クラス名」のように、接頭辞はクラスを指すのが特徴
+
+🔍 比較まとめ表
+特徴	リテラルオブジェクト	            インスタンス化オブジェクト
+作り方	{} で直接記述	                    new クラス名()
+拡張性	限定的（プロトタイプ継承は手動）	  クラスに沿った拡張が可能
+目的	シンプルな構造のデータ保持	         クラスベースの設計や機能の提供
+接頭辞	変数（constなど）	                クラス名（型）
+要するに、オブジェクトの生成方法と設計意図の違いが本質です。
+
+
+✅ Object はコンストラクタ関数（オブジェクトを生成する関数）
+js
+const obj = new Object(); // これで空のオブジェクトが生成される
+✅ Object.prototype は、Object から生成されたオブジェクトが継承する共通のプロトタイプ
+js
+console.log(obj.toString); // Object.prototype のメソッド
+
+⚠️ Object.prototype はあくまで「共通のひな型」。
+すべての普通のオブジェクトはこのひな型を継承して、toString() などのメソッドが使えるようになっています。
+
+🔸例：Objectの継承関係
+js
+const user = { name: "山田" };
+
+console.log(user.hasOwnProperty("name")); // true
+console.log(user.toString());             // [object Object]
+ここで hasOwnProperty や toString はどこから来ているかというと：
+
+javascript
+user
+ ↑
+Object.prototype（← toString や hasOwnProperty の定義あり）
+ ↑
+null（← これ以上継承しない）
+
+💡補足：配列や関数も最終的に Object.prototype を継承
+js
+console.log(Array.prototype.__proto__ === Object.prototype);    // true
+console.log(Function.prototype.__proto__ === Object.prototype); // true
+なので、配列や関数でも toString() や hasOwnProperty() が使えるんです。
+
+✅結論
+「すべてのオブジェクトの元」は Object.prototype
+Object はそれを生み出す「関数（コンストラクタ）」
+オブジェクトが toString() や hasOwnProperty() を持つのは、Object.prototype を継承しているから
+
+
+🧱 Object.prototype の主なプロパティとメソッド
+名前	                       種類	        説明
+constructor	                プロパティ	オブジェクトのコンストラクタ関数を返します
+__proto__	                アクセサ	プロトタイプチェーン上の親オブジェクトを参照します（非推奨）
+hasOwnProperty()	        メソッド	自分自身が持っているプロパティかどうかを判定します
+isPrototypeOf()	            メソッド	引数が自分のプロトタイプチェーン上にあるかどうかを確認します
+propertyIsEnumerable()	    メソッド	プロパティが列挙可能かどうかを判定します
+toString()	                メソッド	オブジェクトを文字列に変換します（通常は [object Object]）
+valueOf()	                メソッド	プリミティブ値を返します（多くの場合はそのままオブジェクト）
+toLocaleString()	        メソッド	ロケールに応じた文字列表現を返します
+__defineGetter__()	        メソッド	ゲッター関数を定義します（非推奨）
+__defineSetter__()	        メソッド	セッター関数を定義します（非推奨）
+__lookupGetter__()	        メソッド	ゲッター関数を検索します（非推奨）
+__lookupSetter__()	        メソッド	セッター関数を検索します（非推奨）
+⚠️ 一部のメソッド（__proto__, __defineGetter__ など）は現在非推奨または廃止予定なので、使用には注意が必要です。
