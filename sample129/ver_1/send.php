@@ -1,3 +1,4 @@
+<!-- 「PHPMailerを使ったお問い合わせフォーム送信スクリプト（SMTP対応・日本語対応）」 -->
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
