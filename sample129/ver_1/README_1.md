@@ -8,7 +8,6 @@ contact-form/
 ├── send.php
 └── vendor/         ← composer install用（PHPMailer）
 
-
 🔧 vendor/ フォルダは、Composer を使って PHPMailer をインストールしたときに自動で生成されるディレクトリです。
 自分でファイルを手動で入れるのではなく、Composer が作ってくれます。
 
@@ -57,7 +56,7 @@ Composerが自動生成する autoload.php を読み込むことで、PHPMailer 
 
 🔚 結論
 vendor/ は自分で入れる場所ではなく、Composer が自動生成するもの
-composer require phpmailer/phpmailer を使えばOK
+composer require phpmailer/phpmailer 使用したいディレクトリ内でこのコマンド使えばインストールOK
 PHPメールフォームをサーバーで動かすには、vendor/ ごとアップロードが必要
 
 
