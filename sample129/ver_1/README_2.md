@@ -1,4 +1,4 @@
-PHP Composer (PHPのパッケージ管理ツール) 20250708
+ PHP Composer (PHPのパッケージ管理ツール)  0250708
 
 公式サイト
 https://getcomposer.org/
