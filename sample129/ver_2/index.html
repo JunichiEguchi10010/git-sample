@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>お問い合わせフォーム</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <form id="contactForm" action="send.php" method="POST">
+    <label>お名前 <input type="text" name="name" required></label>
+    <label>メールアドレス <input type="email" name="email" required></label>
+    <label>お問い合わせ内容<textarea name="message" required></textarea></label>
+    <button type="submit">送信</button>
+    <p id="result"></p>
+  </form>
+  <script src="script.js"></script>
+</body>
+</html>
