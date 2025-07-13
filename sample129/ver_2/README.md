@@ -166,3 +166,63 @@ echo '送信が完了しました。ありがとうございました。';
 管理者には通知メール
 送信者本人には自動返信メール
 の 2通を個別にPHPMailerで送信している、とても丁寧な処理です。
+
+
+✅ $autoReplyの自動返信メールはどこで生成され、どこから返信されているのですか？
+
+✅ 結論から言うと：
+どこで生成される？
+→PHPファイル（send.php）の中の $autoReply = new PHPMailer(true); からスタート
+どこから送られている？
+→GmailのSMTPサーバーを通じて、あなたのGmailアドレス（m100010eguchi@gmail.com）から送信されます
+
+
+✅ 1. どこで自動返信メールが生成されるか？
+▶ 生成処理（PHPスクリプト内）
+このコード部分で生成されています：
+
+php
+$autoReply = new PHPMailer(true);
+これは **「メール送信準備専用のオブジェクト」**を作っているという意味です。
+
+その後に、件名・本文・送信先などを $autoReply に1つずつ設定しています。
+
+✅ 2. どこから送られているのか？
+この部分が重要です：
+php
+$autoReply->setFrom('m100010eguchi@gmail.com', 'お問い合わせ受付');
+ここで、
+差出人メールアドレスは m100010eguchi@gmail.com
+表示名は「お問い合わせ受付」
+として設定しています。
+さらに SMTP 経由で送信するために、以下の設定をしています：
+
+php
+$autoReply->isSMTP();
+$autoReply->Host = 'smtp.gmail.com';
+$autoReply->SMTPAuth = true;
+$autoReply->Username = 'm100010eguchi@gmail.com';
+$autoReply->Password = 'liaccngouowhcbrq';
+つまり、
+
+🟢 GoogleのSMTPサーバー（smtp.gmail.com）にログインして、あなたのGmailアカウントを使って送信している
+ということになります。
+
+✅ 3. 送信者が受け取るときにどう見える？
+自動返信メールを受け取った人の受信トレイでは：
+
+差出人アドレス：m100010eguchi@gmail.com
+差出人名：お問い合わせ受付（setFrom() で設定した名前）
+件名：【自動返信】お問い合わせありがとうございます
+本文：フォームで入力した内容など
+となります。
+
+✅ 補足：SMTPとは？
+SMTP（Simple Mail Transfer Protocol）は、**メールを送信するためのプロトコル（通信ルール）**です。
+今回は smtp.gmail.com を使って Gmail 経由で送っています。
+
+✅ まとめ
+質問	                                        答え
+$autoReply の自動返信メールはどこで生成される？	send.php 内で $autoReply = new PHPMailer(true); の行からスタート
+どこから送られている？	あなたの Gmail アカウント（m100010eguchi@gmail.com） から、Google の SMTP サーバー経由で送られる
+実際の差出人表示は？	メールでは「お問い合わせ受付（m100010eguchi@gmail.com）」と見える
