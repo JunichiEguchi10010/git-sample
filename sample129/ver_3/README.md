@@ -1,5 +1,7 @@
 PHPMailer  reCAPTCHA v3 スパム(BOT)対策・自動返信付きのお問い合わせフォーム 20250714
 
+https://developers.google.com/recaptcha?hl=ja
+
 /contact-form/
 ├─ index.html         ← フォーム（HTML + reCAPTCHA v3）
 ├─ style.css          ← スタイル
