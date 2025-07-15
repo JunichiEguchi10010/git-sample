@@ -7,7 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
       result.textContent = '送信中です...';
   
       grecaptcha.ready(function () {
-        grecaptcha.execute('【あなたのサイトキー】', { action: 'submit' }).then(function (token) {
+        //  reCAPTCHAのサイトキーを設定
+        grecaptcha.execute('6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ', { action: 'submit' }).then(function (token) {
           document.getElementById('recaptchaToken').value = token;
           form.submit(); // トークンをセット後、再送信
         });
@@ -16,6 +17,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
   
 
+// 疑似コード
 //   ページが読み込まれたら、次の処理を開始する：
 
 //     ・フォーム（IDが「contactForm」）と
@@ -35,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 //             → トークンを設定したあと、フォームを手動で送信する。
 
-
+// コード解説
 // document.addEventListener('DOMContentLoaded', () => {
 //     ➡ ページのHTMLがすべて読み込まれたタイミングで、以下の処理を実行する。
 

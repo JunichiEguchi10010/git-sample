@@ -1,5 +1,11 @@
 PHPMailer  reCAPTCHA v3 スパム(BOT)対策・自動返信付きのお問い合わせフォーム 20250714
 
+
+✅ reCAPTCHA v3とは？
+スパムやボットからフォームを守るためのGoogle提供のセキュリティ機能です。
+v3は「私はロボットではありません」のチェックが不要で、ユーザーの行動をスコアで評価して判断します。
+
+https://www.google.com/recaptcha/admin/create←キーの作成
 https://developers.google.com/recaptcha?hl=ja
 
 /contact-form/
@@ -16,10 +22,12 @@ https://www.google.com/recaptcha/admin
 ドメインを登録して、以下を取得
 
 サイトキー（sitekey）
-
+6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ
 シークレットキー（secretkey）
+6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI
 
 各ファイルの以下を置き換えてください：
+🟥 html､js､phpそれぞれキーを置き換えるところがあるので要確認
 
 記述	                        差し替え内容
 【あなたのサイトキー】	       reCAPTCHAのサイトキー（例: 6Labc...）
@@ -64,6 +72,14 @@ grecaptcha.ready(function () {
 トークン付きで send.php に送信
 を行っています。
 
+🟥 わかりやすく解説
+🧠 目的 ユーザーがフォームを送信する前に、reCAPTCHA v3 を使って「この操作は人間かどうか」を判断するための トークンを取得します。
+🔧 やっていること
+ページに Google reCAPTCHA v3 の スクリプトを読み込み
+スクリプトが準備できたら grecaptcha.execute() で トークンを発行（このトークンが「人間っぽさの証」になります）
+token を <input type="hidden" name="token"> に 格納
+最後にフォームを 自動で送信
+
 ✅② send.php 内の reCAPTCHA検証コード
 php
 $secretKey = '【あなたのシークレットキー】';
@@ -79,6 +95,19 @@ if (!$response->success || $response->score < 0.5) {
 POSTされた token を、Googleの検証API へ送信
 Googleから返ってきたレスポンスを $response->score で評価
 スコアが低ければ「スパム」判定して送信を中止します
+
+🟥 わかりやすく解説
+🧠 目的 reCAPTCHAが発行したトークンを Google に送って、送信者が「スパムかどうか」を スコアで判定します。
+🔧 やっていること
+Googleの検証用API (siteverify) に、トークンと秘密鍵を送る
+Googleが返してきたレスポンスの score を確認（0.0〜1.0で評価）
+スコアが 0.5未満だったらスパムと判定 → 処理をストップ
+success が false の場合も送信中止
+
+📊 スコアとは？
+1.0 に近いほど「人間らしい操作」
+0.0 に近いと「ボットっぽい、不正の可能性がある操作」
+
 
 ✅ まとめ
 対応しているコード	                                                        内容	                        ファイル
