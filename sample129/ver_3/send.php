@@ -22,7 +22,8 @@ if (!$name || !$email || !$message || !$token) {
 }
 
 // ✅ reCAPTCHA 検証
-$secretKey = '【あなたのシークレットキー】';
+// reCAPTCHAのシークレットキーを設定
+$secretKey = '6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI';
 $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
 
 $recaptcha = file_get_contents($verifyURL . '?secret=' . $secretKey . '&response=' . $token);
