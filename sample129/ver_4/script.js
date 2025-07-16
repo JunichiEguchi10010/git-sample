@@ -6,11 +6,11 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
   
       result.textContent = '送信中です...';
-  
+ 
       grecaptcha.ready(function () {
-        grecaptcha.execute('あなたのサイトキー', {action: 'submit'}).then(function (token) {
+        grecaptcha.execute('6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ', {action: 'submit'}).then(function (token) {
           document.getElementById('recaptchaToken').value = token;
-          form.submit(); // トークンを埋めたら送信
+          form.submit(); // サイトキー トークンを埋めたら送信
         });
       });
     });

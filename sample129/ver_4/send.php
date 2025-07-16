@@ -17,8 +17,8 @@ $email   = h($_POST['email'] ?? '');
 $message = h($_POST['message'] ?? '');
 $token   = $_POST['token'] ?? '';
 
-// reCAPTCHA v3 確認
-$secretKey = 'あなたのシークレットキー';
+// reCAPTCHA v3 確認 シークレットキー　スパム対策
+$secretKey = '6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI';
 $verifyURL = 'https://www.google.com/recaptcha/api/siteverify';
 $response = json_decode(file_get_contents($verifyURL . "?secret=$secretKey&response=$token"));
 if (!$response->success || $response->score < 0.5) {
@@ -31,14 +31,14 @@ try {
   $mail->isSMTP();
   $mail->Host = 'smtp.gmail.com';
   $mail->SMTPAuth = true;
-  $mail->Username = 'あなたのGmailアドレス';
-  $mail->Password = 'アプリパスワード';
+  $mail->Username = 'm100010eguchi@gmail.com';
+  $mail->Password = 'liaccngouowhcbrq'; // グーグルアプリパスワード
   $mail->SMTPSecure = 'ssl';
   $mail->Port = 465;
   $mail->CharSet = 'UTF-8';
 
-  $mail->setFrom('あなたのGmailアドレス', 'Webフォーム');
-  $mail->addAddress('あなたのGmailアドレス', '管理者');
+  $mail->setFrom('m100010eguchi@gmail.com', 'Webフォーム');
+  $mail->addAddress('m100010eguchi@gmail.com', '管理者');
   $mail->Subject = '【お問い合わせ】' . $name . '様より';
   $mail->Body    = "お名前: {$name}\nメール: {$email}\n\nメッセージ:\n{$message}";
   $mail->send();
@@ -56,13 +56,13 @@ try {
   $autoReply->isSMTP();
   $autoReply->Host = 'smtp.gmail.com';
   $autoReply->SMTPAuth = true;
-  $autoReply->Username = 'あなたのGmailアドレス';
-  $autoReply->Password = 'アプリパスワード';
+  $autoReply->Username = 'm100010eguchi@gmail.com';
+  $autoReply->Password = 'liaccngouowhcbrq';
   $autoReply->SMTPSecure = 'ssl';
   $autoReply->Port = 465;
   $autoReply->CharSet = 'UTF-8';
 
-  $autoReply->setFrom('あなたのGmailアドレス', 'お問い合わせ受付');
+  $autoReply->setFrom('m100010eguchi@gmail.com', 'お問い合わせ受付');
   $autoReply->addAddress($email, $name);
   $autoReply->isHTML(true);
   $autoReply->Subject = '【自動返信】お問い合わせありがとうございます';

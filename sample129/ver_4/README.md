@@ -1,5 +1,25 @@
 WebDesign PHPMailer reCAPTCHA v3対応 + HTMLメールの自動返信機能付き お問い合わせフォーム　20250716
 
+サイトキー（sitekey）
+6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ
+
+シークレットキー（secretkey）
+6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI
+
+グーグルアプリパスワード
+liaccngouowhcbrq'
+
+グーグルメールアドレス
+m100010eguchi@gmail.com
+
+ターミナルで起動：
+bash
+php -S localhost:8000
+
+phpmailerインストール（composer）
+composer require phpmailer/phpmailer
+
+
 
 「HTMLメール」とは、本文がHTML形式で記述されていて、メールクライアント上で装飾やレイアウトが反映されるメールのことです。
 
