@@ -50,7 +50,7 @@ try {
     [$name, $email, nl2br($message)],
     $template
   );
-　// ここまでHTMLメールの設定
+ // ここまでHTMLメールの設定
 
   $autoReply = new PHPMailer(true);
   $autoReply->isSMTP();
@@ -67,4 +67,11 @@ try {
   $autoReply->isHTML(true);
   $autoReply->Subject = '【自動返信】お問い合わせありがとうございます';
   $autoReply->Body = $htmlBody;
-  $autoReply->AltBody = "{$name}様\n\n以下の内容で受け付けました。\n\nお名前: {$
+  $autoReply->AltBody = "{$name}様\n\n以下の内容で受け付けました。\n\nお名前: {$name}\nメール: {$email}\n\nメッセージ:\n{$message}";
+  $autoReply->send(); // ←自動返信メールの送信
+  
+  echo '送信が完了しました。ありがとうございました。';
+
+} catch (Exception $e) {
+  exit('メールの送信に失敗しました: ' . $e->getMessage());
+}

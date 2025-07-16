@@ -12,7 +12,10 @@ liaccngouowhcbrq'
 グーグルメールアドレス
 m100010eguchi@gmail.com
 
-ターミナルで起動：
+パス
+cd C:\Users\eguchijunichi\git-sample\sample129\ver_4\
+
+ターミナルで起動：ローカルホスト立上げ
 bash
 php -S localhost:8000
 
