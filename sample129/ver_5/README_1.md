@@ -1,6 +1,8 @@
 WebDesign PHPMailer reCAPTCHA v3対応 + HTMLメールの自動返信機能付き お問い合わせフォーム
 機密情報（Gmailアドレス、パスワード、reCAPTCHAキーなど）を .env に分離してセキュア化した構成 2050717
 
+機密情報（SMTP認証情報やreCAPTCHAキーなど）を .env に分離し、PHPから読み込む構成で、以下のようなセキュアで保守しやすい構成です。
+
 📁 ver_5/
 ├── index.html               ... お問い合わせフォーム（reCAPTCHA v3対応）
 ├── style.css                ... スタイリング
