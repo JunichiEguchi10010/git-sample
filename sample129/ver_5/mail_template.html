@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { font-family: sans-serif; padding: 20px; color: #333; }
+    .container { background: #fff; padding: 20px; border-radius: 6px; border: 1px solid #ccc; }
+    table { width: 100%; margin-top: 1rem; }
+    th, td { padding: 5px; border-bottom: 1px solid #eee; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>お問い合わせありがとうございました。</h2>
+    <p><strong>{{name}} 様</strong></p>
+    <p>以下の内容で受け付けました：</p>
+    <table>
+      <tr><th>お名前</th><td>{{name}}</td></tr>
+      <tr><th>メール</th><td>{{email}}</td></tr>
+      <tr><th>メッセージ</th><td>{{message}}</td></tr>
+    </table>
+    <p>担当者より改めてご連絡差し上げます。</p>
+    <p style="font-size: 0.85em; color: gray;">※このメールは自動送信です。</p>
+  </div>
+</body>
+</html>
