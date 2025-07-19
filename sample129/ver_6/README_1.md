@@ -1,5 +1,31 @@
 WebDesign HTML5＋JavaScript（JS）でフロントサイドバリデーション 20250719
 
+サイトキー（sitekey）
+6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ
+
+シークレットキー（secretkey）
+6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI
+
+グーグルアプリパスワード
+liaccngouowhcbrq'
+
+グーグルメールアドレス
+m100010eguchi@gmail.com
+
+パス
+cd C:\Users\eguchijunichi\git-sample\sample129\ver_6\
+
+ターミナルで起動：ローカルホスト立上げ
+bash
+php -S localhost:8000
+
+phpmailerインストール（composer）
+composer require phpmailer/phpmailer
+
+composer require vlucas/phpdotenv
+
+
+
 ✅ フロントサイド（JavaScript）とサーバーサイド（PHP）両方でバリデーションを行う理由
 
 ✅ なぜ「両方でバリデーション」が必要なのか？
