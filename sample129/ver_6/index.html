@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>お問い合わせフォーム</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+  <!-- reCAPTCHA v3 -->
+  <script src="https://www.google.com/recaptcha/api.js?render=6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ"></script>
+</head>
+<body>
+  <form id="contactForm" method="POST" action="send.php" novalidate>
+    <label>お名前
+      <input type="text" name="name" id="name" required minlength="2" maxlength="50" pattern="^[ぁ-んァ-ン一-龥a-zA-Z\s]+$">
+      <span class="error-message" id="nameError"></span>
+    </label>
+
+    <label>メールアドレス
+      <input type="email" name="email" id="email" required>
+      <span class="error-message" id="emailError"></span>
+    </label>
+
+    <label>お問い合わせ内容
+      <textarea name="message" id="message" required minlength="10" maxlength="1000"></textarea>
+      <span class="error-message" id="messageError"></span>
+    </label>
+
+    <input type="hidden" name="token" id="recaptchaToken">
+    <button type="submit">送信</button>
+    <p id="result"></p>
+  </form>
+
+  <script src="script.js"></script>
+</body>
+</html>
