@@ -1,5 +1,32 @@
 WebDesgin fetch を使った非同期フォーム送信 20250721
 
+
+サイトキー（sitekey）
+6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ
+
+シークレットキー（secretkey）
+6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI
+
+グーグルアプリパスワード
+liaccngouowhcbrq'
+
+グーグルメールアドレス
+m100010eguchi@gmail.com
+
+パス
+cd C:\Users\eguchijunichi\git-sample\sample129\ver_7\
+
+phpmailerインストール（composer）
+composer require phpmailer/phpmailer
+
+composer require vlucas/phpdotenv
+
+ターミナルで起動：ローカルホスト立上げ
+bash
+php -S localhost:8000
+
+
+
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.getElementById('contactForm');
   const result = document.getElementById('result');
