@@ -1,5 +1,67 @@
 WebDesgin「サンクスページにリダイレクトする」フォーム 20250720
 
+sample129/ver_7/
+├── index.html          # お問い合わせフォーム
+├── script.js           # フロントエンドバリデーション・reCAPTCHA
+├── style.css           # フォームスタイル
+├── send.php            # バックエンド処理（メール送信）
+├── 🟥 thanks.html         # 🟥 送信完了ページ
+├── env.example         # 環境変数設定例
+├── composer.json       # PHP依存関係
+└── README.md           # セットアップ手順と使用方法
+
+
+サイトキー（sitekey）
+6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ
+
+シークレットキー（secretkey）
+6LfKOoQrAAAAAJrnu1ZHDwoKXvoUa8UiEw_HGItI
+
+グーグルアプリパスワード
+liaccngouowhcbrq'
+
+グーグルメールアドレス
+m100010eguchi@gmail.com
+
+パス
+cd C:\Users\eguchijunichi\git-sample\sample129\ver_7\
+
+ターミナルで起動：ローカルホスト立上げ
+bash
+php -S localhost:8000
+
+phpmailerインストール（composer）
+composer require phpmailer/phpmailer
+
+composer require vlucas/phpdotenv
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # セキュアな問い合わせフォーム
 
 ## 概要
