@@ -1,5 +1,25 @@
 WebDesign HTML5＋JavaScript（JS）でフロントサイドバリデーション 20250719
 
+# 📁 ファイル構成
+sample129/ver_6/
+├── 📄 index.html          (1.2KB)  - メインHTMLファイル（お問い合わせフォーム）
+├── 📄 script.js           (2.0KB)  - JavaScriptファイル（フロントエンドバリデーション）
+├── 📄 style.css           (734B)   - CSSファイル（スタイリング）
+├── 📄 send.php            (3.4KB)  - PHPファイル（メール送信処理）
+├── 📄 mail_template.html  (1.0KB)  - メールテンプレート
+├── 📄 composer.json       (102B)   - Composer設定ファイル
+├── 📄 composer.lock       (20KB)   - 依存関係のロックファイル
+├── 📁 vendor/                    - Composerでインストールされたライブラリ（PHPMailer等）
+├── 📄 README_1.md         (11KB)  - フロントエンドバリデーションの詳細説明
+├── 📄 README_2.md         (12KB)  - バックエンド処理の詳細説明
+└── 📄 .gitignore          (143B)  - Git除外設定ファイル
+
+## 🎯 プロジェクト概要
+HTML5 + JavaScript + PHPを使用した**お問い合わせフォーム**です。
+- ✅ フロントエンド・バックエンド両方でバリデーション実装
+- ✅ Google reCAPTCHA統合
+- ✅ PHPMailerによるメール送信機能
+
 サイトキー（sitekey）
 6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ
 
