@@ -87,9 +87,11 @@ try {
   $auto->Body = "{$name} 様\n\nお問い合わせありがとうございました。\n\n以下の内容で受け付けました：\n\n{$message}";
   $auto->send();
 
-  // ✅ リダイレクト
-  header('Location: thanks.html');
-  exit;
+  // ✅ 送信完了ページにリダイレクト
+  header('Location: thanks.html');// HTTPレスポンスヘッダーでリダイレクトを指示。
+  exit;//exitで以降のPHP処理を終了します。
+  // header() 関数は、HTTP ヘッダーを送信するための PHP の組み込み関数です。
+  // 'Location: thanks.html' は、そのヘッダーの内容で、「このページを thanks.html に移動してください」という指示をブラウザに与えています。
 } catch (Exception $e) {
   echo '送信エラー: ' . $e->getMessage();
 } 

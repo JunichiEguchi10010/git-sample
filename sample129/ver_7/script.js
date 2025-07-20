@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', () => {
     result.textContent = '送信中...';
 
     grecaptcha.ready(() => {
-      grecaptcha.execute('6LcEXAMPLE_SITE_KEY', { action: 'submit' })
+      grecaptcha.execute('6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ', { action: 'submit' })
         .then(token => {
           document.getElementById('recaptchaToken').value = token;
           form.submit();
