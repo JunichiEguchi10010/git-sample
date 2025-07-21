@@ -1,0 +1,15 @@
+# .envや依存パッケージなど機密・自動生成ファイルを除外
+.env
+vendor/
+composer.lock
+node_modules/
+.DS_Store
+Thumbs.db
+*.log
+.idea/
+.vscode/
+*.bak
+*.swp
+*.swo
+*.tmp
+*.cache 
