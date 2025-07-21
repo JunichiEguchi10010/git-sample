@@ -72,3 +72,42 @@ php -S localhost:8000
 ---
 
 **このREADMEはver_8の内容をもとに、「その場で完了メッセージ表示・インプット欄クリア・フェードイン・自動非表示」バージョンに合わせて作成しています。** 
+
+---
+
+## ver_9 フォルダ構成
+
+```
+<code_block_to_apply_changes_from>
+```
+
+---
+
+### 各ファイルの役割
+
+- **index.html**  
+  お問い合わせフォーム本体。送信後はthanks.htmlに遷移せず、その場で完了メッセージを表示。
+
+- **style.css**  
+  フォームや完了メッセージのデザイン、アニメーション。
+
+- **script.js**  
+  fetchによる非同期送信、バリデーション、完了メッセージの表示・非表示制御。
+
+- **send.php**  
+  サーバー側処理（バリデーション、reCAPTCHA検証、PHPMailerでメール送信、自動返信）。
+
+- **env.example**  
+  .envファイルのサンプル（SMTPやreCAPTCHAの設定例）。
+
+- **.gitignore**  
+  .envやvendor/など、バージョン管理しないファイル・ディレクトリを指定。
+
+- **composer.json / composer.lock**  
+  PHP依存パッケージ管理ファイル。
+
+- **README.md**  
+  セットアップ手順、使い方、特徴、セキュリティ説明。
+
+- **vendor/**  
+  composer installで生成される依存パッケージ（PHPMailer, Dotenvなど）。
