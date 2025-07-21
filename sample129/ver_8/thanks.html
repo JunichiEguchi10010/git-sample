@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>送信完了</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #e0e7ff 0%, #fff 100%);
+      min-height: 100vh;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Segoe UI', 'Hiragino Sans', 'Meiryo', sans-serif;
+    }
+    .thanks-container {
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 4px 24px rgba(60,60,120,0.08);
+      padding: 2.5rem 2rem;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      animation: fadeIn 1s;
+    }
+    h1 {
+      color: #3b4cca;
+      font-size: 1.7rem;
+      margin-bottom: 1rem;
+      letter-spacing: 0.05em;
+    }
+    p {
+      color: #333;
+      font-size: 1.1rem;
+      margin-bottom: 0;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @media (max-width: 600px) {
+      .thanks-container { padding: 1.5rem 0.5rem; }
+      h1 { font-size: 1.2rem; }
+      p { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body>
+  <div class="thanks-container">
+    <h1>お問い合わせありがとうございます</h1>
+    <p>内容を確認後、ご連絡させていただきます。</p>
+  </div>
+</body>
+</html> 

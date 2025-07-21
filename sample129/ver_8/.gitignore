@@ -1,0 +1,14 @@
+# 環境設定ファイル
+.env
+
+# Composer
+/vendor
+
+# OS・エディタのゴミ
+.DS_Store
+Thumbs.db
+*.log
+
+# IDE
+.vscode
+.idea
