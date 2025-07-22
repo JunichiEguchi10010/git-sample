@@ -52,11 +52,15 @@ document.addEventListener('DOMContentLoaded', () => {
     result.textContent = '送信中...';
 
     grecaptcha.ready(() => {
+      console.log('reCAPTCHA is ready 読み込み成功'); // ← ここが出れば読み込み成功！
       grecaptcha.execute('6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ', { action: 'submit' })
         .then(token => {
+          console.log('Token取得OK:', token); // ← ここが出ればトークン取得OK！
+
           document.getElementById('recaptchaToken').value = token;
 
           const formData = new FormData(form);
+          // fetch送信はこの中で実行
           fetch('send.php', {
             method: 'POST',
             body: formData
@@ -73,6 +77,7 @@ document.addEventListener('DOMContentLoaded', () => {
               }, 5000);
             } else {
               const text = await response.text();
+          console.log('PHP応答:', text); // ← PHP側のレスポンスを確認
               result.textContent = text || '送信に失敗しました。';
             }
           })
