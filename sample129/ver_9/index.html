@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>お問い合わせフォーム</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- サイトキーを登録 -->
   <script src="https://www.google.com/recaptcha/api.js?render=6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ"></script>
   <script defer src="script.js"></script>
 </head>
@@ -28,7 +29,8 @@
     <button type="submit">送信</button>
     <div id="result"></div>
   </form>
-
+  
+  <!-- ※fetch による送信処理でレスポンス(response.ok)が正常（ステータス 200 番台）だった場合に「お問い合わせ完了」のメッセージが表示される -->
   <div id="thankYouMessage" class="thankyou-message" style="display:none;">
     <p>✅ お問い合わせを受け付けました。ありがとうございます！</p>
   </div>

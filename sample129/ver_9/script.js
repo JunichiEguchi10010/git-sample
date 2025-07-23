@@ -52,6 +52,7 @@ document.addEventListener('DOMContentLoaded', () => {
     result.textContent = '送信中...';
 
     grecaptcha.ready(() => {
+      // サイトキ―登録
       grecaptcha.execute('6LfKOoQrAAAAAF3803H5UvwNyeYrGleM93KVGVOQ', { action: 'submit' })
         .then(token => {
 
@@ -85,6 +86,24 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 }); 
+
+
+// 🟥 フォーム処理の全体的な流れ
+// 初期化処理
+// ・フォームとメッセージ表示要素を取得
+// ・入力欄（名前・メール・お問い合わせ内容）を監視してバリデーション
+
+// 送信時の処理
+// ・デフォルトの送信をキャンセル（ページ遷移防止）
+// ・全入力欄を確認し、不備があればエラー表示して終了
+//・ 正常なら「送信中...」を表示し、reCAPTCHAのトークン取得
+// ・入力データ＋トークンを fetch で送信（非同期）
+
+// 送信結果の処理
+// ・成功：フォームリセット、完了メッセージ表示（一定時間で非表示）
+//  ※fetch による送信処理でレスポンス(response.ok)が正常（ステータス 200 番台）だった場合に「お問い合わせ完了」のメッセージが表示される
+// ・失敗：エラーメッセージ表示
+// ・例外発生：汎用エラーメッセージ表示
 
 
 //  🟥 疑似コード

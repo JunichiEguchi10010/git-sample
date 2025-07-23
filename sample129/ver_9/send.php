@@ -42,7 +42,7 @@ if ($errors) {
   exit;
 }
 
-// reCAPTCHA サーバー側検証
+// reCAPTCHA サーバー側検証　シークレットー登録
 $secret = $_ENV['RECAPTCHA_SECRET'];
 $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret={$secret}&response={$token}");
 $responseData = json_decode($response);
@@ -104,6 +104,26 @@ try {
   http_response_code(500);
   echo '送信エラー: ' . $e->getMessage();
 }
+
+
+// 🟥 お問い合わせフォーム処理の全体の流れ（PHPサーバー側）
+// ライブラリと設定情報の読み込み
+// ・PHPMailer と dotenv を利用し、SMTP・reCAPTCHA の設定を読み込む
+
+// フォーム入力の取得と検証
+// ・名前・メール・メッセージ・reCAPTCHA トークンを取得
+// ・入力内容が不正ならエラーとして終了（400ステータス）
+
+// reCAPTCHA でユーザーの正当性を検証
+// ・スパムと判断された場合は終了
+
+// メール送信処理
+// ・管理者宛に通知メールを送信
+// ・ユーザーに自動返信メールを送信
+
+// 送信結果のレスポンス
+// ・成功：200ステータスで終了
+// ・エラー：500ステータスでエラーメッセージを返す
 
 
 // 🟥 擬似コード
