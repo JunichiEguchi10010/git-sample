@@ -1,6 +1,6 @@
 WebDesing JavaScriptライブラリ AOS（Animate On Scroll）20250724
 
-公式
+AOS（Animate On Scroll 公式 →ここを参照すること
 https://michalsnik.github.io/aos/
 
 スクロールに応じて要素にアニメーションを加えることができるJavaScriptライブラリです。
