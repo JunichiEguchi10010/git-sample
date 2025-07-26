@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AOS スニペット</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css"
+    />
+  </head>
+  <body>
+    <header>
+      <!-- data-aos="fade-down" ⇒ ヘッダーテキストが 上から下にフェードしながら出現します。 
+     最も早く表示される要素なので、訪問者に最初の印象を与える効果があります。 -->
+      <h1 data-aos="fade-down">ようこそ！</h1>
+      💬
+      <p data-aos="fade-up" data-aos-delay="200">スクロールで〜</p>
+      data-aos="fade-up" ⇒ テキストが
+      下から上にフェードして現れる動きになります。
+
+      <!-- data-aos-delay="200" ⇒ 表示を 200ms遅らせて実行します
+    （先に <h1> の方が表示される）。 -->
+      <p data-aos="fade-up" data-aos-delay="200">
+        スクロールでアニメーションが表示されます
+      </p>
+    </header>
+
+    <main class="card-container">
+      <!-- 💳 <div class="card" data-aos="zoom-in">セクション①</div>
+        data-aos="zoom-in" ⇒ このカードは 拡大しながらふわっと出てくるアニメーションになります。 -->
+      <div class="card" data-aos="zoom-in">
+        セクション①</div>
+      <!-- 💳 <div class="card" data-aos="zoom-in" data-aos-delay="150">セクション②</div>
+        同じく zoom-in ですが、data-aos-delay="150" で 150ms遅れて表示されます。 -->
+      <div class="card" data-aos="zoom-in" data-aos-delay="150">
+        セクション②
+      </div>
+      <!-- 💳 <div class="card" data-aos="zoom-in" data-aos-delay="300">セクション③</div>
+        こちらは さらに300ms遅らせて表示 ⇒ 上から順にタイミングをズラすことで、カードの連続感や流れを演出できます。 -->
+      <div class="card" data-aos="zoom-in" data-aos-delay="300">
+        セクション③
+      </div>
+    </main>
+
+    <!-- AOS公式CDNを使用 -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
+
+<!-- 
+📁 ファイル構成
+project-folder/
+├─ index.html
+├─ style.css
+└─ script.js -->
