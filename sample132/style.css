@@ -1,0 +1,38 @@
+/* リセットと基本スタイル */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #f8f9fa;
+    color: #333;
+    padding: 20px;
+  }
+  
+  /* フェードイン用クラス */
+  .fade-in {
+    opacity: 0; /* GSAPでfadeInさせるため初期は非表示 */
+    transform: translateY(30px);
+  }
+  
+  /* レスポンシブ設定 */
+  header, main, footer {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  /* メディアクエリの例 */
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+    header, main, footer {
+      padding: 15px;
+    }
+  }
+  
