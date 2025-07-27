@@ -10,7 +10,7 @@ gsap.utils.toArray('.box').forEach(box => {
       ease: "power3.out",
       scrollTrigger: {
         trigger: box,
-        start: "top 80%", // 要素の80%がビューポートの上に到達したとき
+        start: "top 50%", // 要素の50%がビューポートの上に到達したとき
         toggleActions: "play none none reverse", // 表示時→再生、他は無効
         markers: false // デバッグ用マーカー（trueで可視化）
       }
@@ -75,7 +75,7 @@ gsap.utils.toArray('.box').forEach(box => {
 //         trigger: box,
 // box 要素が トリガー（表示される対象）になる。
 
-//         start: "top 80%", // 要素の80%がビューポートの上に到達したとき
+//         start: "top 50%", // 要素の50%がビューポートの上に到達したとき
 // スクロール位置の指定：
 // トリガー要素の「top」が、ビューポート（画面）の下から80%の位置に到達したときに発火。
 
