@@ -1,0 +1,22 @@
+.accordion button {
+    width: 100%;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border: none;
+    background: #f0f0f0;
+    text-align: left;
+  }
+  .accordion button:focus {
+    outline: 2px solid #007BFF;
+  }
+  .accordion div {
+    padding: 0.5rem;
+    background: #fff;
+    border: 1px solid #ccc;
+  }
+  @media (max-width: 600px) {
+    .accordion button {
+      font-size: 0.9rem;
+    }
+  }
+  

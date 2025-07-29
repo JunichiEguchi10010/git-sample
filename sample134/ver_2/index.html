@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Accessible Accordion</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <section class="accordion">
+    <h3>
+      <button aria-expanded="false" aria-controls="section1" id="accordion1">セクション1</button>
+    </h3>
+    <div id="section1" role="region" aria-labelledby="accordion1" hidden>
+      <p>セクション1の内容です。</p>
+    </div>
+
+    <h3>
+      <button aria-expanded="false" aria-controls="section2" id="accordion2">セクション2</button>
+    </h3>
+    <div id="section2" role="region" aria-labelledby="accordion2" hidden>
+      <p>セクション2の内容です。</p>
+    </div>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
