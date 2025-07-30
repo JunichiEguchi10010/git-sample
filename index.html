@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIA対応ナビゲーション</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <nav role="navigation" aria-label="メインナビゲーション">
+      @media (min-width: 768px) {
+    <button 
+      class="menu-toggle" 
+      aria-label="ナビゲーションを開く" 
+      aria-expanded="false"
+      aria-controls="nav-list">
+      ☰ メニュー
+    </button>
+    <ul id="nav-list" class="nav-list" hidden>
+      <li><a href="#home">ホーム</a></li>
+      <li><a href="#about">紹介</a></li>
+      <li><a href="#contact">お問い合わせ</a></li>
+    </ul>
+  </nav>
+  
+  <main>
+    <section id="home"><h2>ホーム</h2></section>
+    <section id="about"><h2>紹介</h2></section>
+    <section id="contact"><h2>お問い合わせ</h2></section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>

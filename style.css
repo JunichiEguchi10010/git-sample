@@ -1,0 +1,58 @@
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav {
+    background-color: #333;
+    color: white;
+    padding: 1rem;
+  }
+  
+  .menu-toggle {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+  }
+  
+  .nav-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+  }
+  
+  .nav-list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .nav-list a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  /* レスポンシブ対応 */
+  @media (min-width: 768px) {
+    .menu-toggle {
+      display: none;
+    }
+    .nav-list {
+      display: flex;
+      gap: 2rem;
+    }
+    .nav-list li {
+      margin-bottom: 0;
+    }
+    .nav-list[hidden] {
+      display: flex !important;
+    }
+  }
+
+/* 🟦 レスポンシブル対応のコード説明
+ブラウザの表示幅が768px以上の場合に、PC向けの表示に切り替える
+メニュー開閉ボタン（ハンバーガーアイコン）を非表示にする
+メニューリスト（ナビゲーション項目）を横並びに表示する（flexboxを使用）
+メニュー項目同士の間隔を広げる（gapで指定）
+メニューリストに hidden属性が設定されていても、強制的に表示する（PC表示では常に開いた状態に） */
