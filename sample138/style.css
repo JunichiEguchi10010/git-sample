@@ -1,0 +1,74 @@
+:root {
+    /* カラーセット */
+    --color-bg-light: #ffffff;
+    --color-bg-dark: #1a1a1a;
+    --color-text-light: #222222;
+    --color-text-dark: #f5f5f5;
+    --color-accent: #007acc;
+  
+    /* フォントサイズ */
+    --fs-small: 0.875rem;
+    --fs-base: 1rem;
+    --fs-large: 1.25rem;
+    --fs-title: 1.75rem;
+  
+    /* 余白（スペーシング） */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 2rem;
+    --space-lg: 3rem;
+  }
+  
+  body {
+    margin: 0;
+    font-size: var(--fs-base);
+    background-color: var(--color-bg-light);
+    color: var(--color-text-light);
+    transition: background-color 0.3s, color 0.3s;
+  }
+  
+  .dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-dark);
+  }
+  
+  header {
+    padding: var(--space-md);
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: var(--fs-title);
+    margin-bottom: var(--space-sm);
+  }
+  
+  section {
+    padding: var(--space-md);
+    font-size: var(--fs-large);
+  }
+  
+  button {
+    padding: var(--space-sm) var(--space-md);
+    font-size: var(--fs-small);
+    background-color: var(--color-accent);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: opacity 0.3s;
+  }
+  
+  button:hover {
+    opacity: 0.85;
+  }
+  
+  /* レスポンシブ対応 */
+  @media (max-width: 600px) {
+    h1 {
+      font-size: var(--fs-large);
+    }
+    section {
+      padding: var(--space-sm);
+      font-size: var(--fs-base);
+    }
+  }
+  
