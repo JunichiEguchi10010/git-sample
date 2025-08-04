@@ -1,0 +1,58 @@
+body {
+    font-family: sans-serif;
+    padding: 1rem;
+  }
+  
+  .image-wrapper {
+    width: 100%;
+    max-width: 200px;
+    margin: auto;
+    overflow: hidden;
+    border: 2px solid #ccc;
+    position: relative;
+  }
+  
+  .image-crop {
+    width: 200px;
+    height: 200px;
+    background-image: url('https://picsum.photos/800');
+    background-size: auto;
+    /* coverにすると自動的に縮小される */
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    transition: background-position 0.3s ease;
+    /* 実用的な機能を追加 */
+    cursor: grab;
+    -webkit-user-select: none;
+    user-select: none;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+
+  .image-crop:active {
+    cursor: grabbing;
+  }
+
+  .image-crop.dragging {
+    transition: none;
+  }
+  
+  .controls {
+    margin-top: 1rem;
+    text-align: center;
+  }
+  
+  .controls button {
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* レスポンシブ対応 */
+  @media screen and (max-width: 500px) {
+    .image-crop {
+      width: 150px;
+      height: 150px;
+    }
+  }
+  

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>画像の切り出しデモ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>画像の切り出しデモ</h1>
+  <p>ボタンクリックまたはドラッグで画像の切り出し位置を変更できます</p>
+  <div class="image-wrapper">
+    <div class="image-crop" id="crop-area"></div>
+  </div>
+  <div class="controls">
+    <button onclick="setCrop(0, 0)">左上</button>
+    <button onclick="setCrop(300, 300)">中央</button>
+    <button onclick="setCrop(600, 600)">右下</button>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
