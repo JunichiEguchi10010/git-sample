@@ -1,0 +1,139 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 2rem;
+  background-color: #f9f9f9;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  margin-bottom: 0.5rem;
+}
+
+section {
+  margin-bottom: 3rem;
+}
+
+button {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background-color: #3498db;
+  color: white;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* ✅ ホバー時のボタン拡大・色変更 */
+.hover-button:hover {
+  background-color: #2980b9;
+  transform: scale(1.05);
+}
+
+/* ✅ フェードイン */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 2s forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* ✅ スライドイン */
+.slide-in {
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: slideIn 1.5s forwards;
+}
+
+@keyframes slideIn {
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* ✅ アコーディオン */
+.accordion {
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.5s ease-out, padding 0.3s ease;
+  background-color: #eee;
+  padding: 0 1rem;
+}
+
+.accordion.open {
+  max-height: 200px;
+  padding: 1rem;
+}
+
+/* ✅ スケルトンローディング */
+.skeleton {
+  width: 100%;
+  max-width: 300px;
+  height: 1.5rem;
+  background: linear-gradient(90deg, #eee 25%, #ddd 50%, #eee 75%);
+  background-size: 200% 100%;
+  animation: skeleton 1.5s infinite;
+  border-radius: 4px;
+}
+
+@keyframes skeleton {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ✅ スピナー */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: rotate 1s linear infinite;
+}
+
+@keyframes rotate {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* ✅ ポップアップ */
+.popup {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  background-color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-top: 1rem;
+  max-width: 300px;
+  display: none;
+}
+
+.popup.show {
+  display: block;
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ✅ レスポンシブ対応 */
+@media (max-width: 600px) {
+  body {
+    padding: 1rem;
+  }
+
+  button {
+    width: 100%;
+  }
+}
