@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI Animation Snippets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>✅ UIの基本動作・フィードバック系</h1>
+
+    <!-- ホバー時のボタン拡大・色変更 -->
+    <section>
+      <h2>ホバーボタン</h2>
+      <p>ホバー時にボタンが少し拡大し、色が変化します。</p>
+      <button class="hover-button">ホバーしてみて</button>
+    </section>
+
+    <!-- フェードイン -->
+    <section class="fade-in-section">
+      <h2>フェードイン</h2>
+      <p>要素がゆっくりフェードインします。</p>
+      <div class="fade-in">フェードインテキスト</div>
+    </section>
+
+    <!-- スライドイン -->
+    <section>
+      <h2>スライドイン</h2>
+      <p>左からスライドインして表示されます。</p>
+      <div class="slide-in">スライドインテキスト</div>
+    </section>
+
+    <!-- アコーディオン -->
+    <section>
+      <h2>アコーディオン</h2>
+      <p>クリックで開閉できるアコーディオンメニューです。</p>
+      <button id="accordionToggle">切り替え</button>
+      <div class="accordion" id="accordionContent">
+        <p>これはアコーディオンの内容です。</p>
+      </div>
+    </section>
+
+    <!-- スケルトンローディング -->
+    <section>
+      <h2>スケルトンローディング</h2>
+      <p>読み込み中を示すスケルトンUI。</p>
+      <div class="skeleton"></div>
+    </section>
+
+    <!-- スピナー -->
+    <section>
+      <h2>スピナー</h2>
+      <p>読み込み中を示す回転アニメーション。</p>
+      <div class="spinner"></div>
+    </section>
+
+    <!-- ポップアップ -->
+    <section>
+      <h2>ポップアップ</h2>
+      <p>ボタンクリックでポップアップ表示（スケール＋フェード）。</p>
+      <button id="popupToggle">表示</button>
+      <div class="popup" id="popup">ポップアップ！</div>
+    </section>
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
