@@ -1,0 +1,97 @@
+/* 共通スタイル */
+body {
+    font-family: sans-serif;
+    line-height: 1.6;
+    padding: 20px;
+    max-width: 800px;
+    margin: auto;
+  }
+  section {
+    margin-bottom: 50px;
+  }
+  
+  /* --- スクロールフェードイン --- */
+  .fade-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-on-scroll.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* --- 背景グラデーションのアニメーション --- */
+  .animated-bg {
+    height: 100px;
+    background: linear-gradient(270deg, #e66465, #9198e5);
+    background-size: 400% 400%;
+    animation: gradientMove 6s ease infinite;
+  }
+  @keyframes gradientMove {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+  /* --- SVG線アニメーション --- */
+  svg line {
+    animation: draw 2s forwards;
+  }
+  @keyframes draw {
+    to {
+      stroke-dashoffset: 0;
+    }
+  }
+  
+  /* --- カウントアップ --- */
+  .counter {
+    font-size: 2rem;
+    font-weight: bold;
+  }
+  
+  /* --- タイピング風テキスト --- */
+  .typing span {
+    opacity: 0;
+    animation: typing 0.5s forwards;
+    display: inline-block;
+  }
+  .typing span:nth-child(1) { animation-delay: 0s; }
+  .typing span:nth-child(2) { animation-delay: 0.1s; }
+  .typing span:nth-child(3) { animation-delay: 0.2s; }
+  .typing span:nth-child(4) { animation-delay: 0.3s; }
+  .typing span:nth-child(5) { animation-delay: 0.4s; }
+  .typing span:nth-child(6) { animation-delay: 0.5s; }
+  .typing span:nth-child(7) { animation-delay: 0.6s; }
+  
+  @keyframes typing {
+    to {
+      opacity: 1;
+    }
+  }
+  
+  /* --- シャドウ変化 --- */
+  .floating-box {
+    padding: 20px;
+    border: 1px solid #ddd;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+    display: inline-block;
+  }
+  .floating-box:hover {
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* --- レスポンシブ --- */
+  @media (max-width: 600px) {
+    body {
+      padding: 10px;
+    }
+  }
+  
