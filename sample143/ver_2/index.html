@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>UI Animation Snippets</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main>
+    <h1>✅ UIの基本動作・フィードバック系</h1>
+
+    <!-- 以下省略（既に実装済み） -->
+
+    <h1>✅ 視線誘導・演出系</h1>
+
+    <!-- スクロール連動のフェードイン -->
+    <section class="scroll-fade-in">
+      <h2>スクロールフェードイン</h2>
+      <p>スクロールで要素がフェードインします。</p>
+      <div class="fade-on-scroll">スクロールで出現</div>
+    </section>
+
+    <!-- 背景グラデーションのアニメーション -->
+    <section class="animated-bg">
+      <h2>背景グラデーション</h2>
+      <p>アニメーションする背景グラデーション。</p>
+    </section>
+
+    <!-- ボーダーや線のアニメーション -->
+    <section>
+      <h2>線のアニメーション</h2>
+      <p>SVGの線が描かれるようにアニメーションします。</p>
+      <svg width="200" height="100">
+        <line x1="0" y1="50" x2="200" y2="50" stroke="#3498db" stroke-width="4" stroke-dasharray="200" stroke-dashoffset="200">
+        </line>
+      </svg>
+    </section>
+
+    <!-- カウントアップアニメーション -->
+    <section>
+      <h2>カウントアップ</h2>
+      <p>数値が0から増加します。</p>
+      <div class="counter" data-target="1500">0</div>
+    </section>
+
+    <!-- タイピング風テキスト -->
+    <section>
+      <h2>タイピングテキスト</h2>
+      <p>文字が一文字ずつ表示されるアニメーション。</p>
+      <div class="typing">
+        <span>T</span><span>y</span><span>p</span><span>i</span><span>n</span><span>g</span><span>!</span>
+      </div>
+    </section>
+
+    <!-- シャドウ変化 -->
+    <section>
+      <h2>浮き上がるボックス</h2>
+      <p>ホバーでシャドウが変化して浮き上がる効果。</p>
+      <div class="floating-box">ホバーして浮き上がる</div>
+    </section>
+
+  </main>
+  <script src="script.js"></script>
+</body>
+</html>
