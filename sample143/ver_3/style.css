@@ -1,0 +1,91 @@
+/* ローディング画面 */
+#loader {
+    position: fixed;
+    inset: 0;
+    background: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    transition: opacity 1s ease, visibility 1s ease;
+  }
+  #loader.loaded {
+    opacity: 0;
+    visibility: hidden;
+  }
+  .spinner {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #ccc;
+    border-top-color: #3498db;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    to { transform: rotate(360deg); }
+  }
+  
+  /* ヒーローセクション */
+  .hero {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(to right, #6dd5fa, #2980b9);
+    color: white;
+    text-align: center;
+  }
+  .hero-title {
+    font-size: 3rem;
+    margin-bottom: 0.5em;
+    animation: fadeInUp 1s ease forwards;
+  }
+  .hero-subtitle {
+    font-size: 1.5rem;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp 1s 0.5s ease forwards;
+  }
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* 波の仕切り */
+  .wave-separator {
+    overflow: hidden;
+    line-height: 0;
+  }
+  .wave-separator svg {
+    display: block;
+    width: 100%;
+    height: 80px;
+  }
+  
+  /* セクション */
+  .content-section {
+    padding: 60px 20px;
+    background: #f3f4f6;
+    text-align: center;
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  .content-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  
+  /* レスポンシブ */
+  @media (max-width: 600px) {
+    .hero-title {
+      font-size: 2rem;
+    }
+    .hero-subtitle {
+      font-size: 1.2rem;
+    }
+  }
+  
