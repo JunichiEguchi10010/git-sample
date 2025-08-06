@@ -1,0 +1,191 @@
+  /* Reset & Base */
+  /* 全要素のリセットとベーススタイル */
+  * {
+    box-sizing: border-box;  /* ボックスモデルをborder-boxに統一 */
+    margin: 0;               /* デフォルトマージンを削除 */
+    padding: 0;              /* デフォルトパディングを削除 */
+  }
+  body {
+    font-family: system-ui, sans-serif;  /* システムフォントを使用 */
+    line-height: 1.5;                    /* 読みやすい行間 */
+  }
+  
+  /* Navbar */
+  /* 固定ナビゲーションバーのスタイル */
+  .navbar {
+    position: fixed;        /* 画面に固定 */
+    top: 0;                /* 上端に配置 */
+    left: 0;               /* 左端に配置 */
+    width: 100%;           /* 全幅 */
+    background: #ffffff;   /* 白背景 */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* 影効果 */
+    z-index: 999;          /* 最前面に表示 */
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); /* スムーズなアニメーション */
+    transform: translateY(0); /* 初期位置 */
+  }
+  
+  /* スクロール時に隠れる状態 */
+  .navbar.hidden {
+    transform: translateY(-100%); /* 上に隠す */
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05); /* 影を薄く */
+  }
+  
+  /* モバイルではスクロール制御を無効化 */
+  @media (max-width: 768px) {
+    .navbar {
+      transform: translateY(0) !important; /* モバイルでは常に表示 */
+    }
+  }
+  
+  /* ナビゲーションコンテナ */
+  .nav-container {
+    display: flex;                    /* フレックスボックス */
+    justify-content: space-between;   /* 左右に分散配置 */
+    align-items: center;              /* 縦方向中央揃え */
+    max-width: 1200px;               /* 最大幅制限 */
+    margin: auto;                    /* 中央配置 */
+    padding: 1rem;                   /* 内側余白 */
+  }
+  /* ロゴ */
+  .logo {
+    font-weight: bold;      /* 太字 */
+    font-size: 1.5rem;     /* フォントサイズ */
+  }
+  
+  /* ナビゲーションメニュー */
+  .nav-menu {
+    display: flex;         /* フレックスボックス */
+    gap: 1.5rem;          /* 要素間の間隔 */
+  }
+  
+  /* メニューリスト */
+  .nav-menu ul {
+    display: flex;         /* フレックスボックス */
+    list-style: none;     /* リストマーカーを削除 */
+    gap: 1.5rem;          /* 要素間の間隔 */
+  }
+  
+  /* メニューリンク */
+  .nav-menu li a {
+    text-decoration: none; /* 下線を削除 */
+    color: #333;          /* 文字色 */
+    font-weight: 500;     /* フォントの太さ */
+    transition: color 0.3s ease; /* ホバー時の色変化アニメーション */
+  }
+  
+  /* メニューリンクホバー効果 */
+  .nav-menu li a:hover {
+    color: #007bff;       /* ホバー時の色 */
+  }
+  
+  /* Hamburger */
+  /* 
+  ×マーク成形の仕組み：
+  1. 3本の線（span要素）を絶対配置で重ねる
+  2. クリック時に上下の線を45度回転させて中央で交差
+  3. 中央の線は透明化して消す
+  4. margin-top: -1.5pxで線の中心を正確に中央に配置
+  */
+  .hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 24px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    position: relative;
+  }
+  .hamburger span {
+    display: block;
+    height: 3px;           /* 線の太さ */
+    width: 100%;           /* 線の長さ */
+    background: #333;      /* 線の色 */
+    border-radius: 2px;    /* 角丸 */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); /* アニメーション */
+    position: absolute;    /* 絶対配置 */
+    left: 0;              /* 左端から開始 */
+  }
+  .hamburger span:nth-child(1) {
+    top: 0;               /* 1番目の線：上端 */
+  }
+  .hamburger span:nth-child(2) {
+    top: 50%;             /* 2番目の線：中央 */
+    transform: translateY(-50%);
+  }
+  .hamburger span:nth-child(3) {
+    bottom: 0;            /* 3番目の線：下端 */
+  }
+  /* ×マークへの変形（クリック時） */
+  .hamburger.open span:nth-child(1) {
+    transform: rotate(45deg);        /* 45度回転（左上→右下） */
+    top: 50%;                       /* 中央に移動 */
+    left: 0;
+    margin-top: -1.5px;             /* 線の中心を中央に合わせる */
+  }
+  .hamburger.open span:nth-child(2) {
+    opacity: 0;                     /* 中央の線を透明化 */
+    transform: translateY(-50%) scale(0); /* 縮小して消す */
+  }
+  .hamburger.open span:nth-child(3) {
+    transform: rotate(-45deg);       /* -45度回転（右上→左下） */
+    top: 50%;                       /* 中央に移動 */
+    left: 0;
+    margin-top: -1.5px;             /* 線の中心を中央に合わせる */
+  }
+  
+  /* Responsive */
+  /* モバイル対応（768px以下） */
+  @media (max-width: 768px) {
+    /* ハンバーガーメニューを表示 */
+    .hamburger {
+      display: flex;
+    }
+    
+    /* ナビゲーションメニューを縦並びに変更 */
+    .nav-menu {
+      display: none;                    /* 初期状態は非表示 */
+      position: absolute;               /* 絶対配置 */
+      top: 60px;                       /* ナビバーの下に配置 */
+      left: 0;                         /* 左端から */
+      width: 100%;                     /* 全幅 */
+      background: white;               /* 白背景 */
+      flex-direction: column;          /* 縦並び */
+      align-items: center;             /* 中央揃え */
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* 影効果 */
+      z-index: 998;                   /* ナビバーより下のレイヤー */
+    }
+    
+    /* メニューが開いている状態 */
+    .nav-menu.open {
+      display: flex;
+    }
+    
+    /* メニューリストを縦並びに */
+    .nav-menu ul {
+      flex-direction: column;          /* 縦並び */
+      width: 100%;                    /* 全幅 */
+      padding: 1rem 0;                /* 上下の余白 */
+    }
+    
+    /* メニュー項目のスタイル */
+    .nav-menu li {
+      width: 100%;                    /* 全幅 */
+      text-align: center;             /* 中央揃え */
+      padding: 0.5rem 0;              /* 上下の余白 */
+    }
+    
+    /* メニューリンクのスタイル */
+    .nav-menu li a {
+      display: block;                 /* ブロック要素 */
+      padding: 0.75rem 1rem;          /* 内側余白 */
+      border-bottom: 1px solid #f0f0f0; /* 下線 */
+    }
+    
+    /* 最後のメニュー項目の下線を削除 */
+    .nav-menu li:last-child a {
+      border-bottom: none;
+    }
+  }
+  
