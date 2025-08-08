@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PCホバー / スマホタップ対応メニュー</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1 class="logo">MySite</h1>
+
+      <!-- ハンバーガー -->
+      <button class="menu-toggle" aria-label="メニュー開閉">
+        ☰
+      </button>
+
+      <!-- ナビゲーション -->
+      <nav class="site-nav">
+        <ul class="menu">
+          <li><a href="#">ホーム</a></li>
+          <li class="has-submenu">
+            <a href="#">サービス</a>
+            <ul class="submenu">
+              <li><a href="#">Web制作</a></li>
+              <li><a href="#">デザイン</a></li>
+              <li><a href="#">SEO対策</a></li>
+            </ul>
+          </li>
+          <li class="has-submenu">
+            <a href="#">会社情報</a>
+            <ul class="submenu">
+              <li><a href="#">概要</a></li>
+              <li><a href="#">沿革</a></li>
+              <li><a href="#">アクセス</a></li>
+            </ul>
+          </li>
+          <li><a href="#">お問い合わせ</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,146 @@
+/* 基本リセット */
+/* 全要素のデフォルトスタイルをリセット */
+* {
+    margin: 0;               /* デフォルトマージンを削除 */
+    padding: 0;              /* デフォルトパディングを削除 */
+    box-sizing: border-box;   /* ボックスモデルをborder-boxに統一 */
+  }
+  
+  /* ページ全体の基本スタイル */
+  body {
+    font-family: sans-serif;  /* シンプルなフォント */
+  }
+  
+  /* ヘッダーコンテナ */
+  .container {
+    display: flex;                    /* フレックスボックス */
+    justify-content: space-between;   /* 左右に分散配置 */
+    align-items: center;              /* 縦方向中央揃え */
+    padding: 10px 20px;              /* 内側余白 */
+  }
+  
+  /* ロゴ */
+  .logo {
+    font-size: 1.5rem;              /* ロゴのフォントサイズ */
+  }
+  
+  /* ハンバーガーメニュー */
+  /* モバイル用のメニュー開閉ボタン */
+  .menu-toggle {
+    display: none;              /* デフォルトでは非表示（PCでは使わない） */
+    font-size: 1.5rem;         /* ボタンのフォントサイズ */
+    background: none;          /* 背景を削除 */
+    border: none;              /* ボーダーを削除 */
+    cursor: pointer;           /* ポインターカーソル */
+  }
+  
+  /* メニュー共通 */
+  /* ナビゲーションメニューの基本スタイル */
+  .site-nav .menu {
+    list-style: none;         /* リストマーカーを削除 */
+    display: flex;           /* フレックスボックス（横並び） */
+  }
+  
+  /* メニュー項目の基本スタイル */
+  .site-nav .menu li {
+    position: relative;      /* サブメニューの絶対配置の基準 */
+  }
+  
+  /* トップレベルメニュー項目の間隔 */
+  .site-nav .menu > li {
+    margin-left: 20px;      /* 左側の余白 */
+  }
+  
+  /* メニューリンクの基本スタイル */
+  .site-nav a {
+    display: block;         /* ブロック要素 */
+    padding: 10px;         /* 内側余白 */
+    text-decoration: none;  /* 下線を削除 */
+    color: #333;           /* 文字色 */
+  }
+  
+  /* メニューリンクのホバー効果 */
+  .site-nav a:hover {
+    background-color: #eee;  /* ホバー時の背景色 */
+  }
+  
+  /* サブメニュー */
+  /* 
+  サブメニューの仕組み：
+  1. 親メニュー項目の下に絶対配置で表示
+  2. デフォルトでは非表示（display: none）
+  3. PCではホバーで表示、モバイルではクリックで表示
+  */
+  .submenu {
+    position: absolute;      /* 絶対配置 */
+    top: 100%;             /* 親要素の下に配置 */
+    left: 0;               /* 左端に配置 */
+    min-width: 160px;      /* 最小幅 */
+    background: white;     /* 白背景 */
+    border: 1px solid #ddd; /* ボーダー */
+    display: none;         /* 初期状態は非表示 */
+    flex-direction: column; /* 縦並び */
+    z-index: 100;          /* 重なり順 */
+  }
+  
+  /* サブメニュー項目の境界線 */
+  .submenu li {
+    border-bottom: 1px solid #eee;  /* 下線 */
+  }
+  
+  /* 最後のサブメニュー項目の下線を削除 */
+  .submenu li:last-child {
+    border-bottom: none;
+  }
+  
+  /* ===== PCホバー対応 ===== */
+  /* デスクトップ（769px以上）でのサブメニュー表示 */
+  @media (min-width: 769px) {
+    /* サブメニューを持つ項目にホバーした時の表示 */
+    .has-submenu:hover > .submenu {
+      display: flex;        /* ホバー時にサブメニューを表示 */
+    }
+  }
+  
+  /* ===== スマホ表示 ===== */
+  /* モバイル対応（768px以下） */
+  @media (max-width: 768px) {
+    /* ハンバーガーメニューを表示 */
+    .menu-toggle {
+      display: block;        /* モバイルではハンバーガーメニューを表示 */
+    }
+  
+    /* ナビゲーションメニュー */
+    .site-nav {
+      display: none;         /* 初期状態は非表示 */
+      width: 100%;          /* 全幅 */
+    }
+  
+    /* メニューが開いている状態 */
+    .site-nav.active {
+      display: block;        /* アクティブ時に表示 */
+    }
+  
+    /* メニューを縦並びに変更 */
+    .site-nav .menu {
+      flex-direction: column; /* 縦並び */
+    }
+  
+    /* メニュー項目のスタイル調整 */
+    .site-nav .menu > li {
+      margin-left: 0;        /* 左マージンを削除 */
+      border-bottom: 1px solid #ddd; /* 下線を追加 */
+    }
+  
+    /* サブメニュー（スマホでは親クリックで展開） */
+    .submenu {
+      position: static;      /* 静的配置（通常のフロー） */
+      border: none;         /* ボーダーを削除 */
+    }
+  
+    /* サブメニューが開いている状態 */
+    .submenu.active {
+      display: flex;         /* アクティブ時に表示 */
+    }
+  }
+  
