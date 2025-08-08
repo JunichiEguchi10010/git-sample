@@ -1,100 +1,140 @@
 /* リセット＆基本設定 */
+/* 全要素のデフォルトスタイルをリセット */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0;               /* デフォルトマージンを削除 */
+    padding: 0;              /* デフォルトパディングを削除 */
+    box-sizing: border-box;   /* ボックスモデルをborder-boxに統一 */
   }
-  body {
-    font-family: 'Segoe UI', sans-serif;
-    line-height: 1.6;
-    background: #f9f9f9;
-    color: #333;
-    padding: 2rem;
+
+/* ページ全体の基本スタイル */
+body {
+    font-family: 'Segoe UI', sans-serif;  /* モダンなフォント */
+    line-height: 1.6;                    /* 読みやすい行間 */
+    background: #f9f9f9;                /* 薄いグレー背景 */
+    color: #333;                         /* ダークグレーの文字色 */
+    padding: 2rem;                       /* ページ全体の余白 */
   }
-  .section {
-    margin: 2rem 0;
-    text-align: center;
+
+/* セクションの基本レイアウト */
+.section {
+    margin: 2rem 0;         /* 上下の余白 */
+    text-align: center;      /* 中央揃え */
   }
   
   /* ✅ トグルスイッチ */
+  /* 
+  トグルスイッチの仕組み：
+  1. チェックボックスを非表示にして、カスタムデザインでスイッチを作成
+  2. スライダー部分と丸いボタン部分を組み合わせて実装
+  3. チェック状態に応じて色と位置が変化
+  */
   .switch {
-    position: relative;
-    display: inline-block;
-    width: 60px;
-    height: 34px;
+    position: relative;        /* 子要素の絶対配置の基準 */
+    display: inline-block;    /* インライン要素として表示 */
+    width: 60px;             /* スイッチの幅 */
+    height: 34px;            /* スイッチの高さ */
   }
+  
+  /* チェックボックスを非表示 */
   .switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
+    opacity: 0;              /* 完全に透明化 */
+    width: 0;                /* 幅を0に */
+    height: 0;               /* 高さを0に */
   }
+  
+  /* スライダーの背景部分 */
   .slider {
-    position: absolute;
-    top: 0; left: 0;
-    right: 0; bottom: 0;
-    background-color: #ccc;
-    transition: 0.4s;
-    border-radius: 34px;
+    position: absolute;       /* 絶対配置 */
+    top: 0; left: 0;        /* 左上に配置 */
+    right: 0; bottom: 0;    /* 親要素全体を覆う */
+    background-color: #ccc;  /* グレー背景（OFF状態） */
+    transition: 0.4s;       /* スムーズなアニメーション */
+    border-radius: 34px;     /* 丸角（高さの半分） */
   }
+  
+  /* スライダーの丸いボタン部分 */
   .slider::before {
-    position: absolute;
-    content: "";
-    height: 26px; width: 26px;
-    left: 4px; bottom: 4px;
-    background-color: white;
-    transition: 0.4s;
-    border-radius: 50%;
+    position: absolute;      /* 絶対配置 */
+    content: "";            /* 疑似要素の内容 */
+    height: 26px; width: 26px;  /* ボタンのサイズ */
+    left: 4px; bottom: 4px;     /* 初期位置（左端） */
+    background-color: white;      /* 白いボタン */
+    transition: 0.4s;           /* スムーズな移動アニメーション */
+    border-radius: 50%;          /* 完全な円形 */
   }
+  
+  /* チェック状態（ON）のスライダー背景 */
   .switch input:checked + .slider {
-    background-color: #4CAF50;
+    background-color: #4CAF50;  /* 緑色背景（ON状態） */
   }
+  
+  /* チェック状態（ON）のボタン位置 */
   .switch input:checked + .slider::before {
-    transform: translateX(26px);
+    transform: translateX(26px);  /* 右端に移動（26px = 60px - 26px - 4px*2） */
   }
   
   /* ✅ トースト通知 */
+  /* 
+  トースト通知の仕組み：
+  1. 初期状態では非表示（visibility: hidden, opacity: 0）
+  2. .showクラスが付与されると表示される
+  3. 下から上にスライドインするアニメーション
+  */
   #toast {
-    visibility: hidden;
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    border-radius: 4px;
-    padding: 1rem;
-    position: fixed;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%) translateY(50px);
-    opacity: 0;
-    transition: opacity 0.5s, transform 0.5s;
-    z-index: 9999;
+    visibility: hidden;                    /* 初期状態は非表示 */
+    background-color: #333;              /* ダークグレー背景 */
+    color: #fff;                        /* 白文字 */
+    text-align: center;                  /* 中央揃え */
+    border-radius: 4px;                 /* 角丸 */
+    padding: 1rem;                      /* 内側余白 */
+    position: fixed;                     /* 画面に固定 */
+    bottom: 30px;                       /* 下端から30px */
+    left: 50%;                          /* 左端50%位置 */
+    transform: translateX(-50%) translateY(50px); /* 中央配置 + 下に50px移動 */
+    opacity: 0;                         /* 完全に透明 */
+    transition: opacity 0.5s, transform 0.5s; /* フェードイン + スライドアニメーション */
+    z-index: 9999;                      /* 最前面に表示 */
   }
+  
+  /* トースト表示状態 */
   #toast.show {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
+    visibility: visible;                  /* 表示 */
+    opacity: 1;                         /* 完全に不透明 */
+    transform: translateX(-50%) translateY(0); /* 中央配置 + 元の位置 */
   }
   
   /* ✅ SVG チェックマークアニメーション */
+  /* 
+  SVGチェックマーク描画アニメーションの仕組み：
+  1. stroke-dasharrayで線の長さを設定
+  2. stroke-dashoffsetで線を隠す
+  3. アニメーションでdashoffsetを0にして線を描画
+  */
   #svgCheck path {
-    stroke-dasharray: 50;
-    stroke-dashoffset: 50;
-    animation: drawCheck 1s ease forwards;
+    stroke-dasharray: 50;    /* 線の長さを50pxに設定 */
+    stroke-dashoffset: 50;   /* 初期状態では線を完全に隠す */
+    animation: drawCheck 1s ease forwards; /* 1秒かけて描画アニメーション */
   }
+  
+  /* チェックマーク描画アニメーション */
   @keyframes drawCheck {
     to {
-      stroke-dashoffset: 0;
+      stroke-dashoffset: 0;  /* 線を完全に表示 */
     }
   }
   
   /* ✅ レスポンシブ対応 */
+  /* モバイル対応（600px以下） */
   @media (max-width: 600px) {
+    /* トグルスイッチを小さく */
     .switch {
-      transform: scale(0.8);
+      transform: scale(0.8);  /* 20%縮小 */
     }
   
+    /* トースト通知をモバイル向けに調整 */
     #toast {
-      width: 80%;
-      font-size: 14px;
+      width: 80%;              /* 画面幅の80% */
+      font-size: 14px;         /* フォントサイズを小さく */
     }
   }
   
