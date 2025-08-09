@@ -1,0 +1,163 @@
+/* style.css
+   実務向けにCSS変数・レスポンシブ対応・アクセシブルなフォーカスを提供します
+*/
+
+/* 基本変数 */
+:root{
+    --max-width: 980px;
+    --gap: 1rem;
+    --bg: #ffffff;
+    --muted: #6b7280;
+    --accent: #3A99C9; /* ユーザー指定のボタン色 */
+    --surface: #f8fafc;
+    --radius: 10px;
+    --transition: 300ms cubic-bezier(.2,.9,.3,1);
+    --text: #111827;
+    --shadow: 0 6px 18px rgba(16,24,40,0.06);
+    --focus-ring: 3px;
+  }
+  
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    font-family: system-ui, -apple-system, "Helvetica Neue", "Noto Sans JP", "Segoe UI", "Meiryo", sans-serif;
+    margin:0;
+    color:var(--text);
+    background:linear-gradient(180deg,var(--surface),#fff);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    line-height:1.5;
+    padding:clamp(16px,3vw,32px);
+  }
+  
+  /* ページレイアウト */
+  .page{
+    max-width:var(--max-width);
+    margin:0 auto;
+    display:block;
+    gap:var(--gap);
+  }
+  .page__title{
+    font-size:clamp(1.25rem,2.4vw,1.75rem);
+    margin:0 0 1rem 0;
+  }
+  .demo{
+    background:var(--bg);
+    border-radius:var(--radius);
+    padding:1rem;
+    margin-bottom:1rem;
+    box-shadow:var(--shadow);
+    border:1px solid rgba(15,23,42,0.03);
+  }
+  .demo__title{
+    font-size:1rem;
+    margin:0 0 0.5rem 0;
+    color:var(--muted);
+  }
+  
+  /* アコーディオン */
+  .accordion{
+    display:block;
+    width:100%;
+  }
+  .accordion__item + .accordion__item{
+    margin-top:0.5rem;
+  }
+  .accordion__header{
+    margin:0;
+  }
+  .accordion__button{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0.9rem 1rem;
+    font-size:1rem;
+    text-align:left;
+    border:1px solid rgba(15,23,42,0.06);
+    background:transparent;
+    border-radius:8px;
+    cursor:pointer;
+    transition:box-shadow var(--transition), transform var(--transition);
+    gap:0.5rem;
+  }
+  .accordion__button:focus{
+    outline: none;
+    box-shadow: 0 0 0 var(--focus-ring) rgba(58,153,201,0.15);
+    transform:translateY(-1px);
+  }
+  .accordion__button[aria-expanded="true"]{
+    background:linear-gradient(90deg, rgba(58,153,201,0.06), rgba(58,153,201,0.02));
+    border-color: rgba(58,153,201,0.18);
+  }
+  
+  /* アイコン（簡易矢印）*/
+  .accordion__icon{
+    width:1.1rem;
+    height:1.1rem;
+    display:inline-block;
+    transform-origin:center;
+    transition:transform var(--transition);
+    position:relative;
+  }
+  .accordion__icon::before{
+    content:"";
+    position:absolute;
+    left:50%;
+    top:40%;
+    transform:translate(-50%,-50%) rotate(45deg);
+    width:10px;
+    height:10px;
+    border-right:2px solid var(--muted);
+    border-bottom:2px solid var(--muted);
+    box-sizing:border-box;
+  }
+  .accordion__button[aria-expanded="true"] .accordion__icon::before{
+    transform:translate(-50%,-50%) rotate(-135deg);
+    border-color:var(--accent);
+  }
+  
+  /* パネル */
+  .accordion__panel{
+    overflow:hidden;
+    transition:max-height var(--transition), opacity var(--transition);
+    will-change: max-height;
+    border-radius:8px;
+    margin-top:0.45rem;
+    border:1px solid rgba(15,23,42,0.03);
+    background: #ffffff;
+  }
+  .accordion__panel[hidden]{
+    display:block; /* JSで制御するのでvisibilityはhiddenにしない */
+    max-height:0;
+    opacity:0;
+    padding:0;
+    border-width:0;
+  }
+  .accordion__panel[aria-hidden="false"]{
+    opacity:1;
+    border-width:1px;
+  }
+  .accordion__panel-inner{
+    padding:1rem;
+    font-size:0.95rem;
+    color:var(--muted);
+  }
+  
+  /* レスポンシブ微調整 */
+  @media (max-width:640px){
+    body{ padding:16px; }
+    .accordion__button{ padding:1rem; font-size:1rem; }
+    .accordion__panel-inner{ padding:0.9rem; font-size:0.98rem; }
+  }
+  
+  /* reduced motion */
+  @media (prefers-reduced-motion: reduce){
+    :root{ --transition: 1ms; }
+    .accordion__panel{ transition: none !important; }
+    .accordion__icon{ transition: none !important; }
+  }
+  
+  /* 小さなユーティリティ */
+  .page__footer{ margin-top:1rem; color:var(--muted); font-size:0.9rem; }
+  

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Accessible Accordion — サンプル</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <h1 class="page__title">アコーディオンサンプル</h1>
+
+    <section class="demo">
+      <h2 class="demo__title">マルチオープン（複数開ける）</h2>
+      <div class="accordion" id="faq-multi" data-multi="true">
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button class="accordion__button" aria-expanded="false" aria-controls="panel-m1" id="header-m1">
+              マルチ項目1 — 開閉できます
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div id="panel-m1" class="accordion__panel" role="region" aria-labelledby="header-m1" hidden>
+            <div class="accordion__panel-inner">
+              <p>マルチ開閉のパネル1の内容。複数開けます。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button class="accordion__button" aria-expanded="false" aria-controls="panel-m2" id="header-m2">
+              マルチ項目2 — さらに説明
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div id="panel-m2" class="accordion__panel" role="region" aria-labelledby="header-m2" hidden>
+            <div class="accordion__panel-inner">
+              <p>マルチ開閉のパネル2の内容。FAQなどで便利です。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="demo">
+      <h2 class="demo__title">シングルオープン（他を閉じる）</h2>
+      <div class="accordion" id="faq-single" data-multi="false">
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button class="accordion__button" aria-expanded="false" aria-controls="panel-s1" id="header-s1">
+              シングル項目1
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div id="panel-s1" class="accordion__panel" role="region" aria-labelledby="header-s1" hidden>
+            <div class="accordion__panel-inner">
+              <p>シングルオープンのパネル1。開くと他は閉じます。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button class="accordion__button" aria-expanded="false" aria-controls="panel-s2" id="header-s2">
+              シングル項目2
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div id="panel-s2" class="accordion__panel" role="region" aria-labelledby="header-s2" hidden>
+            <div class="accordion__panel-inner">
+              <p>シングルオープンのパネル2。使い方の一例です。</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="accordion__item">
+          <h3 class="accordion__header">
+            <button class="accordion__button" aria-expanded="false" aria-controls="panel-s3" id="header-s3">
+              シングル項目3
+              <span class="accordion__icon" aria-hidden="true"></span>
+            </button>
+          </h3>
+          <div id="panel-s3" class="accordion__panel" role="region" aria-labelledby="header-s3" hidden>
+            <div class="accordion__panel-inner">
+              <p>シングルオープンのパネル3。デモ用のダミーテキストです。</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="page__footer">
+      <p>テスト：Enter / Space で開閉、↑↓ / Home / End で移動できます。</p>
+    </footer>
+  </main>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
