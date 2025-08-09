@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>thisの挙動デモ</title>
+<!-- CSSスタイル定義 -->
+<style>
+  /* 基本レイアウト */
+  body { font-family: Arial, sans-serif; margin: 20px; }
+  h1 { font-size: 1.4em; margin-bottom: 10px; }
+  
+  /* ケース表示用のスタイル */
+  .case { margin-bottom: 20px; padding: 10px; border-left: 5px solid #ccc; background: #f9f9f9; }
+  .result { font-weight: bold; padding: 5px 8px; display: inline-block; border-radius: 4px; margin-top:6px; }
+  .ok { background-color: #d4edda; color: #155724; }  /* 成功時のスタイル */
+  .ng { background-color: #f8d7da; color: #721c24; }   /* 失敗時のスタイル */
+  .desc { margin-top: 8px; font-size: 0.95em; color: #333; }
+  
+  /* コードブロックのスタイル */
+  pre { background: #eee; padding: 8px; border-radius: 4px; overflow-x: auto; margin-top: 8px; white-space: pre-wrap; }
+  mark { background: yellow; padding: 0 2px; }
+  
+  /* マーカーの光るアニメーション */
+  .highlight { animation: glow 1.2s ease-out forwards; }
+  @keyframes glow {
+    0% { box-shadow: 0 0 8px 3px rgba(255,235,59,0.9); }
+    50% { box-shadow: 0 0 6px 2px rgba(255,241,118,0.6); }
+    100% { box-shadow: none; }
+  }
+  
+  /* ボタンスタイル */
+  button { padding: 8px 12px; font-size: 1em; cursor: pointer; margin-top:10px; }
+</style>
+</head>
+<body>
+<h1>JavaScript this の挙動デモ</h1>
+
+<!-- 説明セクション -->
+<div style="background:#e3f2fd; border-left: 5px solid #42a5f5; padding:12px; margin-bottom:20px; line-height:1.5;">
+    <p><strong>this とは？</strong><br>
+    「関数が実行されるときに、自動的に渡される特別な値」です。<br>
+    関数の中で <code>this</code> と書くと、その関数を呼び出した「主体（呼び出し元オブジェクト）」を指します。<br>
+    これは変数のように見えますが、あくまで呼び出し時に決まる特別なキーワードで、普通のプロパティではありません。</p>
+  
+    <p><strong>💡 ポイント</strong><br>
+    🟦 <em>どこで宣言されたかではなく、どう呼び出されたかで決まる</em></p>
+  </div>
+
+<!-- 結果表示エリア -->
+<div id="output"></div>
+<!-- イベントハンドラーテスト用ボタン -->
+<button id="btn">イベントハンドラーで確認</button>
+
+<!-- JavaScript コード -->
+<script>
+"use strict"; // strictモードを有効化
+
+// DOM読み込み完了後に実行
+document.addEventListener("DOMContentLoaded", () => {
+  // DOM要素の取得
+  const output = document.getElementById("output");
+  const btn = document.getElementById("btn");
+
+  /**
+   * テストケースを表示する関数
+   * @param {string} title - ケースのタイトル
+   * @param {string} actual - 実際の結果
+   * @param {string} expected - 期待される結果
+   * @param {string} description - 説明文
+   * @param {string} codeHtml - コード例（HTML形式）
+   * @returns {HTMLElement} 作成されたケース要素
+   */
+  function addCase(title, actual, expected, description, codeHtml) {
+    // ケース用のコンテナ要素を作成
+    const caseDiv = document.createElement("div");
+    caseDiv.className = "case";
+
+    // タイトル要素を作成
+    const heading = document.createElement("div");
+    heading.textContent = title;
+    caseDiv.appendChild(heading);
+
+    // 結果表示要素を作成
+    const resultSpan = document.createElement("div");
+    resultSpan.className = "result";
+    const aStr = String(actual);
+    
+    // 期待値と比較してスタイルを設定
+    if (aStr === expected) {
+      resultSpan.classList.add("ok");
+      resultSpan.textContent = aStr;
+    } else {
+      resultSpan.classList.add("ng");
+      resultSpan.textContent = aStr;
+    }
+    caseDiv.appendChild(resultSpan);
+
+    // 説明文要素を作成
+    const descDiv = document.createElement("div");
+    descDiv.className = "desc";
+    descDiv.textContent = description;
+    caseDiv.appendChild(descDiv);
+
+    // コード例要素を作成
+    const codeBlock = document.createElement("pre");
+    codeBlock.innerHTML = codeHtml;
+    caseDiv.appendChild(codeBlock);
+
+    // 結果表示エリアに追加
+    output.appendChild(caseDiv);
+    return caseDiv;
+  }
+
+  // ===== ページロード時のテストケース =====
+  
+  // ケース1: グローバル関数でのthis
+  function globalFunc() { return this; }
+  addCase(
+    "1. グローバル関数",
+    `結果：${String(globalFunc())}（期待どおり）`,
+    "結果：undefined（期待どおり）",
+    "strict モードでは、グローバル関数内の this は undefined（非strictなら windowオブジェクト:ブラウザのグローバルオブジェクトのこと）。",
+    `function globalFunc() {
+  return <mark>this</mark>;
+}
+globalFunc(); // strictモードでは <mark>undefined</mark>`
+  );
+
+  // ケース2: オブジェクトのメソッドでのthis
+  const person = {
+    name: "太郎",
+    greet() { return this.name; }
+  };
+  addCase(
+    "2. オブジェクトのメソッド",
+    `結果：${person.greet()}（期待どおり）`,
+    "結果：太郎（期待どおり）",
+    "メソッド呼び出しでは this はそのメソッドを呼んだオブジェクト（ここでは person）。",
+    `const person = {
+  name: "太郎",
+  greet() { return <mark>this.name</mark>; }
+};
+person.greet(); // "太郎"`
+  );
+
+  // ケース3: 関数を変数に代入して呼び出した場合
+  addCase(
+    "3. 関数を代入して呼ぶ（this が変わる）",
+    (() => {
+      try {
+        const greetFn = person.greet;
+        const result = greetFn();
+        return `結果：${String(result)}（期待どおり）`;
+      } catch (e) {
+        return "エラー発生：" + e.message;
+      }
+    })(),
+    "結果：undefined（期待どおり）",
+    "関数を直接呼ぶと（オブジェクトのメソッドではなく） this はグローバル/undefined になる。",
+    `const greetFn = person.greet;
+greetFn(); // strictモードでは <mark>undefined</mark>`
+  );
+
+  // ケース4: bind()でthisを固定
+  const boundGreet = person.greet.bind(person);
+  addCase(
+    "4. bind で this を固定",
+    `結果：${boundGreet()}（期待どおり）`,
+    "結果：太郎（期待どおり）",
+    "bind で this を固定すると、どこで呼んでも固定されたオブジェクトを参照する。",
+    `const bound = person.greet.bind(person);
+bound(); // <mark>"太郎"</mark>`
+  );
+
+  // ケース5: 通常関数とアロー関数の比較
+  const obj = {
+    name: "花子",
+    regular: function() { return this.name; },  // 通常関数
+    arrow: () => { return this.name; }          // アロー関数
+  };
+  
+  // ケース5-1: オブジェクト内の通常関数
+  addCase(
+    "5-1. オブジェクト内の通常関数",
+    `結果：${obj.regular()}（期待どおり）`,
+    "結果：花子（期待どおり）",
+    "通常関数は呼び出し元のオブジェクトを this にする（ここでは obj）。",
+    `const obj = {
+  name: "花子",
+  regular: function() { return <mark>this.name</mark>; }
+};
+obj.regular(); // "花子"`
+  );
+  
+  // ケース5-2: オブジェクト内のアロー関数
+  addCase(
+    "5-2. オブジェクト内のアロー関数",
+    `結果：${String(obj.arrow())}（期待どおり）`,
+    "結果：undefined（期待どおり）",
+    "アロー関数は自分の this を持たず外側を参照するため、ここでは期待通りの obj を参照しない。",
+    `const obj = {
+  name: "花子",
+  arrow: () => { return <mark>this.name</mark>; }
+};
+obj.arrow(); // strict環境では <mark>undefined</mark>`
+  );
+
+  // ケース6: call()とapply()でのthis指定
+  function sayHi() { return `Hi, ${this.name}`; }
+  const user = { name: "Jiro" };
+  
+  // ケース6-1: call()メソッド
+  addCase(
+    "6-1. call",
+    `結果：${sayHi.call(user)}（期待どおり）`,
+    "結果：Hi, Jiro（期待どおり）",
+    "call/apply で明示的に this を指定できる。",
+    `sayHi.call({ name: "Jiro" }); // <mark>"Hi, Jiro"</mark>`
+  );
+  
+  // ケース6-2: apply()メソッド
+  addCase(
+    "6-2. apply",
+    `結果：${sayHi.apply(user)}（期待どおり）`,
+    "結果：Hi, Jiro（期待どおり）",
+    "apply でも同様に this を指定可能。",
+    `sayHi.apply({ name: "Jiro" }); // <mark>"Hi, Jiro"</mark>`
+  );
+
+  // ===== ボタンクリック時のテストケース =====
+  
+  // イベントハンドラーを設定（一度だけ実行）
+  btn.addEventListener("click", function handler(evt) {
+    // イベントハンドラー内のthisを保存（アロー関数で使用するため）
+    const btnThis = this;
+
+    // ケース7-1: 通常関数のイベントハンドラー
+    const div1 = addCase(
+      "7-1. イベントハンドラー（通常関数）",
+      `結果：${btnThis.tagName}（期待どおり）`,
+      "結果：BUTTON（期待どおり）",
+      "通常関数のイベントハンドラー内の this はイベントを受け取った要素（BUTTON）。",
+      `document.getElementById("btn").addEventListener("click", function() {
+  console.log(<mark>this.tagName</mark>); // "BUTTON"
+});`
+    );
+
+    // ケース7-2: アロー関数のイベントハンドラー
+    const div2 = addCase(
+      "7-2. イベントハンドラー（アロー関数）",
+      `結果：${(() => btnThis.tagName)()}（期待どおり）`,
+      "結果：BUTTON（期待どおり）",
+      "アロー関数は外側の this をそのまま使う（ここでは BUTTON）。",
+      `document.getElementById("btn").addEventListener("click", function() {
+  (() => {
+    console.log(<mark>this.tagName</mark>); // "BUTTON"
+  })();
+});`
+    );
+
+    // ケース7-3: ネストした通常関数
+    const div3 = addCase(
+      "7-3. ネストした通常関数",
+      (() => {
+        try {
+          return String((function() { return this; })());
+        } catch(e) {
+          return "エラー発生：" + e.message;
+        }
+      })(),
+      "undefined",
+      "ネストした通常関数は呼び出し方がオブジェクト経由でないため strict では undefined。",
+      `document.getElementById("btn").addEventListener("click", function() {
+  (function() {
+    console.log(<mark>this</mark>); // undefined (strict)
+  })();
+});`
+    );
+
+    // ケース7-4: ネストしたアロー関数
+    const div4 = addCase(
+      "7-4. ネストしたアロー関数",
+      `結果：${(() => btnThis.tagName)()}（期待どおり）`,
+      "結果：BUTTON（期待どおり）",
+      "アロー関数は外側スコープ（イベントハンドラー）の this を継承するため BUTTON。",
+      `document.getElementById("btn").addEventListener("click", function() {
+  (() => {
+    console.log(<mark>this.tagName</mark>); // "BUTTON"
+  })();
+});`
+    );
+
+    // ハイライトアニメーションを実行
+    [div1, div2, div3, div4].forEach(div => {
+      const marks = div.querySelectorAll("mark");
+      marks.forEach(m => {
+        m.classList.add("highlight");
+        setTimeout(() => m.classList.remove("highlight"), 1300);
+      });
+    });
+
+    // ボタンを無効化（一度だけ実行するため）
+    btn.disabled = true;
+  }, { once: true }); // once: true で一度だけ実行
+
+});
+</script>
+</body>
+</html>
