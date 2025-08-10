@@ -1,0 +1,39 @@
+<!-- 「通常関数」は毎回 1 にリセットされます。
+「クロージャ関数」は前回の値を保持して、2 → 3 → 4... と増えていきます。 -->
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>クロージャ比較デモ</title>
+</head>
+<body>
+  <h2>通常関数（状態保持なし）</h2>
+  <button onclick="regularCounter()">通常カウント</button>
+  <p id="regularOutput"></p>
+
+  <h2>クロージャ関数（状態保持あり）</h2>
+  <button onclick="closureCounter()">クロージャカウント</button>
+  <p id="closureOutput"></p>
+
+  <script>
+    // 通常関数（毎回 count を初期化）
+    function regularCounter() {
+      let count = 0;
+      count++;
+      document.getElementById("regularOutput").textContent = "通常関数のカウント: " + count;
+    }
+
+    // クロージャ関数（状態を保持）
+    function createCounter() {
+      let count = 0;
+      return function () {
+        count++;
+        document.getElementById("closureOutput").textContent = "クロージャのカウント: " + count;
+      };
+    }
+
+    const closureCounter = createCounter();
+  </script>
+</body>
+</html>
