@@ -1,4 +1,4 @@
-CSS Grid Layout CSSグリッド＋Flexのハイブリッド 20250811
+CSS Grid Layout CSSグリッド＋Flexのハイブリッド カード 20250811
  
 🔧 挙動
 グリッドで全体配置（例：3列）
