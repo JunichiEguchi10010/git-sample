@@ -1,9 +1,13 @@
 CSS Grid Layout CSSのグリッドレイアウト 基本的な3カラムグリッド 20250811
 
+grid-template MDN公式
+https://developer.mozilla.org/ja/docs/Web/CSS/grid-template
+
 🟨 CSS Grid Layout(グリッドレイアウト)について
  CSS のレイアウト技術の中でも「2次元（縦と横の両方）」のレイアウトを得意とする強力な仕組みです。
 Flexbox が主に「1次元（横並び or 縦並び）」のレイアウトに最適化されているのに対し、Grid はページ全体の骨組みや複雑な配置を作るのに向いています。
 
+******************************************************************************************
 
 1. 基本の考え方
 CSS Grid では、親要素（Grid コンテナ） と 子要素（Grid アイテム） という2つの概念があります。
@@ -110,5 +114,92 @@ auto-fit と minmax() を使うと、画面幅に応じて列数が自動調整�
 
 9. Flexbox との使い分け
 Flexbox → 主に1次元のレイアウト（ナビバー、ボタン並び）
-
 Grid → 2次元のレイアウト（ページ全体の構造、ダッシュボード、カード一覧）
+
+******************************************************************************************
+
+🧱 Gridコンテナ用プロパティ
+これらは display: grid または display: inline-grid を指定した要素に使います。
+
+プロパティ名	                説明
+grid-template-columns	列のサイズと数を定義
+grid-template-rows	    行のサイズと数を定義
+grid-template-areas	    名前付き領域によるレイアウト定義
+grid-template	        上記3つをまとめて定義
+grid-auto-columns	    暗黙的に生成される列のサイズ
+grid-auto-rows	        暗黙的に生成される行のサイズ
+grid-auto-flow	        アイテムの自動配置の方向と挙動（row, column, dense）
+grid	                グリッド全体のショートハンド（grid-template + grid-auto-flow など）
+column-gap / row-gap	列・行の間隔（旧：grid-column-gap, grid-row-gap）
+gap	                    row-gap と column-gap のショートハンド
+justify-items	        各アイテムの水平方向の配置（コンテナ全体に対して）
+align-items	            各アイテムの垂直方向の配置（コンテナ全体に対して）
+place-items	            justify-items と align-items のショートハンド
+justify-content	        グリッド全体の水平方向の配置
+align-content	        グリッド全体の垂直方向の配置
+place-content	        justify-content と align-content のショートハンド
+
+📦 Gridアイテム用プロパティ
+これらは Gridコンテナの子要素（Gridアイテム）に使います。
+
+プロパティ名	                説明
+grid-column-start	    アイテムの開始列
+grid-column-end	        アイテムの終了列
+grid-row-start	        アイテムの開始行
+grid-row-end	        アイテムの終了行
+grid-column	            grid-column-start と grid-column-end のショートハンド
+grid-row	            grid-row-start と grid-row-end のショートハンド
+grid-area	            名前付き領域にアイテムを配置、または row-start / column-start / row-end / column-end をまとめて指定
+justify-self	        アイテムの水平方向の配置（自身に対して）
+align-self	            アイテムの垂直方向の配置（自身に対して）
+place-self	            justify-self と align-self のショートハンド
+
+✅ 補足
+grid-template-areas と grid-area を組み合わせると、視覚的にわかりやすいレイアウトが可能になります。
+auto や fr 単位、minmax()、repeat() などの関数もGridの定義に使えます。
+
+******************************************************************************************
+
+❓ .grid-container { display: grid; } display: grid;を指定したにも関わらす、grid-template-columnsやgapなどの専用プロパティを指定しなかったり、gridアイテムにも専用プロパティを使用しない場合はどういう挙動になりますか？
+
+→display: grid; を指定しただけで、grid-template-columns や gap などの専用プロパティを指定しない場合、CSS Gridは初期状態のレイアウトで動作します。以下にその挙動を詳しく説明します。
+
+🧱 Gridコンテナの初期挙動
+grid-template-columns や grid-template-rows を指定しない場合：
+暗黙的な1列レイアウトになります。
+すべての子要素（gridアイテム）は縦に並びます（つまり、1列に1つずつ配置される）。
+
+gap を指定しない場合：
+アイテム間の隙間はゼロになります。つまり、アイテム同士がぴったりくっつきます。
+
+📦 Gridアイテムの挙動
+Gridアイテムに grid-column や grid-row などの専用プロパティを指定しない場合：
+アイテムは自動的に順番に配置されます。
+1列レイアウトの場合、上から下へ並びます。
+アイテムのサイズは、内容に応じて自動調整されます（auto）。
+
+🧪 例
+html
+<style>
+.grid-container {
+  display: grid;
+  border: 1px solid black;
+}
+.grid-item {
+  border: 1px solid red;
+}
+</style>
+
+<div class="grid-container">
+  <div class="grid-item">Item 1</div>
+  <div class="grid-item">Item 2</div>
+  <div class="grid-item">Item 3</div>
+</div>
+この場合、以下のような挙動になります：
+grid-container は1列のグリッドとして機能。
+grid-item は縦に並ぶ。
+隙間はなし。
+各アイテムの幅は親要素に合わせて広がる（ただし内容に応じて変化する可能性あり）。
+
+✅ 補足
+Gridの強みは、grid-template-columns や grid-template-rows を使って明示的なレイアウトを定義できる点です。何も指定しないと、Gridの恩恵はほとんど受けられず、ほぼ通常のブロックレイアウトと同じような見た目になります。
