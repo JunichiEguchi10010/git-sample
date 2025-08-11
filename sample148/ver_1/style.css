@@ -1,0 +1,42 @@
+/* グリッドレイアウトのサンプルスタイル */
+
+/* 基本設定 */
+body {
+    margin: 0;
+    font-family: sans-serif;
+}
+
+/* グリッドコンテナの設定 */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    /* 3列の等幅グリッド (3: 列数, 1fr: 利用可能な幅を等分) */
+    /* fr単位は「fraction（分数）」の略で、残りの利用可能な空間を指定した数値で分割することを意味します。 */
+    gap: 1rem; /* グリッドアイテム間の間隔 */
+    padding: 1rem; /* コンテナの内側の余白 */
+}
+
+/* グリッドアイテムのスタイル */
+.grid-item {
+    background-color: #f0f0f0; /* 背景色 */
+    padding: 2rem; /* 内側の余白 */
+    border-radius: 8px; /* 角の丸み */
+    text-align: center; /* テキストの中央揃え */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* 影の効果 */
+}
+
+/* レスポンシブデザイン */
+/* タブレットサイズ（900px以下） */
+@media (max-width: 900px) {
+    .grid-container {
+        grid-template-columns: repeat(2, 1fr); /* 2列のグリッドに変更 */
+    }
+}
+
+/* モバイルサイズ（600px以下） */
+@media (max-width: 600px) {
+    .grid-container {
+        grid-template-columns: 1fr; /* 1列のグリッドに変更 */
+    }
+}
+  
