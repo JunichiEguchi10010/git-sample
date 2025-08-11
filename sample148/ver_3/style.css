@@ -1,0 +1,72 @@
+/* =============================
+  レスポンシブ対応カードグリッドのサンプルスタイル
+  - PC：3列
+  - タブレット：2列
+  - スマホ：1列
+  各カードは画像・タイトル・説明・ボタンを含む
+============================= */
+
+/* 基本設定 */
+body {
+    margin: 0;
+    font-family: sans-serif;
+    background: #fafafa; /* 背景色 */
+}
+
+/* カードグリッド全体のレイアウト */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 画面幅に応じて自動で列数調整 */
+    /* grid-template-columns: repeat(3, 1fr); 最大3列までに制限 このパターンも頻出 */
+    gap: 1.5rem; /* カード間の余白 */
+    padding: 2rem; /* グリッド全体の余白 */
+}
+
+/* カード本体のスタイル */
+.card {
+    background: white; /* カードの背景色 */
+    border-radius: 8px; /* 角の丸み */
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1); /* 影の効果 */
+    overflow: hidden; /* 角丸からはみ出さない */
+    display: flex;
+    flex-direction: column; /* 縦並び */
+}
+
+/* カード内の画像 */
+.card img {
+    width: 100%; /* 横幅いっぱい */
+    height: auto;
+    object-fit: cover; /* 画像の縦横比を維持しつつ枠に収める */
+}
+
+/* カードの内容部分 */
+.card-content {
+    padding: 1rem;
+    flex-grow: 1; /* 残りの高さを埋める */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* タイトル・説明・ボタンを上下に配置 */
+}
+
+/* カードタイトル */
+.card h3 {
+    margin: 0 0 0.5rem;
+}
+
+/* カード説明文 */
+.card p {
+    flex-grow: 1; /* 説明文が伸びて高さを埋める */
+    margin-bottom: 1rem;
+}
+
+/* カード内のボタン */
+.card button {
+    align-self: flex-start; /* 左寄せ */
+    padding: 0.5rem 1rem;
+    background: #0078d4; /* ボタン色 */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+  
