@@ -157,6 +157,44 @@ place-self	            justify-self と align-self のショートハンド
 ✅ 補足
 grid-template-areas と grid-area を組み合わせると、視覚的にわかりやすいレイアウトが可能になります。
 auto や fr 単位、minmax()、repeat() などの関数もGridの定義に使えます。
+******************************************************************************************
+
+✅ repeat()
+grid-template-columns: repeat
+CSS Grid Layout において 列のサイズを繰り返し指定するための関数です。
+以下に、repeat() の使い方とその意味をわかりやすく解説します。
+
+🧩 repeat() の基本構文
+css
+grid-template-columns: repeat(<回数>, <サイズ>);
+🟥 repeat()関数が付いていると必ず , で区切られる。
+通常(repeat()関数なし)の場合の値は●●　●●　●●　と , ()で区切られていないので混同しないこと。
+例：  grid-template-rows: 50px 100px auto; ← , ()で区切られていない
+
+第1引数：繰り返す回数（整数）
+
+第2引数：繰り返すサイズ（1つまたは複数）
+
+✅ 例と意味
+① 均等な列を繰り返す
+css
+grid-template-columns: repeat(3, 1fr);
+→ 1fr 1fr 1fr（3列、均等な幅）
+
+② 複数サイズのパターンを繰り返す
+css
+grid-template-columns: repeat(2, 100px 1fr);
+→ 100px 1fr 100px 1fr（2回繰り返し、合計4列）
+
+💡 応用：レスポンシブ対応
+css
+grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+→ コンテナの幅に応じて、200px以上の列を自動で並べる。画面サイズに応じて列数が変化。
+
+🛑 注意点
+repeat(1fr 2fr) のように、回数の指定がない repeat() は構文エラーになります。
+repeat() は 関数なので、括弧 () は引数を囲むためのものです。
+
 
 ******************************************************************************************
 
@@ -202,4 +240,5 @@ grid-item は縦に並ぶ。
 各アイテムの幅は親要素に合わせて広がる（ただし内容に応じて変化する可能性あり）。
 
 ✅ 補足
-Gridの強みは、grid-template-columns や grid-template-rows を使って明示的なレイアウトを定義できる点です。何も指定しないと、Gridの恩恵はほとんど受けられず、ほぼ通常のブロックレイアウトと同じような見た目になります。
+Gridの強みは、grid-template-columns や grid-template-rows を使って明示的なレイアウトを定義できる点です。
+何も指定しないと、Gridの恩恵はほとんど受けられず、ほぼ通常のブロックレイアウトと同じような見た目になります。
