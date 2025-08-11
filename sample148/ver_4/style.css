@@ -1,77 +1,82 @@
+/* ===== ベーススタイル ===== */
 body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background-color: #f9f9f9;
+    margin: 0; /* ページ全体の余白をなくす */
+    font-family: 'Segoe UI', sans-serif; /* モダンなフォントを指定 */
+    background-color: #f9f9f9; /* 背景色を淡いグレーに設定 */
   }
   
   main {
-    padding: 2rem;
+    padding: 2rem; /* コンテンツ全体に余白を追加 */
   }
   
   h1 {
-    text-align: center;
-    margin-bottom: 2rem;
-    color: #333;
+    text-align: center; /* 見出しを中央揃えに */
+    margin-bottom: 2rem; /* 下に余白を追加 */
+    color: #333; /* 濃いグレーで文字色を設定 */
   }
   
+  /* ===== グリッドレイアウト（カード一覧） ===== */
   .hybrid-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 1.5rem;
+    display: grid; /* グリッドレイアウトを使用 */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* 画面幅に応じて列数を自動調整 */
+    gap: 1.5rem; /* カード間の間隔を設定 */
   }
   
+  /* ===== カードのスタイル ===== */
   .hybrid-card {
-    display: flex;
-    flex-direction: column;
-    background: #fff;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-    overflow: hidden;
-    transition: transform 0.2s ease;
+    display: flex; /* カード内をFlexboxで縦並びに */
+    flex-direction: column; /* 子要素を縦方向に並べる */
+    background: #fff; /* 背景を白に */
+    border: 1px solid #ddd; /* 薄い枠線を追加 */
+    border-radius: 6px; /* 角を少し丸める */
+    box-shadow: 0 1px 4px rgba(0,0,0,0.1); /* ほんのり影をつけて浮かせる */
+    overflow: hidden; /* 内容がはみ出さないように */
+    transition: transform 0.2s ease; /* ホバー時のアニメーションを滑らかに */
   }
   
   .hybrid-card:hover {
-    transform: translateY(-4px);
+    transform: translateY(-4px); /* ホバー時に少し浮かせる */
   }
   
+  /* ===== カード内の画像 ===== */
   .hybrid-card img {
-    width: 100%;
-    height: auto;
-    display: block;
+    width: 100%; /* 横幅いっぱいに表示 */
+    height: auto; /* 高さは自動調整 */
+    display: block; /* 余計な隙間をなくす */
   }
   
+  /* ===== カードのテキスト部分 ===== */
   .card-content {
-    padding: 1rem;
-    display: flex;
+    padding: 1rem; /* 内側の余白を追加 */
+    display: flex; /* テキストとボタンを縦並びに */
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0.5rem; /* 要素間の間隔を設定 */
   }
   
   .card-content h3 {
-    margin: 0;
-    font-size: 1.1rem;
-    color: #0078d4;
+    margin: 0; /* 見出しの余白をなくす */
+    font-size: 1.1rem; /* 少し大きめの文字サイズ */
+    color: #0078d4; /* アクセントカラー（青） */
   }
   
   .card-content p {
-    margin: 0;
-    font-size: 0.95rem;
-    color: #444;
+    margin: 0; /* 段落の余白をなくす */
+    font-size: 0.95rem; /* 少し小さめの文字サイズ */
+    color: #444; /* 読みやすい濃いグレー */
   }
   
+  /* ===== ボタンのスタイル ===== */
   .card-content button {
-    align-self: flex-end;
-    padding: 0.5rem 1rem;
-    background-color: #0078d4;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 0.9rem;
+    align-self: flex-end; /* ボタンを右下に配置 */
+    padding: 0.5rem 1rem; /* ボタンの内側余白 */
+    background-color: #0078d4; /* アクセントカラー（青） */
+    color: white; /* 文字色を白に */
+    border: none; /* 枠線なし */
+    border-radius: 4px; /* 角を丸める */
+    cursor: pointer; /* ホバー時にポインター表示 */
+    font-size: 0.9rem; /* ボタンの文字サイズ */
   }
   
   .card-content button:hover {
-    background-color: #005fa3;
-  }
-  
+    background-color: #005fa3; /* ホバー時に色を少し濃くする */
+  }  

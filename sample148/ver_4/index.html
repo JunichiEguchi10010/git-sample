@@ -1,24 +1,40 @@
 <!DOCTYPE html>
+<!-- HTML5の宣言 -->
 <html lang="ja">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8" /> <!-- 文字コードをUTF-8に設定（日本語対応） -->
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hybrid Grid + Flex Layout</title>
+  <!-- レスポンシブ対応：画面幅に合わせて表示を調整 -->
+  <title>Hybrid Grid + Flex Layout</title> <!-- ブラウザのタブに表示されるタイトル -->
+
+  <!-- 外部CSSファイルの読み込み -->
   <link rel="stylesheet" href="style.css" />
+
+  <!-- 外部JavaScriptファイルの読み込み（deferでHTML読み込み後に実行） -->
   <script src="script.js" defer></script>
 </head>
+
 <body>
   <main>
+    <!-- ページのメインタイトル -->
     <h1>Hybrid Grid + Flex Layout</h1>
+
+    <!-- カードを並べるグリッドレイアウトのセクション -->
     <section class="hybrid-grid">
+      
+      <!-- 1枚目のカード -->
       <div class="hybrid-card">
+        <!-- カードの画像 -->
         <img src="https://picsum.photos/seed/picsum/300/180" alt="Card Image 1" />
+
+        <!-- カード内のテキストとボタン -->
         <div class="card-content">
-          <h3>タイトル1</h3>
-          <p>これはカードの説明文です。</p>
-          <button>詳細を見る</button>
+          <h3>タイトル1</h3> <!-- カードの見出し -->
+          <p>これはカードの説明文です。</p> <!-- カードの説明 -->
+          <button>詳細を見る</button> <!-- 詳細ボタン -->
         </div>
       </div>
+
       <!-- JavaScriptで追加されるカードがここに挿入されます -->
     </section>
   </main>
