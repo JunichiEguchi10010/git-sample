@@ -1,0 +1,58 @@
+/* ページ全体の基本スタイル設定 */
+body {
+    font-family: sans-serif; /* サンセリフ体のフォントを使用 */
+    margin: 0;               /* ページの余白をなくす */
+    padding: 20px;           /* ページ内側に余白を設定 */
+  }
+  
+  /* タブ全体のコンテナ */
+  .tabs {
+    max-width: 600px;        /* 最大幅を600pxに制限 */
+    margin: auto;            /* 中央寄せ */
+  }
+  
+  /* タブボタンの並び方を設定 */
+  .tab-buttons {
+    display: flex;           /* 横並びにする */
+    flex-wrap: wrap;         /* 折り返し可能にする */
+    gap: 10px;               /* ボタン間の隙間を10pxに設定 */
+  }
+  
+  /* 各タブボタンのスタイル */
+  .tab-link {
+    flex: 1;                 /* 均等に幅を分配 */
+    padding: 10px;           /* 内側の余白 */
+    text-align: center;      /* テキストを中央揃え */
+    text-decoration: none;   /* 下線を消す */
+    background: #eee;        /* 背景色を薄いグレーに */
+    color: #333;             /* 文字色を濃いグレーに */
+    transition: background 0.3s; /* 背景色の変化にアニメーションを追加 */
+  }
+  
+  /* アクティブなタブボタンのスタイル */
+  .tab-link.active {
+    background: #0078d4;     /* 背景色を青に */
+    color: white;            /* 文字色を白に */
+  }
+  
+  /* タブの中身（非表示が基本） */
+  .tab-content {
+    display: none;           /* 初期状態では非表示 */
+    padding: 15px;           /* 内側の余白 */
+    border: 1px solid #ccc;  /* 枠線を薄いグレーで表示 */
+    margin-top: 10px;        /* 上に余白を追加 */
+    background: #f9f9f9;     /* 背景色を薄いグレーに */
+  }
+  
+  /* アクティブなタブの中身（表示状態） */
+  .tab-content.active {
+    display: block;          /* 表示する */
+  }
+  
+  /* 画面幅が600px以下のときのレスポンシブ対応 */
+  @media (max-width: 600px) {
+    .tab-buttons {
+      flex-direction: column; /* ボタンを縦並びに変更 */
+    }
+  }
+  
