@@ -39,7 +39,6 @@ function activateTab(tabId) {
 // このコードは、URLのハッシュと連動したタブ切り替え機能を実現しています。
 // ブラウザの「戻る・進む」操作にも対応できる、ユーザーフレンドリーな設計！
 
-
 //   📝 疑似コード（日本語での説明）
 // 関数 activateTab(tabId):
 //   すべてのタブボタンを調べて、
@@ -63,6 +62,45 @@ function activateTab(tabId) {
 // ページが読み込まれたときと、
 // URLのハッシュが変化したときに、
 //   handleHashChange を呼び出して表示を更新する
+
+// 🔍 このロジックがしていること
+// 1. すべてのタブボタンを取得して、クリックイベントを設定
+// document.querySelectorAll('.tab-buttons button').forEach(button => {
+//   button.addEventListener('click', () => {
+// .tab-buttons の中にあるすべての <button> 要素を対象にします。
+
+// 各ボタンに「クリックされたときの処理」を登録します。
+
+// 2. クリックされたボタンが持つ data-tab 属性から、表示すべきタブの ID を取得
+// const tabId = button.getAttribute('data-tab');
+// 例えば <button data-tab="tab2"> の場合、tabId は "tab2" になります。
+
+// この ID を使って、対応する .tab-content を表示します。
+
+// 3. すべてのボタンから active クラスを削除し、クリックされたボタンだけに追加
+// document.querySelectorAll('.tab-buttons button').forEach(btn => btn.classList.remove('active'));
+// button.classList.add('active');
+// これにより、ボタンの見た目（色など）が「選択中」になるのは1つだけになります。
+
+// 4. すべてのタブコンテンツから active クラスを削除し、対応するコンテンツだけに追加
+// document.querySelectorAll('.tab-content').forEach(content => {
+//   content.classList.remove('active');
+// });
+// document.getElementById(tabId).classList.add('active');
+// .tab-content は初期状態では display: none（非表示）です。
+
+// active クラスが付くと display: block になり、表示されます。
+
+// つまり、クリックされたボタンに対応するコンテンツだけが表示されるようになります。
+
+// 🧠まとめ：このロジックの役割
+// 処理	                            目的
+// ボタンにイベントを設定	    ユーザーの操作を受け取る
+// data-tab を取得	           どのコンテンツを表示するか判断
+// ボタンの active を更新	    見た目を切り替える（選択中の強調）
+// コンテンツの active を更新	表示する内容を切り替える
+
+
 
 // ✅ コード解説
 // 🔧 function activateTab(tabId) {
