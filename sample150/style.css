@@ -1,0 +1,80 @@
+/* ページ全体の基本スタイル */
+body {
+    font-family: sans-serif; /* 読みやすいフォントを指定 */
+    padding: 2rem; /* 余白を確保してレイアウトを整える */
+  }
+  
+  /* ボタンの共通スタイル */
+  button {
+    margin: 0.5rem; /* ボタン間の余白 */
+    padding: 0.5rem 1rem; /* 内側の余白（クリックしやすさ） */
+    font-size: 1rem; /* テキストサイズを統一 */
+  }
+  
+  /* モーダル表示時の背景オーバーレイ */
+  .modal-overlay {
+    position: fixed; /* 画面全体に固定配置 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* 半透明の黒背景でフォーカスを強調 */
+    display: none; /* 初期状態では非表示 */
+    z-index: 10; /* モーダル本体より下に配置 */
+  }
+  
+  /* モーダル本体の基本スタイル（中央表示） */
+  .modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* 中央に配置 */
+    background: #fff; /* 白背景で内容を強調 */
+    padding: 2rem; /* 内側の余白 */
+    border-radius: 8px; /* 角丸で柔らかい印象に */
+    z-index: 20; /* オーバーレイより前面に表示 */
+    display: none; /* 初期状態では非表示 */
+    max-width: 90%; /* 画面幅に応じて調整（スマホ対応） */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3); /* 立体感を出す影 */
+  }
+  
+  /* モーダル内のコンテンツ配置 */
+  .modal-content {
+    text-align: center; /* 中央揃えで見やすく */
+  }
+  
+  /* フェードインモーダルの初期状態（非表示） */
+  .modal.fade {
+    opacity: 0; /* 完全に透明 */
+    transition: opacity 0.3s ease; /* 表示時に滑らかに変化 */
+  }
+  
+  /* フェードインモーダルの表示状態 */
+  .modal.fade.show {
+    opacity: 1; /* 表示状態にする */
+  }
+  
+  /* 全画面モーダル（スマホ向け） */
+  .modal.fullscreen {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    transform: none; /* 中央配置を解除 */
+    border-radius: 0; /* 角丸なしで画面にフィット */
+    padding: 2rem;
+    overflow-y: auto; /* 内容が多い場合スクロール可能に */
+  }
+  
+  /* PC画面サイズ（768px以上）の場合の全画面モーダル調整 */
+  @media (min-width: 768px) {
+    .modal.fullscreen {
+      width: 600px; /* 固定幅で中央表示に変更 */
+      height: auto;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 8px; /* 角丸を復活させる */
+    }
+  }
+  

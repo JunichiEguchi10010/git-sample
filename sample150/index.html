@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>モーダルデモ</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <h1>モーダルデモ</h1>
+
+  <button class="open-modal" data-modal="basic">ベーシックモーダル</button>
+  <button class="open-modal" data-modal="fade">フェードインモーダル</button>
+  <button class="open-modal" data-modal="fullscreen">レスポンシブ全画面モーダル</button>
+
+  <!-- モーダル共通構造 -->
+  <div class="modal-overlay" id="modal-overlay"></div>
+
+  <div class="modal" id="modal-basic">
+    <div class="modal-content">
+      <h2>ベーシックモーダル</h2>
+      <p>これは基本的なモーダルです。</p>
+      <button class="close-modal">閉じる</button>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-fade">
+    <div class="modal-content">
+      <h2>フェードインモーダル</h2>
+      <p>フェードアニメーション付きです。</p>
+      <button class="close-modal">閉じる</button>
+    </div>
+  </div>
+
+  <div class="modal fullscreen" id="modal-fullscreen">
+    <div class="modal-content">
+      <h2>レスポンシブ全画面モーダル</h2>
+      <p>画面サイズに応じて表示が変わります。</p>
+      <button class="close-modal">閉じる</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
