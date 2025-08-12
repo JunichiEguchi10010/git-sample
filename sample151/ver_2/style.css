@@ -1,0 +1,53 @@
+/* 🌐 全体の基本スタイル */
+body {
+    margin: 0; /* ページの余白をなくす */
+    font-family: sans-serif; /* シンプルなフォントを使用 */
+    background: #f0f0f0; /* 背景色を薄いグレーに設定 */
+  }
+  
+  /* 📦 Swiperコンテナのスタイル */
+  .card-swiper {
+    width: 100%; /* 幅を画面いっぱいに */
+    max-width: 1000px; /* 最大幅を1000pxに制限 */
+    margin: 40px auto; /* 上下に余白をつけて中央寄せ */
+    padding: 0 16px; /* 左右に少し余白を追加 */
+    position: relative; /* ナビゲーションボタン配置のために相対位置指定 */
+  }
+  
+  /* 🧩 各スライド（カード）のスタイル */
+  .card-swiper .swiper-slide {
+    background: #fff; /* 背景を白に */
+    border: 1px solid #ccc; /* 薄いグレーの枠線 */
+    border-radius: 8px; /* 角を丸くする */
+    height: auto; /* 高さは内容に応じて自動調整 */
+    display: flex; /* 中身を中央に配置するためにFlexbox使用 */
+    justify-content: center; /* 横方向中央揃え */
+    align-items: center; /* 縦方向中央揃え */
+    overflow: hidden; /* はみ出た部分を隠す */
+    transition: transform 0.3s ease; /* ホバーなどの変化に滑らかなアニメーションを適用 */
+  }
+  
+  /* 🖼️ スライド内の画像スタイル */
+  .card-swiper .swiper-slide img {
+    width: 100%; /* 画像をスライド幅いっぱいに表示 */
+    height: auto; /* 高さは自動調整 */
+    object-fit: cover; /* 画像を枠に合わせてトリミング表示 */
+    border-radius: 8px; /* 画像の角も丸くする */
+  }
+  
+  /* ◀▶ ナビゲーションボタンのスタイル */
+  .swiper-button-prev,
+  .swiper-button-next {
+    color: #333; /* ボタンの色を濃いグレーに */
+  }
+  
+  /* 🔘 ページネーション（ドット）のスタイル */
+  .swiper-pagination-bullet {
+    background: #999; /* 通常のドットの色をグレーに */
+    opacity: 1; /* 不透明にして見やすく */
+  }
+  
+  .swiper-pagination-bullet-active {
+    background: #333; /* アクティブなドットの色を濃くする */
+  }
+  
