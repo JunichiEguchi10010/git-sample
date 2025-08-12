@@ -1,0 +1,45 @@
+/* ページ全体の基本スタイル設定 */
+body {
+    margin: 0; /* 余白をなくす */
+    font-family: sans-serif; /* シンプルで読みやすいフォント */
+    background: #f9f9f9; /* 明るいグレーの背景色 */
+  }
+  
+  /* カルーセル全体のレイアウト設定 */
+  .basic-swiper {
+    width: 100%; /* 横幅いっぱいに広げる */
+    max-width: 900px; /* 最大幅を900pxに制限 */
+    margin: 40px auto; /* 上下に余白を取り、中央寄せ */
+  }
+  
+  /* 各スライドの配置設定 */
+  .swiper-slide {
+    display: flex; /* 子要素（画像）を中央に配置するためのFlexbox */
+    justify-content: center; /* 水平方向に中央寄せ */
+    align-items: center; /* 垂直方向に中央寄せ */
+  }
+  
+  /* スライド内の画像にアニメーションの初期状態を設定 */
+  .swiper-slide img {
+    width: 100%; /* 親要素に合わせて横幅を調整 */
+    height: auto; /* アスペクト比を維持したまま高さを自動調整 */
+    object-fit: cover; /* 画像を枠いっぱいに表示しつつ切り取り */
+    border-radius: 8px; /* 角を少し丸めて柔らかい印象に */
+    
+    /* アニメーションの初期状態（非表示＋少し縮小） */
+    opacity: 0;
+    transform: scale(0.95);
+    
+    /* アニメーションの変化を滑らかにする設定 */
+    transition: opacity 0.8s ease, transform 0.8s ease;
+  }
+  
+  /* アクティブなスライドにアニメーションを適用 */
+  /* スライドが切り替わるたびに、画像が「ふわっ」と表示される */
+  /* opacity と transform: scale() を使って、ズームインとフェードインを同時に実現 */
+  /* transition によって滑らかなアニメーション */
+  .swiper-slide-active img {
+    opacity: 1; /* 表示状態にする */
+    transform: scale(1); /* 通常サイズに戻す（ズームイン） */
+  }
+  
