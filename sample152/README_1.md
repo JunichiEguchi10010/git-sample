@@ -18,8 +18,6 @@ nodeコマンドで実行！
 他人のプロジェクトを引き継ぐとき	package.jsonに記載された依存関係をインストールするためにNode.jsが必要
 
 
-
-
 🛠️ Node.js 初期設定ステップ
 ① Node.jsのインストール
 公式サイトにアクセス 👉 https://nodejs.org/ja
