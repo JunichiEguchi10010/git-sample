@@ -5,4 +5,3 @@ document.querySelectorAll('.card-button').forEach(button => {
       alert('詳細ページへ移動します（仮）');
     });
   });
-  JS
