@@ -103,17 +103,16 @@ Tailwind独自の構文（@tailwindや@applyなど）を使用して、効率よ
 
 ✅ 実際のセットアップ手順（概要）
 インストール:
-
 npm install tailwindcss postcss autoprefixer
 Tailwind CSSとPostCSS、それに関連するプラグインをインストールします。
 
-設定ファイルの作成:
+✅ 設定ファイルの作成:
 npx tailwindcss init
 Tailwindの設定ファイル（tailwind.config.js）と、PostCSSの設定ファイル（postcss.config.js）を作成。
 
-カスタムCSSの作成:
-CSSファイルを作成し、Tailwind用のディレクティブを記述します。 例：
-
+✅ カスタムCSSの作成:
+CSSファイルを作成し、Tailwind用のディレクティブを記述します。 （詳細は後述450行位）
+例：
 css
 @tailwind base;
 @tailwind components;
@@ -185,8 +184,9 @@ json
 }
 この例では、PostCSSのビルド処理を実行する際に、NODE_ENV を production に設定しています。
 
-dist.css は、通常、プロジェクトのビルドプロセスで生成される CSSファイル を指します。このファイルは、開発中に作成したCSSコードを最適化し、本番環境で使用するためにまとめられたものです。以下に詳しく説明します：
-
+dist.css は、通常、プロジェクトのビルドプロセスで生成される CSSファイル を指します。
+このファイルは、開発中に作成したCSSコードを最適化し、本番環境で使用するためにまとめられたものです。
+以下に詳しく説明します：
 
 【dist.cssの役割】
 ビルド後の出力ファイル:
@@ -336,9 +336,7 @@ watchモードを有効化することで、変更を監視しリアルタイム
 結論
 JITモードは、Tailwind CSSの開発体験を大幅に向上させる革新的な機能であり、柔軟性と効率性を兼ね備えています。
 
-
-
-✅ 【CSS-in-JSとtailwindcs】
+✅ 【CSS-in-JSとtailwindcss】
 ReactやNext.jsとの親和性を比較する場合、CSS-in-JSとTailwind CSSのどちらが適しているかはプロジェクトの性質や目的に依存します。
 それぞれに強みがあり、具体的なニーズに応じて選択するのがベストです。
 
@@ -439,6 +437,51 @@ leading-none から leading-loose まで、行間を調整可能。
 リストのスタイル（List Style Type & Position）:
 list-inside や list-outside でリストマーカーの位置を設定。
 list-disc, list-decimal などでリストマーカーの種類を変更。
+
+
+🧩 ディレクティブとは？
+CSSディレクティブとは、CSSファイル内で特定の処理や命令を記述するための拡張的な構文です。
+Tailwind CSSでは、以下のようなディレクティブが使われます：
+
+css
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+これらは通常のCSSとは異なり、Tailwindのビルドプロセス中に展開される命令です。
+
+Tailwindが内部で定義しているスタイル群を展開
+順番に意味があり、base → components → utilities の順で書くのが基本
+これは「TailwindのCSSを使うぞ」という宣言
+
+🛠️ Tailwindのディレクティブの役割
+ディレクティブ          役割
+@tailwind base;	      Normalize.cssなどの基本スタイルを読み込む
+@tailwind components;	Tailwindのコンポーネント系ユーティリティ（例：ボタン、フォーム）
+@tailwind utilities;	text-center や bg-blue-500 などのユーティリティクラス群
+これらは、Tailwindの内部CSSを展開するための命令であり、PostCSSやCLIがそれを解釈して最終的なCSSを生成します。
+
+🧠 補足
+ディレクティブは「CSSの中に書く命令文」で、Tailwindがそれを読み取ってCSSを展開します。
+通常のCSSでは使えませんが、Tailwindのビルド環境（CLIやPostCSS）では有効です。
+Junichiさんが構築しているような再現性の高いUI設計では、ディレクティブを使って必要なスタイルだけを明示的に読み込むのがベストプラクティスです。
+
+🧩 @layer の役割
+これは Tailwindのレイヤー構造に自分のCSSを追加するための命令です。
+
+css
+@layer components {
+  .btn {
+    @apply px-4 py-2 bg-blue-500 text-white;
+  }
+}
+base, components, utilities のいずれかのレイヤーに自作スタイルを追加できる
+Tailwindの生成順に沿って、カスタムCSSの優先順位を制御できる
+@apply と組み合わせて、ユーティリティクラスを再利用可能
+
+🧠 補足
+@tailwind は「TailwindのCSSを読み込む命令」
+@layer は「TailwindのCSS構造に自分のスタイルを追加する命令」
+再現性と拡張性を重視する設計では、@layer を使ってユーティリティクラスの再利用や、ブランドスタイルの統一がしやすくなります。
 
 
 Tailwind CSS講座
