@@ -1,5 +1,8 @@
 PostCSS 環境構築 20250817
 
+PostCSS公式サイト
+https://postcss.org/
+
 CSSを柔軟に拡張・変換するためのJavaScriptベースのツールチェーンです。 
 SassやLessのような「すでに機能が詰め込まれたCSSプリプロセッサ」とは違い、PostCSSは「必要な機能だけを選んで使えるプラグインランナー」です。
 
@@ -58,3 +61,5 @@ Tailwind CSSはPostCSSプラグインとして動作しているので、Vite + 
 必要な機能だけを選べるので、小規模案件でも無駄なく最適化可能
 ✅ vite.config.js に postcss.config.js を置くだけで自動で読み込まれるので、設定の再現性と保守性が高い
 
+【Tailwind CSS #3】4つのインストール方法の紹介。オススメはPostCSSのプラグインとして使う方法。
+https://www.youtube.com/watch?v=mzRxqknA9Jg
