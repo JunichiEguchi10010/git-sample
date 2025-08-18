@@ -17,6 +17,35 @@ bash
 # プロジェクト作成
 npm create vite@latest frontend -- --template react
 
+部分	                          意味
+npm create vite@latest	    Vite の最新バージョンでプロジェクトを作成するコマンド
+frontend	                  作成するプロジェクトのフォルダ名（この名前で新しいフォルダが作られる）
+--	                        ここから先は Vite に渡すオプション（npm にではなく）
+--template react	          Vite に「React テンプレートを使ってね」と指示する部分
+
+✅ npm create vite@latest がやってくれること
+機能	                          説明
+📁 新規フォルダ作成	          入力したプロジェクト名でフォルダを作成します（例：sample-app）
+📦 package.json の生成	     Vite 用の依存関係・スクリプトが含まれた設定ファイルを自動作成
+🏗 必要なファイルの構成	       index.html, src/, vite.config.js などをセットアップ
+🧩 フレームワーク選択	        React, Vue, Vanilla などを選べる（それに応じた構成になる）
+
+❌ mkdir my-node-app は不要
+❌ cd my-node-app は不要
+❌ npm init -y は不要
+npm init -y は、空のフォルダから自分で Node.js プロジェクトを始めるときに使うコマンドです。 
+でも npm create vite@latest はそれを すべて自動でやってくれるので、重複して使う必要はありません。
+
+🎓 まとめ
+npm create vite@latest → 全部やってくれる！
+npm init -y → 自分で構成する場合のみ使う
+
+
+
+
+
+
+
 # ディレクトリ移動
 cd frontend
 
