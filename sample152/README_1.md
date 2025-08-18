@@ -42,6 +42,9 @@ mkdir my-node-app
 cd my-node-app
 → 自分のNode.jsプロジェクト用のフォルダを作成して移動します。
 
+✅ mkdir は "make directory" の略で、新しいフォルダー（ディレクトリ）を作成するコマンドです。
+✅ my-node-app は新しく作成するフォルダーの名前です。(任意だがプロジェクトを想起するフォルダ名にする)
+
 ③ 初期化（package.jsonの作成）
 bash
 npm init -y
