@@ -32,7 +32,7 @@ frontend	                  作成するプロジェクトのフォルダ名（�
 
 ❌ mkdir my-node-app は不要
 ❌ cd my-node-app は不要
-❌ npm init -y は不要
+❌ npm init -y は不要（package.jsonは自動作成）
 npm init -y は、空のフォルダから自分で Node.js プロジェクトを始めるときに使うコマンドです。 
 でも npm create vite@latest はそれを すべて自動でやってくれるので、重複して使う必要はありません。
 
@@ -43,7 +43,7 @@ npm init -y → 自分で構成する場合のみ使う
 # ディレクトリ移動
 cd frontend
 
-# 依存パッケージインストール
+# 依存パッケージインストール(package-lock.json作成)
 npm install
 
 # 開発サーバー起動
