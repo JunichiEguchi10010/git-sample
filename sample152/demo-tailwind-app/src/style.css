@@ -1,3 +1,13 @@
+/* Tailwindの基本スタイル（リセットや共通スタイル）を読み込み */
+@tailwind base;
+
+/* Tailwindのコンポーネント（ボタンやフォームなどのプリセット）を読み込み */
+@tailwind components;
+
+/* Tailwindのユーティリティクラス（余白、色、フォントなど）を読み込み */
+@tailwind utilities;
+
+/* 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */

@@ -2,6 +2,53 @@
 <html lang="ja">
   <head>
     <meta charset="UTF-8" />
+    <!--
+      文字エンコーディングをUTF-8に設定
+      日本語や絵文字なども正しく表示できるようにするため必須
+    -->
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!--
+      レスポンシブ対応用
+      画面幅に応じてレイアウトをスケーリングさせるための指定
+      スマホ / タブレット / PC すべてに対応できる
+    -->
+
+    <title>Tailwind v3 カードサンプル</title>
+    <!-- ページのタイトル。ブラウザのタブに表示される -->
+  </head>
+
+  <body class="bg-gray-100 text-gray-800">
+    <!--
+      Tailwind のユーティリティクラスを利用して
+      - 背景色をグレー系 (bg-gray-100)
+      - 文字色をダークグレー系 (text-gray-800)
+      に設定
+    -->
+
+    <div id="app" class="max-w-7xl mx-auto py-10 px-4"></div>
+    <!--
+      #app: JavaScript (main.js) からコンテンツを描画する領域
+      - max-w-7xl: レイアウトの最大幅を指定 (Tailwindのプリセット値)
+      - mx-auto: 中央寄せ
+      - py-10 px-4: 上下と左右に余白を付与
+      → レスポンシブでも見やすい余白になる
+    -->
+
+    <script type="module" src="/src/main.js"></script>
+    <!--
+      Vite で ES Modules を利用するため "type=module" を指定
+      エントリーポイントは /src/main.js
+      ここから header.js, footer.js, cards.js などがインポートされる
+    -->
+  </body>
+</html>
+
+<!--基本コード 
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tailwind v3 カードサンプル</title>
   </head>
@@ -9,4 +56,4 @@
     <div id="app" class="max-w-7xl mx-auto py-10 px-4"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
-</html>
+</html> -->
