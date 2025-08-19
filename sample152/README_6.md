@@ -103,3 +103,92 @@ node_modules	                インストールされたライブラリが保存
 バージョン管理（semver）	      ^1.2.3 や ~1.2.3 のような形式	                         ライブラリの更新範囲を制御する記号の意味を知ると安心
 lockファイル	                 yarn.lock や package-lock.json	                       依存関係のバージョンを固定して再現性を保つ
 CLI（Command Line Interface）	コマンドで操作するツール	                             npm/npx/yarn はすべて CLI ツール
+
+
+
+🟦 npm install コマンドは、Node.js のパッケージマネージャーである npm（Node Package Manager）を使って、
+プロジェクトに必要なパッケージ（ライブラリやツール）をインストールするための基本的なコマンドです。
+
+🛠 npm install の基本的な役割
+プロジェクトの依存関係（dependencies）をインストールします。
+
+package.json に記載されたパッケージを自動的に読み取り、それらを node_modules フォルダーにインストールします。
+(だから先にnpm initで初期化（package.jsonの作成）を作成する必要がある)
+
+📦 依存関係とは？
+依存関係とは、あなたのプロジェクトが動作するために必要な外部のライブラリやツールのことです。
+たとえば：
+Webアプリで React を使っている → react パッケージが依存関係
+サーバーサイドで Express を使っている → express パッケージが依存関係
+これらは package.json の中に次のように記述されます：
+
+json
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "react": "^18.2.0"
+  }
+}
+
+🧩 npm install の動作
+以下のようなことが起こります：
+package.json を読み取る
+dependencies や devDependencies に記載されたパッケージを探す
+それらをインターネットからダウンロードして node_modules に保存
+package-lock.json を更新（依存関係のバージョンを固定）
+
+🔍 よく使うオプション
+コマンド	    説明
+npm install	すべての依存関係をインストール
+npm install <パッケージ名>	特定のパッケージをインストール
+npm install --save	dependencies に追加（今は省略可能）
+npm install --save-dev	devDependencies に追加（開発用）
+
+🎯 例
+bash
+npm install express
+→ express をインストールし、package.json の dependencies に追加します。
+
+
+✅  npm install の使いどころ
+1. プロジェクトを初めてクローンしたとき
+GitHub などからプロジェクトをダウンロードした直後は、node_modules フォルダーが存在しません。
+
+bash
+git clone https://github.com/example/project.git
+cd project
+npm install
+🔹 このコマンドで package.json に記載されたすべての依存関係をインストールします。 
+🔹 これにより、プロジェクトが正常に動作する環境が整います。
+
+2. 依存関係を追加した後、他の人が使うとき
+誰かが新しいライブラリを追加して package.json を更新した場合、他の開発者はその変更を反映する必要があります。
+
+bash
+npm install
+🔹 これで新しい依存関係が node_modules に追加されます。
+
+3. package-lock.json がある場合の再現性確保
+package-lock.json に記録された正確なバージョンで依存関係をインストールすることで、環境の再現性が保証されます。
+
+🔹 チーム開発や CI/CD（自動化されたビルド）で特に重要です。
+
+4. node_modules を削除した後の復元
+ときどき、依存関係の不具合やクリーンアップのために node_modules を削除することがあります。
+
+bash
+rm -rf node_modules
+npm install
+🔹 これで依存関係が再インストールされ、環境が復元されます。
+
+5. Docker や CI 環境でのセットアップ
+Dockerfile や GitHub Actions などの自動化環境でも、npm install は必須です。
+
+Dockerfile
+RUN npm install
+🔹 これにより、コンテナやビルド環境に必要なライブラリが揃います。
+
+✅ 補足：npm ci との違い
+コマンド	        特徴
+npm install	    柔軟に依存関係をインストール。package-lock.json がなくても動く
+npm ci	        完全にロックファイル通りにインストール。高速で再現性が高い
