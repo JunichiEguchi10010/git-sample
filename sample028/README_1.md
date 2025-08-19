@@ -484,6 +484,51 @@ Tailwindの生成順に沿って、カスタムCSSの優先順位を制御でき
 再現性と拡張性を重視する設計では、@layer を使ってユーティリティクラスの再利用や、ブランドスタイルの統一がしやすくなります。
 
 
+
+✅ Tailwind CSS v3とv4の違い
+
+🌟 Tailwind CSS v3 の特徴
+◼ JavaScriptベースの設定
+  tailwind.config.js にテーマやユーティリティを定義するスタイル。柔軟だが、CSSとの分離がやや煩雑。
+
+◼ 任意値（arbitrary values）の記法
+  w-[103px] のように角括弧で囲む必要があった。
+
+◼ 手動でのコンテンツ検出
+  content: ['./src/**/*.{html,js}'] のように対象ファイルを明示する必要がある。
+
+◼プラグイン依存
+  コンテナクエリなどは別途プラグインが必要だった。
+
+🚀 Tailwind CSS v4 の進化ポイント
+機能	                v3	                  v4
+リリース日            2021年12月9日       2025年1月22日
+設定スタイル	        JSベース	          CSSベース（@theme や CSS変数）
+任意値の記法	        z-[9999]	          z-9999 のように簡素化
+テーマ定義	          theme() 関数使用	  CSS変数で直接定義
+コンテンツ検出	      手動設定	          自動検出（.gitignore なども考慮）3
+ビルド速度	          やや遅め	          高速化（エンジンサイズ縮小）
+コンテナクエリ	      プラグイン必要	     標準サポート
+カスタムユーティリティ	tailwind.config.js に定義	CSS内で @theme を使って定義
+
+🗓️ Tailwind CSS リリース日
+バージョン	リリース日	      主な特徴
+v3.0	    2021年12月9日	  JITエンジンが標準化、任意値サポート、カラー拡張など
+v4.0	    2025年1月22日3	CSS-first設計、Rust製エンジンによる高速化、設定ファイル不要化など
+
+🧩 実際のアップグレードでの注意点（v3 → v4）
+◼ @apply を <style> 内で使う場合、@reference を手動で挿入する必要あり
+
+◼ theme() 関数の挙動が変わり、spacing などのカスタム値が効かないことがある
+
+◼ shadow や rounded のクラス名がリネームされ、CSS変数との齟齬が起きる可能性あり
+
+◼ camelCase のテーマ変数がCSS変数に変換されるが、クラス名には反映されない
+
+🧠 補足
+Tailwind v4は、CSS-first設計にシフトしているので、PostCSSやViteとの親和性も高く、再現性と保守性を重視する開発スタイルにはぴったりです。
+特に @theme を活用したCSS変数ベースの設計は、行政データのダッシュボードなどでもスケーラブルなUI設計に役立ちます。
+
 Tailwind CSS講座
 【Tailwind CSS #1～#6】最近流行りのTailwind CSSを学ぼう
 https://www.youtube.com/watch?v=5TymbaeyV-0&list=PLwM1-TnN_NN4qjBRuMKDg1-g4rzK-UrP_
