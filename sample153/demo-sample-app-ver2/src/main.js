@@ -1,24 +1,35 @@
-import './style.css'
-import javascriptLogo from './javascript.svg'
-import viteLogo from '/vite.svg'
-import { setupCounter } from './counter.js'
+// Tailwind CSS 読み込み
+import "./style.css";
 
-document.querySelector('#app').innerHTML = `
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="${viteLogo}" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">
-      <img src="${javascriptLogo}" class="logo vanilla" alt="JavaScript logo" />
-    </a>
-    <h1>Hello Vite!</h1>
-    <div class="card">
-      <button id="counter" type="button"></button>
-    </div>
-    <p class="read-the-docs">
-      Click on the Vite logo to learn more
-    </p>
-  </div>
-`
+// AOS 読み込み
+import AOS from "aos";
+import "aos/dist/aos.css";
 
-setupCounter(document.querySelector('#counter'))
+// コンポーネントの読み込み
+import { renderHeader } from "./header.js";
+import { renderHero } from "./hero.js";
+import { renderCards } from "./cards.js";
+import { renderFooter } from "./footer.js";
+
+// #app を取得
+const app = document.getElementById("app");
+
+// ページ全体を構築
+app.innerHTML = `
+  ${renderHeader()}
+  ${renderHero()}
+  <main class="max-w-7xl mx-auto py-10 px-4">
+    <h2 class="text-3xl font-bold mb-8 text-center" data-aos="fade-up">サービス紹介</h2>
+    <div id="cards" class="grid gap-8 md:grid-cols-3"></div>
+  </main>
+  ${renderFooter()}
+`;
+
+// カードを描画
+renderCards(document.getElementById("cards"));
+
+// ✅ AOS を初期化（必須）
+AOS.init({
+  duration: 800, // アニメーション時間（ms）
+  once: true     // 1度だけアニメーションする
+});
