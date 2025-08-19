@@ -30,3 +30,29 @@ module.exports = {
 //   plugins: [],
 // }
 
+
+
+// ✅ なぜCommonJSでOKなのか？
+// （tailwind.config.js）は CommonJS形式でも問題なく動作します。
+// ただし、ES Modules形式（export default）もサポートされているので、どちらでも動きます。
+// 違いと選び方を整理してみましょう👇
+
+// ✅ Vite × Tailwind CSS：どちらの形式でもOK
+// 書き方	                              モジュール形式	              使用例	                          備考
+// module.exports = {...}	CommonJS	tailwind.config.js	Node.jsベースのツールで広く使われている形式。   安定性あり。
+// export default {...}	ES Modules	tailwind.config.mjs または type: "module" を package.json に指定	Viteやモダンな環境に合わせた形式。ファイル拡張子や設定が必要。
+
+// 🧠 ViteでES Modules形式を使うには？
+// もし export default を使いたい場合は、以下のいずれかが必要です：
+// tailwind.config.mjs にする（.jsではなく .mjs）
+// package.json に "type": "module" を追加する
+
+// json
+// {
+//   "type": "module"
+// }
+// これをしないと、Node.jsはES Modulesとして認識しないため、エラーになる可能性があります。
+
+// 🔚 結論
+// Viteを使っていても、tailwind.config.js を CommonJS形式（module.exports）で書くのが最も一般的で安全です。
+// ES Modules形式を使いたい場合は、.mjsにするか、package.jsonでモジュールタイプを指定しましょう。

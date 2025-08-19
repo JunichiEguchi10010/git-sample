@@ -8,6 +8,7 @@ export default defineConfig({
   },
 });
 
-// vite.config.js は CommonJS形式（module.exports）でも、ESM形式（export default）でも書けますが、Vite公式では ESM形式（export default defineConfig({...})）が推奨されています。
+// vite.config.js は CommonJS形式（module.exports）でも、ESM形式（export default）でも書けますが、
+// Vite公式では ESM形式（export default defineConfig({...})）が推奨されています。
 // TypeScriptで書く場合は vite.config.ts にして、型補完を活かすこともできます。
 // TailwindやPostCSSの設定ファイルも同じくルートに置くのが一般的です。
