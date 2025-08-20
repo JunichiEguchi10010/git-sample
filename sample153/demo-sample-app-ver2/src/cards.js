@@ -1,4 +1,6 @@
 // カードセクションを生成して指定されたコンテナに描画する関数
+// container に document.getElementById("cards") = div id="cards を指定
+// renderCards(document.getElementById("cards"));　 main.js29行目参照
 export function renderCards(container) {
     // 表示するカードのデータ配列（タイトルと説明文）
     const cards = [
