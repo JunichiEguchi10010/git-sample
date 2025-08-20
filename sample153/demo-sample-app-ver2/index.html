@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
+    <!-- ページの文字コードをUTF-8に設定 -->
+    <meta charset="UTF-8" />
+    
+    <!-- レスポンシブ対応：画面サイズに合わせて表示を調整 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- ブラウザのタブに表示されるタイトル -->
+    <title>Tailwind v3 ホームページ例</title>
+  </head>
+  <!-- 背景色と文字色をTailwind CSSで設定 -->
+  <body class="bg-gray-50 text-gray-800">
+    
+    <!-- JavaScriptで動的にコンテンツを生成するためのコンテナ -->
+    <div id="app"></div>
+    
+    <!-- モジュール型のJavaScriptファイルを読み込み -->
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
+
+
+<!-- 元のコード
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tailwind v3 ホームページ例</title>
   </head>
   <body class="bg-gray-50 text-gray-800">
-    <!-- JSで組み立て -->
     <div id="app"></div>
     <script type="module" src="/src/main.js"></script>
   </body>
-</html>
+</html> -->
