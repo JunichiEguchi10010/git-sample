@@ -1,0 +1,117 @@
+{
+  "_comment": "Moderm JavaScript に関するスニペット",
+  "DOMContentLoaded": {
+    "prefix": "domready",
+    "body": [
+      "// DOM が完全に読み込まれたときに実行される処理",
+      "document.addEventListener('DOMContentLoaded', () => {",
+      "    $1 // ここに実行したい処理を書く",
+      "});"
+    ],
+    "description": "DOMが読み込まれたら実行"
+  },
+
+  "windowLoad": {
+    "prefix": "windowload",
+    "body": [
+      "// ページ全体（画像やCSSも含む）がロードされたときに実行",
+      "window.addEventListener('load', () => {",
+      "    $1 // ここに実行したい処理を書く",
+      "});"
+    ],
+    "description": "ページ全体（画像含む）がロードされたら実行"
+  },
+
+  "click": {
+    "prefix": "click",
+    "body": [
+      "// 指定した要素をクリックしたときの処理",
+      "document.querySelector('$1').addEventListener('click', (e) => {",
+      "    e.preventDefault(); // デフォルトの動作をキャンセル（リンク遷移など）",
+      "    $2 // クリック時の処理をここに書く",
+      "});"
+    ],
+    "description": "クリックイベント"
+  },
+
+  "hover": {
+    "prefix": "hover",
+    "body": [
+      "// 指定した要素にホバーしたときの処理",
+      "const el = document.querySelector('$1'); // ホバー対象の要素",
+      "el.addEventListener('mouseenter', () => {",
+      "    $2 // マウスが乗ったときの処理",
+      "});",
+      "el.addEventListener('mouseleave', () => {",
+      "    $3 // マウスが離れたときの処理",
+      "});"
+    ],
+    "description": "hoverイベント"
+  },
+
+  "scroll": {
+    "prefix": "scroll",
+    "body": [
+      "// ページがスクロールされたときの処理",
+      "window.addEventListener('scroll', () => {",
+      "    $1 // スクロール時の処理をここに書く",
+      "});"
+    ],
+    "description": "スクロールイベント"
+  },
+
+  "scrollTop": {
+    "prefix": "scrollTop",
+    "body": [
+      "// 現在のスクロール位置（Y座標）を取得",
+      "window.scrollY // 使用例: const scrollPos = window.scrollY;"
+    ],
+    "description": "現在のスクロール位置を取得"
+  },
+
+  "each": {
+    "prefix": "each",
+    "body": [
+      "// NodeList（複数要素）に対して繰り返し処理を行う",
+      "document.querySelectorAll('$1').forEach(($2) => {",
+      "    $3 // 各要素に対して実行したい処理を書く",
+      "});"
+    ],
+    "description": "NodeListに対するループ処理"
+  },
+
+  "class": {
+    "prefix": "class",
+    "body": [
+      "// 指定した要素のクラスを操作する（add/remove/toggle）",
+      "document.querySelector('$1').classList.$2('$3'); // 例: addClass, removeClass, toggle"
+    ],
+    "description": "クラス操作（add/remove/toggle）"
+  },
+
+  "window-size": {
+    "prefix": "window-size",
+    "body": [
+      "// 画面幅によって処理を切り替える例",
+      "const windowWidth = window.innerWidth; // 現在の画面幅を取得",
+      "const windowSm = 767; // スマホ用ブレイクポイント",
+      "if (windowWidth <= windowSm) {",
+      "    // 767px以下のとき（スマホ版）だけ実行される処理",
+      "} else {",
+      "    // 768px以上のとき（PC版）だけ実行される処理",
+      "}"
+    ],
+    "description": "画面幅による処理切り替え"
+  },
+
+  "id": {
+    "prefix": "id",
+    "body": [
+      "// bodyタグのid属性が特定の値のときだけ処理を実行",
+      "if (document.body.id === '$1') {",
+      "    $2 // 特定ページ専用の処理をここに書く",
+      "}"
+    ],
+    "description": "特定のidのページだけ処理"
+  }
+}

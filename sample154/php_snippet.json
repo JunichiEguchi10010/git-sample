@@ -1,0 +1,124 @@
+    {
+     "_comment": "PHP に関するスニペット",
+     "php": {
+        "prefix": "php",
+        "body": ["<?php $1; ?>"],
+        "description": "PHPタグ"
+      },
+    
+      "php-echo": {
+        "prefix": "php-echo",
+        "body": ["<?php echo $1; ?>"],
+        "description": "echoで値を出力"
+      },
+    
+      "img-php": {
+        "prefix": "img-php",
+        "body": ["<img src='<?php echo get_template_directory_uri() ?>/assets/img/$1' alt='$2' width='$3' height='$4' decoding='async' loading='lazy'>"],
+        "description": "PHPでテーマディレクトリ内の画像を表示するimgタグ。alt, width, height指定可。遅延読み込み対応"
+      },
+    
+      "picture-php": {
+        "prefix": "picture-php",
+        "body": [
+          "<picture>",
+          "  <source srcset=\"<?php echo get_template_directory_uri() ?>/assets/img/$1.webp\" media=\"(max-width: 767px)\" type=\"image/webp\">",
+          "  <source srcset=\"<?php echo get_template_directory_uri() ?>/assets/img/$1.png\" media=\"(max-width: 767px)\" type=\"image/png\">",
+          "  <source srcset=\"<?php echo get_template_directory_uri() ?>/assets/img/$1.webp\" type=\"image/webp\">",
+          "  <img src=\"<?php echo get_template_directory_uri() ?>/assets/img/$1.png\" alt='' width='$3' height='$4' decoding='async' loading='lazy'>",
+          "</picture>"
+        ],
+        "description": "PHPでテーマディレクトリ内の画像を表示するレスポンシブpictureタグ"
+      },
+    
+      "temp": {
+        "prefix": "temp",
+        "body": ["<?php echo get_template_directory_uri() ?>"],
+        "description": "テーマディレクトリのURLを取得"
+      },
+    
+      "parts": {
+        "prefix": "parts",
+        "body": ["<?php get_template_part('template-parts/$1'); ?>"],
+        "description": "テンプレートパーツを読み込む"
+      },
+    
+      "url": {
+        "prefix": "url",
+        "body": ["<?php echo home_url( '/'); ?>"],
+        "description": "サイトのトップURLを取得"
+      },
+    
+      "hf": {
+        "prefix": "headerFooter",
+        "body": ["<?php get_header(); ?>", "$1", "<?php get_footer(); ?>"],
+        "description": "ヘッダーとフッターを読み込む"
+      },
+    
+      "if": {
+        "prefix": "if",
+        "body": ["<?php if(): ?>", "    ", "<?php elseif(): ?>", "    ", "<?php else: ?>", "    ", "<?php endif; ?>"],
+        "description": "条件分岐の基本構文"
+      },
+    
+      "if-page": {
+        "prefix": "if-page",
+        "body": ["<?php if(is_page('$1')): ?>", "    $2", "<?php endif; ?>"],
+        "description": "固定ページかどうかで条件分岐"
+      },
+    
+      "if-front-page": {
+        "prefix": "if-front-page",
+        "body": ["<?php if(is_front_page()): ?>", "    $1", "<?php endif; ?>"],
+        "description": "フロントページかどうかで条件分岐"
+      },
+    
+      "if-archive": {
+        "prefix": "if-archive",
+        "body": ["<?php if(is_archive()): ?>", "    $2", "<?php endif; ?>"],
+        "description": "投稿一覧ページかどうかで条件分岐"
+      },
+    
+      "if-post-type-archive": {
+        "prefix": "if-post-type-archive",
+        "body": ["<?php if(is_post_type_archive('$1')): ?>", "    $2", "<?php endif; ?>"],
+        "description": "カスタム投稿一覧ページかどうかで条件分岐"
+      },
+    
+      "if-category": {
+        "prefix": "if-category",
+        "body": ["<?php if(is_category()): ?>", "    $2", "<?php endif; ?>"],
+        "description": "カテゴリー一覧ページかどうかで条件分岐"
+      },
+    
+      "if-taxonomy": {
+        "prefix": "if-taxonomy",
+        "body": ["<?php if(is_tax('$1')): ?>", "    $2", "<?php endif; ?>"],
+        "description": "タクソノミーアーカイブページかどうかで条件分岐"
+      },
+    
+      "if-single": {
+        "prefix": "if-single",
+        "body": ["<?php if(is_single()): ?>", "    $2", "<?php endif; ?>"],
+        "description": "投稿詳細ページかどうかで条件分岐"
+      },
+    
+      "if-singular": {
+        "prefix": "if-singular",
+        "body": ["<?php if(is_singular('$1')): ?>", "    $2", "<?php endif; ?>"],
+        "description": "カスタム投稿詳細ページかどうかで条件分岐"
+      },
+    
+      "if-mobile": {
+        "prefix": "if-mobile",
+        "body": ["<?php if ( wp_is_mobile() ) : ?>", "    ", "<?php else: ?>", "    ", "<?php endif; ?>"],
+        "description": "モバイルデバイスかどうかで条件分岐"
+      },
+    
+      "field": {
+        "prefix": "field",
+        "body": ["<?php if(get_field('$1')): ?>", "    <?php the_field('$1'); ?>", "<?php endif; ?>"],
+        "description": "ACFのフィールド出力。値がある場合のみ表示"
+      }
+    }
+    

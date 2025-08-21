@@ -1,0 +1,503 @@
+{
+    "_comment_breakpoint": "ブレイクポイント (レスポンシブ対応)",
+    "pc": {
+      "prefix": "pc",
+      "body": ["@include mq(pc) {", "    $1 // PC向けスタイルをここに記述", "}"],
+      "description": "PC向けメディアクエリ"
+    },
+  
+    "md": {
+      "prefix": "md",
+      "body": ["@include screen(md) {", "    $1 // 中型デバイス用スタイル", "}"],
+      "description": "中型デバイス向けメディアクエリ"
+    },
+  
+    "tab": {
+      "prefix": "tab",
+      "body": ["@include mq(tab) {", "    $1 // タブレット向けスタイル", "}"],
+      "description": "タブレット向けメディアクエリ"
+    },
+  
+    "sp": {
+      "prefix": "sp",
+      "body": ["@include mq(sp) {", "    $1 // スマホ向けスタイル", "}"],
+      "description": "スマホ向けメディアクエリ"
+    },
+  
+    "media-min": {
+      "prefix": "media-min",
+      "body": [
+        "@media screen and (min-width: $1px) {",
+        "    $2 // 指定幅以上で適用",
+        "}"
+      ],
+      "description": "任意の最小幅メディアクエリ"
+    },
+  
+    "media-max": {
+      "prefix": "media-max",
+      "body": [
+        "@media screen and (max-width: $1px) {",
+        "    $2 // 指定幅以下で適用",
+        "}"
+      ],
+      "description": "任意の最大幅メディアクエリ"
+    },
+  
+    "_comment_color": "カラー (テキスト/背景)",
+    "cb": {
+      "prefix": "color-base",
+      "body": ["color: \\$base-color; // 基本テキストカラー"],
+      "description": "テキストをbase-colorに"
+    },
+  
+    "cw": {
+      "prefix": "color-white",
+      "body": ["color: \\$white; // 白色テキスト"],
+      "description": "テキストをwhiteに"
+    },
+  
+    "bb": {
+      "prefix": "bg-base",
+      "body": ["background: \\$base-color; // 背景をbase-colorに"],
+      "description": "背景色をbase-colorに"
+    },
+  
+    "bg": {
+      "prefix": "bg-bg",
+      "body": ["background: \\$bg-color; // 背景をbg-colorに"],
+      "description": "背景色をbg-colorに"
+    },
+  
+    "bg-white": {
+      "prefix": "bg-white",
+      "body": ["background: \\$white; // 背景を白色に"],
+      "description": "背景色をwhiteに"
+    },
+  
+    "bt": {
+      "prefix": "bg-transparent",
+      "body": ["background: transparent; // 背景を透明に"],
+      "description": "背景を透明にする"
+    },
+  
+    "_comment_spacing": "余白 (margin/padding)",
+    "mt": {
+      "prefix": "margin-top",
+      "body": ["margin-top: rm($1); // 上マージン"],
+      "description": "上マージンをrm単位で設定"
+    },
+  
+    "mb": {
+      "prefix": "margin-bottom",
+      "body": ["margin-bottom: rm($1); // 下マージン"],
+      "description": "下マージンをrm単位で設定"
+    },
+  
+    "ml": {
+      "prefix": "margin-left",
+      "body": ["margin-left: rm($1); // 左マージン"],
+      "description": "左マージンをrm単位で設定"
+    },
+  
+    "mr": {
+      "prefix": "margin-right",
+      "body": ["margin-right: rm($1); // 右マージン"],
+      "description": "右マージンをrm単位で設定"
+    },
+  
+    "pt": {
+      "prefix": "padding-top",
+      "body": ["padding-top: rm($1); // 上パディング"],
+      "description": "上パディングをrm単位で設定"
+    },
+  
+    "pb": {
+      "prefix": "padding-bottom",
+      "body": ["padding-bottom: rm($1); // 下パディング"],
+      "description": "下パディングをrm単位で設定"
+    },
+  
+    "pl": {
+      "prefix": "padding-left",
+      "body": ["padding-left: rm($1); // 左パディング"],
+      "description": "左パディングをrm単位で設定"
+    },
+  
+    "pr": {
+      "prefix": "padding-right",
+      "body": ["padding-right: rm($1); // 右パディング"],
+      "description": "右パディングをrm単位で設定"
+    },
+  
+    "_comment_bgimg": "画像 (背景画像)",
+    "bg-img": {
+      "prefix": "bg-image",
+      "body": [
+        "background: url(../img/$1) no-repeat center center / cover; // 背景画像"
+      ],
+      "description": "背景画像を設定（中央寄せ・cover）"
+    },
+  
+    "_comment_pseudo": "擬似要素 (before/after)",
+    "before": {
+      "prefix": "before",
+      "body": [
+        "&::before {",
+        "    content: ''; // 必須",
+        "    position: absolute; // 絶対配置",
+        "}"
+      ],
+      "description": "before擬似要素の基本"
+    },
+  
+    "after": {
+      "prefix": "after",
+      "body": [
+        "&::after {",
+        "    content: ''; // 必須",
+        "    position: absolute; // 絶対配置",
+        "}"
+      ],
+      "description": "after擬似要素の基本"
+    },
+  
+    "before-line": {
+      "prefix": "before-line",
+      "body": [
+        "&::before {",
+        "    content: '';",
+        "    position: absolute;",
+        "    width: 100%; height: 1px;",
+        "    background: $1;",
+        "    $2 // 追加スタイル",
+        "}"
+      ],
+      "description": "横線をbeforeで作成"
+    },
+  
+    "after-line": {
+      "prefix": "after-line",
+      "body": [
+        "&::after {",
+        "    content: '';",
+        "    position: absolute;",
+        "    width: 100%; height: 1px;",
+        "    background: $1;",
+        "    $2 // 追加スタイル",
+        "}"
+      ],
+      "description": "横線をafterで作成"
+    },
+  
+    "before-circ": {
+      "prefix": "before-circ",
+      "body": [
+        "&::before {",
+        "    content: '';",
+        "    position: absolute;",
+        "    width: $1; height: auto;",
+        "    aspect-ratio: 1;",
+        "    border: 1px solid $2;",
+        "    border-radius: 50%;",
+        "    $3 // 追加スタイル",
+        "}"
+      ],
+      "description": "円をbeforeで作成"
+    },
+  
+    "after-circ": {
+      "prefix": "after-circ",
+      "body": [
+        "&::after {",
+        "    content: '';",
+        "    position: absolute;",
+        "    width: $1; height: auto;",
+        "    aspect-ratio: 1;",
+        "    border: 1px solid $2;",
+        "    border-radius: 50%;",
+        "    $3 // 追加スタイル",
+        "}"
+      ],
+      "description": "円をafterで作成"
+    },
+  
+    "before-arrow": {
+      "prefix": "before-arrow",
+      "body": [
+        "&::before {",
+        "    content: '';",
+        "    position: absolute;",
+        "    width: $1; height: auto;",
+        "    aspect-ratio: 1;",
+        "    border-right: $2px solid $3;",
+        "    border-bottom: $2px solid $3;",
+        "    $4 // 回転や配置",
+        "}"
+      ],
+      "description": "矢印をbeforeで作成"
+    },
+    
+    "after-arrow": {
+      "prefix": "after-arrow",
+      "body": [
+        "&::after {",
+        "    content: '';",
+        "    position: absolute;",
+        "    width: $1; height: auto;",
+        "    aspect-ratio: 1;",
+        "    border-right: $2px solid $3;",
+        "    border-bottom: $2px solid $3;",
+        "    $5 // 回転や配置",
+        "}"
+      ],
+      "description": "矢印をafterで作成"
+    },
+  
+    "_comment_grid": "レイアウト(Grid)",
+    "grid": {
+      "prefix": "grid",
+      "body": [
+        "// ============================================",
+        "// グリッドレイアウト用の個別アイテムの指定",
+        "// grid-column: 開始列 / 終了列",
+        "// grid-row: 開始行 / 終了行",
+        "grid-column: $1 / $2;",
+        "grid-row: $3 / $4;"
+      ],
+      "description": "グリッドレイアウト用の位置指定"
+    },
+  
+    "_comment_border": "Border",
+    "bo": {
+      "prefix": "border",
+      "body": [
+        "// ============================================",
+        "// 要素の全体の境界線を設定",
+        "// $1: 線の太さ, $2: 線の色",
+        "border: $1 solid $2;"
+      ],
+      "description": "全体のボーダー"
+    },
+  
+    "bob": {
+      "prefix": "border-bottom",
+      "body": [
+        "// ============================================",
+        "// 下線のみ設定",
+        "// $1: 線の太さ, $2: 線の色",
+        "border-bottom: $1 solid $2;"
+      ],
+      "description": "下ボーダー"
+    },
+  
+    "bot": {
+      "prefix": "border-top",
+      "body": [
+        "// ============================================",
+        "// 上線のみ設定",
+        "border-top: $1 solid $2;"
+      ],
+      "description": "上ボーダー"
+    },
+  
+    "bor": {
+      "prefix": "border-right",
+      "body": [
+        "// ============================================",
+        "// 右線のみ設定",
+        "border-right: $1 solid $2;"
+      ],
+      "description": "右ボーダー"
+    },
+  
+    "bol": {
+      "prefix": "border-left",
+      "body": [
+        "// ============================================",
+        "// 左線のみ設定",
+        "border-left: $1 solid $2;"
+      ],
+      "description": "左ボーダー"
+    },
+  
+    "_comment_nth": "n番目の要素",
+    "nth": {
+      "prefix": "nth-child",
+      "body": [
+        "// ============================================",
+        "// n番目の子要素にスタイルを適用",
+        "&:nth-child($1) {",
+        "    $2",
+        "}"
+      ],
+      "description": "nth-child指定"
+    },
+  
+    "not-nth-child": {
+      "prefix": "not-nth-child",
+      "body": [
+        "// ============================================",
+        "// n番目の子要素以外にスタイルを適用",
+        "&:not(:nth-child($1)) {",
+        "    $2",
+        "}"
+      ],
+      "description": "nth-child以外指定"
+    },
+  
+    "nth-type": {
+      "prefix": "nth-type",
+      "body": [
+        "// ============================================",
+        "// 同じタイプ(n番目)の要素にスタイルを適用",
+        "&:nth-of-type($1) {",
+        "    $2",
+        "}"
+      ],
+      "description": "nth-of-type指定"
+    },
+  
+    "not-nth-type": {
+      "prefix": "not-nth-type",
+      "body": [
+        "// ============================================",
+        "// 同じタイプ(n番目)の要素以外にスタイルを適用",
+        "&:not(:nth-of-type($1)) {",
+        "    $2",
+        "}"
+      ],
+      "description": "nth-of-type以外指定"
+    },
+  
+    "nfc": {
+      "prefix": "not:first-child",
+      "body": [
+        "// ============================================",
+        "// 最初の子要素以外にスタイルを適用",
+        "&:not(:first-child) {",
+        "    $1",
+        "}"
+      ],
+      "description": "not:first-child指定"
+    },
+  
+    "fc": {
+      "prefix": "first-child",
+      "body": [
+        "// ============================================",
+        "// 最初の子要素にスタイルを適用",
+        "&:first-child {",
+        "    $1",
+        "}"
+      ],
+      "description": "first-child指定"
+    },
+  
+    "nlc": {
+      "prefix": "not:last-child",
+      "body": [
+        "// ============================================",
+        "// 最後の子要素以外にスタイルを適用",
+        "&:not(:last-child) {",
+        "    $1",
+        "}"
+      ],
+      "description": "not:last-child指定"
+    },
+  
+    "lc": {
+      "prefix": "last-child",
+      "body": [
+        "// ============================================",
+        "// 最後の子要素にスタイルを適用",
+        "&:last-child {",
+        "    $1",
+        "}"
+      ],
+      "description": "last-child指定"
+    },
+  
+    "fot": {
+      "prefix": "first-of-type",
+      "body": [
+        "// ============================================",
+        "// 同じタイプの最初の要素に適用",
+        "&:first-of-type {",
+        "    $1",
+        "}"
+      ],
+      "description": "first-of-type指定"
+    },
+  
+    "nfot": {
+      "prefix": "not:first-of-type",
+      "body": [
+        "// ============================================",
+        "// 同じタイプの最初の要素以外に適用",
+        "&:not(:first-of-type) {",
+        "    $1",
+        "}"
+      ],
+      "description": "not:first-of-type指定"
+    },
+  
+    "lot": {
+      "prefix": "last-of-type",
+      "body": [
+        "// ============================================",
+        "// 同じタイプの最後の要素に適用",
+        "&:last-of-type {",
+        "    $1",
+        "}"
+      ],
+      "description": "last-of-type指定"
+    },
+  
+    "nlot": {
+      "prefix": "not:last-of-type",
+      "body": [
+        "// ============================================",
+        "// 同じタイプの最後の要素以外に適用",
+        "&:not(:last-of-type) {",
+        "    $1",
+        "}"
+      ],
+      "description": "not:last-of-type指定"
+    },
+  
+    "_comment_position": "position配置",
+    "top50": {
+      "prefix": "top-50%",
+      "body": [
+        "// ============================================",
+        "// 要素を縦方向中央に配置",
+        "top: 50%;",
+        "transform: translateY(-50%);"
+      ],
+      "description": "縦中央揃え"
+    },
+  
+    "left50": {
+      "prefix": "left-50%",
+      "body": [
+        "// ============================================",
+        "// 要素を横方向中央に配置",
+        "left: 50%;",
+        "transform: translateX(-50%);"
+      ],
+      "description": "横中央揃え"
+    },
+  
+    "tl50": {
+      "prefix": "top-left-50%",
+      "body": [
+        "// ============================================",
+        "// 要素を縦横中央に配置",
+        "top: 50%;",
+        "left: 50%;",
+        "transform: translate(-50%, -50%);"
+      ],
+      "description": "縦横中央揃え"
+    }
+  }

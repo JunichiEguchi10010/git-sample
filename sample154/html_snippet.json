@@ -1,0 +1,183 @@
+{
+    "_comment": "HTML に関するスニペット",
+    "class": {
+      "prefix": ".",
+      "body": ["class=\"$1\""],
+      "description": "class属性の入力。例: class=\"header\""
+    },
+  
+    "id": {
+      "prefix": "#",
+      "body": ["id=\"$1\""],
+      "description": "id属性の入力。例: id=\"top\""
+    },
+  
+    "zen": {
+      "prefix": "zen",
+      "body": ["&emsp;"],
+      "description": "全角スペースを挿入"
+    },
+  
+    "han": {
+      "prefix": "han",
+      "body": ["&nbsp;"],
+      "description": "半角スペース（HTML非改行スペース）を挿入"
+    },
+  
+    "copy": {
+      "prefix": "copyright",
+      "body": ["&copy;"],
+      "description": "コピーライトマーク©を挿入"
+    },
+  
+    "colon": {
+      "prefix": "colon",
+      "body": ["&#0058;"],
+      "description": "コロン(:)のHTML文字コード"
+    },
+  
+    "br": {
+      "prefix": "br",
+      "body": ["<br>"],
+      "description": "改行タグ"
+    },
+  
+    "br-pc": {
+      "prefix": "br-pc",
+      "body": ["<br class=\"u-pc\">"],
+      "description": "PCのみで改行"
+    },
+  
+    "br-sp": {
+      "prefix": "br-sp",
+      "body": ["<br class=\"u-sp\">"],
+      "description": "スマホのみで改行"
+    },
+  
+    "swiper": {
+      "prefix": "swiper",
+      "body": [
+        "<div class=\"swiper-container\">",
+        "  <div class=\"swiper\">",
+        "    <div class=\"swiper-wrapper\">",
+        "      <div class=\"swiper-slide\">",
+        "        <!-- スライドの中身 -->",
+        "      </div>",
+        "    </div>",
+        "  </div>",
+        "  <div class=\"swiper-pagination\"></div>",
+        "  <div class=\"swiper-button-prev\"></div>",
+        "  <div class=\"swiper-button-next\"></div>",
+        "</div>"
+      ],
+      "description": "SwiperスライダーのHTML構造。ページネーション・前後ボタン付き"
+    },
+  
+    "form": {
+      "prefix": "form",
+      "body": [
+        "<form action=\"\">",
+        "  <div class=\"contact-table\">",
+        "    <!-- 名前 -->",
+        "    <div><div class=\"contact-item\">名前</div><div class=\"contact-body\"><input type=\"text\" name=\"名前\" class=\"form-text\" /></div></div>",
+        "    <!-- メール -->",
+        "    <div><div class=\"contact-item\">メール</div><div class=\"contact-body\"><input type=\"email\" name=\"メール\" class=\"form-text\" /></div></div>",
+        "    <!-- 電話 -->",
+        "    <div><div class=\"contact-item\">電話</div><div class=\"contact-body\"><input type=\"tel\" name=\"電話\" class=\"form-text\" /></div></div>",
+        "    <!-- 性別 -->",
+        "    <div><div class=\"contact-item\">性別</div><div class=\"contact-body\"><label class=\"contact-jender\"><input type=\"radio\" name=\"性別\" /><span class=\"contact-jender-text\">男</span></label><label class=\"contact-jender\"><input type=\"radio\" name=\"性別\" /><span class=\"contact-jender-text\">女</span></label></div></div>",
+        "    <!-- 職業 -->",
+        "    <div><div class=\"contact-item\">職業</div><div class=\"contact-body\"><select name=\"職業\" class=\"form-select\"><option>選択</option><option>学生</option><option>主婦</option><option>会社員</option></select></div></div>",
+        "    <!-- スキル -->",
+        "    <div><div class=\"contact-item\">スキル</div><div class=\"contact-body\"><label class=\"contact-skill\"><input type=\"checkbox\" name=\"スキル\" /><span class=\"contact-skill-txt\">HTML,CSS</span></label><label class=\"contact-skill\"><input type=\"checkbox\" name=\"スキル\" /><span class=\"contact-skill-txt\">JavaScript,jQuery</span></label></div></div>",
+        "    <!-- お問い合わせ内容 -->",
+        "    <div><div class=\"contact-item\">お問い合わせ内容</div><div class=\"contact-body\"><textarea name=\"問い合わせ\" class=\"form-textarea\"></textarea></div></div>",
+        "  </div>",
+        "</form>"
+      ],
+      "description": "お問い合わせフォームのHTML構造。名前・メール・電話・性別・職業・スキル・問い合わせ内容を含む"
+    },
+  
+    "table": {
+      "prefix": "table",
+      "body": [
+        "<table class=\"$1\">",
+        "  <tr class=\"$2\">",
+        "    <th class=\"$3\"></th>",
+        "    <td class=\"$4\"></td>",
+        "  </tr>",
+        "</table>"
+      ],
+      "description": "テーブルの基本構造。クラス名を指定可能"
+    },
+  
+    "header-base-html": {
+      "prefix": "header-base-html",
+      "body": [
+        "<header class=\"header\">",
+        "  <div class=\"header-wrap\">",
+        "    <div class=\"header-logo\"><a href=\"\">ロゴ</a></div>",
+        "    <nav class=\"header-nav\">",
+        "      <ul class=\"header-list\">",
+        "        <li class=\"header-item\"><a href=\"\">about</a></li>",
+        "        <li class=\"header-item\"><a href=\"\">service</a></li>",
+        "        <li class=\"header-item\"><a href=\"\">works</a></li>",
+        "      </ul>",
+        "      <div class=\"header-btn\"><a href=\"\">contact</a></div>",
+        "    </nav>",
+        "    <div class=\"drawer-icon pc_hidden\"><span class=\"bar1\"></span><span class=\"bar2\"></span><span class=\"bar3\"></span></div>",
+        "  </div>",
+        "</header>"
+      ],
+      "description": "ヘッダーのHTML構造。ロゴ・ナビゲーション・ハンバーガーメニュー付き"
+    },
+  
+    "section": {
+      "prefix": "section",
+      "body": ["<section class=\"\"><div class=\"inner\"><!-- コンテンツ --></div></section>"],
+      "description": "汎用セクション。内部にコンテンツを追加"
+    },
+  
+    "img-html": {
+      "prefix": "img-html",
+      "body": ["<img src='./assets/img/$1' alt='$2' width='$3' height='$4' loading='lazy'>"],
+      "description": "画像タグ。src, alt, width, heightを指定可能"
+    },
+  
+    "picture-html": {
+      "prefix": "picture-html",
+      "body": [
+        "<picture>",
+        "  <source srcset=\"./assets/img/$1.webp\" media=\"(max-width: 767px)\" type=\"image/webp\">",
+        "  <source srcset=\"./assets/img/$1.png\" media=\"(max-width: 767px)\" type=\"image/png\">",
+        "  <source srcset=\"./assets/img/$1.webp\" type=\"image/webp\">",
+        "  <img src=\"./assets/img/$1.png\" alt='' width='$3' height='$4' loading='lazy'>",
+        "</picture>"
+      ],
+      "description": "レスポンシブ画像(pictureタグ)。WebP対応"
+    },
+  
+    "tel": {
+      "prefix": "tel",
+      "body": ["<a href=\"tel:$1\">$1</a>"],
+      "description": "電話リンクを作成"
+    },
+  
+    "email": {
+      "prefix": "email",
+      "body": ["<a href=\"mailto:$1\">$1</a>"],
+      "description": "メールリンクを作成"
+    },
+  
+    "target": {
+      "prefix": "target",
+      "body": ["<a href=\"$1\" target=\"_blank\">$2</a>"],
+      "description": "外部リンクを新しいタブで開く"
+    },
+  
+    "jQuery-cdn": {
+      "prefix": "jQuery-cdn",
+      "body": ["<script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js\"></script>"],
+      "description": "jQueryをCDNで読み込む"
+    }
+}
