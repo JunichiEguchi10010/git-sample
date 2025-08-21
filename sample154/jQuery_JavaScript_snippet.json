@@ -1,0 +1,200 @@
+{
+    "_comment": "jQuery Legacy JavaScript に関するスニペット",
+    "jQuery": {
+      "prefix": "jq-jQuery",
+      "body": [
+        "jQuery(function(\\$) {",
+        "    \\$1",
+        "});"
+      ],
+      "description": "jQuery"
+    },
+  
+    "ready": {
+      "prefix": "jq-ready",
+      "body": [
+        "\\$(window).on('ready', function() {",
+        "    \\$1",
+        "});"
+      ],
+      "description": "ready関数"
+    },
+  
+    "load": {
+      "prefix": "jq-load",
+      "body": [
+        "\\$(window).on('load', function() {",
+        "    \\$1",
+        "});"
+      ],
+      "description": "load"
+    },
+  
+    "hover": {
+      "prefix": "jq-hover",
+      "body": [
+        "\\$('$1').on({",
+        "    'mouseenter': function() {",
+        "        //hover",
+        "        $2",
+        "    },",
+        "    'mouseleave': function() {",
+        "        //leave",
+        "        $3",
+        "    }",
+        "});"
+      ],
+      "description": ""
+    },
+  
+    "click": {
+      "prefix": "jq-click",
+      "body": [
+        "\\$('$1').on('click', function () {",
+        "    $2",
+        "    return false;",
+        "});"
+      ],
+      "description": "クリックイベント"
+    },
+  
+    "scroll": {
+      "prefix": "jq-scroll",
+      "body": [
+        "\\$(window).on('scroll', function () {",
+        "    $2",
+        "});"
+      ],
+      "description": "スクロール関数"
+    },
+  
+    "scrollTop": {
+      "prefix": "jq-scrollTop",
+      "body": [
+        "\\$(window).scrollTop();"
+      ],
+      "description": "現在のスクロール位置を取得"
+    },
+  
+    "each": {
+      "prefix": "jq-each",
+      "body": [
+        "$1.each(function () {",
+        "    $2",
+        "});"
+      ],
+      "description": "each関数"
+    },
+  
+    "class": {
+      "prefix": "jq-class",
+      "body": [
+        "\\$('$1').$2Class('$3');"
+      ],
+      "description": "クラスの付け外し"
+    },
+  
+    "window-size": {
+      "prefix": "jq-window-size",
+      "body": [
+        "var windowWidth = \\$(window).width();",
+        "var windowSm = 767; //breakpoint",
+        "if (windowWidth <= windowSm) {",
+        "    //767px以下の時(sp版)だけにjsが当たる",
+        "} else {",
+        "    //768px以上の時(pc版)だけにjsが当たる",
+        "}"
+      ],
+      "description": "画面幅によって当てるjsを切り替える"
+    },
+  
+    "id": {
+      "prefix": "jq-id",
+      "body": [
+        "if ( window.document.body.id === '$1' ) {",
+        "    $2",
+        "}"
+      ],
+      "description": "特定のidを持つもののみに設定"
+    },
+  
+    "swiper": {
+      "prefix": "jq-swiper",
+      "body": [
+        "const mySwiper = new Swiper('.p-swiper__xxx', { //名前を変える",
+        "	loop: true, //最後→最初に戻るループ再生を有効に",
+        "	autoplay: { ",
+        "        delay: 3000, //何秒ごとにスライドを動かすか",
+        "        stopOnLastSlide: false, //最後のスライドで自動再生を終了させるか",
+        "        disableOnInteraction: true, //ユーザーの操作時に止める",
+        "        reverseDirection: false, //自動再生を逆向きにする",
+        "	},",
+        "	speed: 1000, //表示切り替えのスピード",
+        "    effect: \"slide\", //切り替えのmotion (※1)",
+        "	centeredSlides: true, //中央寄せ",
+        "    pagination: {",
+        "        el: \".swiper-pagination\", //paginationのclass",
+        "		clickable: true, //クリックでの切り替えを有効に",
+        "        type: \"progressbar\" //paginationのタイプ (※2)",
+        "    },",
+        "    navigation: {",
+        "        prevEl: \".swiper-button-prev\", //戻るボタンのclass",
+        "        nextEl: \".swiper-button-next\" //進むボタンのclass",
+        "    },",
+        "    scrollbar: { //スクロールバーを表示したいとき",
+        "        el: \".swiper-scrollbar\", //スクロールバーのclass",
+        "        hide: true, //操作時のときのみ表示",
+        "        draggable: true //スクロールバーを直接表示できるようにする",
+        "    },",
+        "    allowTouchMove: false, // スワイプで表示の切り替えを無効に",
+        "    slidesPerView: 3, // 一度に表示する枚数",
+        "    breakpoints: { //画面幅による表示枚数と余白の指定",
+        "        320: {",
+        "            slidesPerView: 1,",
+        "            spaceBetween: 10,",
+        "        },",
+        "        375: {",
+        "            slidesPerView: 1.2,",
+        "            spaceBetween: 15,",
+        "        },",
+        "        600: {",
+        "            slidesPerView: 1.2,",
+        "            spaceBetween: 15,",
+        "        },",
+        "        1025: {",
+        "            slidesPerView: 2,",
+        "            spaceBetween: 20,",
+        "        },",
+        "        1500: {",
+        "            slidesPerView: 3,",
+        "            spaceBetween: 20,",
+        "        }",
+        "    }",
+        "});",
+        "",
+        "/* =================================================== ",
+        "※1 effectについて",
+        "slide：左から次のスライドが流れてくる",
+        "fade：次のスライドがふわっと表示",
+        "■ fadeの場合は下記を記述",
+        "    fadeEffect: {",
+        "        crossFade: true",
+        "    },",
+        "cube：スライドが立方体になり、3D回転を繰り返す",
+        "coverflow：写真やアルバムジャケットをめくるようなアニメーション",
+        "flip：平面が回転するようなアニメーション",
+        "cards：カードを順番にみていくようなアニメーション",
+        "creative：カスタマイズしたアニメーションを使うときに使用します",
+        "",
+        "=======================================================",
+        "※2 paginationのタイプ",
+        "bullet：スライド枚数と同じ数のドットが表示",
+        "fraction：分数で表示（例：1 / 3）",
+        "progressbar：スライドの進捗に応じてプログレスバーが伸びる",
+        "custom：自由にカスタマイズ",
+        "",
+        "=====================================================*/"
+      ],
+      "description": ""
+    }
+  }  

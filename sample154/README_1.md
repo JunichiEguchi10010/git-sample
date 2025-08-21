@@ -39,7 +39,23 @@ Modern JavaScript系
 | `window-size` | 画面幅切り替え          | 画面幅によって処理を切り替える例（レスポンシブ対応）    |
 | `id`          | ページID限定処理        | bodyタグのid属性が特定値のときだけ処理を実行     |
 
-Legacy JavaScrip系
+Legacy JavaScrip(jQuery)系
+| Prefix           | 説明                 | 使用例                                                           |
+|------------------|--------------------|------------------------------------------------------------------|
+| `jq-jQuery`      | jQuery初期化         | `jQuery(function($) { $1 });`                                    |
+| `jq-ready`       | ready関数           | `$(window).on('ready', function() { $1 });`                     |
+| `jq-load`        | loadイベント        | `$(window).on('load', function() { $1 });`                      |
+| `jq-hover`       | hoverイベント        | `$('#id').on({ 'mouseenter': function() { $2 }, 'mouseleave': function() { $3 } });` |
+| `jq-click`       | クリックイベント      | `$('#id').on('click', function() { $1; return false; });`       |
+| `jq-scroll`      | スクロールイベント    | `$(window).on('scroll', function() { $1 });`                    |
+| `jq-scrollTop`   | スクロール位置取得    | `$(window).scrollTop();`                                         |
+| `jq-each`        | each関数            | `$1.each(function() { $2 });`                                     |
+| `jq-class`       | クラス操作           | `$('#id').$2Class('$3');`                                        |
+| `jq-window-size` | 画面幅による切替     | `var windowWidth = $(window).width(); if(windowWidth <= 767){ ... } else { ... }` |
+| `jq-id`          | ページID限定処理     | `if (document.body.id === '$1') { $2 }`                          |
+| `jq-swiper`      | Swiper初期化         | `const mySwiper = new Swiper('.p-swiper__xxx', { ... });`       |
+
+
 
 
 PHP系
