@@ -14,6 +14,23 @@
 | ツール依存         | 少ない（PostCSSなどで補完可能）      | Sass CLIやビルドツールが必要            | 同上                                     |
 
 
+✅ 構文比較：モダンCSS vs SCSS vs SASS（インデント構文）
+| 機能         | モダンCSS（CSS変数）                          | SCSS（中括弧構文）　Sassの主流                      | Sass（インデント構文）                          |
+
+|--------------|---------------------------------------------|----------------------------------------------------|-------------------------------------|
+
+| 変数定義     | `--main-color: #3498db;`                      | `$main-color: #3498db;`                            | `$main-color: #3498db`                           |
+| 変数使用     | `color: var(--main-color);`                   | `color: $main-color;`                              | `color: $main-color`                             |
+| ネスト構文   | `@nest .child { color: red; }`（一部対応）    | `.parent { .child { color: red; } }`               | `.parent`<br>&nbsp;&nbsp;`.child`<br>&nbsp;&nbsp;&nbsp;&nbsp;`color: red` |
+| ミックスイン | ❌（未対応）                                   | `@mixin rounded { border-radius: 10px; }`          | `=rounded`<br>&nbsp;&nbsp;`border-radius: 10px`  |
+| インクルード | ❌（未対応）                                   | `@include rounded;`                                | `+rounded`                                       |
+| 条件分岐     | ❌（未対応）                                   | `@if $theme == dark { background: black; }`        | `@if $theme == dark`<br>&nbsp;&nbsp;`background: black` |
+| ループ       | ❌（未対応）                                   | `@for $i from 1 through 3 { ... }`                 | `@for $i from 1 through 3`<br>&nbsp;&nbsp;`...`  |
+| 関数定義     | ❌（未対応）                                   | `@function double($n) { @return $n * 2; }`         | `@function double($n)`<br>&nbsp;&nbsp;`@return $n * 2` |
+
+モダンCSSは機能が増えてきていますが、ロジック的な処理（条件分岐・ループ・関数）には未対応です。
+
+
 🎯 実際の選び方の比較
 | 項目           | モダンCSS                     | SCSS                                | Sass（インデント構文）         |
 |----------------|-------------------------------|-------------------------------------|--------------------------------|
@@ -27,3 +44,45 @@
 モダンCSS：軽量でブラウザ対応が進んでおり、小〜中規模のプロジェクトに最適。JSとの連携も強力。
 SCSS：CSSに慣れている人にとって扱いやすく、チーム開発や大規模サイトに向いている。
 Sass（インデント構文）：コードが簡潔で美しいが、CSSとの互換性がなく、学習コストがやや高め。
+
+
+
+🟦 「JSとの連携 ◎ × ×」というのは、JavaScriptからスタイルの値を動的に操作できるかどうかという観点での違いです。
+
+✅ モダンCSS（CSS変数） × JavaScript連携
+🔧 CSS（style.css）
+css
+:root {
+  --main-color: #3498db;
+}
+
+.button {
+  background-color: var(--main-color);
+  color: white;
+  padding: 10px 20px;
+}
+💡 JavaScriptで変数を変更
+js
+document.documentElement.style.setProperty('--main-color', '#e74c3c');
+
+🖼 結果
+ボタンの背景色が 青 → 赤 に変わります。 CSS変数は document.documentElement.style.setProperty() を使って リアルタイムで変更可能です。
+
+❌ SCSS / SASS × JavaScript連携不可
+🔧 SCSS（style.scss）
+scss
+$main-color: #3498db;
+
+.button {
+  background-color: $main-color;
+  color: white;
+  padding: 10px 20px;
+}
+この $main-color は Sassのコンパイル時にCSSに変換されるだけで、JavaScriptからはアクセスできません。
+
+💡 JavaScriptで変更しようとしても…
+js
+// これは効きません
+document.documentElement.style.setProperty('$main-color', '#e74c3c');
+→ $main-color はCSSには存在しないため、何も起こりません。
+
