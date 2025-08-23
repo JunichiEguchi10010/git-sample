@@ -24,6 +24,7 @@ Node.jsと一緒にインストールされ、オープンソースのライブ�
 npm install: パッケージをインストールする。
 
 npm init: プロジェクトのpackage.jsonを初期化する。
+（package.jsonを作成）
 
 npm update: パッケージを最新バージョンに更新する。
 
