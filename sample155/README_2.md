@@ -124,3 +124,29 @@ Tailwind を導入するにはビルド設定を大きく変える必要があ�
 
 👉 逆に言うと、新規でゼロから作れる立場 なら、「Tailwind で大部分 → 足りない部分を CSS」で十分で、
 SCSS を無理に入れる必要はない。
+
+
+
+【たった５分で完了】「gulp」の導入方法と使用例を紹介します
+https://digitalidentity.co.jp/blog/creative/gulp.html
+【Gulp4】フロントエンド環境構築３（Gulp基本）
+https://www.youtube.com/watch?v=-9_eTHVOiqg
+
+CSSやHTMLを保存したらブラウザ側も自動的にリロード
+Sassが保存されたタイミングで自動コンパイル
+CSSにベンダープレフィックスを自動で付与
+CSS、JavaScriptのソースを圧縮
+画像を圧縮
+古いので注意
+
+【Gulp4】フロントエンド環境構築１（概要編）
+https://www.youtube.com/watch?v=wj4KUnArxHI&t=234s
+【Gulp4】フロントエンド環境構築２（インストール）
+https://www.youtube.com/watch?v=zwLQ3i5GGVU&t=185s
+
+
+以下不要論
+https://itokoba.com/archives/7593
+Web制作の場合はSassをコンパイルするという用途以外gulpを使いたい場面はほぼないです。
+
+それなのにさらにそのSassが大して必要ありません。
