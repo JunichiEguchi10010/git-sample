@@ -7,21 +7,11 @@ Node.js がインストール済み
 ✅ 1. プロジェクト準備
 mkdir my-project
 cd my-project
-npm init -y
+npm init -y(package.json作成)
 
 package.json が作成されます
 
-✅2. 必要なパッケージをインストール
-npm install --save-dev gulp gulp-sass sass gulp-concat gulp-uglify gulp-imagemin gulp-sourcemaps
-
-パッケージ	            役割
-gulp	            タスクランナー本体
-gulp-sass + sass	Sass → CSSコンパイル
-gulp-concat	        JSファイル結合
-gulp-uglify	        JS圧縮
-gulp-imagemin	    画像最適化
-gulp-sourcemaps	    ソースマップ生成（デバッグ用）
-
+　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
 ✅ 3. ディレクトリ構成例
 my-project/
 ├─ src/
@@ -35,8 +25,11 @@ my-project/
 │  ├─ css/
 │  ├─ js/
 │  └─ images/
+├─ package.json
 └─ gulpfile.js
 
+・src/：開発用ファイル（Sass, JS, 画像など）
+・dist/：ビルド後の出力先
 dist/ は手動で作ってもよいですが、Gulp実行時に自動生成も可能です
 
 ✅ 4. gulpfile.js の例（CommonJS形式）
