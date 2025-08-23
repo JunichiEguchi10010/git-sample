@@ -260,3 +260,14 @@ watchは必要なし、最終成果物だけを dist/ に出力
 
 開発中は watch を起動して、手を動かすたびに自動ビル
 リリース前は一括ビルド
+
+🟥 最近の Node.js（v18以降）は、ESM（import）と CommonJS（require）の扱いが厳密になっていて、これが Gulp や他のツールの動作に影響を与えるようになりました。
+初心者が「Gulp-imagemin が require できない」とか「gulpfile.js が見つからない」といったエラーに直面しても、それが Node.js の仕様変更によるものだと気づくのはほぼ不可能です。
+現在のファイル名は gulpfile.cjs ですね。これは CommonJS モジュール形式で書かれた Gulp ファイルです。Gulp v4 は .cjs 拡張子にも対応していますが、自動認識されないことがあるため、明示的に指定してあげる必要があります。
+
+✅ 解決方法：--gulpfile オプションでファイル指定
+以下のようにコマンドを実行してください：
+
+ファイル名を明示して実行する
+powershell
+npx gulp --gulpfile gulpfile.cjs serve
