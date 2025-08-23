@@ -10,8 +10,7 @@ cd my-project
 npm init -y(package.json作成)
 
 package.json が作成されます
-
-　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　
+　　　　　　　　　　　　　　　
 ✅ 3. ディレクトリ構成例
 my-project/
 ├─ src/
@@ -26,6 +25,8 @@ my-project/
 │  ├─ js/
 │  └─ images/
 ├─ package.json
+├─ package-look.json
+├─ .gitignore
 └─ gulpfile.js
 
 ・src/：開発用ファイル（Sass, JS, 画像など）
