@@ -1,4 +1,4 @@
-Gulp について  20250823
+Gulp について 20250823
 
 Gulp公式サイト
 https://gulpjs.com/
