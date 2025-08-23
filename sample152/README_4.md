@@ -61,5 +61,60 @@ Tailwind CSSはPostCSSプラグインとして動作しているので、Vite + 
 必要な機能だけを選べるので、小規模案件でも無駄なく最適化可能
 ✅ vite.config.js に postcss.config.js を置くだけで自動で読み込まれるので、設定の再現性と保守性が高い
 
+
+🌟 PostCSSでできること
+1. CSSの自動変換（プレフィックス付与など）
+autoprefixerというプラグインを使えば、ベンダープレフィックス（例：-webkit-）を自動で追加してくれます。
+
+例：display: flex; → display: -webkit-box; display: -ms-flexbox; display: flex;
+
+2. 未来のCSSを今すぐ使える
+postcss-preset-envを使えば、まだブラウザが対応していないCSSの新機能を、古い書き方に変換してくれます。
+
+例：:focus-visible や custom media queries など。
+
+3. CSSの構造を整理・最適化
+不要なコードの削除（postcss-discard-commentsなど）
+
+重複プロパティの統合
+
+ファイルサイズの削減
+
+4. CSSの拡張（変数・関数・ネストなど）
+SassやLessのように、CSSに変数やネスト構文を導入できます。
+
+例：
+
+css
+:root {
+  --main-color: #3498db;
+}
+
+.btn {
+  color: var(--main-color);
+  &:hover {
+    color: darken(var(--main-color), 10%);
+  }
+}
+5. 独自の処理を追加できる
+JavaScriptで自分だけのPostCSSプラグインを作ることも可能。
+
+例えば、特定のクラス名を強制的に変換するなど、自由自在。
+
+🧩 他のツールとの違いは？
+ツール	            特徴
+Sass	        独自の構文でCSSを拡張
+PostCSS	      プラグインベースで柔軟に機能追加・変換可能
+Tailwind CSS	ユーティリティクラス中心の設計
+PostCSSは「何でもできるけど、何も決まっていない」タイプ。
+必要な機能だけを選んで使えるのが魅力です。
+
+
+
+
+
+
+
+
 【Tailwind CSS #3】4つのインストール方法の紹介。オススメはPostCSSのプラグインとして使う方法。
 https://www.youtube.com/watch?v=mzRxqknA9Jg
