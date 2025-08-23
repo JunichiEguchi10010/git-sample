@@ -3,20 +3,29 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "commonjs",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "gulp",
+    "dev": "browser-sync start --server --files 'dist/**/*'",
+    "build": "gulp build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "gulp": "^5.0.1",
-    "gulp-cli": "^3.1.0",
+    "browser-sync": "^3.0.4",
+    "gulp": "^4.0.2",
+    "gulp-cli": "^2.3.0",
     "gulp-concat": "^2.6.1",
     "gulp-imagemin": "^9.1.0",
     "gulp-sass": "^6.0.1",
     "gulp-sourcemaps": "^3.0.0",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.90.0"
+  },
+  "volta": {
+    "node": "18.20.8",
+    "npm": "10.8.2"
   }
 }
