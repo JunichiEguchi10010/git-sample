@@ -69,7 +69,6 @@ GulpをNode.js環境で使うときは、Node.js v18.20.8 と npm v10.8.2 の組
 
 なければ Node.js公式
  から LTS(安定) 版をインストール
-
 npm が使えることを確認
 
 3️⃣ npm プロジェクト初期化
@@ -81,25 +80,15 @@ npm init -y
 4️⃣ 開発に必要なパッケージをインストール
 npm install --save-dev gulp gulp-sass sass gulp-postcss autoprefixer gulp-sourcemaps browser-sync gulp-clean-css gulp-uglify gulp-babel @babel/core @babel/preset-env gulp-imagemin del
 
-
 gulp：タスクランナー
-
 gulp-sass + sass：SCSS → CSS
-
 gulp-postcss + autoprefixer：ベンダープレフィックス自動付与
-
 gulp-sourcemaps：ソースマップ生成
-
 browser-sync：開発中の自動リロード
-
 gulp-clean-css：CSS圧縮
-
 gulp-uglify + gulp-babel：JS圧縮 + ES6 → ES5 変換
-
 gulp-imagemin：画像圧縮
-
 del：dist のクリーン用
-
 🟥 エラーが出る場合は、問題のパッケージのバージョンを落としてみること
 
 5️⃣ フォルダ構成を作る(手動)
@@ -126,58 +115,39 @@ my-website/
 ├─ dist/   ← ビルド成果物用（公開用）
 
 6️⃣ SCSS ファイルを作る
-
 src/scss/utils/_variables.scss などで カラーやフォント変数を管理
-
 src/scss/utils/_mixins.scss で レスポンシブや共通スタイルの mixin を管理
-
 src/scss/base/ に リセットCSSや基本スタイル
-
 src/scss/components/ に ボタンやカードなど UI 部品
-
 src/scss/style.scss で全てを import
 
 7️⃣ JS ファイルを作る
-
 src/js/main.js に基本的な JS を書く（例：console.log('Hello Gulp!');）
 
 8️⃣ Gulp 設定ファイルを作る
-
 gulpfile.js に以下タスクを設定：
-
 HTMLコピー
-
 SCSS → CSS（Sourcemap + Autoprefixer + minify）
-
 JS圧縮（Babel + Uglify）
-
 画像圧縮
-
 dist クリーン
-
 BrowserSync で開発サーバー＆自動リロード
-
-（前回提示した gulpfile.js をそのまま利用）
 
 9️⃣ .gitignore を設定
 /node_modules/
 /dist/
 
-
 dist はビルド成果物なので Git 管理外にする
-
 src は編集対象なので管理する
 
 🔟 開発フロー
 
-開発中は src/ のファイルを編集
-
+🔴 開発中は src/ のファイルを編集
 ターミナルで以下を実行：
 npx gulp
 
 自動でビルドされ、ブラウザに反映される
-
-本番用にビルドするとき：
+🔴本番用にビルドするとき：
 npx gulp build
 
 dist/ に圧縮済み CSS, JS, 画像などが出力される
