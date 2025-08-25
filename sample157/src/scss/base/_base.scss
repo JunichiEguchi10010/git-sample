@@ -1,7 +1,17 @@
+// ----------------------------------------
+// ページ全体の基本スタイル設定
+// ----------------------------------------
 body {
-    font-family: sans-serif;
-    font-size: $font-base;
-    color: $color-text;
-    background-color: $color-bg;
-  }
-  
+  font-family: sans-serif;        // シンプルで読みやすいフォントを使用
+  font-size: $font-base;          // 基本の文字サイズ（変数で管理）
+  color: $color-text;             // 文字色（共通カラー変数）
+  background-color: $color-bg;    // 背景色（全体のトーンを統一）
+}
+
+
+// font-family はプロジェクトに応じて sans-serif を Google Fonts などに置き換えることも可能です。
+
+// 変数を使っていることで、全体のデザインを一括で調整しやすくなっています。
+
+// このスタイルは「ベーススタイル」として base/base.scss に置いておくと、他のスタイルとの分離がしやすくなりますよ。
+// 他にも aタグ や h1〜h6 の基本スタイルを追加するなら、まとめて整理できます。

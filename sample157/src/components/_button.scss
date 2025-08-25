@@ -1,13 +1,25 @@
+// ----------------------------------------
+// ボタンの基本スタイル
+// ----------------------------------------
 .button {
-    padding: 10px 20px;
-    border-radius: 5px;
-    background-color: $color-primary;
-    color: #fff;
-    border: none;
-    cursor: pointer;
-  
-    &:hover {
-      background-color: darken($color-primary, 10%);
-    }
+  padding: 10px 20px;                     // 内側の余白（上下10px、左右20px）
+  border-radius: 5px;                     // 角を丸くして柔らかい印象に
+  background-color: $color-primary;       // ボタンの背景色（ブランドカラーなど）
+  color: #fff;                            // 文字色は白でコントラストを確保
+  border: none;                           // 枠線を消してスッキリした見た目に
+  cursor: pointer;                        // ホバー時にポインターを表示（クリック可能）
+
+  // ホバー時のスタイル（色を少し暗くして視覚的フィードバック）
+  &:hover {
+    background-color: darken($color-primary, 10%);
   }
-  
+}
+
+
+// darken() 関数は Sass の機能で、色を簡単に調整できるのが便利です。
+
+// cursor: pointer を忘れると、ボタンっぽさが失われるので地味に重要です。
+
+// もし .button を複数のバリエーションで使うなら、&--secondary や &--danger などの修飾クラスを追加して拡張性を持たせるのもおすすめです。
+
+// 他にもボタンにアイコンを入れる予定があるなら、display: flex や gap の追加も検討しましょう。
