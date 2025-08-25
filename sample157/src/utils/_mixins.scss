@@ -1,20 +1,46 @@
-// flexbox センター配置
+// ----------------------------------------
+// Flexbox を使って要素を中央に配置するミックスイン
+// 使用例: @include flex-center;
+// ----------------------------------------
 @mixin flex-center {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-  // メディアクエリ
-  @mixin mq($size) {
-    @if $size == md {
-      @media (min-width: $breakpoint-md) {
-        @content;
-      }
-    } @else if $size == lg {
-      @media (min-width: $breakpoint-lg) {
-        @content;
-      }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// ----------------------------------------
+// ブレークポイントに応じたメディアクエリを適用するミックスイン
+// 使用例: @include mq(md) { ... }
+// 対応サイズ: md（中サイズ）, lg（大サイズ）
+// ----------------------------------------
+@mixin mq($size) {
+  @if $size == md {
+    @media (min-width: $breakpoint-md) {
+      @content;
+    }
+  } @else if $size == lg {
+    @media (min-width: $breakpoint-lg) {
+      @content;
     }
   }
-  
+}
+
+// コード解説
+// @mixin mq($size) {
+//  mq という名前の mixin（ミックスイン）を定義しています。 
+// $size は引数で、md や lg などのサイズ指定を受け取ります。
+
+//  @if $size == md {
+//  $size が md（中サイズ）だった場合の条件分岐です。
+
+//     @media (min-width: $breakpoint-md) {
+// 中サイズ以上の画面に適用するメディアクエリを定義しています。
+// $breakpoint-md は事前に定義された中サイズの幅（例：768pxなど）です。
+
+//       @content;
+// この mixin を使うときに渡された スタイルの内容をここに挿入します。
+// つまり、呼び出し元の CSS がこの場所に展開されます。
+
+// @content はミックスインの中に任意のスタイルを挿入できる便利な機能です。
+// ブレークポイント変数（例：$breakpoint-md）は utils/variables などで定義されている前提ですね。
+// 必要に応じて sm や xl などのサイズも追加できます。

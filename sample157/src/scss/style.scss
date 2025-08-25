@@ -1,14 +1,22 @@
-// Utils
-@import "utils/variables";
-@import "utils/mixins";
-@import "utils/functions";
+// ----------------------------------------
+// ユーティリティ（変数・関数・ミックスイン）
+// ----------------------------------------
+@import "utils/variables"; // 色・フォントサイズなどの共通変数
+@import "utils/mixins";    // メディアクエリや共通スタイルのミックスイン
+@import "utils/functions"; // SCSS関数（色変換などのロジック）
 
-// Base
-@import "base/reset";
-@import "base/base";
+// ----------------------------------------
+// ベーススタイル（初期化・基本設定）
+// ----------------------------------------
+@import "base/reset"; // ブラウザのデフォルトスタイルをリセット
+@import "base/base";  // body や aタグなどの基本スタイル定義
 
-// Layout
-@import "layout/header";
+// ----------------------------------------
+// レイアウト（構造的なパーツ）
+// ----------------------------------------
+@import "layout/header"; // ヘッダーのレイアウトとスタイル
 
-// Components
-@import "components/button";
+// ----------------------------------------
+// コンポーネント（再利用可能なUIパーツ）
+// ----------------------------------------
+@import "components/button"; // ボタンのスタイル（サイズ・色・ホバーなど）
