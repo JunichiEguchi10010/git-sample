@@ -4,41 +4,34 @@ sample156のコピー(練習用) 202580825
 
 Gulp × SCSS ホームページ制作のテンプレート（汎用スターターキット）20250825
 
-
-💡 この手順をまとめた スターターキット ZIP を作っておけば、案件ごとにフォルダを作って展開するだけで同じ環境がすぐ使えます。
-
-希望であれば、私が このスターターキット用の初期フォルダとファイルを作ったテンプレート を提示することもできます。
-作ってほしいですか？
-
-
 project-root/
-├─ dist/                     # 出力先（本番用）
-│   ├─ css/
-│   │   └─ style.css
-│   ├─ js/
-│   │   └─ main.js
-│   └─ index.html
-├─ src/                      # 開発用ソース
-│   ├─ scss/
-│   │   ├─ base/
-│   │   │   ├─ _reset.scss   # リセットCSS
-│   │   │   └─ _base.scss    # body や html の基本スタイル
-│   │   ├─ components/
-│   │   │   └─ _button.scss  # ボタンなどのUI部品
-│   │   ├─ layout/
-│   │   │   └─ _header.scss  # ヘッダーやフッターなどレイアウト関連
-│   │   ├─ utils/
-│   │   │   ├─ _variables.scss # 色・フォント・ブレークポイント変数
-│   │   │   ├─ _mixins.scss    # よく使う関数（clearfix, flex-center等）
-│   │   │   └─ _functions.scss # SCSS関数（色調整など）
-│   │   └─ style.scss         # メイン（ここで全部読み込む）
-│   ├─ js/
-│   │   └─ main.js
-│   ├─ images
-│   └─ index.html
-├─ gulpfile.js
-├─ package.json
-└─ .gitignore
+├─ dist/                     # ビルド後の出力先（本番環境で使用）
+│   ├─ css/                  # コンパイルされたCSSファイルを格納
+│   │   └─ style.css         # メインのスタイルシート（SCSSから生成）
+│   ├─ js/                   # 圧縮されたJavaScriptファイルを格納
+│   │   └─ main.js           # メインのJSファイル（src/jsからビルド）
+│   └─ index.html            # 本番用HTML（src/index.htmlを元に生成）
+├─ src/                      # 開発用ソースコード（編集・管理はこちら）
+│   ├─ scss/                 # SCSSファイル群（スタイル設計を分割管理）
+│   │   ├─ base/             # 基本スタイル（リセットやbodyなど）
+│   │   │   ├─ _reset.scss   # ブラウザのデフォルトスタイルをリセット
+│   │   │   └─ _base.scss    # html, bodyなどのベーススタイル定義
+│   │   ├─ components/       # UI部品（ボタンなどの再利用可能な要素）
+│   │   │   └─ _button.scss  # ボタンのスタイル定義
+│   │   ├─ layout/           # レイアウト関連（ヘッダー、フッターなど）
+│   │   │   └─ _header.scss  # ヘッダーのスタイル定義
+│   │   ├─ utils/            # ユーティリティ（変数、関数、ミックスイン）
+│   │   │   ├─ _variables.scss # 色・フォント・ブレークポイントなどの変数
+│   │   │   ├─ _mixins.scss    # よく使うミックスイン（flex配置など）
+│   │   │   └─ _functions.scss # SCSS関数（色調整などのロジック）
+│   │   └─ style.scss         # SCSSのエントリーポイント（全ファイルを読み込み）
+│   ├─ js/                   # 開発用JavaScriptファイル
+│   │   └─ main.js           # メインのJSロジック（イベントやDOM操作など）
+│   ├─ images                # 画像素材（ロゴ、バナーなど）
+│   └─ index.html            # 開発用HTML（テンプレートとして使用）
+├─ gulpfile.js               # Gulpの設定ファイル（タスク自動化：SCSSコンパイル、圧縮など）
+├─ package.json              # プロジェクトの依存関係・スクリプト定義
+└─ .gitignore                # Git管理から除外するファイルやフォルダの指定
 
 
 ･変数で色やフォントを管理できる
