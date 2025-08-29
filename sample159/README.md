@@ -94,14 +94,117 @@ fetchUser()：取得
 renderUser()：表示
 logUserAccess()：ログ出力
 
-✅ コードの関数化？
-関数化とは、ひとまとまりの処理を名前付きで切り出すことです。
-たとえば：
 
-python
-def greet(name):
-    print(f"こんにちは、{name}さん！")
-このように、処理を関数にすることで、何をしているかが明確になります。
+✅ コードの関数化(コードの切り出し：コンポーネント化に近い感じ)
+
+🧱 Before：関数化されていないコード
+javascript
+const user = { name: "Junichi", age: 35 };
+
+console.log("名前：" + user.name);
+console.log("年齢：" + user.age);
+console.log("こんにちは、" + user.name + "さん！");
+このように、同じオブジェクトから情報を取り出して表示する処理がバラバラに書かれていると、後で変更が必要になったときに手間がかかります。
+
+🛠️ After：関数化して再利用可能に
+javascript
+function displayUserInfo(user) {
+  console.log("名前：" + user.name);
+  console.log("年齢：" + user.age);
+}
+
+function greetUser(user) {
+  console.log("こんにちは、" + user.name + "さん！");
+}
+
+// 関数を使って処理を整理
+const user = { name: "Junichi", age: 35 };
+displayUserInfo(user);
+greetUser(user);
+
+🟦 関数化の意図と実行
+① 注目したポイント
+同じ user オブジェクトから複数の情報（name, age）を取り出している
+console.log() が3回使われていて、表示処理が分散している
+表示内容が意味的にまとまりを持っている（ユーザー情報の表示、あいさつ）
+
+② 問題点の認識
+表示処理がバラバラだと、修正や再利用がしづらい
+たとえば、user.name を user.fullName に変更したい場合、複数箇所を直す必要がある
+表示の目的が混在していて、コードの意図が読み取りにくい
+「ユーザー情報の表示」と「あいさつ」が混ざっている
+
+③ 関数化の判断
+「ユーザー情報の表示」は displayUserInfo(user) にまとめる
+「あいさつの表示」は greetUser(user) に分離する
+それぞれ意味のある処理単位として関数化することで、役割が明確になる
+
+④ 関数化の実行
+function displayUserInfo(user) を定義して、名前と年齢の表示をまとめる
+function greetUser(user) を定義して、あいさつの表示を分離
+元のコードの console.log() を関数呼び出しに置き換える
+
+⑤ ✅ 関数化のメリット
+意味のまとまりごとに処理を分離できた
+再利用性が向上（他のユーザーにも使える）
+保守性が向上（表示内容の変更が関数内だけで済む）
+テストがしやすくなる（関数単位で動作確認できる）
+読みやすさが向上（コードの意図が一目でわかる）
+
+🧠 補足：関数化の判断基準
+判断ポイント	                    関数化すべき？	            理由
+処理が意味的にまとまっている	    ✅	                      「ユーザー情報の表示」「あいさつ」など
+同じ処理が複数箇所にある	        ✅	                      再利用性と保守性の向上
+処理が長くなっている	            ✅	                      読みやすさとテストのしやすさ
+一度しか使わない処理	            ❌（場合による）	         短くて明確なら関数化しなくてもOK
+
+
+✅ 実践的な例：レビューの平均点を計算する
+Before（関数化なし）
+javascript
+const reviews = [4, 5, 3, 4, 5];
+let total = 0;
+for (let i = 0; i < reviews.length; i++) {
+  total += reviews[i];
+}
+const average = total / reviews.length;
+console.log("平均点：" + average);
+
+After（関数化）
+javascript
+function calculateAverage(scores) {
+  const total = scores.reduce((sum, score) => sum + score, 0);
+  return total / scores.length;
+}
+
+const reviews = [4, 5, 3, 4, 5];
+const average = calculateAverage(reviews);
+console.log("平均点：" + average);
+
+
+🧠 関数化の意図と実行：レビュー平均点の例
+① 注目したポイント
+配列 reviews の中身を合計して平均を出す処理がある
+for 文で合計を計算 → 平均を算出 → console.log() で表示
+処理の流れが一連の「平均点を計算する」目的に沿っている
+
+② 問題点の認識（Beforeのコード）
+処理が1つの場所にベタ書きされていて、再利用できない
+他のレビューでも平均を出したい場合、同じコードをコピーする必要がある
+total や average の変数がグローバルに存在し、スコープが曖昧になりやすい
+
+③ 関数化の判断
+「平均点を計算する処理」は意味のあるまとまりなので、関数に切り出せる
+引数に配列を渡して、任意のレビュー配列に対応できるようにする
+処理結果（平均点）を return で返すことで、柔軟に使い回せる
+
+④ 関数化の実行（Afterのコード）
+calculateAverage(scores) 関数を定義
+reduce() を使って合計を計算
+平均を算出して return
+元のコードでは calculateAverage(reviews) を呼び出して結果を取得
+表示処理は console.log() に分離されているので、ロジックと表示が分離されている
+
 
 ✅ 関数化のメリット
 メリット	                内容
