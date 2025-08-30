@@ -51,13 +51,6 @@ JavaScript	    ブラウザ（クライアント）	                  Node.jsで
 PHP	            Webサーバー（Apache/Nginx）	                  HTMLと連携して動く
 Python	        （汎用言語）ローカルPC、クラウド、IoT機器など	Web以外の用途が非常に広い
 
-
-
-
-
-
-
-
 ✅ 文法と書き方の違い
 🔵 Python：
 インデント（字下げ）で構造を表現。
