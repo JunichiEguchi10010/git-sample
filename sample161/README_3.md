@@ -17,6 +17,7 @@ getData((error, result) => {
     console.log("成功:", result);
   }
 });
+
 🟦 この getData(); の中の(error, result) => { ... } がコールバックです。
 getData が非同期処理（例えばAPI通信やファイル読み込みなど）を行ったあとに、結果を受け取って処理するための関数です。
 
