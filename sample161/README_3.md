@@ -30,7 +30,6 @@ getData が非同期処理（例えばAPI通信やファイル読み込みなど
 🔍 コード解説
 js
 getData((error, result) => {
-
 getData(...) は、非同期でデータを取得する関数です。
 引数として渡している (error, result) => { ... } は コールバック関数。
 この関数は、getData が処理を終えたときに呼び出されます。
@@ -119,14 +118,38 @@ getData((error1, result1) => {
     });
   }
 });
+
+// 最初の非同期処理を実行
+getData((error1, result1) => {
+  if (error1) {
+    // エラー1が発生した場合の処理
+    console.error("エラー1:", error1);
+  } else {
+    // 2つ目の非同期処理を実行（result1が成功した場合）
+    getData((error2, result2) => {
+      if (error2) {
+        // エラー2が発生した場合の処理
+        console.error("エラー2:", error2);
+      } else {
+        // 3つ目の非同期処理を実行（result2が成功した場合）
+        getData((error3, result3) => {
+          if (error3) {
+            // エラー3が発生した場合の処理
+            console.error("エラー3:", error3);
+          } else {
+            // すべての非同期処理が成功した場合の処理
+            console.log("すべて成功:", result1, result2, result3);
+          }
+        });
+      }
+    });
+  }
+});
+
 👆 これが「コールバック地獄」。
-
 ネストが深くなり、右にずれていく
-
 エラーハンドリングが複雑になる
-
 読みにくく、保守しづらい
-
 変更や追加が怖くなる
 
 🧘‍♂️ 解決策：Promise や async/await を使う
