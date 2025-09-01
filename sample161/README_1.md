@@ -14,17 +14,23 @@ JavaScript は「一度にひとつの処理」しかできません（シング
 
 昔は「コールバック関数」で非同期処理を扱っていましたが、複雑になりやすいので Promise が登場しました。
 
-fetch("https://example.com/data.json")
-  .then(response => response.json())
-  .then(data => {
+Promiseベースのコード
+fetch("https://example.com/data.json") // ① Promiseを返す関数
+  .then(response => response.json())   // ② レスポンスをJSONに変換（これもPromise）
+  .then(data => {                      // ③ JSONデータを受け取って処理
     console.log("取得成功:", data);
   })
-  .catch(error => {
+  .catch(error => {                    // ④ どこかでエラーが起きたらここで処理
     console.error("エラー:", error);
   });
 
+✅ コードに含まれている要素
+要素	            含まれているか	    説明
+Promise	            ✔️	            fetch() や .then() はすべて Promise を使った非同期処理
+コールバック関数     ✔️              .then() や .catch() に渡されている関数はコールバック
+つまり、Promiseベースのコードの中にコールバック関数が含まれているという構造です。
 
-Promise は便利ですが、.then().then().catch() とつなげる書き方がちょっと読みにくいんですよね。
+上記のようにPromise は便利ですが、.then().then().catch() とつなげる書き方がちょっと読みにくいんですよね。
 
 そこで登場したのが async/await。
 Promise を「同期処理っぽく」書けるようになります。
