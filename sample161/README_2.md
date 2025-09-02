@@ -20,9 +20,9 @@ Promise は ES6（2015年）で正式導入
 async/await は ES2017（2017年）から
 
 ✅ 組み込みオブジェクトとしての特徴
-特性	                内容
+特性	                 内容
 グローバルに定義済み	Promise はどのスクリプトでもすぐ使える
-コンストラクタ関数	    new Promise((resolve, reject) => {...}) でインスタンス生成
+コンストラクタ関数	  new Promise((resolve, reject) => {...}) でインスタンス生成
 メソッド	           .then(), .catch(), .finally() などで非同期処理を制御
 静的メソッド	       Promise.resolve(), Promise.reject(), Promise.all() など
 
@@ -127,8 +127,6 @@ getData();
 コールバック → 古いけど今でも一部で残ってる
 Promise → ES6 で導入、ネストが解消された
 async/await → ES2017 で導入、さらにシンプルで読みやすい
-
-
 
 
 
