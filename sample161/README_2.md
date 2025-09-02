@@ -506,3 +506,102 @@ fetch → Promise<Response> = HTTP リクエストの結果を入れる箱
 Response.text() → Promise<string> = 本文を文字列として取り出す箱
 .then は 箱が準備できたら中身を渡す橋渡し
 このチェーンで非同期処理を平坦に整理できる
+
+
+✅ executor 関数は「Promiseの状態を制御する関数」
+はい、executor 関数は Promise の状態（fulfilled / rejected）を制御する役割を持っています。
+(resolve, reject)  ← この部分
+
+js
+new Promise((resolve, reject) => {
+  // ← executor 関数
+  // ここで resolve() や reject() を呼ぶことで、
+  // Promise の状態が決まる
+});
+resolve() を呼べば → 成功（fulfilled）
+
+reject() を呼べば → 失敗（rejected）
+
+つまり、Promise の「結果」を決める責任を持つ関数です。
+
+🏗️ コンストラクタとの違い
+Promise は クラス（関数オブジェクト）であり、new Promise(...) はその コンストラクタ呼び出しです。
+
+項目	            Promise コンストラクタ	                executor 関数
+役割	            Promise インスタンスを生成する	      Promise の状態を決定する
+呼び出し元	      JavaScript ランタイム	                開発者が定義する
+実行タイミング	  new Promise(...) の瞬間	              Promise 作成時に即実行される
+関係性	executor 関数を引数として受け取る	               Promise に渡されて実行される
+
+🔍 例えるなら…
+コンストラクタ：工場そのもの（Promise を作る場所）
+executor 関数：製造ラインの作業員（成功か失敗かを決める）
+工場が Promise を作り、作業員がその中身をどう処理するかを決める、というイメージです。
+
+🧠  設計視点
+この構造は、まさに「責任の分離」が明確です：
+コンストラクタは「Promise を作る責任」
+executor 関数は「Promise の状態を決める責任」
+
+❓ executor 関数はコールバック関数ですか？
+い、executor 関数はコールバック関数の一種と考えられます。ただし、少しニュアンスがあります。Junichiさんのように設計や責任の分離に敏感な方には、この違いが面白いポイントになると思います。
+
+✅ なぜ「コールバック関数」と言えるのか？
+コールバック関数とは、他の関数に引数として渡され、後で呼び出される関数のこと。
+ Promise の executor 関数も、まさに Promise コンストラクタに渡されて、内部で呼び出されるので、技術的にはコールバック関数です。
+
+js
+new Promise((resolve, reject) => {
+  // ← これは Promise に渡されるコールバック関数（executor）
+});
+
+⚙️ でも「普通のコールバック」とは違う点もある
+観点	                executor 関数	                        一般的なコールバック関数
+呼び出しタイミング	  Promise 作成時に即実行される	        非同期処理の完了時などに呼ばれる
+目的	               Promise の状態（成功/失敗）を決定する	処理の結果を受け取って何かする
+制御権	            呼び出し側（Promise）が持つ	            呼び出し元（APIや関数）が持つ
+つまり、executor 関数は「Promise の状態を決める責任を持つ関数」であり、コールバックでありながら、制御の中心にいるという点がユニークです。
+
+🧠 設計視点
+executor 関数は、Promise のライフサイクルを開始するトリガーであり、 「非同期処理の責任を明示的に委譲する」構造になっています。
+
+これは、「責任の明確化」「インターフェース設計」「状態管理」にぴったりハマる考え方ですよね。
+
+✅ executor 関数は「Promiseを制御する関数なのですか？またコンストラクターと何が違うのですか？
+ここでの「制御」という言葉の意味を明確にしながら、executor 関数と Promise コンストラクタの違いをわかりやすく整理してみましょう。
+
+✅ executor 関数は「Promiseの状態を制御する関数」
+はい、executor 関数は Promise の状態（fulfilled / rejected）を制御する役割を持っています。
+
+js
+new Promise((resolve, reject) => {
+  // ← executor 関数
+  // ここで resolve() や reject() を呼ぶことで、
+  // Promise の状態が決まる
+});
+resolve() を呼べば → 成功（fulfilled）
+
+reject() を呼べば → 失敗（rejected）
+
+つまり、Promise の「結果」を決める責任を持つ関数です。
+
+🏗️ コンストラクタとの違い
+ここが重要です。Promise は クラス（関数オブジェクト）であり、new Promise(...) はその コンストラクタ呼び出しです。
+
+項目	Promise コンストラクタ	executor 関数
+役割	Promise インスタンスを生成する	Promise の状態を決定する
+呼び出し元	JavaScript ランタイム	開発者が定義する
+実行タイミング	new Promise(...) の瞬間	Promise 作成時に即実行される
+関係性	executor 関数を引数として受け取る	Promise に渡されて実行される
+
+
+🔍 例えるなら…
+コンストラクタ：工場そのもの（Promise を作る場所）
+executor 関数：製造ラインの作業員（成功か失敗かを決める）
+工場が Promise を作り、作業員がその中身をどう処理するかを決める、というイメージです。
+
+🧠 設計視点
+この構造は、まさに「責任の分離」が明確です：
+コンストラクタは「Promise を作る責任」
+executor 関数は「Promise の状態を決める責任」
+このように、インスタンス生成と状態制御が分かれているのは、設計として非常にクリーンです。
