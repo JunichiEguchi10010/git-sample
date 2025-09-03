@@ -1,4 +1,4 @@
-CSS in JS styled-components について 20250903
+React CSS in JS styled-components について 20250903
 
 ❓ CSS in JS はReact用なのか？
 結論からいうと CSS in JS はほぼ React（や React 系フレームワーク：Next.js など）で使われる技術 です。
@@ -30,7 +30,6 @@ styled-components公式サイト
 https://styled-components.com/
 
 🎯 CSS in JS とは？
-
 👉 JavaScript の中に CSS を書く仕組み のことです。
 通常は style.css のように別ファイルにスタイルを書きますが、CSS in JS では コンポーネントごとに JS/TS ファイルの中にスタイルもまとめて書ける んです。
 
@@ -80,7 +79,7 @@ export default function App() {
 ・パフォーマンス面で通常の CSS より遅くなることがある
 ・ツールチェーンが増える（styled-components, Emotion などのライブラリを入れる必要あり）
 
-📌 よく使われるライブラリ
+📌CSS in JS でよく使われるライブラリ
 ・styled-components
 ・Emotion
 ・JSS
