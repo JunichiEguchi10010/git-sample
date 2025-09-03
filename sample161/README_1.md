@@ -35,6 +35,7 @@ Promise	            ✔️	            fetch() や .then() はすべて Promise 
 そこで登場したのが async/await。
 Promise を「同期処理っぽく」書けるようになります。
 
+🟧 (重要)
 3. async/await の基本
 
 🟧 async
@@ -56,7 +57,7 @@ async/await は JavaScriptの構文であり、関数でもオブジェクトで
 Promise をより読みやすく扱うための 糖衣構文（syntactic sugar） です。
 実際には await は Promise.then() を内部的に使って処理を待っています。
 
-例：Promise を async/await に書き換え
+🟧 例：Promise を async/await に書き換え
 // Promise で書くとこうなる
 fetch("https://example.com/data.json")
   .then(response => response.json())
@@ -68,7 +69,7 @@ fetch("https://example.com/data.json")
   });
 
 
-// async/await だとこう書ける
+🟧 // async/await だとこう書ける
 async function getData() {
   try {
     const response = await fetch("https://example.com/data.json");
@@ -163,3 +164,74 @@ promise は 1秒後に resolve される。
 🧠 補足：同期っぽく見えるけど非同期
 .then() のコールバックは、Promiseが解決された瞬間にすぐ実行されるわけではなく、イベントループの次のターンで非同期的に実行されます。
 これは、JavaScriptの非同期モデル（マイクロタスクキュー）によるものです。
+
+
+✅ 進化の流れ
+処理（API からデータを取得して表示する）を 「コールバック → Promise → async/await」 の順で比較してみます。
+
+1. コールバック（昔の書き方）
+// データ取得関数（コールバックを受け取る）
+function getData(callback) {
+  fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then(response => response.json())
+    .then(data => callback(null, data))
+    .catch(error => callback(error));
+}
+
+// 実行
+getData((error, result) => {
+  if (error) {
+    console.error("エラー:", error);
+  } else {
+    console.log("成功:", result);
+  }
+});
+
+
+👉 ネストが増えると「コールバック地獄」になりがち。
+
+2. Promise（ES6, 2015〜）
+// データ取得関数（Promise を返す）
+function getData() {
+  return fetch("https://jsonplaceholder.typicode.com/posts/1")
+    .then(response => response.json());
+}
+
+// 実行
+getData()
+  .then(result => {
+    console.log("成功:", result);
+  })
+  .catch(error => {
+    console.error("エラー:", error);
+  });
+
+
+👉 .then() で処理をつなげられるので読みやすくなった。
+👉 でも .then().then().catch() のチェーンが長いと少し読みにくい。
+
+3. async/await（ES2017, 2017〜）
+// async/await を使った書き方
+async function getData() {
+  try {
+    const response = await fetch("https://jsonplaceholder.typicode.com/posts/1");
+    const result = await response.json();
+    console.log("成功:", result);
+  } catch (error) {
+    console.error("エラー:", error);
+  }
+}
+
+getData();
+
+
+👉 同期処理っぽく順番に書ける ので直感的。
+👉 try/catch でエラー処理できるのも大きなメリット。
+
+📌 まとめ
+
+コールバック → 古いけど今でも一部で残ってる
+
+Promise → ES6 で導入、ネストが解消された
+
+async/await → ES2017 で導入、さらにシンプルで読みやすい
