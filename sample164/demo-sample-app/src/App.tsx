@@ -1,3 +1,7 @@
+// App.tsx
+// このファイルはアプリのメインコンポーネントです。
+// Card コンポーネントを使ってサービス紹介を表示しています。
+
 import { Card } from './components/Card';
 import "./App.css";
 
