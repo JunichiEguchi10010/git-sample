@@ -2,8 +2,8 @@ import styles from './Card.module.css';
 import { Button } from './Button';
 
 type CardProps = {
-  title: string;
-  content: string;
+  title: string; // サービス名などのタイトル
+  content: string; // 説明文
 };
 
 export const Card = ({ title, content }: CardProps) => {
