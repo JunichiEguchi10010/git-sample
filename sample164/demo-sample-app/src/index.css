@@ -1,0 +1,20 @@
+/* 全体のリセット & ベーススタイル */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', 'Hiragino Sans', sans-serif;
+  line-height: 1.6;
+  background-color: #f9fafb;
+  color: #333;
+}
+
+/* レイアウトユーティリティ */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 20px;
+}

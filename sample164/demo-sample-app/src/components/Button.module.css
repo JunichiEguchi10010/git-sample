@@ -1,0 +1,21 @@
+.primary {
+    background-color: #3a99c9;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+  }
+  
+  .primary:hover {
+    background-color: #2f7fa7;
+  }
+  
+  .primary:disabled {
+    background-color: #a0c4db;
+    cursor: not-allowed;
+  }
+  
