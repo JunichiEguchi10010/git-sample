@@ -55,3 +55,22 @@ children は 「中身を差し替えるテンプレート」に最適。
 たとえば variant, size, disabled, onClick など。
 
 この違いを意識することで、「中身を渡すべきか、設定を渡すべきか」の判断が明確になります。
+
+
+
+🧠 React.ReactNode とは何か？
+簡単に言うと、Reactが画面に描画できるものすべてを含む型です。
+
+✅ 含まれるものの例：
+種類	例
+JSX要素	<div>Hello</div>
+文字列	"こんにちは"
+数値	{123}
+配列	["A", <span>B</span>]
+null / undefined	null, undefined（描画されない）
+false	false（描画されない）
+
+🔍 なぜ React.ReactNode を使うのか？
+柔軟性：子要素に何を渡しても受け取れるようにするため。
+型安全性：TypeScriptで「描画可能なものだけを受け取る」と明示できる。
+再利用性：ボタンやカードなどのコンポーネントに、任意の内容を埋め込める。
