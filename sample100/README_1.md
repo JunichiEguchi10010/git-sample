@@ -1,5 +1,6 @@
-React Props（プロップス） children(チルドレン) useContextの違い 20250608
+React Props（プロップス） children(チルドレン) useContextの違い 20250608 20250907追記
 
+sample011 > README_6 _7も参照
 
 🔶 Propsとは？
 Props = Properties（プロパティ）
