@@ -1,6 +1,57 @@
 React propsとchildrenの使い分けの判断基準 20250906
 
-Reactのpropsとchildrenはどちらもコンポーネントにデータを渡す手段ですが、目的と設計思想が異なるため、使い分けることでコードの可読性・再利用性が大きく向上します。
+まとめ
+🧠 役割の違い
+項目	            props（設定・制御）	                                   children（中身・構造）
+目的	        コンポーネントの振る舞いや状態を制御する	                 コンポーネントの中身の構造や表示内容を差し込む
+使い方	        明示的な名前付き属性で渡す	                                タグの中に直接書いて渡す
+例	            isOpen={true} onClick={handleClick} title="確認"	      <Modal>ここが本文</Modal> <Card><h2>タイトル</h2></Card>
+🟥 用途	        ボタンのラベル、イベントハンドラ、表示フラグ、サイズ指定など	レイアウトの中身、ラップされた要素、自由な表示内容
+初心者への説明	「このボタンは押せるか？」「何を表示するか？」を設定する	    「この枠の中に何を入れるか？」を決める
+
+🔍 実例で比較
+
+🔹 propsで制御する例
+jsx
+function Alert({ type, message }) {
+  return <div className={`alert alert-${type}`}>{message}</div>;
+}
+
+// 使用例
+<Alert type="warning" message="注意が必要です" />
+typeでスタイルを制御
+messageで表示文を制御
+propsは設定項目として明示的に渡す
+
+
+🔸 childrenで構造を開放する例
+
+jsx
+function Card({ children }) {
+  return <div className="card">{children}</div>;
+}
+
+// 使用例
+<Card>
+  <h2>お知らせ</h2>
+  <p>新しい機能が追加されました。</p>
+</Card>
+
+中身の構造は自由
+Cardは枠だけ提供
+childrenは中身の構造を差し込む手段
+
+🧠 設計思想点
+propsはテンプレートの制御パラメータとして設計可能（例：stepType="finance"）
+childrenは構造の自由度を担保するスロットとして活用可能（例：<StepCard><p>資産形成の説明</p></StepCard>）
+
+
+✨ まとめ：役割の違いを一言で
+propsは「どう動くか・どう見えるか」を設定する
+childrenは「何を表示するか・どう構成するか」を差し込む
+
+
+✅ Reactのpropsとchildrenはどちらもコンポーネントにデータを渡す手段ですが、目的と設計思想が異なるため、使い分けることでコードの可読性・再利用性が大きく向上します。
 
 🧩 基本の違い
 項目	props	                         children
