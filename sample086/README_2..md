@@ -1,4 +1,4 @@
-React JSX（ジェイエスエックス）記法 20250531
+React JSX（ジェイエスエックス） JavaScript XML 記法 20250531
 
 ➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖➖
 
@@ -122,3 +122,39 @@ jsx
 JSX内では基本的にHTMLのように見えるけど、
 {} を使うことで JavaScriptの「式」を挿入できる。
 if文やfor文などの文（statement）は使えない。
+
+
+❓ JSXの「XML」とは？
+実はちょっと誤解されやすいんですよね。JSXの文法がXMLっぽいという意味で使われていて、厳密にはXMLそのものではありません。
+
+🧩 XMLとは何か？
+XML（eXtensible Markup Language）は、「拡張可能なマークアップ言語」という意味で、データの構造を表現するためのルールです。
+
+✅ 特徴
+タグで構造を表す：<name>Junichi</name> のように、タグでデータの意味を明示します。
+自由にタグを定義できる：HTMLと違って、タグ名は自分で決められます。
+階層構造が作れる：親子関係を持つデータをツリー状に表現できます。
+人にも機械にも読みやすい：テキスト形式なので、エディタで開いても読めるし、プログラムでも扱いやすい。
+
+📦 使われる場面
+システム間のデータ交換（例：銀行間の送金データ）
+長期保存用のデータ形式（例：電子書籍の構造）
+アプリの設定ファイル（例：Androidのレイアウト定義）
+
+Androidアプリのレイアウト定義でよく使われるXMLの一例
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/titleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="こんにちは、Junichiさん！" />
+
+</LinearLayout>
+
+JSXとの関係
+JSXはJavaScriptの中でHTMLライクな構文を書くための仕組みですが、XMLのような構造（タグで囲む、階層を持つ）をしているため「JavaScript XML」と呼ばれています。実際にはHTMLに近いですが、XMLのように構造を明示するという点で似ているんですね。
