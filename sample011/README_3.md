@@ -1,4 +1,10 @@
-Next.js サーバーアクション（Server Actions） React Hooks 20250831
+Next.js サーバーアクション（Server Actions） React Hooks 20250831 20250909
+
+
+Server Actionsとは？
+"use server"ディレクティブを使って非同期関数を定義し、サーバー側で実行される処理として使えます。
+フォーム送信や、UIと同じコード上でのデータ更新ロジックが、より簡潔に記述できるようになっています。
+Next.js 14～採用済み
 
 React 19 βで追加された新フックとNext.jsでの使い方
 React 19 βでは、フォーム処理やサーバーアクションに関連する 新しいHooks が追加されました。
