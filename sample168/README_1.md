@@ -1,5 +1,8 @@
 PostgreSQL データベース について 20250910
 
+PostgreSQL公式サイト
+https://www.postgresql.org/
+
 ✅ PostgreSQLとは？
 ・読み方：ポストグレスキューエル（略して「ポスグレ」って呼ばれることが多い）
 ・正式には 「オープンソースのリレーショナルデータベース管理システム (RDBMS)」
