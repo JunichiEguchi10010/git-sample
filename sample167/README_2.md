@@ -171,17 +171,6 @@ PrismaClientを準備 → DBに接続するためのオブジェクトを作成
 出力 → 取得したデータを console.log で確認
 
 
-
-
-
-
-
-
-
-
-
-
-
 🔹 まとめ
 ・Prismaは Node.js + TypeScriptで安全にDBを扱えるORM。
 ・SQLを書かずに直感的なメソッドでDB操作できる。
