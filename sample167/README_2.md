@@ -1,7 +1,9 @@
 Node.js TypeScript ORM Prisma について 20250910
 
-🔹 Prismaとは？
+Prisma公式
+https://www.prisma.io/
 
+🔹 Prismaとは？
 Prismaは ORM (Object Relational Mapper) と呼ばれるツールのひとつです。
 データベースとやり取りするときに、SQLを直接書かずに TypeScript/JavaScriptのコードで安全に操作できるようにする仕組みです。
 
