@@ -3,6 +3,13 @@ PostgreSQL データベース について 20250910
 PostgreSQL公式サイト
 https://www.postgresql.org/
 
+日本PostgreSQLユーザ会
+https://www.postgresql.jp/
+
+SQL Shell（psql）
+データベースに対して直接SQLコマンドを入力して操作できる対話型のコマンドラインツールです。
+PostgreSQLをダウンロードすると自動的についてくる
+
 ✅ PostgreSQLとは？
 ・読み方：ポストグレスキューエル（略して「ポスグレ」って呼ばれることが多い）
 ・正式には 「オープンソースのリレーショナルデータベース管理システム (RDBMS)」
@@ -224,6 +231,48 @@ Oracle Database
 Microsoft SQL Server
 SQLite
 どれもSQL文法をベースにしているため、習得すれば多くのDBに応用可能です。
+
+✅ SQLシェル（SQL Shell）
+データベースに対して直接SQLコマンドを入力して操作できる対話型のコマンドラインツールです。
+代表的なのは PostgreSQL の psql や Oracle の SQL*Plus など。
+目的に応じて使い方が変わりますが、ここでは代表的な使い方をざっくり紹介します。
+
+🐘 PostgreSQL の SQL Shell（psql）
+✅ 起動方法（Windowsの場合）
+PostgreSQLをインストールすると「SQL Shell (psql)」が付属します。
+起動すると以下のようなプロンプトが表示されます：
+
+コード
+Server [localhost]:
+Database [postgres]:
+Port [5432]:
+Username [postgres]:
+Password for user postgres:
+
+✅ よく使うコマンド
+sql
+CREATE DATABASE mydb;
+\c mydb               -- データベースに接続
+CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT);
+INSERT INTO users (name) VALUES ('Junichi');
+SELECT * FROM users;
+\q                    -- 終了
+
+🧙 Oracle の SQL*Plus + シェルスクリプト
+Oracle環境では、SQL*Plus を使ってシェルスクリプト内でSQLを実行できます。たとえば：
+
+bash
+#!/bin/sh
+sqlplus -s / as sysdba <<EOF
+SELECT host_name, instance_name, status FROM v\$instance;
+EXIT;
+EOF
+このように ヒアドキュメント を使って SQL を埋め込むことで、バッチ処理や自動化が可能になります。
+
+🧠 Tips
+・PostgreSQLなら psql を使って CLI から直接データベース設計・操作が可能。
+・Oracleなら SQL*Plus をシェルスクリプトと組み合わせて、運用系の自動化に活用できる。
+
 
 PostgreSQL(psql)のコマンドが覚えられない全ての人へ
 https://www.youtube.com/watch?v=78u1V4iFPd4
