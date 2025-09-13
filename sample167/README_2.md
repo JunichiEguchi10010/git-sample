@@ -95,7 +95,7 @@ model Post {
 
 
 ・node_modules/@prisma/client
-スキーマから自動生成される型定義とクライアントライブラリ。
+🟥 スキーマから自動生成される型定義とクライアントライブラリ。
 prisma.user.findMany() などがここに含まれる。
 
 ・prisma/migrations/
@@ -184,3 +184,9 @@ https://www.youtube.com/watch?v=9mE1j1vzUAQ
 
 Prismaの導入とメリットを考える
 https://qiita.com/am_765/items/5e42bd5f87b296f61fbc
+
+Prisma Studioとは？データベースを視覚的に操作できる便利ツール
+https://peaky.co.jp/prisma-studio/#index_id6
+
+Prisma Studio - 概要
+https://zenn.dev/aoyamadev/articles/14859cfc9431af
