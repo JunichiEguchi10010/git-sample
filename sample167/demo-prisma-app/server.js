@@ -19,7 +19,6 @@ app.listen(port, () => {
   console.log(`サーバー起動中: Server is running on port ${port}`);
 });
 
-
 // コードの役割まとめ
 // 機能	        説明
 // express()	    Webサーバーのインスタンスを生成
