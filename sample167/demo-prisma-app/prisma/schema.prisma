@@ -4,12 +4,14 @@
 // Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
+// Prisma Client の生成設定
 generator client {
-  provider = "prisma-client-js"
-  output   = "../generated/prisma"
+  provider = "prisma-client-js"       // Prisma Client を JavaScript/TypeScript で使用するための設定
+  output   = "../generated/prisma"    // 生成されたクライアントコードの出力先ディレクトリ
 }
 
+// データベース接続設定
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider = "postgresql"             // 使用するデータベースの種類（ここでは PostgreSQL）
+  url      = env("DATABASE_URL")      // 環境変数から接続URLを取得（セキュリティと柔軟性のため）
 }
