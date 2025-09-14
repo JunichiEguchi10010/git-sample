@@ -1,5 +1,7 @@
 Prisma デモ 20250912
 
+キャッシがうざい問題を調べること
+
 🖥 GUI（pgAdmin）の起動方法
 Windowsのスタートメニューを開く
 「pgAdmin 4」を検索（または「PostgreSQL 17」フォルダ内にあります）
@@ -65,4 +67,54 @@ sampledb=# ￥dデータベースを確認 → これ以降はSQL shell(psql)は
 ターミナルnpx prisma studioコマンドで
 npx prisma studioを立ち会あげる
 
-server.jsでAPIを作成する
+npx prisma studio は Prisma が提供する GUIベースのデータベース管理ツールで、ローカルで起動してブラウザ上でデータベースの中身を視覚的に操作できるものです。
+
+🖥️ npx prisma studio の役割
+Prisma スキーマに基づいて生成されたモデルを一覧表示
+各テーブル（モデル）のデータを GUIで閲覧・編集・追加・削除できる
+SQL を書かずに、フォーム感覚でデータ操作が可能
+開発中のデバッグや、データの確認に非常に便利
+
+🔧 実行するとどうなる？
+bash
+npx prisma studio
+これを実行すると：
+ローカルサーバーが起動（通常は http://localhost:5555）
+ブラウザが開き、Prisma Studio の画面が表示される
+モデルごとにデータが一覧表示され、GUIで操作可能
+
+
+server.jsでAPIを作成する → CRUD
+
+ポストマンで確認
+POSTMAN公式
+https://www.postman.com/jp/downloads/
+
+// PrismaClientをインスタンス化
+const prisma = new PrismaClient(); 
+
+// リクエストボディをJSON形式で解析 Express v4.16.0以降で組み込まれた ミドルウェア関数
+app.use(express.json());
+
+コマンド
+npx prisma generate
+npx prisma generate は Prisma プロジェクトにおける クライアントコードの自動生成コマンドで、データベースとやりとりするための JavaScript/TypeScript API を作り出します。
+
+
+prisma/schema.prisma を読み込み
+スキーマに定義されたモデル（テーブル構造）をもとに
+JavaScript/TypeScript で使える Prisma Client を生成
+生成されたクライアントは、アプリケーションコードからデータベース操作を行うためのインターフェースになります。
+
+コマンド
+node server.js
+node server.js は、Node.js を使って server.js ファイルを実行するコマンドです。つまり、アプリケーションのサーバーを起動する命令ですね。
+
+🧩 コマンドの構造
+bash
+node server.js
+node：Node.js の実行エンジン。JavaScript ファイルをサーバーサイドで動かすためのもの。
+server.js：起動対象のファイル。通常は Express や Fastify などのフレームワークを使って HTTP サーバーを構築している。
+
+【Prisma入門】次世代ORMで簡単にデータベース管理ができるようになろう
+https://www.youtube.com/watch?v=9mE1j1vzUAQ

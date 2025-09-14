@@ -7,7 +7,6 @@
 // Prisma Client の生成設定
 generator client {
   provider = "prisma-client-js"       // Prisma Client を JavaScript/TypeScript で使用するための設定
-  output   = "../generated/prisma"    // 生成されたクライアントコードの出力先ディレクトリ
 }
 
 // データベース接続設定
