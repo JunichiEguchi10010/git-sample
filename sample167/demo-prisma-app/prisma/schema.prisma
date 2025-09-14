@@ -13,5 +13,12 @@ generator client {
 // データベース接続設定
 datasource db {
   provider = "postgresql"             // 使用するデータベースの種類（ここでは PostgreSQL）
-  url      = env("DATABASE_URL")      // 環境変数から接続URLを取得（セキュリティと柔軟性のため）
+  url      = env("DATABASE_URL")      // 環境変数から接続URLを取得（セキュリティと柔軟性のため）.envファイルに登録
+}
+
+// 投稿データを表すモデル（ブログや掲示板などに応用可能）
+model Posts {
+  id    Int    @id @default(autoincrement()) // 主キー。自動で連番が振られる整数型
+  title String                              // 投稿のタイトル。必須の文字列
+  body  String                              // 投稿の本文。必須の文字列
 }

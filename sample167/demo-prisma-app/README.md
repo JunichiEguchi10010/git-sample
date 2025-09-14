@@ -36,3 +36,33 @@ GUI（pgAdmin）は視覚的に操作できるため初心者に最適。
 シェル（psql）はスクリプトやテンプレート化に向いている。
 両方を併用することで、GUIで設計 → CLIで自動化・検証という流れが作れます。
 
+手順
+SQLシェルでPostgreSQLにアクセス
+
+CREATE DATABASE sampledb:でデータベース新規作成
+
+￥c sampledbコマンド でデータベース"sampledb"にユーザー"postgres"として接続
+
+シェルでもコマンドを使用してデータベースを作れるが、Prismaで作成する方が便利。
+
+schemae.prismaに投稿データを表すモデルを追加
+model Posts {
+  id    Int    @id @default(autoincrement()) // 主キー。自動で連番が振られる整数型
+  title String                              // 投稿のタイトル。必須の文字列
+  body  String                              // 投稿の本文。必須の文字列
+}
+
+マイグレード処理
+ターミナルでカレントディレクトリ内でnpx prisma migrate dev --name init実行
+→ migrationsフォルダが作成される
+migrations.splでsql文が自動的に作成されている
+
+SQL shell(psql)で
+postgres=# ￥c sampledb
+データベース"sampledb"にユーザー"postgres"として接続しました。
+sampledb=# ￥dデータベースを確認 → これ以降はSQL shell(psql)は不要
+
+ターミナルnpx prisma studioコマンドで
+npx prisma studioを立ち会あげる
+
+server.jsでAPIを作成する
