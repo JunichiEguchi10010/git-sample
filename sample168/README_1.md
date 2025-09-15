@@ -1,4 +1,4 @@
-PostgreSQL データベース について 20250910
+PostgreSQL データベース SQL Shell（psql）について 20250910
 
 PostgreSQL公式サイト
 https://www.postgresql.org/
@@ -240,6 +240,7 @@ SQLite
 🐘 PostgreSQL の SQL Shell（psql）
 ✅ 起動方法（Windowsの場合）
 PostgreSQLをインストールすると「SQL Shell (psql)」が付属します。
+スタートメニューや検索窓で「SQL Shell」または「psql」と入力
 起動すると以下のようなプロンプトが表示されます：
 
 コード
@@ -247,7 +248,9 @@ Server [localhost]:
 Database [postgres]:
 Port [5432]:
 Username [postgres]:
-Password for user postgres:
+Password for user postgres: 
+
+pass1226 パスワードを入力欄は入力してもなんも変化がないが、入力されているので続けて入力すること。
 
 ✅ よく使うコマンド
 sql
@@ -257,6 +260,15 @@ CREATE TABLE users (id SERIAL PRIMARY KEY, name TEXT);
 INSERT INTO users (name) VALUES ('Junichi');
 SELECT * FROM users;
 \q                    -- 終了
+
+🔧 主な機能と操作例
+機能カテゴリ	    内容例
+データベース操作	作成・削除・一覧表示（例：CREATE DATABASE、\l）
+テーブル操作	    作成・削除・構造確認（例：CREATE TABLE、\d）
+データ操作	      挿入・更新・削除・検索（例：INSERT INTO、SELECT）
+ユーザー管理	    権限の確認・設定（例：\du）
+ファイル操作	    SQLファイルの読み込み・結果の出力（例：\i ファイル名.sql、\o 出力.txt）
+接続管理	        データベースへの接続・切り替え（例：\c データベース名）
 
 🧙 Oracle の SQL*Plus + シェルスクリプト
 Oracle環境では、SQL*Plus を使ってシェルスクリプト内でSQLを実行できます。たとえば：
