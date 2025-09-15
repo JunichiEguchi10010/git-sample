@@ -187,6 +187,7 @@ PrismaClientを準備 → DBに接続するためのオブジェクトを作成
 ・SQLを書かずに直感的なメソッドでDB操作できる。
 ・型補完・型安全・マイグレーション管理が強力で、開発効率と安全性が大幅アップ。
 
+参考：MongoDB の ORM なら mongooseが有力
 
 【Prisma入門】次世代ORMで簡単にデータベース管理ができるようになろう
 https://www.youtube.com/watch?v=9mE1j1vzUAQ
