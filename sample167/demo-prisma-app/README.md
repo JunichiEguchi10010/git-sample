@@ -252,5 +252,35 @@ studio	    Prisma GUIツール起動	npx prisma studio	    DB確認・編集時
 
 
 
+
+prisma環境ではキャッシがうざいく画面がなかなか更新されないのはあるあるですか？
+はい、それはPrisma開発環境の“あるある”現象です。特に以下のような状況で「キャッシュが効きすぎて画面や型が更新されない」問題がよく起こります：
+
+🧠 よくある「Prismaキャッシュ問題」のパターン
+1. 型が更新されない（TypeScript）
+schema.prisma を変更して npx prisma generate を実行しても、VSCode 上で型補完が古いまま残る
+
+原因：node_modules/.prisma にキャッシュされた古い型情報が残っている
+
+2. GUI（Prisma Studio）が古いデータを表示する
+npx prisma studio を開いても、DBの最新状態が反映されない
+
+原因：ブラウザキャッシュや Studio のセッションが古い
+
+3. 画面が更新されない（Next.jsやReactと併用時）
+Prisma でデータ更新したのに、画面が古いまま
+
+原因：フロント側のキャッシュ（SWR, React Query, getStaticProps など）
+
+🔧 解決策まとめ
+問題	                        対処法
+Prisma Client の型が古い	rm -rf node_modules/.prisma → npx prisma generate
+Studio の表示が古い	        ブラウザのキャッシュ削除 or Studio 再起動
+フロント画面が更新されない	 クエリの再フェッチ or キャッシュ無効化（例：revalidate）
+VSCode が型補完しない	    VSCode を再起動 or TypeScript サーバーをリロード
+
+
+
+
 【Prisma入門】次世代ORMで簡単にデータベース管理ができるようになろう
 https://www.youtube.com/watch?v=9mE1j1vzUAQ
