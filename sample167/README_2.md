@@ -3,6 +3,15 @@ Node.js TypeScript ORM Prisma について 20250910
 Prisma公式
 https://www.prisma.io/
 
+クイックスタート
+https://prisma.dokyumento.jp/docs/getting-started/quickstart-sqlite
+
+マイグレートドキュメント
+https://www.prisma.io/docs/orm/prisma-migrate/understanding-prisma-migrate
+
+CRUDドキュメント
+https://www.prisma.io/docs/orm/prisma-client/queries/crud
+
 🔹 Prismaとは？
 Prismaは ORM (Object Relational Mapper) と呼ばれるツールのひとつです。
 データベースとやり取りするときに、SQLを直接書かずに TypeScript/JavaScriptのコードで安全に操作できるようにする仕組みです。
