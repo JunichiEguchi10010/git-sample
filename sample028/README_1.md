@@ -529,6 +529,93 @@ v4.0	    2025年1月22日3	CSS-first設計、Rust製エンジンによる高速�
 Tailwind v4は、CSS-first設計にシフトしているので、PostCSSやViteとの親和性も高く、再現性と保守性を重視する開発スタイルにはぴったりです。
 特に @theme を活用したCSS変数ベースの設計は、行政データのダッシュボードなどでもスケーラブルなUI設計に役立ちます。
 
+Tailwind CSS の v2 / v3 / v4 の違いを整理して、特に init 周りの違いも含めて解説します。
+
+1. Tailwind v2 系（古い時代）
+
+初期化コマンド
+npx tailwindcss init
+生成される tailwind.config.js 例（v2形式）
+
+module.exports = {
+  purge: ['./pages/**/*.js', './components/**/*.js'], // 古い purge 設定
+  darkMode: false, // または 'media' / 'class'
+  theme: {
+    extend: {},
+  },
+  variants: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+特徴
+purge を手動設定して不要な CSS を削減
+variants を手動で拡張
+darkMode も手動設定
+PostCSS 依存はあるが、CLI や @tailwind の import が複雑
+
+2. Tailwind v3 系
+
+初期化コマンド
+npx tailwindcss init
+purge が content に変更
+生成される v3 config 例
+
+module.exports = {
+  content: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+
+特徴
+・JIT（Just-in-Time）モードがデフォルトになり、全クラスを生成しなくてもOK
+・CLI はまだ使えるが、PostCSS 経由も可能
+・v2 より config がシンプルに
+
+3. Tailwind v4 系（最新、2024末〜）
+
+🟥 初期化コマンド
+npx tailwindcss init -p
+-p をつけると postcss.config.js も同時生成
+
+生成例（v4形式）
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+};
+
+
+特徴
+🟥・ PostCSS 経由が公式推奨 → CLI は基本不要
+・自動コンテンツ検出で purge 設定不要
+・@theme 機能や CSS 変数との連携が強化
+・Next.js 15 以降の app router でもそのまま使える
+
+4. まとめ：init 周りの差
+Version	init コマンド	tailwind.config.js 主な項目	特徴
+v2	npx tailwindcss init	purge, darkMode, variants	手動設定多め、CLI 使用
+v3	npx tailwindcss init	content, theme, plugins	JIT デフォルト、シンプル化
+🟥 v4	npx tailwindcss init -p	content, theme, plugins	PostCSS 推奨、自動検出、@theme 追加
+
+💡 ポイント
+・v4 + PostCSS が現代的で Next.js に最適
+・v2/v3 用の古い purge/darkMode/variants は不要
+・tailwindcss-cli は v4 ではほぼ不要
+
+
 Tailwind CSS講座
 【Tailwind CSS #1～#6】最近流行りのTailwind CSSを学ぼう
 https://www.youtube.com/watch?v=5TymbaeyV-0&list=PLwM1-TnN_NN4qjBRuMKDg1-g4rzK-UrP_
