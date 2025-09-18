@@ -69,10 +69,43 @@ npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --watch
 Supabaseでテーブルを作成
 Supabase-jsライブラリをインストールする
 
-/直下にutilsフォルダを作成 > 直下にsupabese.tsファイルを作成
+/直下にutilsフォルダを作成 > 直下にsupabese.tsファイルを作成Supabase管理画面 >左中　> APIドキュメント 
+初期化
+import { createClient } from '@supabase/supabase-js'
+const supabaseUrl = 'https://hvpavoepmpcycbaxfdch.supabase.co'
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
-/直下に.env.localファイルを作成 > supabese格納
+const supabaseKey = process.env.SUPABASE_KEY
+const supabase = createClient(supabaseUrl, supabaseKey)
 
+✅ NEXT_PUBLIC接頭辞を付ける
+
+supabase.ts
+import { createClient } from '@supabase/supabase-js'
+
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+export const supabase = createClient(supabaseUrl!, supabaseKey!)
+
+.env.local
+NEXT_PUBLIC_SUPABASE_URL=https://hvpavoepmpcycbaxfdch.supabase.co
+NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
+
+
+
+
+
+
+
+/直下に.env.localファイルを作成 > supabeseのURLやAPIキーを格納
+Supabase管理画面 >左下 project settings > データーAPI > プロジェクトURL ＝ SUPABESE_URL
+
+Supabase管理画面 >左下 project settings > APIキー > レガシー API キー =
+SUPABASE_ANON_KEY（正式には anon public key）
+
+ANON_KEY（正式には anon public key）とは、Supabase における クライアント側のアクセス用APIキーです。名前の通り「匿名（anonymous）」ユーザー向けのキーで、ログイン前のユーザーや一般公開データへのアクセスに使われます。
 
 公式サイト
 https://tailwindcss.com/
