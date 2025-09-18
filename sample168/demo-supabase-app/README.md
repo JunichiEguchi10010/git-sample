@@ -1,3 +1,4 @@
+Supabase Supabase-js tailwindcss TodoList 20250918
 
 初期設定
 
@@ -64,6 +65,14 @@ Tailwind CSS v4では、CLIが本体から分離され、@tailwindcss/cli とい
 bash
 npx @tailwindcss/cli -i ./src/input.css -o ./dist/output.css --watch
 このコマンドは、input.css に書かれた @tailwind base; などの指示を元に、HTMLファイル内で使われているクラスだけを抽出し、最小限のCSSを output.css に生成します。
+
+Supabaseでテーブルを作成
+Supabase-jsライブラリをインストールする
+
+/直下にutilsフォルダを作成 > 直下にsupabese.tsファイルを作成
+
+/直下に.env.localファイルを作成 > supabese格納
+
 
 公式サイト
 https://tailwindcss.com/
