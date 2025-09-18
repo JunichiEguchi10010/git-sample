@@ -76,16 +76,13 @@ const supabaseUrl = 'https://hvpavoepmpcycbaxfdch.supabase.co'
 const supabaseKey = process.env.SUPABASE_KEY
 const supabase = createClient(supabaseUrl, supabaseKey)
 
-const supabaseKey = process.env.SUPABASE_KEY
-const supabase = createClient(supabaseUrl, supabaseKey)
-
-✅ NEXT_PUBLIC接頭辞を付ける
+✅ NEXT_PUBLICと！接頭辞を付ける
 
 supabase.ts
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL
-const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
+const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl!, supabaseKey!)
 
@@ -93,8 +90,14 @@ export const supabase = createClient(supabaseUrl!, supabaseKey!)
 NEXT_PUBLIC_SUPABASE_URL=https://hvpavoepmpcycbaxfdch.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...
 
-
-
+🔍 !（非nullアサーション演算子）の意味
+TypeScriptでは、環境変数のように「値があるかどうかわからないもの」を使うときに、型エラーが出ることがあります。たとえば：
+ts
+const key: string = process.env.MY_KEY // ← これはエラーになる可能性あり
+そこで ! を使うことで：
+ts
+const key: string = process.env.MY_KEY!
+と書くと、「この値は絶対に null や undefined ではない」と TypeScript に伝えることができます。
 
 
 
