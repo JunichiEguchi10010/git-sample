@@ -1,5 +1,13 @@
 Supabase Supabase-js tailwindcss TodoList 20250918
 
+Supabase 公式ドキュメント
+https://supabase.com/docs
+https://supabase.com/docs/reference/javascript/insert
+
+supabase-js- Supabase用の同型JavaScriptクライアント。
+https://www.npmjs.com/package/@supabase/supabase-js
+npm install @supabase/supabase-js
+
 初期設定
 
 Installing dependencies:
