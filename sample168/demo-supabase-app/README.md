@@ -110,5 +110,13 @@ SUPABASE_ANON_KEY（正式には anon public key）
 
 ANON_KEY（正式には anon public key）とは、Supabase における クライアント側のアクセス用APIキーです。名前の通り「匿名（anonymous）」ユーザー向けのキーで、ログイン前のユーザーや一般公開データへのアクセスに使われます。
 
+v2.57.4: 最新版だが Next.js 15 + Turbopack で問題があり404が多発
+npm install @supabase/supabase-js@^2.39.0にダウングレードする。
+
+
+
+
+
+
 公式サイト
 https://tailwindcss.com/

@@ -2,9 +2,10 @@
 import React, { useEffect, useState } from "react";
 import { TodoList } from "./TodoList";
 import { addTodo, getAllTodos } from "../utils/supabasefunctions";
+import { Todo } from "../utils/interface";
 
 export default function TodoApp() {
-  const [todos, setTodos] = useState<any>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
   const [title, setTitle] = useState<string>("");
 
   useEffect(() => {
@@ -45,7 +46,7 @@ export default function TodoApp() {
           Add
         </button>
       </form>
-      <TodoList todos={todos} />
+      <TodoList todos={todos} setTodos={setTodos} />
     </section>
   );
 }
