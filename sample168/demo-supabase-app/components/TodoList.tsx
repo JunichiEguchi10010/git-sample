@@ -13,7 +13,6 @@ export const TodoList = (props: Props) => {
   const handleDelete = async (id: number) => {
     await deleteTodo(id);
     let todos = await getAllTodos();
-
     setTodos(todos || []);
   };
 
