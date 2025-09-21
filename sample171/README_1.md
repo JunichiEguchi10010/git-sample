@@ -1,5 +1,9 @@
  使用中ポートの強制終方法 プロセス番号（PID）20250921
 
+✅ 
+現在動いている Node.js のプロセス（node.exe）をすべて強制終了します。
+taskkill /F /IM node.exe
+
 ✅ キャッシュクリアを試してみる next.jsの場合
 Remove-Item -Recurse -Force .next
 
