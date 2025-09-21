@@ -1,21 +1,25 @@
 import React from "react";
+import { Todo } from "../utils/interface";
 
-export const TodoList = () => {
+type Props = {
+  todos: Todo[];
+};
+
+export const TodoList = (props: Props) => {
+  const { todos } = props;
+
   return (
     <div>
       <ul className="mx-auto">
-        <div className="flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between">
-          <li className="font-mediun">✅ 読書</li>
-          <span className="cursor-pointer">×</span>
-        </div>
-        <div className="flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between">
-          <li className="font-mediun">✅ 散歩</li>
-          <span className="cursor-pointer">×</span>
-        </div>
-        <div className="flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between">
-          <li className="font-mediun">✅ </li>
-          <span className="cursor-pointer">×</span>
-        </div>
+        {todos.map((todo) => (
+          <div
+            key={todo.id}
+            className="flex bg-orange-200 rounded-md mt-2 mb-2 p-2 justify-between"
+          >
+            <li className="font-medium">✅ {todo.title}</li>
+            <span className="cursor-pointer">×</span>
+          </div>
+        ))}
       </ul>
     </div>
   );
