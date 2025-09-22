@@ -1,4 +1,24 @@
 Supabase Supabase-js tailwindcss TodoList 20250918
+demo-supabase-app/
+├── 📄 FILE_STRUCTURE.md           # 詳細なファイル構成説明
+├── 📄 SETUP.md                   # セットアップガイド
+├── 📁 app/                       # Next.js App Router
+│   ├── favicon.ico
+│   ├── globals.css               # Tailwind v4設定
+│   ├── layout.tsx                # ルートレイアウト
+│   └── page.tsx                  # ホームページ
+├── �� components/                # Reactコンポーネント
+│   ├── TodoApp.tsx               # メインアプリ
+│   └── TodoList.tsx              # Todoリスト
+├── 📁 utils/                     # ユーティリティ
+│   ├── interface.ts              # 型定義）
+│   ├── supabase.ts               # Supabase設定
+│   └── supabasefunctions.ts      # CRUD操作
+├── 📁 public/                    # 静的ファイル
+├── 📄 package.json               # 依存関係
+├── 📄 next.config.ts             # Next.js設定
+├── 📄 tailwind.config.js         # Tailwind設定
+└── 📄 README.md                  # プロジェクト説明
 
 Supabase 公式ドキュメント
 https://supabase.com/docs
