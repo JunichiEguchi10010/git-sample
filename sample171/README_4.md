@@ -127,6 +127,18 @@ Node.js標準	    ES Modulesが普及するまで、Node.jsではCommonJSがデ�
 ブラウザ非対応	 CommonJSはブラウザでは直接使えない。Webpackなどでバンドルが必要。
 柔軟性	        require() は動的に使えるため、条件分岐やループ内でもモジュールを読み込める。
 
+✅ CommonJS（CJS）は「Node.js専用モジュールシステム」
+
+誕生の背景
+2009年、Node.js が登場したとき
+JavaScript をサーバーサイドで使うには モジュール化の仕組みが必要だった
+そこで Node.js が採用したのが CommonJS 方式（require / module.exports）
+ブラウザには実装されなかった
+当時のブラウザには require も module.exports も存在しない
+なので CJS は Node.js に特化 した仕組みになった
+
+
+
 🕰️ 歴史的背景
 2009年：Node.js登場 → JavaScriptにサーバーサイド用途が生まれる
 CommonJS採用：モジュール分割の標準として普及
