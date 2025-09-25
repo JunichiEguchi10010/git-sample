@@ -1,3 +1,34 @@
+/* Tailwind CSS をインポートしてユーティリティクラスを使用可能にする：公式推奨の方法ではありません*/
+@import "tailwindcss";
+
+/* :root セレクターでグローバルなカスタムプロパティ（CSS変数）を定義 */
+:root {
+  --background: #ffffff; /* デフォルトの背景色（ライトモード用） */
+  --foreground: #171717; /* デフォルトの文字色（ライトモード用） */
+}
+
+/* Tailwindの @theme ディレクティブを使って、カスタムテーマ変数を定義 */
+@theme inline {
+  --color-background: var(--background); /* 背景色をテーマ変数にマッピング */
+  --color-foreground: var(--foreground); /* 文字色をテーマ変数にマッピング */
+}
+
+/* ユーザーのOS設定がダークモードの場合に適用されるスタイル */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a; /* ダークモード用の背景色 */
+    --foreground: #ededed; /* ダークモード用の文字色 */
+  }
+}
+
+/* body 要素に背景色と文字色を適用（カスタムプロパティを使用） */
+body {
+  background: var(--background); /* 現在のモードに応じた背景色を適用 */
+  color: var(--foreground);       /* 現在のモードに応じた文字色を適用 */
+}
+
+/* 
+元のコード
 @import "tailwindcss";
 
 :root {
@@ -20,4 +51,29 @@
 body {
   background: var(--background);
   color: var(--foreground);
-}
+} */
+
+/* 
+@import "tailwindcss"; が使われるケース
+これは PostCSSのプラグインとしてTailwindを使う場合の特殊な書き方です。
+TailwindをCSSモジュールとして読み込むような構成で、以下のような環境で使われます：
+
+・PostCSSで tailwindcss を直接インポートする構成
+
+・Tailwindの全ユーティリティを一括で読み込みたい場合
+
+・@tailwind base; などを使わず、カスタムCSSの中でTailwindを統合したいとき
+
+ただし、これは 公式推奨の方法ではありません。
+Tailwindのドキュメントでは、次のような構成が推奨されています。
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+ディレクティブ	役割
+@tailwind     base;	Normalize.css + Tailwindの基本スタイル
+@tailwind     components;	Tailwindのコンポーネントクラス（例：.btn, .card）
+@tailwind      utilities;	ユーティリティクラス（例：text-center, bg-red-500）
+この方法はTailwindのビルドプロセス（CLIやVite、Webpackなど）と連携しやすく、最も安定して動作します。
+*/
