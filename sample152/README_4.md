@@ -3,6 +3,8 @@ JavaScrip PostCSS 環境構築 について 20250817 20250926
 PostCSS公式サイト
 https://postcss.org/
 
+🟥 Tailwind v4ではpostcss.config.js は、不要であることを認識し、削除候補としてマーク。
+
 CSSを柔軟に拡張・変換するためのJavaScriptベースのツールチェーンです。 
 SassやLessのような「すでに機能が詰め込まれたCSSプリプロセッサ」とは違い、PostCSSは「必要な機能だけを選んで使えるプラグインランナー」です。
 
