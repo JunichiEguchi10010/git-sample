@@ -1,4 +1,4 @@
-Tailwind CSSについて 20250415
+Tailwindcssについて 20250415 20250926
 
 Tailwind CSS公式サイト
 https://tailwindcss.com/
@@ -6,6 +6,17 @@ https://tailwindcss.com/
 Tailwind CSSとは？初心者でも分かる特徴と使い方ガイド
 https://delt.co.jp/article/510
 
+🧠 Tailwind v3 vs v4：構成の違いと責務の進化
+
+項目	       Tailwind v3	Tailwind v4	    解説
+PostCSS依存	  必須	        不要	        v3では postcss.config.js が必要。v4では Tailwind が内部で処理するため不要。
+
+構成ファイルの数	tailwind.config.js + postcss.config.js	tailwind.config.js のみ	設定の単一責任化。初心者にもわかりやすい。
+
+CSSビルド方法	PostCSS経由でCSSを生成	Tailwindが直接CSSを生成	ビルドパイプラインが簡素化され、トラブルが減る。
+プラグインの追加方法	PostCSS経由またはTailwind経由	Tailwind経由のみ（関数型プラグイン）	tailwindcss/plugin を使った関数型プラグインが主流に。
+
+導入テンプレートの構成	混在が多い（v2/v3の名残）	v4対応テンプレートはまだ少数	v4対応テンプレートは構成が明快だが、普及はこれから。 2025026
 
 ✅ Tailwind CSSとは？
 ユーティリティファーストのCSSフレームワークです。
