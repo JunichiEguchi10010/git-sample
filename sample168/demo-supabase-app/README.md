@@ -278,9 +278,9 @@ npx tailwindcss-cli init -p
 
 Tailwind CSS v4系の構成ファイル2つ：
 ・tailwind.config.js
-・postcss.config.js
+・postcss.config.js。→ 古いversionの時の物で不要の可能性が高い
+が無事に生成されました
 
-が無事に生成されました。
 警告（deprecated inflight や glob）はnpmの依存パッケージに関するもので、Tailwindの動作には直接影響しません。
 現時点では無視して問題ありませんが、将来的にCI/CD環境や教育テンプレートに組み込むなら、依存関係の整理も含めてメンテナンス方針を明示しておくと安心です。
 
@@ -289,7 +289,6 @@ Tailwind CSS v4系の構成ファイル2つ：
 v4 からは PostCSS プラグインとして動かすのが公式の推奨。
 @import "tailwindcss"; を CSS に書くだけで、postcss.config.js 経由でコンパイルされます。
 tailwindcss-cli は v2/v3 の時代の方法で、v4 では基本不要です。
-
 
 @tailwindcss/cliとは？
 @tailwindcss/cli は、Tailwind CSS v4以降で推奨される公式のコマンドラインツール（CLI）パッケージです。従来の npx tailwindcss コマンドが使えなくなったため、Tailwindのビルド処理を行うための新しいエントリポイントとして登場しました。
@@ -342,8 +341,6 @@ const key: string = process.env.MY_KEY!
 と書くと、「この値は絶対に null や undefined ではない」と TypeScript に伝えることができます。
 
 
-
-
 /直下に.env.localファイルを作成 > supabeseのURLやAPIキーを格納
 Supabase管理画面 >左下 project settings > データーAPI > プロジェクトURL ＝ SUPABESE_URL
 
@@ -353,7 +350,7 @@ SUPABASE_ANON_KEY（正式には anon public key）
 ANON_KEY（正式には anon public key）とは、Supabase における クライアント側のアクセス用APIキーです。名前の通り「匿名（anonymous）」ユーザー向けのキーで、ログイン前のユーザーや一般公開データへのアクセスに使われます。
 
 v2.57.4: 最新版だが Next.js 15 + Turbopack で問題があり404が多発
-npm install @supabase/supabase-js@^2.39.0にダウングレードする。
+npm install @supabase/supabase-js@^2.39.0にダウングレードする。→ tailwindcss node.js typescriptとのversionの整合性を確認すること。
 
 公式サイト
 https://tailwindcss.com/
