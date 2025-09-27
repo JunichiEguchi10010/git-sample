@@ -1,4 +1,4 @@
-JavaScript モジュールシステム CommonJS ES Modules（ESM）20250923
+JavaScript モジュールシステム CommonJS ES Modules（ESM）の違い 20250923
 
 📜 歴史的な流れと力関係
 1. JavaScript誕生（1995年）
