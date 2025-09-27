@@ -11,8 +11,8 @@ export default function TodoApp() { // Todoアプリのメインコンポーネ�
 
   useEffect(() => { // コンポーネント初回マウント時に実行する処理
     const getTodos = async () => { // 非同期関数を定義（Todoを取得する処理）
-      const todos = await getAllTodos(); // Supabaseから全てのTodoを取得
-      setTodos(todos); // 取得したTodoをstateに反映
+      const todos = await getAllTodos(); // ← Supabaseから全てのTodoを取得して、ローカル変数todosに格納する
+      setTodos(todos); // setTodos(todos); // 取得したTodo（変数todosに格納済）をuseStateで定義済みのsetTodos関数を使いstateに反映
       console.log(todos); // デバッグ用に取得したTodoをコンソールに出力
     };
     getTodos(); // 定義した関数を呼び出して実行
@@ -53,6 +53,9 @@ export default function TodoApp() { // Todoアプリのメインコンポーネ�
   );
 }
 
+// TodoList todos={todos} setTodos={setTodos}の解説
+// 左側 = propsの名前（子にどう見せるかのラベル）右側 = 親の変数（実際に渡すデータ）
+// 名前は同じでも別物だが、分かりやすさのために合わせているだけ
 
 // 元コード
 // "use client";
@@ -135,7 +138,7 @@ export default function TodoApp() { // Todoアプリのメインコンポーネ�
 //         - 入力内容を title と同期
 //         - 送信ボタン「Add」を表示
 //     - TodoList コンポーネントを表示
-//         - todos と setTodos を渡す
+//         - todos と setTodos関数 を渡す
 
 
 // TodoApp の動作の流れ
