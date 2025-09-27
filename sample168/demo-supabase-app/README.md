@@ -141,10 +141,5 @@ ANON_KEY（正式には anon public key）とは、Supabase における クラ�
 v2.57.4: 最新版だが Next.js 15 + Turbopack で問題があり404が多発
 npm install @supabase/supabase-js@^2.39.0にダウングレードする。
 
-
-
-
-
-
 公式サイト
 https://tailwindcss.com/
