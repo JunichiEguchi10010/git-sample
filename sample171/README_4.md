@@ -40,11 +40,11 @@ Node.jsは長らくCommonJSが主流だったが、現在はESMもサポート�
 他のプロジェクトでも使い回せる
 
 📦 モジュールシステムの主な種類（JavaScriptの場合）
-名称	                     主な用途	             読み込み方法	      書き出し方法
-CommonJS	               Node.js	                require()	     module.exports
-ES Modules（ESM）	       ブラウザ・Node.js         import	        export
-AMD（古い）	             ブラウザ	                  define()	     return
-UMD（ライブラリ配布用）	　ブラウザ・Node.js両対応	    条件分岐	      条件分岐
+名称	                     主な用途	                読み込み方法	      書き出し方法
+CommonJS	                Node.js	                  require()	       module.exports
+ES Modules（ESM）	         ブラウザ・Node.js         import	          export
+AMD（古い）	               ブラウザ	                  define()	      return
+UMD（ライブラリ配布用）	  　ブラウザ・Node.js両対応	    条件分岐	       条件分岐
 
 🧭 例：モジュールシステムを使った構造
 js
@@ -76,11 +76,11 @@ const functions = require('./functions');
 functions.greet(); // → こんにちは！
 
 🔄 ES Modulesとの違い
-比較項目	        CommonJS	        ES Modules (ESM)
-読み込み方法	    require()	        import
-書き出し方法	    module.exports	    export
-実行タイミング	    同期的（blocking）	非同期的（non-blocking）
-対応環境	        Node.js中心	        Node.js + ブラウザ
+比較項目	          CommonJS	          ES Modules (ESM)
+読み込み方法	     require()	          import
+書き出し方法	     module.exports	      export
+実行タイミング	    同期的（blocking）	 非同期的（non-blocking）
+対応環境	         Node.js中心	        Node.js + ブラウザ
 静的解析のしやすさ	難しい（動的）	      容易（静的）
 
 📌 なぜまだ使われているのか
@@ -137,8 +137,6 @@ JavaScript をサーバーサイドで使うには モジュール化の仕組�
 当時のブラウザには require も module.exports も存在しない
 なので CJS は Node.js に特化 した仕組みになった
 
-
-
 🕰️ 歴史的背景
 2009年：Node.js登場 → JavaScriptにサーバーサイド用途が生まれる
 CommonJS採用：モジュール分割の標準として普及
@@ -172,10 +170,10 @@ console.log(add(2, 3)); // → 5
 import を使って、他のファイルの機能を読み込みます。
 
 ⚙️ ES Modulesの特徴
-特性	        内容
-静的解析可能	import / export は構文として明確なので、ツールが最適化しやすい
+特性	           内容
+静的解析可能	  import / export は構文として明確なので、ツールが最適化しやすい
 非同期読み込み	モジュールは構文解析時に読み込まれる（非同期的）
-ブラウザ対応	<script type="module"> を使えば、ブラウザでも直接使える
+ブラウザ対応	  <script type="module"> を使えば、ブラウザでも直接使える
 トップレベル    await	ES Modulesでは await をトップレベルで使える（Node.js v14以降）
 拡張子必須	    import './utils.js' のように、拡張子を省略できない
 
