@@ -16,7 +16,36 @@ PostCSS依存	  必須	        不要	        v3では postcss.config.js が必�
 CSSビルド方法	PostCSS経由でCSSを生成	Tailwindが直接CSSを生成	ビルドパイプラインが簡素化され、トラブルが減る。
 プラグインの追加方法	PostCSS経由またはTailwind経由	Tailwind経由のみ（関数型プラグイン）	tailwindcss/plugin を使った関数型プラグインが主流に。
 
-導入テンプレートの構成	混在が多い（v2/v3の名残）	v4対応テンプレートはまだ少数	v4対応テンプレートは構成が明快だが、普及はこれから。 2025026
+導入テンプレートの構成	混在が多い（v2/v3の名残）	v4対応テンプレートはまだ少数	v4対応テンプレートは構成が明快だが、普及はこれから。 20250926
+
+✅ Tailwind CSSのバージョンによって、CommonJS形式とESモジュール形式（ESM）の記述の違いが環境構築に直接影響します。
+特にTailwind CSS v4.0以降では、設定ファイル（tailwind.config.js）にESM形式が推奨されるようになったため、従来のCommonJS形式で書かれたコードがエラーを引き起こす可能性があります。
+
+⚠️ Tailwind CSS v4.0以降の仕様変更
+従来（v3.x以前）：
+
+js
+// CommonJS形式
+module.exports = {
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  theme: { extend: {} },
+  plugins: [],
+};
+v4.0以降（推奨）：
+
+js
+// ESモジュール形式
+export default {
+  content: ['./src/**/*.{js,ts,jsx,tsx}'],
+  theme: { extend: {} },
+  plugins: [],
+};
+
+この違いにより、ESM環境（Next.jsなど）でCommonJS形式を使うと、構文エラーやビルド失敗が発生することがあります。
+たとえば：
+SyntaxError: Cannot use import statement outside a module
+TypeError: module.exports is not a function
+
 
 ✅ Tailwind CSSとは？
 ユーティリティファーストのCSSフレームワークです。
