@@ -40,11 +40,11 @@ Node.jsは長らくCommonJSが主流だったが、現在はESMもサポート�
 他のプロジェクトでも使い回せる
 
 📦 モジュールシステムの主な種類（JavaScriptの場合）
-名称	                主な用途	             読み込み方法	   書き出し方法
-CommonJS	            Node.js	                require()	    module.exports
-ES Modules（ESM）	    ブラウザ・                Node.js	     import	export
-AMD（古い）	            ブラウザ	              define()	     return
-UMD（ライブラリ配布用）	　ブラウザ・Node.js両対応	条件分岐	    条件分岐
+名称	                     主な用途	             読み込み方法	      書き出し方法
+CommonJS	               Node.js	                require()	     module.exports
+ES Modules（ESM）	       ブラウザ・Node.js         import	        export
+AMD（古い）	             ブラウザ	                  define()	     return
+UMD（ライブラリ配布用）	　ブラウザ・Node.js両対応	    条件分岐	      条件分岐
 
 🧭 例：モジュールシステムを使った構造
 js
@@ -265,3 +265,31 @@ Tailwind CSS v4以降を使う場合は、tailwind.config.jsをESM形式に書�
 Node.jsの設定でtype: "module"をpackage.jsonに追加することで、ESM形式が有効になります。
 既存のCommonJS形式のコードは、互換性のある環境で使うか、ESM形式に変換する必要があります。
 →手間がかかる
+
+
+🧠 本質的な違い：動的 vs 静的
+
+観点	          CommonJS形式	                      ESモジュール形式
+読み込み方法	  require()（関数）	                   import（構文）
+書き出し方法	  module.exports	                    export
+実行タイミング	同期的（読み込み時に即実行）	        非同期的（事前に解析される）
+解析可能性	    動的 → 静的解析が困難	               静的 → ツールによる最適化が容易
+ファイル拡張子	.js（Node.jsではデフォルト）	        .mjsまたはtype: "module"指定
+柔軟性	        高い（条件分岐や動的読み込みが可能）	制限あり（構文的に厳格）
+最適化        	難しい（動的依存）	                 容易（ツリーシェイキングなど）
+使用環境	      Node.js（旧来）	                    Node.js（新）、ブラウザ
+主な用途	      サーバーサイド（Node.js）            クライアント＆サーバー
+ブラウザ対応    ❌（バンドラー必要）	                ✅（ネイティブ）
+Node.js対応     ✅（標準）                          ✅（設定必要）
+
+🧱 CommonJS：Node.js中心のサーバーサイド向け
+主にNode.jsで使用されるモジュールシステム。
+require() と module.exports を使ってモジュールを読み込む・公開する。
+同期的にモジュールを読み込むため、ブラウザでは直接使えない（非同期が基本のブラウザとは相性が悪い）。
+クライアントサイドで使いたい場合は、WebpackやBrowserifyなどのバンドラーが必要。
+
+🌐 ES Modules（ESM）：ブラウザとNode.jsの両方で使える標準仕様
+import / export を使う、JavaScriptの公式モジュール仕様。
+ブラウザでもネイティブに対応している（<script type="module">）。
+Node.jsでも、"type": "module" を package.json に設定すれば使用可能。
+非同期的に読み込むため、ブラウザ環境に適している。
