@@ -1,4 +1,11 @@
 "use client"; // このコンポーネントをクライアント側で実行する指定（Next.js App Router）
+// このファイルを「クライアントコンポーネント」として扱うための宣言
+// 理由：
+// 1. ReactのuseStateやuseEffectなどの「状態管理や副作用フック」を使えるようにする
+// 2. ブラウザ上で動的に表示や操作が必要なコンポーネントはクライアント側で実行する必要がある
+// 3. Next.jsのApp Routerでは、デフォルトでコンポーネントはサーバー側（Server Component）として扱われるため
+// 4. そのままだと useState や onClick イベントなどが使えず、動的なTodo操作ができない
+// Pages Routerならクライアントコンポーネント扱いなので不要
 
 import React, { useEffect, useState } from "react"; // React本体とフック（useState, useEffect）をインポート
 import { TodoList } from "./TodoList"; // Todoリスト表示用の子コンポーネントをインポート
@@ -160,3 +167,21 @@ export default function TodoApp() { // Todoアプリのメインコンポーネ�
 // ・Todo 一覧を TodoList コンポーネントで表示
 
 // つまり、 「初期取得 → ユーザー追加 → 表示更新」 という流れになっています。
+
+
+// TodoList の動作の流れ
+// 初期化
+// ・親コンポーネントから渡された todos 配列と setTodos 関数を受け取る
+
+// 表示
+// ・todos 配列をもとに、画面に Todo を1件ずつ表示
+// ・各 Todo の横に削除ボタン（×）を表示
+
+// Todo 削除
+// ・ユーザーが削除ボタン（×）をクリックすると以下を実行：
+//      Supabase から対象の Todo を削除
+//      最新の Todo 一覧を取得して todos に反映
+//      画面が自動で更新され、削除した Todo は消える
+
+// つまり、
+// 「受け取った一覧を表示 → ユーザーが削除 → データベース更新 → 画面再描画」
