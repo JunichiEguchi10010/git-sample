@@ -1,4 +1,4 @@
-JavaScript ファイル分割(import/export) 20250524
+JavaScript ファイル分割(import/export)方法 20250524
 
 複数のファイルに分けることで、
 ✅ コードが整理されて読みやすくなる
