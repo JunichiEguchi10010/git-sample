@@ -1,5 +1,8 @@
 Supabase Supabase-js tailwindcss TodoList 20250918　20250927
 
+【Supabase入門】Todoアプリを作りながらSupabaseをNext.jsとTypescriptで学んでみよう
+https://www.youtube.com/watch?v=CZlZgRo0bZ4
+
 ✅ React + Supabase TodoApp 技術懸念事項の事前チェックリスト
 
 📌 React 基礎
