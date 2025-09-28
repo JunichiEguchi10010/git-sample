@@ -99,3 +99,14 @@ SQL抽象化	部分的（select, insertなど）	 完全（モデル定義から
 from('table').select() のように、SQLライクな構文で操作できる。
 ただし、オブジェクトとテーブルのマッピングは自動ではない。
 モデル定義や関係性（リレーション）をコード上で管理する機能はない。
+
+🟥 Project URL（プロジェクトのエンドポイント）確認方法
+移動ダッシュボード 左側のメニュー一番下歯車から「Settings（設定）」を選び、
+その中の「データAPI」セクションを開きます。→プロジェクトURL確認
+
+🟥 APIキ確認方法
+移動ダッシュボード 左側のメニュー一番下歯車から「Settings（設定）」を選び、
+その中の「APIキー」セクションを開きます。→anon public レガシーAPIキー　ただのAPIキータブもあるがこちらはカスタムかも？
+
+【Supabase入門】Todoアプリを作りながらSupabaseをNext.jsとTypescriptで学んでみよう
+https://www.youtube.com/watch?v=CZlZgRo0bZ4
