@@ -1,5 +1,9 @@
 Session Buddy（Chrome拡張：タブ保存・管理）について 20250930
 
+タブをグルーピングして保存・復元するChrome拡張【Session Buddy】
+https://midolog.net/session-buddy/
+ブラウザにピン止めして効率化を図る
+
 1. 🔖「調査フェーズ」の情報収集を構造化
 用途：競合サイト分析、デザイン参考、技術記事、ライブラリ選定など
 
