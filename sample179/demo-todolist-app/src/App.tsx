@@ -77,41 +77,50 @@ function App() {
 
       {/* 新しいTodoを作成するフォーム */}
       <form onSubmit={(e) => handleSubmit(e)}>
-        {/* 入力欄：タスク内容を入力 */}
-        <input
-          type="text" // 入力タイプ：テキスト
-          onChange={(e) => handleChange(e)} // 入力値変更時にhandleChange呼び出し
-          className="inputText" // CSSクラス
-          value={inputValue} // 現在の入力値を反映
-        />
+         {/* 入力欄：タスク内容を入力 */}
+         <input
+           type="text" // 入力タイプ：テキスト
+           onChange={(e) => handleChange(e)} // 入力値変更時にhandleChange呼び出し
+           className="inputText" // CSSクラス
+           value={inputValue} // 現在の入力値を反映
+           placeholder="新しいタスクを入力してください"
+         />
         {/* 送信ボタン */}
         <input type="submit" value="作成" className="submitButton" />
       </form>
 
-      {/* Todoリストの表示部分 */}
-      <ul className="todoList">
-        {/* todos配列をループして1件ずつ<li>を生成 */}
-        {todos.map((todo) => (
-          <li key={todo.id}>
-            {/* タスク内容のテキストボックス（編集可能） */}
-            <input
-              type="text" // テキスト入力
-              onChange={(e) => handleEdit(todo.id, e.target.value)} // 入力変更で編集処理
-              className="inputText" // CSSクラス
-              value={todo.inputValue} // 現在の内容を反映
-              disabled={todo.checked} // 完了済みなら編集不可
-            />
-            {/* チェックボックス（完了・未完了切り替え） */}
-            <input
-              type="checkbox" // チェックボックス入力
-              onChange={(e) => handleChecked(todo.id, todo.checked)} // クリック時に切り替え処理
-              checked={todo.checked} // 現在のチェック状態を反映
-            />
-            {/* 削除ボタン */}
-            <button onClick={() => handleDelete(todo.id)}>削除</button>
-          </li>
-        ))}
-      </ul>
+       {/* Todoリストの表示部分 */}
+       {todos.length === 0 ? (
+         <div className="empty-message">
+           <p>📝 まだタスクがありません</p>
+           <p>上のフォームから新しいタスクを追加してください</p>
+         </div>
+       ) : (
+         <ul className="todoList">
+           {/* todos配列をループして1件ずつ<li>を生成 */}
+           {todos.map((todo) => (
+             <li key={todo.id} className={todo.checked ? 'completed' : ''}>
+               {/* チェックボックス（完了・未完了切り替え） */}
+               <input
+                 type="checkbox" // チェックボックス入力
+                 onChange={(e) => handleChecked(todo.id, todo.checked)} // クリック時に切り替え処理
+                 checked={todo.checked} // 現在のチェック状態を反映
+               />
+               {/* タスク内容のテキストボックス（編集可能） */}
+               <input
+                 type="text" // テキスト入力
+                 onChange={(e) => handleEdit(todo.id, e.target.value)} // 入力変更で編集処理
+                 className="inputText" // CSSクラス
+                 value={todo.inputValue} // 現在の内容を反映
+                 disabled={todo.checked} // 完了済みなら編集不可
+                 placeholder="タスクを入力してください"
+               />
+               {/* 削除ボタン */}
+               <button onClick={() => handleDelete(todo.id)}>削除</button>
+             </li>
+           ))}
+         </ul>
+       )}
     </div>
   );
 }
@@ -121,19 +130,20 @@ export default App;
 
 
 
-// 元のコード
+
+
 // import React, { useState } from "react";
 // import "./App.css";
 
 // function App() {
-//   const [todos, setTodos] = useState<Todo[]>([]);
-//   const [inputValue, setInputValue] = useState<string>("");
-
 //   type Todo = {
 //     id: number;
 //     inputValue: string;
 //     checked: boolean;
 //   };
+
+//   const [todos, setTodos] = useState<Todo[]>([]);
+//   const [inputValue, setInputValue] = useState<string>("");
 
 //   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
 //     setInputValue(e.target.value);
@@ -141,7 +151,10 @@ export default App;
 
 //   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
 //     e.preventDefault();
-//     setTodos([...todos, { id: todos.length + 1, inputValue, checked: false }]);
+//     setTodos([
+//       ...todos,
+//       { id: todos.length + 1, inputValue, checked: false },
+//     ]);
 //     setInputValue("");
 //   };
 
@@ -178,112 +191,125 @@ export default App;
 //           type="text"
 //           onChange={(e) => handleChange(e)}
 //           className="inputText"
+//           value={inputValue}
+//           placeholder="新しいタスクを入力してください"
 //         />
 //         <input type="submit" value="作成" className="submitButton" />
 //       </form>
-//       <ul className="todoList">
-//         {todos.map((todo) => (
-//           <li key={todo.id}>
-//             <input
-//               type="text"
-//               onChange={(e) => handleEdit(todo.id, e.target.value)}
-//               className="inputText"
-//               value={todo.inputValue}
-//               disabled={todo.checked}
-//             />
-//             <input
-//               type="checkbox"
-//               onChange={(e) => handleChecked(todo.id, todo.checked)}
-//               checked={todo.checked}
-//             />
-//             <button onClick={() => handleDelete(todo.id)}>削除</button>
-//           </li>
-//         ))}
-//       </ul>
+
+//       {todos.length === 0 ? (
+//         <div className="empty-message">
+//           <p>📝 まだタスクがありません</p>
+//           <p>上のフォームから新しいタスクを追加してください</p>
+//         </div>
+//       ) : (
+//         <ul className="todoList">
+//           {todos.map((todo) => (
+//             <li key={todo.id} className={todo.checked ? "completed" : ""}>
+//               <input
+//                 type="checkbox"
+//                 onChange={(e) => handleChecked(todo.id, todo.checked)}
+//                 checked={todo.checked}
+//               />
+//               <input
+//                 type="text"
+//                 onChange={(e) => handleEdit(todo.id, e.target.value)}
+//                 className="inputText"
+//                 value={todo.inputValue}
+//                 disabled={todo.checked}
+//                 placeholder="タスクを入力してください"
+//               />
+//               <button onClick={() => handleDelete(todo.id)}>削除</button>
+//             </li>
+//           ))}
+//         </ul>
+//       )}
 //     </div>
 //   );
 // }
 
 // export default App;
 
+// 🧩 Todoリストアプリ（疑似コード）
+// 
+// 【アプリ全体の流れ】
+// 1. ReactとuseStateを使えるようにする
+// 2. スタイル(App.css)を読み込む
+// 3. Todoアプリ(App)を定義する
 
-// 📝 Todoリストアプリ（疑似コード）
-// 初期設定
-// まず、Todoというデータの形を決める。
-// 　各Todo（タスク）は次の3つの情報を持つ。
-// 　- ID（連番）
-// 　- 入力されたテキスト（タスク内容）
-// 　- 完了しているかどうか（チェック状態）
+// 【データ構造の定義】
+// Todo型を定義：
+//   各タスクは
+//     id（番号）
+//     inputValue（内容）
+//     checked（完了かどうか）
+//   の3つの情報を持つ
 
-// アプリの中で使う2つのデータを準備する。
-// 　- todos：Todoリスト全体を入れておく（最初は空）
-// 　- inputValue：入力欄の中の文字を入れておく（最初は空文字）
+// 【状態(State)の用意】
+// todos：すべてのタスクを管理する配列（初期値：空）
+// inputValue：入力フォームに入力された文字列（初期値：空）
 
-// 入力欄の動き
+// 【処理の流れ】
+// ▼ 入力欄の文字が変わったとき
+//   handleChange(イベント):
+//     入力された文字をinputValueに保存する
 
-// ユーザーがテキスト入力欄に文字を入力したら、
-// 　→ inputValueにその文字を保存する。
+// ▼ フォームを送信したとき（タスク追加）
+//   handleSubmit(イベント):
+//     ページのリロードを止める
+//     新しいタスクを作成
+//       id = 現在の件数 + 1
+//       inputValue = 入力された文字
+//       checked = false（未完了）
+//     todosに新しいタスクを追加
+//     入力欄を空にする
 
-// Todoの追加処理
+// ▼ タスクの内容を編集したとき
+//   handleEdit(id, 新しい文字):
+//     todosを1件ずつ調べる
+//     idが一致するタスクのinputValueを更新
+//     更新した配列をtodosに保存する
 
-// ユーザーが「作成」ボタンを押す（またはEnterキーを押す）と、フォーム送信が起こる。
+// ▼ チェックボックスをクリックしたとき
+//   handleChecked(id, 現在の状態):
+//     todosを1件ずつ調べる
+//     idが一致するタスクのcheckedを反転（true⇔false）
+//     更新した配列をtodosに保存する
 
-// 送信時にはページがリロードされないように止める。
+// ▼ 削除ボタンを押したとき
+//   handleDelete(id):
+//     idが一致するタスクを配列から除外
+//     更新した配列をtodosに保存する
 
-// 入力欄が空（または空白だけ）の場合は何もしない。
+// 【画面表示（JSXのイメージ）】
+// 画面全体を<div className="App">で囲む
 
-// 入力があれば、新しいTodoデータを作る。
-// 　- IDは今あるTodoの数 + 1
-// 　- 内容は入力欄の文字
-// 　- チェック状態は「未完了（false）」
+// タイトルを表示：
+//   「TodoList App React Typescript」
 
-// 既存のリストに新しいTodoを追加する。
+// フォームを表示：
+//   - テキスト入力欄（inputValueと連動）
+//   - 「作成」ボタン
 
-// 入力欄を空に戻す。
+// もしタスクが1件もなければ：
+//   「📝 まだタスクがありません」
+//   「上のフォームから新しいタスクを追加してください」
+//   というメッセージを表示
 
-// Todoの編集処理
+// もしタスクが1件以上あれば：
+//   <ul>でタスク一覧を表示
+//   各タスク（li）は次の内容を持つ：
+//     ① チェックボックス → 完了/未完了を切り替える
+//     ② テキスト入力欄 → 内容を編集できる（完了済みは入力不可）
+//     ③ 削除ボタン → タスクを削除
+//   完了したタスクには「completed」クラスが付く
 
-// 各Todoの横にあるテキストボックスの内容をユーザーが変更したら、
-// 　→ 該当するTodoを探して、入力値を新しい文字に書き換える。
+// 【アプリの終了処理】
+// Appコンポーネントを外部に公開（export default App）
 
-// 他のTodoはそのままにしておく。
-
-// 編集後の新しいリストでtodosを更新する。
-
-// チェックボックスの切り替え
-
-// チェックボックスをクリックすると、
-// 　→ 該当するTodoを探して、
-// 　　「完了 ⇄ 未完了」を切り替える（trueとfalseを反転）。
-
-// 新しい状態のTodoリストで更新する。
-
-// チェック済みのTodoは編集できないようにする。
-
-// Todoの削除
-
-// 「削除」ボタンを押すと、
-// 　→ 該当するTodoをリストから取り除く。
-
-// 残ったTodoだけでリストを更新する。
-
-// 画面表示の流れ
-
-// 画面上部にタイトル「TodoList App React Typescript」を表示。
-
-// その下に入力フォームを表示。
-// 　- テキスト入力欄（タスク内容を入力）
-// 　- 「作成」ボタン（押すと追加）
-
-// 入力されたTodoをリスト形式で表示。
-// 　各行には以下が並ぶ：
-// 　- 編集用テキストボックス（完了済みなら無効）
-// 　- チェックボックス（完了状態を切り替える）
-// 　- 削除ボタン（押すとリストから消える）
-
-// 動作まとめ
-
-// 入力 → 作成 → 編集 → 完了チェック → 削除
-// 　という一連のTodo管理がブラウザ上でできる。
-
-// すべてのデータはReactのuseStateで管理され、ページを再読み込みするとリセットされる（ローカル保存はしない）。
+// 【全体の動きまとめ】
+// ユーザーが入力 → タスク追加  
+// 　↓  
+// リストに表示 → 編集・完了チェック・削除ができる  
+// 　↓  
+// 状態（todos）が更新されるたびに画面が再描画される
