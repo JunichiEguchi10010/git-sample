@@ -128,7 +128,7 @@ function App() {
 // コンポーネントAppをエクスポート（他ファイルで使用可能にする）
 export default App;
 
-
+// 元のコード
 // import React, { useState } from "react";
 // import "./App.css";
 
