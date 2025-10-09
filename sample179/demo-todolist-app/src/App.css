@@ -256,3 +256,264 @@ form {
 .todoList::-webkit-scrollbar-thumb:hover {
   background: #a8a8a8;
 }
+
+
+/* 元のコード */
+/* アプリ全体のスタイル */
+.App { /* アプリ全体を囲むコンテナの基本デザイン */
+  max-width: 800px; /* コンテンツの最大幅を800pxに制限 */
+  margin: 0 auto; /* 中央寄せ配置 */
+  padding: 20px; /* 内側余白 */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* フォント設定 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* 背景にグラデーションを設定 */
+  min-height: 100vh; /* 高さを画面全体に広げる */
+  color: #333; /* テキストカラーを設定 */
+}
+
+/* タイトルスタイル */
+h2 { /* 見出し（タイトル）要素のデザイン */
+  color: white; /* テキスト色を白に設定 */
+  text-align: center; /* 中央揃え */
+  margin-bottom: 30px; /* 下に余白 */
+  font-size: 2.5rem; /* 文字サイズを大きく */
+  font-weight: 300; /* 細めのフォント */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3); /* 文字に影を付けて視認性アップ */
+}
+
+/* フォームコンテナ */
+form { /* 入力フォーム全体のスタイル */
+  background: white; /* 背景を白に */
+  padding: 25px; /* 内側余白 */
+  border-radius: 15px; /* 角を丸く */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 影を付けて立体感を出す */
+  margin-bottom: 30px; /* 下に余白 */
+  display: flex; /* 横並び配置 */
+  gap: 15px; /* 要素間の間隔 */
+  align-items: center; /* 垂直方向の中央揃え */
+}
+
+/* 入力フィールド */
+.inputText { /* 入力欄のスタイル */
+  flex: 1; /* 幅を可能な限り広げる */
+  padding: 15px 20px; /* 内側余白 */
+  border: 2px solid #e1e5e9; /* 枠線の色 */
+  border-radius: 25px; /* 丸みのある形状 */
+  font-size: 16px; /* 文字サイズ */
+  outline: none; /* フォーカス時の青枠を非表示 */
+  transition: all 0.3s ease; /* アニメーションをスムーズに */
+  background: #f8f9fa; /* 背景色を淡いグレーに */
+}
+
+.inputText:focus { /* 入力中（フォーカス時）のスタイル */
+  border-color: #667eea; /* 境界線を青系に変更 */
+  background: white; /* 背景を白に変更 */
+  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1); /* 柔らかな光を演出 */
+}
+
+/* 送信ボタン */
+.submitButton { /* 追加ボタンのデザイン */
+  padding: 15px 30px; /* ボタン内余白 */
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); /* グラデーション背景 */
+  color: white; /* 文字色を白に */
+  border: none; /* 枠線を消す */
+  border-radius: 25px; /* 丸みのある形状 */
+  font-size: 16px; /* 文字サイズ */
+  font-weight: 600; /* 太字 */
+  cursor: pointer; /* カーソルをポインターに */
+  transition: all 0.3s ease; /* スムーズな変化 */
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3); /* 影を追加して立体感 */
+}
+
+.submitButton:hover { /* ボタンにカーソルを乗せた時 */
+  transform: translateY(-2px); /* 少し浮き上がる動き */
+  box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4); /* 影を強調 */
+}
+
+.submitButton:active { /* クリック中 */
+  transform: translateY(0); /* 押し込まれるような動き */
+}
+
+/* 空のメッセージ */
+.empty-message { /* Todoがない時に表示されるボックス */
+  background: white; /* 背景を白に */
+  padding: 40px 25px; /* 内側余白 */
+  border-radius: 15px; /* 角を丸く */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 影で立体感を出す */
+  text-align: center; /* テキストを中央揃え */
+  color: #666; /* 文字色をグレーに */
+}
+
+.empty-message p { /* メッセージ内の段落共通 */
+  margin: 10px 0; /* 上下の余白 */
+  font-size: 16px; /* 文字サイズ */
+}
+
+.empty-message p:first-child { /* 最初の行（強調部分） */
+  font-size: 18px; /* 少し大きく */
+  font-weight: 600; /* 太字 */
+  color: #333; /* 濃い文字色 */
+}
+
+/* Todoリストコンテナ */
+.todoList { /* Todo一覧の外枠 */
+  list-style: none; /* リストマーカーを非表示 */
+  padding: 0; /* 内側余白をリセット */
+  margin: 0; /* 外側余白をリセット */
+  background: white; /* 背景白 */
+  border-radius: 15px; /* 丸み */
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2); /* 影 */
+  overflow: hidden; /* はみ出しを隠す */
+}
+
+/* Todoアイテム */
+.todoList li { /* 1つ1つのタスク項目 */
+  display: flex; /* 横並び配置 */
+  align-items: center; /* 中央揃え */
+  padding: 20px 25px; /* 内側余白 */
+  border-bottom: 1px solid #f0f0f0; /* 下線で区切り */
+  transition: all 0.3s ease; /* アニメーション効果 */
+  background: white; /* 背景色 */
+}
+
+.todoList li:last-child { /* 最後の要素だけ下線を消す */
+  border-bottom: none;
+}
+
+.todoList li:hover { /* ホバー時 */
+  background: #f8f9fa; /* 背景を淡く変更 */
+  transform: translateX(5px); /* 少し右に動く演出 */
+}
+
+/* 完了済みTodoのスタイル */
+.todoList li.completed { /* チェック済み項目 */
+  background: #f0f8ff; /* 背景を淡い青に */
+  opacity: 0.7; /* 半透明で控えめ表示 */
+}
+
+.todoList li.completed .inputText { /* 完了済みのテキスト欄 */
+  text-decoration: line-through; /* 打ち消し線を付ける */
+  color: #666; /* グレー文字に変更 */
+  background: #e8f4fd; /* 背景を淡く */
+}
+
+/* Todoアイテム内の入力フィールド */
+.todoList li .inputText { /* 各項目の入力エリア */
+  flex: 1; /* 幅を広げる */
+  margin-right: 15px; /* ボタンとの間隔 */
+  padding: 12px 15px; /* 内側余白 */
+  border: 1px solid #ddd; /* 枠線 */
+  border-radius: 8px; /* 角丸 */
+  font-size: 14px; /* 文字サイズ */
+  background: white; /* 背景白 */
+}
+
+.todoList li .inputText:focus { /* 編集中の入力欄 */
+  border-color: #667eea; /* 青枠 */
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1); /* 光を追加 */
+}
+
+/* チェックボックス */
+.todoList li input[type="checkbox"] { /* タスク完了用のチェック */
+  width: 20px; /* サイズ調整 */
+  height: 20px; /* 高さ */
+  margin-right: 15px; /* テキストとの間隔 */
+  cursor: pointer; /* クリック可能に */
+  accent-color: #667eea; /* チェックマークの色 */
+}
+
+/* 削除ボタン */
+.todoList li button { /* 削除ボタンの見た目 */
+  padding: 8px 16px; /* ボタンの内側余白 */
+  background: #ff4757; /* 赤系の背景色 */
+  color: white; /* 文字色白 */
+  border: none; /* 枠線なし */
+  border-radius: 6px; /* 丸みを付ける */
+  font-size: 14px; /* 文字サイズ */
+  font-weight: 500; /* 中太字 */
+  cursor: pointer; /* カーソル変更 */
+  transition: all 0.3s ease; /* アニメーション */
+}
+
+.todoList li button:hover { /* ホバー時 */
+  background: #ff3742; /* 濃い赤に変更 */
+  transform: scale(1.05); /* 少し拡大 */
+}
+
+.todoList li button:active { /* 押した瞬間 */
+  transform: scale(0.95); /* 縮む動きで押下感を出す */
+}
+
+/* レスポンシブデザイン */
+@media (max-width: 768px) { /* 画面幅768px以下のとき */
+  .App { /* 全体の余白調整 */
+    padding: 15px;
+  }
+  
+  h2 { /* タイトル文字サイズ調整 */
+    font-size: 2rem;
+  }
+  
+  form { /* フォームを縦並びに変更 */
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .inputText { /* 入力欄の幅を100%に */
+    width: 100%;
+  }
+  
+  .submitButton { /* ボタンも全幅に */
+    width: 100%;
+  }
+  
+  .todoList li { /* 各項目のレイアウトを縦方向に */
+    flex-direction: column;
+    gap: 10px;
+    align-items: stretch;
+  }
+  
+  .todoList li .inputText { /* 入力欄の間隔調整 */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+  
+  .todoList li input[type="checkbox"] { /* チェックボックスの位置調整 */
+    margin-right: 0;
+    margin-bottom: 10px;
+  }
+}
+
+/* アニメーション */
+@keyframes fadeIn { /* 下からふわっと出現する効果 */
+  from {
+    opacity: 0; /* 初期は透明 */
+    transform: translateY(20px); /* 少し下にずらす */
+  }
+  to {
+    opacity: 1; /* 完全に表示 */
+    transform: translateY(0); /* 元の位置へ */
+  }
+}
+
+.todoList li { /* 各Todo項目にフェードイン適用 */
+  animation: fadeIn 0.3s ease;
+}
+
+/* スクロールバーのスタイリング */
+.todoList::-webkit-scrollbar { /* スクロールバー全体 */
+  width: 8px; /* 幅設定 */
+}
+
+.todoList::-webkit-scrollbar-track { /* バーの背景部分 */
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.todoList::-webkit-scrollbar-thumb { /* スクロールつまみ部分 */
+  background: #c1c1c1;
+  border-radius: 4px;
+}
+
+.todoList::-webkit-scrollbar-thumb:hover { /* ホバー時の色変更 */
+  background: #a8a8a8;
+} */
