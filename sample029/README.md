@@ -1,24 +1,24 @@
-WordPress カスタム投稿タイプ（CPT）　20250416
+WordPress カスタム投稿タイプ（CPT）について　20250416 sample045 README.md参照
 
 カスタム投稿タイプとは？
 WordPressでは、初期状態で以下のような「投稿タイプ（Post Type）」が用意されています：
 
 投稿タイプ	                    内容
 投稿（post）	            ブログ記事など、時系列で並ぶ情報
-固定ページ（page）	        お問い合わせ、会社概要などの静的ページ
+固定ページ（page）	       お問い合わせ、会社概要などの静的ページ
 これら以外にも、「自分で新しい種類の投稿」を追加したいときに使うのが カスタム投稿タイプ です。
 
 WordPressに最初からあるデフォルトの投稿タイプ一覧
 
-投稿タイプ名（スラッグ）	                説明	                                管理画面に表示される？
-post	                        通常の「投稿」。ブログ記事などに使う	          ✅ 表示される
-page	                        固定ページ（例：お問い合わせ、会社概要）    	  ✅ 表示される
-attachment	                    メディア（画像・PDFなど）               	    ❌（メディアライブラリ経由で管理）
-revision	                    投稿のリビジョン（過去の編集履歴）	              ❌（裏側で管理される）
-nav_menu_item               	メニューの各項目                            	❌（外観→メニューで操作）
-custom_css	                    テーマカスタマイザーの追加CSS               	❌（外観→カスタマイズ）
-customize_changeset	            カスタマイザーの変更履歴	❌
-oembed_cache	                埋め込み（YouTubeなど）のキャッシュ	❌
+投稿タイプ名（スラッグ）	                説明	                    管理画面に表示される？
+post	                     通常の「投稿」。ブログ記事などに使う	     ✅ 表示される
+page	                     固定ページ（例：お問い合わせ、会社概要）  ✅ 表示される
+attachment	               メディア（画像・PDFなど）               	❌（メディアライブラリ経由で管理）
+revision	                 投稿のリビジョン（過去の編集履歴）	       ❌（裏側で管理される）
+nav_menu_item              メニューの各項目                         ❌（外観→メニューで操作）
+custom_css	               テーマカスタマイザーの追加CSS             ❌（外観→カスタマイズ）
+customize_changeset	       カスタマイザーの変更履歴	❌
+oembed_cache	       埋め込み（YouTubeなど）のキャッシュ	❌
 
 
 【プラグインを使わずにfunctions.phpに自分でコードを書く方法】
@@ -80,4 +80,22 @@ CPT UIは投稿タイプの作成はできるが表示テンプレートまで�
 実績・制作例	                    works                       	ギャラリーページや実績一覧として管理したい
 商品情報	                        products                    	WooCommerceでも使われています
 イベント情報	                    event                       	開催日・場所などのカスタム情報を持たせる
+
+
+【WordPress】カスタム投稿基礎 完全解説(CPT UI:Custom Post Type UIを使用)
+https://www.youtube.com/watch?v=E4RLjo_TT9I&t=13s
+
+
+WordPress カスタム投稿タイプ・タクソノミー・ターム【オリジナルテーマ開発講座#4】
+https://www.youtube.com/watch?v=zEwtnCjDW7k
+
+WordPressでカスタム投稿を導入する際の重要設定【Custom Post Type UI】
+https://www.youtube.com/watch?v=3RA0KwHDhQg
+
+カスタム投稿を簡単に追加できる！Custom Post Type UIの使い方紹介！カスタムタクソノミーの設定方法も
+https://www.youtube.com/watch?v=CwBkqZ7GDt4
+
+
+
+
 
