@@ -85,11 +85,6 @@ UserSchema.parse({
 🔗 React Hook Formとの連携
 ZodはReact Hook Formと組み合わせることで、フォームの入力値を型安全に検証できます。
 
-🧠 型安全な検証とは？
-型安全とは、「データの型が正しいことを保証する」ことです。
-たとえば、名前欄には文字列、年齢欄には数値が入るべきですよね。
-型安全な検証では、こうしたルールをコードで定義し、それに従って入力値をチェックします。
-
 たとえば：
 
 ts
@@ -105,3 +100,41 @@ const { register, handleSubmit } = useForm({
 });
 
 拡張の可能性：複雑なスキーマや、Zodでの条件分岐・カスタムバリデーション
+
+🧠 型安全な検証とは？
+型安全とは、「データの型が正しいことを保証する」ことです。
+たとえば、名前欄には文字列、年齢欄には数値が入るべきですよね。
+型安全な検証では、こうしたルールをコードで定義し、それに従って入力値をチェックします。
+
+✅ メリット
+バグの予防：型が合わないデータを早期に検出できる
+
+開発効率の向上：IDEの補完や警告が効くので、ミスが減る
+
+保守性の向上：型定義があることで、後から見ても構造が明確
+
+🛠 具体例（TypeScript + Zod）
+ts
+import { z } from "zod";
+
+// 入力値の型定義
+const FormSchema = z.object({
+  name: z.string(),
+  age: z.number().min(0),
+});
+
+// フォームからの入力値
+const input = {
+  name: "Junichi",
+  age: 34,
+};
+
+// 型安全に検証
+const result = FormSchema.safeParse(input);
+
+if (result.success) {
+  console.log("型安全に通過しました", result.data);
+} else {
+  console.error("型エラー", result.error);
+}
+このように、ZodやYupなどのライブラリを使うことで、型定義とバリデーションを一体化でき、フォーム入力の信頼性が高まります。
