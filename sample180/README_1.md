@@ -1,7 +1,19 @@
 demo-bbs-app 20251011
 
+初期設定
+ npx create-next-app@latest demo-bbs-ap
+√ Would you like to use TypeScript? ... No / 🔴Yes
+√ Which linter would you like to use? » ESLint
+√ Would you like to use Tailwind CSS? ... No / 🔴Yes
+√ Would you like your code inside a `src/` directory? ...🔴 No / Yes
+√ Would you like to use App Router? (recommended) ... No / 🔴Yes
+√ Would you like to use Turbopack? (recommended) ... No / 🔴Yes
 
-reactで作成　
+>demo-bbs-ap>へ移動  npm run dev
+
+
+
+
 
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
 https://www.youtube.com/watch?v=8b6iqmo_2Os&t=2740s
