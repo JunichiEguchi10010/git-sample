@@ -11,6 +11,13 @@ demo-bbs-app 20251011
 
 >demo-bbs-ap>へ移動  npm run dev
 
+>app配下にcomponentsフォルダ >layoutsフォルダ >Header.tsx作成
+
+>layout.tsx コード修正 en → ja
+return (
+    <html lang="ja">
+
+>Header.tsx作成 import Link from 'next/link'
 
 
 
