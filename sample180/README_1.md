@@ -1,7 +1,7 @@
 demo-bbs-app 20251011
 
 初期設定
- npx create-next-app@latest demo-bbs-ap
+ npx create-next-app@latest demo-bbs-app
 √ Would you like to use TypeScript? ... No / 🔴Yes
 √ Which linter would you like to use? » ESLint
 √ Would you like to use Tailwind CSS? ... No / 🔴Yes
@@ -9,7 +9,7 @@ demo-bbs-app 20251011
 √ Would you like to use App Router? (recommended) ... No / 🔴Yes
 √ Would you like to use Turbopack? (recommended) ... No / 🔴Yes
 
->demo-bbs-ap>へ移動  npm run dev
+>demo-bbs-app>へ移動  npm run dev
 
 >app配下にcomponentsフォルダ >layoutsフォルダ >Header.tsx作成
 
