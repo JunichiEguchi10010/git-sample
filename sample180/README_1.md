@@ -1,5 +1,7 @@
 demo-bbs-app 20251011
 
+以下、時系列の制作メモ
+
 初期設定
  npx create-next-app@latest demo-bbs-app
 √ Would you like to use TypeScript? ... No / 🔴Yes
@@ -19,7 +21,11 @@ return (
 
 >Header.tsx作成 import Link from 'next/link'
 
+>shadcnでUI作成 >初期設定npx shadcn@latest init
 
+>components.jsonを自動生成
+
+>add コマンドで他のコンポーネント（input, card, dialog など）を追加するとcomponents フォルダが自動生成
 
 
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
