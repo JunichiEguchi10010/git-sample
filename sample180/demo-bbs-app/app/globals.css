@@ -1,5 +1,5 @@
 @import "tailwindcss";
-@import "tw-animate-css";
+/* @import "tw-animate-css";Tailwind v4 ではPostCSS import 経由では解決できないため、Can't resolve が出ます */
 
 @custom-variant dark (&:is(.dark *));
 
