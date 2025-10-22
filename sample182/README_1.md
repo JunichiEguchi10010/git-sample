@@ -1,5 +1,8 @@
 Docker コンテナについて 20251122
 
+公式サイト（https://www.docker.com/）
+dockerhub https://hub.docker.com/
+
 🐳 Docker（ドッカー）とは？
 
 **Docker（ドッカー）**は、アプリケーションを動かすための「小さな仮想環境」を作るツールです。
