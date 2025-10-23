@@ -76,3 +76,6 @@ FTPソフトで安全に作業するには：
 
 FTPでWordPressサイトを安全に修正・アップロードするプロの手順｜初心者でも安心！
 https://www.youtube.com/watch?v=00Ld9kMNsaA
+
+【エックスサーバー】FTPを使ったファイルのアップロード方法
+https://www.youtube.com/watch?v=B0v4qYVKHYg&t=176s
