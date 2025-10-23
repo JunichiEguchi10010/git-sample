@@ -280,3 +280,6 @@ docker run -d mypythonapp
 作り方	               Dockerfile（設計図）から docker build で作る
 コンテナとの違い	    イメージは“静的”、コンテナは“動的（実行中）”
 Dockerイメージとの違い	実質同じ。Dockerに限定するか、一般化するかの違い
+
+Dockerとは？コンテナ、イメージ、Dockerfileを解説！
+https://qiita.com/gaky1201/items/72232ec6ffa5b628ddac
