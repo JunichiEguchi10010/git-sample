@@ -15,7 +15,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <main>
+    <main className="grid lg:grid-cols-3">
       <Card className="w-full max-w-sm">
         <CardHeader>
           <CardTitle>Login to your account</CardTitle>
