@@ -31,6 +31,15 @@ return (
 >BBSCardLis.tsxを作成　>BBSCard.tsxを作成しカードをコンポーネント化
 
 >SupaBaseを設定
+プロジェクト名:bbs-nextjs-sampleｰDatebase
+データベースパスワード:stYVOlc1rK8SZxLq
+
+>データベース作成後の画面にURLとAPIキーが発行されるので.env.localファイルを作成する
+プロジェクトURL
+https://zcraxyulvsqgakkwuptu.supabase.co
+APIキー
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjcmF4eXVsdnNxZ2Fra3d1cHR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4MDg4MzcsImV4cCI6MjA3NzM4NDgzN30.ePOBCAuvnG0zuR4KHDKiffayYcxGt8yDWmkMIR7-C5E
+
 
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
 https://www.youtube.com/watch?v=8b6iqmo_2Os&t=2740s
