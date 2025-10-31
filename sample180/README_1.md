@@ -45,6 +45,11 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjcmF4eXV
 https://www.prisma.io/
 >prismaをインストールする>prismaフォルダが自動作成>schema.prismaファイルが自動作成される
 
+>.envにConnection Stringを登録 supabaseのプロジェクトを作成したときのパスワードを入れる
+postgresql://postgres:[YOUR_PASSWORD]@db.zcraxyulvsqgakkwuptu.supabase.co:5432/postgres
+
+
+
 
 ✅ 次のステップ
 1. データベーススキーマの定義
