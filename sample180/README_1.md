@@ -65,12 +65,19 @@ model Post {
   categories Category[]  
 }
 
->DBへマイグレート
+>作成したスキーマをDB(Supabase)へマイグレート
 npx prisma migrate dev --name <migration-name>
+→migrationsファイルが自動作成される>その中に複数のファイルとsqlを管理するフォルダが自動作成された。ORMのメイン機能
 
 参考ドキュメント
 https://www.prisma.io/docs/orm/prisma-migrate/getting-started
 https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production
+sample167 README_2参照
+
+いつの間にかprisma.config.tsが作成（作成した記憶なしだが、自動作成はされない仕様らしい）されていてこれがエラーの原因となっていて削除した経緯あり、通常は不要らしい
+
+結論: prisma.config.ts は手動で作成された、または誤って作成されたファイルであり、Prisma の標準では不要です。削除で問題ありません。
+
 
 ✅ 次のステップ
 1. データベーススキーマの定義
