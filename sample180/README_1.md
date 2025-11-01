@@ -49,6 +49,7 @@ https://www.prisma.io/
 postgresql://postgres:[YOUR_PASSWORD]@db.zcraxyulvsqgakkwuptu.supabase.co:5432/postgres
 
 
+>掲示板のスキーマ定義
 
 
 ✅ 次のステップ
