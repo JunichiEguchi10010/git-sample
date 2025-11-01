@@ -48,9 +48,29 @@ https://www.prisma.io/
 >.envにConnection Stringを登録 supabaseのプロジェクトを作成したときのパスワードを入れる
 postgresql://postgres:[YOUR_PASSWORD]@db.zcraxyulvsqgakkwuptu.supabase.co:5432/postgres
 
+>掲示板のスキーマ定義　prismaドキュメント参照
+https://www.prisma.io/docs/orm/prisma-schema/overview
 
->掲示板のスキーマ定義
+>schema.prismaに記述追加
+Postモデル例
 
+model Post {  
+  id         Int        @id @default(autoincrement())  
+  createdAt  DateTime   @default(now())  
+  updatedAt  DateTime   @updatedAt  
+  title      String  
+  published  Boolean    @default(false)  
+  author     User       @relation(fields: [authorId], references: [id])  
+  authorId   Int  
+  categories Category[]  
+}
+
+>DBへマイグレート
+npx prisma migrate dev --name <migration-name>
+
+参考ドキュメント
+https://www.prisma.io/docs/orm/prisma-migrate/getting-started
+https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production
 
 ✅ 次のステップ
 1. データベーススキーマの定義

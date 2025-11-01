@@ -13,3 +13,11 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+model Post {  
+  id         Int        @id @default(autoincrement()) // 投稿の一意なID。自動でインクリメントされる主キー。 @idが主キーを指定
+  username   String                                   // 投稿者のユーザー名。文字列型。
+  title      String                                   // 投稿のタイトル。
+  content    String                                   // 投稿の本文。
+  createdAt  DateTime   @default(now())              // 投稿が作成された日時。デフォルトで現在時刻が入る。
+}
