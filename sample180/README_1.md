@@ -107,6 +107,40 @@ JavaScript / TypeScript アプリからデータベースにアクセスする�
 bash
 npm 
 
+>prismaのスキーマ設定からCLIコマンドでsupabaseでDBが自動で作成される
+>Disable RLS（Confirm to disable Row Level Security）→をconfirmして、Create policyにて作成
+Policy Name：INSERT BBS to POST Table
+Policy Command →　内容に応じて設定 今回はINSERT
+
+Use options above to edit
+alter policy "INSERT BBS to POST Table"
+on "public"."Post"
+to public
+🟥 with check (
+  true ここをtureにする
+);
+
+Policy Name：GET ALL BBS DATA
+Policy Command →　内容に応じて設定 今回はSELECT
+
+Postで
+Policiesを2つ作成
+Name	Command	Applied to	Actions
+GET ALL BBS DATA SELECT	public
+INSERT BBS to POST Table INSERT public
+
+npm i @prisma/clientインストール
+package.json確認したら既に入ってい他が実行する
+  "devDependencies": 
+    "@prisma/client": "^6.18.0",
+
+
+
+
+
+
+
+
 
 
 

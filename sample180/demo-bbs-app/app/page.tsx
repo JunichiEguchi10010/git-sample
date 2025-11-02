@@ -1,12 +1,14 @@
+import { PrismaClient } from "@prisma/client";
 import { BBSCardList } from "./components/BBSCardList";
-// import { Button } from "@/components/ui/button";
-// import { Label } from "@/components/ui/label";
-// import { Input } from "@/components/ui/input";
+
+
+const prismaClient = new PrismaClient();(外で使うと何回も生成される）
+)
 
 export default function Home() {
   return (
-    <main> 
-    <BBSCardList />
+    <main>
+      <BBSCardList />
     </main>
   );
 }
