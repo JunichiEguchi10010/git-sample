@@ -41,7 +41,7 @@ https://zcraxyulvsqgakkwuptu.supabase.co
 APIキー
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpjcmF4eXVsdnNxZ2Fra3d1cHR1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjE4MDg4MzcsImV4cCI6MjA3NzM4NDgzN30.ePOBCAuvnG0zuR4KHDKiffayYcxGt8yDWmkMIR7-C5E
 
->libフォルダにprismaClients.ts(もしくはsupabaseClients.ts)を作成(認証とかが無ければprismaORM使用の方が良い→SQL不要になる)
+>libフォルダにprismaClients.ts(もしくはsupabaseClients.ts)を手動で作成(認証とかが無ければprismaORM使用の方が良い→SQL不要になる)
 https://www.prisma.io/
 >prismaをインストールする>prismaフォルダが自動作成>schema.prismaファイルが自動作成される
 
@@ -140,7 +140,10 @@ package.json確認したら既に入ってい他が実行する
 
 
 
+AIでこの案内が出ている
+PrismaClient を使う場合、Next.js の App Router ではシングルトンパターンが推奨です。必要なら、lib/prismaClient.ts を作成してエクスポートする方法を案内します。必要ですか？？？
 
+>libフォルダに作成済みのprismaClients.tsにprismaclientのホットリロード対策を記述
 
 
 

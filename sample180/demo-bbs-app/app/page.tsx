@@ -1,9 +1,6 @@
 import { PrismaClient } from "@prisma/client";
+import prisma from "../lib/prismaClients";
 import { BBSCardList } from "./components/BBSCardList";
-
-
-const prismaClient = new PrismaClient();(外で使うと何回も生成される）
-)
 
 export default function Home() {
   return (
