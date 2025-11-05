@@ -134,17 +134,10 @@ package.json確認したら既に入ってい他が実行する
   "devDependencies": 
     "@prisma/client": "^6.18.0",
 
-
-
-
-
-
-
 AIでこの案内が出ている
 PrismaClient を使う場合、Next.js の App Router ではシングルトンパターンが推奨です。必要なら、lib/prismaClient.ts を作成してエクスポートする方法を案内します。必要ですか？？？
 
 >libフォルダに作成済みのprismaClients.tsにprismaclientのホットリロード対策を記述
-
 
 
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
