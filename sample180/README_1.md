@@ -70,7 +70,6 @@ npx prisma migrate dev --name <migration-name>
 →migrationsファイルが自動作成される>その中に複数のファイルとsqlを管理するフォルダが自動作成された。
 ORMのメイン機能
 
-
 参考ドキュメント
 https://www.prisma.io/docs/orm/prisma-migrate/getting-started
 https://www.prisma.io/docs/orm/prisma-migrate/workflows/development-and-production
