@@ -54,6 +54,7 @@ https://www.prisma.io/docs/orm/prisma-schema/overview
 >schema.prismaに記述追加
 Postモデル例
 
+
 model Post {  
   id         Int        @id @default(autoincrement())  
   createdAt  DateTime   @default(now())  
