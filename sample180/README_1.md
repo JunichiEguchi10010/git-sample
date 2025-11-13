@@ -54,7 +54,6 @@ https://www.prisma.io/docs/orm/prisma-schema/overview
 >schema.prismaに記述追加
 Postモデル例
 
-
 model Post {  
   id         Int        @id @default(autoincrement())  
   createdAt  DateTime   @default(now())  
@@ -139,6 +138,8 @@ AIでこの案内が出ている
 PrismaClient を使う場合、Next.js の App Router ではシングルトンパターンが推奨です。必要なら、lib/prismaClient.ts を作成してエクスポートする方法を案内します。必要ですか？？？
 
 >libフォルダに作成済みのprismaClients.tsにprismaclientのホットリロード対策を記述
+
+
 
 
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
