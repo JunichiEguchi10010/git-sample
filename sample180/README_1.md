@@ -96,7 +96,7 @@ npx prisma studio
 またはオンラインの Prisma Console でも操作できます： 🔗 Prisma Console Studio
 
 4. アプリからクエリを送る
-JavaScript / TypeScript アプリからデータベースにアクセスするには、Prisma ORM を使います。 👉 ステップバイステップのガイドはこちら
+JavaScript / TypeScript アプリからデータベースにアクセスするには、Prisma ORM を使います。 
 
 🔔 npm のアップデート通知
 新しいメジャーバージョンの npm が利用可能です：
