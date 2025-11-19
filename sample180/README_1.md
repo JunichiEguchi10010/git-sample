@@ -28,6 +28,7 @@ return (
 >add コマンドで他のコンポーネント（input, card, dialog など）を追加するとcomponents フォルダが自動生成
 
 >page.tsxでベタでカードリストを作成
+
 >BBSCardLis.tsxを作成　>BBSCard.tsxを作成しカードをコンポーネント化
 
 >SupaBaseを設定 
@@ -144,6 +145,7 @@ app>api>post>route.ts作成
 
 BBSCardをmap関数で作成
 分割代入で先に展開させる const { id, title, content, createdAt, username } = bbsData;
+
 
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
 https://www.youtube.com/watch?v=8b6iqmo_2Os&t=2740s
