@@ -146,6 +146,5 @@ app>api>post>route.ts作成
 BBSCardをmap関数で作成
 分割代入で先に展開させる const { id, title, content, createdAt, username } = bbsData;
 
-
 Next.js14で掲示板Webアプリケーションを作ってみよう【Supabase/react-hook-form/zod/shadcnを利用】
 https://www.youtube.com/watch?v=8b6iqmo_2Os&t=2740s
