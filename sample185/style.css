@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+<!-- カウントアップアニメーションのスタイル -->
+.countup {
+    font-size: 2rem;
+    font-weight: bold;
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.countup.js-count-up {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.countup.js-count-up.show {
