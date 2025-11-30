@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-<!-- カウントアップアニメーションのスタイル -->
+/* カウントアップアニメーションのスタイル */
 .countup {
     font-size: 2rem;
     font-weight: bold;
@@ -9,8 +9,5 @@
 }
 
 .countup.js-count-up {
-    opacity: 0;
-    transition: opacity 0.5s ease;
+    /* 初期状態は表示（Intersection Observerで制御） */
 }
-
-.countup.js-count-up.show {
