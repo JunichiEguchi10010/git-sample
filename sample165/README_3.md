@@ -49,6 +49,15 @@ GitHub CLI：その GitHub を CLI で操作するためのツール
 GitHub CLI = GitHub のブラウザ操作を全部コマンドだけでできるようにする便利ツール
 使うと開発効率がかなり上がります。
 
+
+
+
+
+
+
+
+
+
 ✅ gh auth login コマンド
 gh auth login は GitHub CLI (gh) の認証コマンドです。
 このコマンドを実行すると、ターミナル上で GitHub アカウントにログインし、リポジトリ操作や Issue 管理などを CLI 経由で行えるようになります。
@@ -85,6 +94,144 @@ bash
 gh auth logout
 
 ✅ origin = あなたのローカルPCとつながっている GitHub 上のリポジトリ（リモートリポジトリ）の“名前”
+
+
+✅ git checkout main の意味
+git checkout main
+
+これは簡単に言うと…
+👉 「現在作業中の場所（カレントブランチ）を main ブランチへ切り替える」
+つまり、
+今 feature/header にいても
+今 bugfix/login にいても
+これを実行すると main ブランチに移動します。
+
+🔍 より正確な説明（概念として）
+Git が管理する「作業用のスナップショット」を ブランチ と呼び、
+checkout はそのブランチを「切り替える」コマンドです。
+
+checkout = 作業をする場所を切り替える
+main = 切り替え先のブランチ名
+
+📌 カレントの意味（Git における “今いる場所”）
+Git では「今自分が作業しているブランチ」を カレントブランチ と呼びます。
+
+例：
+
+* main
+  feature/header
+  feature/contact
+
+この * のついているところがカレント。
+ここから別のブランチに移るのが checkout。
+
+🔄 checkout のイメージ図
+現在作業中（例：feature/header）
+          ↓
+ git checkout main
+          ↓
+main に移動（作業ブランチが main になる）
+
+⚠️ 注意：checkout できないケース
+もし未コミットの変更がある場合に、
+checkout すると競合しそうな場合、Git が止めることがあります。
+
+その場合は
+git add + git commit する
+または git stash で一時退避する
+などの操作が必要。
+
+
+✅ ① main と master の違い
+● 結論：名前が違うだけで、中身は同じ「メインブランチ」
+
+Git の初期のデフォルト名が
+
+昔：master
+
+今：main
+
+に変わりました。
+
+変更された理由（簡単に）
+
+「master」という言葉の歴史的背景への配慮から、多くのプロジェクトが main へ移行。
+
+どっちが正しい？
+
+→ 新規は main が標準
+→ 既存リポジトリは master のままのものも多い
+
+✅ ② ローカル main を最新の origin/main に合わせる方法
+
+GitHub の更新をローカルに取り込む＝同期するやり方。
+
+▼ 通常の同期（推奨）
+git checkout main
+git pull origin main
+
+
+これで
+GitHub の変更を取り込み
+
+ローカル main が最新になる
+
+◇ 補足（pull = fetch + merge）
+
+内部的には
+
+git fetch origin
+git merge origin/main
+
+
+をまとめてやっているだけ。
+
+▼ ローカルの変更を捨てて、とにかく GitHub に完全に合わせたい場合（強制）
+git fetch origin
+git reset --hard origin/main
+
+※ これはローカルの未コミット変更がすべて消えるので注意。
+
+✅ ③ main から作業ブランチを切る流れ
+
+Git の基本ワークフロー。
+WordPress テーマ制作でも、LP制作でもこのやり方が安全でスタンダード。
+
+▼ ステップ1：main に移動して最新化する
+git checkout main
+git pull origin main
+
+▼ ステップ2：作業ブランチを作る（例：feature/header）
+git checkout -b feature/header
+
+▼ ステップ3：作業する（コードを書く）
+
+変更したら…
+
+git add .
+git commit -m "Add header layout"
+git push origin feature/header
+
+▼ ステップ4：GitHub 上で PR（プルリクエスト）を作る
+
+GitHub CLI なら
+
+gh pr create
+
+▼ ステップ5：レビュー後、merge（マージ）する
+gh pr merge
+
+🎯 まとめ：最小限覚えるべきセット
+🔹 main と master
+
+→ カタカナだけ違う。今は main が標準。
+
+🔹 main を最新にする
+git checkout main
+git pull origin main
+
+🔹 main から作業ブランチを切る
+git checkout -b feature/◯◯
 
 
 ✅ 動画の中で解説されているコマンド
@@ -158,11 +305,89 @@ PR 操作: 差分は gh pr diff、チェックアウトは gh pr checkout と覚
 
 エイリアス整備: よく使う短縮（例: co = pr checkout や diff = pr diff）は gh alias set で定義すると運用が速くなります。
 
-もし gh diff や gh co が既に動作しているなら、あなたの環境にエイリアスや拡張が入っています。その場合は gh alias list の出力を共有していただければ、現在の環境に合わせて最適な使い方に整えます。
+
+✅ Git（git コマンド）と GitHub CLI（gh コマンド）の間で “重複するコマンドはほぼありません”
+
+理由はとてもシンプルです。
+
+📌 Git（git）はローカルのバージョン管理ツール
+
+ローカルの変更管理
+
+ブランチ操作
+
+commit / merge
+
+push / pull など
+
+👉 あなたのPC内のリポジトリを操作するためのコマンド
+
+📌 GitHub CLI（gh）は GitHub を操作するツール
+
+Pull Request（PR）の作成・一覧
+
+Issue の作成・管理
+
+GitHub Actions の確認
+
+GitHub リポジトリの作成
+
+PR のレビュー用チェックアウト
+
+👉 GitHub サーバー側の機能を操作するためのコマンド
+
+🔍 つまり役割が違うので、基本的にコマンドは重複しません
+目的	                Git（git）	GitHub CLI（gh）
+ローカルの変更管理	        ○	        ×
+GitHub の PR 作成	       ×	       ○
+push/pull	               ○	       ×
+Issue 作成	               ×	       ○
+ブランチ切り替え	        ○	        △（PR を checkout するときは gh が介入）
+
+❗唯一「似ている動きをする」場面はある
+▶ PR をレビュー用に取ってくる時
+gh pr checkout 123
 
 
+これは内部的には Git の以下の動きを自動化しています：
 
-ブランチを取り込むとはどういう意味なのか？
+git fetch origin pull/123/head:pr-123
+git checkout pr-123
+
+
+つまり、
+
+Git の複雑な fetch と checkout
+
+を gh が自動でやっている
+
+というだけで、実際の役割は違います。
+
+📝 具体例で比較
+▼ リポジトリを clone したい場合
+
+git clone
+
+gh repo clone
+
+両方できるが、目的が違う：
+
+git clone → どんな Git リポジトリでもOK
+
+gh repo clone → GitHub のリポジトリに特化
+
+使い勝手のために似たコマンドが用意されているだけ。
+
+🎯 まとめ
+
+Git = ローカルのバージョン管理ツール
+
+GitHub CLI = GitHub（リモート側）の操作ツール
+
+目的が違うので 基本は重複しない
+
+PR checkout など一部で「似た動きの自動化」があるだけ
+
 
 ✅ 以下のブログ参照関数作成で効率化が可能
 
