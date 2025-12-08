@@ -1,6 +1,5 @@
 github プラグイン Git History GitLens Git Graph　違いについて 20251003
 
-
 ✅ Git History GitLens Git Graph　違いは？
 3つのVSCode拡張機能「Git History」「GitLens」「Git Graph」は、いずれもGitの履歴や操作を視覚化・支援するツールですが、それぞれに得意分野があります。そのため目的に応じた使い分けが重要です。
 
