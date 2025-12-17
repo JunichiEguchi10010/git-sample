@@ -1,0 +1,111 @@
+/* ローディング */
+
+/* 動きのあるグラデーション背景 */
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(
+      120deg,
+      #0f2027,
+      #203a43,
+      #2c5364,
+      #1b2735
+    );
+    background-size: 400% 400%;
+    animation: bgFlow 10s ease infinite;
+  }
+  
+  @keyframes bgFlow {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+  
+.loading {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }  
+
+.loading p {
+    font-family: "Helvetica Neue", Arial, sans-serif;
+    font-weight: 100;
+    font-size: 24px;
+    letter-spacing: 0.15em;
+    color: #fff;
+  }
+  
+  .loading p span {
+    display: inline-block; /* span を inline-block にする */
+    animation: fadeFlow 2.5s infinite cubic-bezier(0.7, 0, 0.3, 1);
+  }
+  
+  /* 1文字ごとのディレイ */
+  .loading p span:nth-of-type(1)  { animation-delay: 0s; }
+  .loading p span:nth-of-type(2)  { animation-delay: 0.12s; }
+  .loading p span:nth-of-type(3)  { animation-delay: 0.24s; }
+  .loading p span:nth-of-type(4)  { animation-delay: 0.36s; }
+  .loading p span:nth-of-type(5)  { animation-delay: 0.48s; }
+  .loading p span:nth-of-type(6)  { animation-delay: 0.60s; }
+  .loading p span:nth-of-type(7)  { animation-delay: 0.72s; }
+  .loading p span:nth-of-type(8)  { animation-delay: 0.84s; }
+  .loading p span:nth-of-type(9)  { animation-delay: 0.96s; }
+  .loading p span:nth-of-type(10) { animation-delay: 1.08s; }
+  
+  @keyframes fadeFlow {
+    0% {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    30% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    60% {
+      opacity: 0.4;
+    }
+    100% {
+      opacity: 0;
+      transform: translateY(-6px);
+    }
+  }
+
+  /* アクセシビリティ対応 */
+  @media (prefers-reduced-motion: reduce) {
+    .loading p span {
+      animation: none;
+      opacity: 1;
+      transform: none;
+    }
+  }
+  /* 
+    ユーザーが OS やブラウザ設定で
+    「アニメーションを減らす」を有効にしている場合の配慮。
+    
+    視覚的な動きによる不快感・酔いを防ぐため、
+    ローディング文字のアニメーションを無効化する。
+    
+    アクセシビリティ（a11y）対応として推奨されており、
+    公的サイトや企業サイトでは評価ポイントになる。
+  */
+
+  /* GPU最適化（微改善） */
+  .loading p span {
+    will-change: transform, opacity;
+    /* 
+      アニメーションで transform / opacity が頻繁に変化することを
+      ブラウザに事前に伝え、描画パフォーマンスを最適化するため。
+      （GPUレイヤー化され、カクつき防止に効果あり）
+      
+      ※ 常時表示要素に多用するとメモリ消費が増えるため、
+         ローディングなど一時的なアニメーションに限定して使用する
+    */
+  }
+  
