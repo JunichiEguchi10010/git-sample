@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rich Loading Animation</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<!-- ローディング -->
+<div class="loading" id="loading">
+  <div class="boxes">
+    <span class="box"></span>
+    <span class="box"></span>
+    <span class="box"></span>
+    <span class="box"></span>
+  </div>
+</div>
+
+<!-- ダミーコンテンツ -->
+<main>
+  <h1>Content Loaded</h1>
+  <p>ページの読み込みが完了しました。</p>
+</main>
+<!-- 
+<script>
+  // ページ読み込み完了後にローディングを消す 実務ではこれを入れてUX補完
+  window.addEventListener("load", () => {
+    const loading = document.getElementById("loading");
+    loading.classList.add("is-hidden");
+  });
+</script> -->
+
+<!-- 練習(挙動確認)のため、5秒後にローディングを消す -->
+<script>
+    window.addEventListener("load", () => {
+      const loading = document.getElementById("loading");
+  
+      // 最低でもローディングを表示する時間（ミリ秒）
+      const MIN_LOADING_TIME = 10000; // ← 10秒（調整可）
+  
+      setTimeout(() => {
+        loading.classList.add("is-hidden");
+      }, MIN_LOADING_TIME);
+    });
+  </script>
+  
+</body>
+</html>

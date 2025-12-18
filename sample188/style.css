@@ -1,0 +1,146 @@
+/* =========================
+   基本設定
+========================= */
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    font-family: system-ui, sans-serif;
+  }
+  
+  /* =========================
+     ローディング全体
+  ========================= */
+
+.loading {
+    position: fixed;
+    inset: 0;
+    /* フェードアウトを滑らかにするためのトランジション
+   ・opacity：徐々に透明にする
+   ・visibility：非表示切り替えを遅らせる
+   → ローディング終了時に「急に消える」印象を防ぐ */
+    transition: opacity 1s ease, visibility 1s ease;
+      
+    /* ▼ グラデーション背景 */
+    background: linear-gradient(
+      135deg,
+      #f5f7fa 0%,
+      #e4ecf5 40%,
+      #d9e4f5 100%
+    );
+  
+    display: grid;
+    place-items: center;
+    z-index: 1000;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+  }
+  
+  .loading.is-hidden {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* =========================
+     ボックス配置
+  ========================= */
+  
+  .loading .boxes {
+    display: flex;
+    gap: 16px;
+  }
+  
+  /* =========================
+     ボックス本体
+  ========================= */
+  
+  .loading .boxes .box {
+    width: 20px;
+    height: 80px;
+    background-color: #ddd;
+    animation: upDown 1s infinite alternate cubic-bezier(0.70, 0, 0.41, 1);
+    animation-fill-mode: backwards; /* 遅延時の初期状態保持 */
+    position: relative;
+    overflow: hidden;
+  }
+  
+  /* =========================
+     疑似要素：パルス（オーラ）
+  ========================= */
+  
+  .loading .boxes .box::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: inherit;
+    animation: pulse 1s infinite ease-out;
+    filter: blur(6px);
+    opacity: 0;
+  }
+  
+  /* =========================
+     アニメーションディレイ
+  ========================= */
+  
+  .loading .boxes .box:nth-of-type(1) {
+    animation-delay: 0s;
+  }
+  
+  .loading .boxes .box:nth-of-type(2) {
+    animation-delay: 0.15s;
+  }
+  
+  .loading .boxes .box:nth-of-type(3) {
+    animation-delay: 0.3s;
+  }
+  
+  .loading .boxes .box:nth-of-type(4) {
+    animation-delay: 0.45s;
+  }
+  
+  /* =========================
+     キーフレーム
+  ========================= */
+  
+  /* 上下運動 */
+  @keyframes upDown {
+    0% {
+      transform: translateY(-30px) scaleY(1);
+    }
+    50% {
+      transform: translateY(0) scaleY(1.6);
+    }
+    100% {
+      transform: translateY(30px) scaleY(1);
+    }
+  }
+  
+  /* オーラ用パルス */
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+      transform: scale(1);
+    }
+    100% {
+      opacity: 0;
+      transform: scale(2);
+    }
+  }
+  
+  /* =========================================
+   モーション軽減対応（アクセシビリティ）
+   OS設定で「動きを減らす」が有効な場合、
+   アニメーションを無効化する
+   ・乗り物酔い／めまい対策
+   ・WCAG配慮（業務必須）
+========================================= */
+@media (prefers-reduced-motion: reduce) {
+    /* ボックス本体のアニメーション停止 */
+    .loading .boxes .box,
+    /* 疑似要素（オーラ）のアニメーション停止 */
+    .loading .boxes .box::before {
+      animation: none;
+    }
+  }  
