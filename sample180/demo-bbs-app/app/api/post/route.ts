@@ -1,3 +1,4 @@
+// 全部の投稿データを取得する
 import prisma from "../../../lib/prismaClient";
 import { NextResponse } from "next/server";
 
